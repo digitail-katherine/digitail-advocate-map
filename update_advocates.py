@@ -163,12 +163,32 @@ def hs_signals(props: dict) -> list:
         pass
     return list(set(sigs))
 
-def build_address(props: dict) -> str:
-    return ", ".join(
-        (props.get(k) or "").strip()
-        for k in ["address", "city", "state", "zip"]
-        if (props.get(k) or "").strip()
+def build_address(props: dict, company_name: str = "") -> str:
+    """
+    Build a clean geocodable address string.
+    Falls back to city+state+zip if the address field is garbled
+    (contains the company name, a PO Box, or is abnormally long).
+    """
+    raw   = (props.get("address")  or "").strip()
+    city  = (props.get("city")     or "").strip().title()
+    state = (props.get("state")    or "").strip().upper()
+    zip_  = (props.get("zip")      or "").strip()
+
+    addr_is_clean = bool(
+        raw
+        and len(raw) < 80
+        and "po box" not in raw.lower()
+        and "p.o. box" not in raw.lower()
+        and not (company_name and company_name[:8].lower() in raw.lower())
     )
+
+    if addr_is_clean:
+        parts = [p for p in [raw, city, state, zip_] if p]
+    else:
+        # Garbled — use city + state + zip only for cleaner geocoding
+        parts = [p for p in [city, state, zip_] if p]
+
+    return ", ".join(parts)
 
 def hs_address_with_fallback(hs_id: str, props: dict) -> str:
     addr = build_address(props)
@@ -707,10 +727,23 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # Clean any bad coordinates from existing records (outside NA bounds)
+    # Repair pass: clear coordinates that don't match the company's country
+    # This fixes stale bad geocodes from previous runs (e.g. Canadian clinic placed in Kansas)
+    repaired = 0
     for rec in existing:
-        if rec.get("lat") and not in_na_bounds(rec["lat"], rec.get("lng", 0)):
+        lat = rec.get("lat")
+        lng = rec.get("lng")
+        if not lat or not lng:
+            continue
+        country = (rec.get("country") or "").lower()
+        # If HubSpot country isn't stored on the record, try to infer from state
+        st = (rec.get("st") or "").upper()
+        is_canadian = country in {"canada","ca"} or st in CA_PROVINCES
+        if is_canadian and not coord_matches_country(lat, lng, "canada"):
             rec["lat"], rec["lng"] = None, None
+            repaired += 1
+    if repaired:
+        print(f"  Cleared {repaired} stale non-Canadian coordinates for Canadian clinics")
 
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
