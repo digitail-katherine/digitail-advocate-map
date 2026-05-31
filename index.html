@@ -250,21 +250,22 @@ function mkPop(a){
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
   // Why section — leads the popup body
   const SIGNAL_LABELS={
-    hs_testimonial:   '📰 Published a case study or article with Digitail',
-    hs_dsp:           '💳 Runs 6-figure payment processing through Digitail',
-    hs_positive_note: '👍 Noted as a happy customer by our team',
-    intercom_csat:    '⭐ Gave Digitail support a 5-star rating',
-    capterra_positive:'🌟 Left a positive review on Capterra',
-    g2_positive:      '🌟 Left a positive review on G2',
-    softwareadvice:   '🌟 Left a positive review on Software Advice',
-    getapp:           '🌟 Left a positive review on GetApp',
-    reddit_mention:   '💬 Mentioned Digitail positively on Reddit',
-    google_review:    '⭐ Left a positive Google review',
-    google_mention:   '🔍 Mentioned positively in a public web search',
-    facebook_review:  '👍 Left a positive Facebook review',
-    manual:           '✅ Manually verified by the Digitail team',
+    hs_testimonial:   '📰 Case Study / Article Published',
+    hs_dsp:           '💳 DSP Payment Processing',
+    hs_positive_note: '👍 Team Verified Happy',
+    hs_long_tenure:   '📅 Active Customer 12+ Months',
+    intercom_csat:    '⭐ 5★ Support Rating',
+    capterra_positive:'🌟 Capterra Review',
+    g2_positive:      '🌟 G2 Review',
+    softwareadvice:   '🌟 Software Advice Review',
+    getapp:           '🌟 GetApp Review',
+    reddit_mention:   '💬 Reddit Mention',
+    google_review:    '⭐ Google Review',
+    google_mention:   '🔍 Web Mention',
+    facebook_review:  '👍 Facebook Review',
+    manual:           '✅ Manually Verified',
   };
-  const sigs=(a.signals||[]).filter(s=>s!=='hs_long_tenure');
+  const sigs=(a.signals||[]);
   const fmtLabel=FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
   const sigSection=sigs.length
     ?`<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
