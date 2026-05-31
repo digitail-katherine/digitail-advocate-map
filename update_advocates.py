@@ -239,7 +239,7 @@ def main():
         r = requests.post(SLACK_URL, json={"text": "\n".join(lines)}, timeout=10)
         print(f"Slack ping: HTTP {r.status_code}")
 
-    return 0 if not updated_names else 1  # exit 1 = changes (triggers git commit step)
+    return 0  # exit 1 = changes (triggers git commit step)
 
 if __name__ == "__main__":
-    sys.exit(main())
+     main()
