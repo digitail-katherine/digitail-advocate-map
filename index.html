@@ -249,12 +249,32 @@ function mkPop(a){
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
   // Why section — leads the popup body
-  const SIGNAL_LABELS={hs_testimonial:'📰 Article/testimonial on file',hs_dsp:'💳 Active DSP processing',hs_positive_note:'👍 Positive team note in HubSpot',intercom_csat:'⭐ 5★ Intercom CSAT',capterra_positive:'🌟 Capterra review (4–5★)',g2_positive:'🌟 G2 review (4–5★)',softwareadvice:'🌟 Software Advice review',getapp:'🌟 GetApp review',reddit_mention:'💬 Reddit mention',google_review:'⭐ Google review',google_mention:'🔍 Found on web',facebook_review:'👍 Facebook review',manual:'✅ Manually verified by team'};
-  const sigs=(a.signals||[]);
+  const SIGNAL_LABELS={
+    hs_testimonial:   '📰 Published a case study or article with Digitail',
+    hs_dsp:           '💳 Runs 6-figure payment processing through Digitail',
+    hs_positive_note: '👍 Noted as a happy customer by our team',
+    intercom_csat:    '⭐ Gave Digitail support a 5-star rating',
+    capterra_positive:'🌟 Left a positive review on Capterra',
+    g2_positive:      '🌟 Left a positive review on G2',
+    softwareadvice:   '🌟 Left a positive review on Software Advice',
+    getapp:           '🌟 Left a positive review on GetApp',
+    reddit_mention:   '💬 Mentioned Digitail positively on Reddit',
+    google_review:    '⭐ Left a positive Google review',
+    google_mention:   '🔍 Mentioned positively in a public web search',
+    facebook_review:  '👍 Left a positive Facebook review',
+    manual:           '✅ Manually verified by the Digitail team',
+  };
+  const sigs=(a.signals||[]).filter(s=>s!=='hs_long_tenure');
+  const fmtLabel=FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
   const sigSection=sigs.length
-    ?`<div style="margin:0 0 8px 0;padding:8px 10px;background:#F0FFF4;border-left:3px solid #16A34A;border-radius:0 6px 6px 0"><div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px">Why this clinic is on the map</div><div style="display:flex;flex-direction:column;gap:3px">${sigs.map(s=>`<span style="font-size:11px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}</div></div>`
-    :`<div style="margin:0 0 8px 0;padding:7px 9px;background:#FEF9C3;border-left:3px solid #CA8A04;border-radius:0 6px 6px 0;font-size:10.5px;color:#854D0E">⚠️ Signal source unknown — verify before using as reference</div>`;
-  return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div class="pty">${tl}</div></div>
+    ?`<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
+        <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Why this clinic is on the map</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          ${sigs.map(s=>`<span style="font-size:12px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
+        </div>
+      </div>`
+    :`<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">⚠️ No verified signal on file — do not use as reference</div>`;
+  return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div style="display:flex;gap:5px;margin-top:5px"><div class="pty">${tl}</div><div class="pty">${fmtLabel}</div></div></div>
 <div class="pb">${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.notes?`<div class="pmx" style="background:#F0FFF4;color:#166534">ℹ️ ${a.notes}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
 }
 
