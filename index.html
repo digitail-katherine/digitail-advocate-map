@@ -233,6 +233,10 @@ function mkPop(a){
   b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
+  // Signal badges
+  const SIGNAL_LABELS={hs_testimonial:'📰 Article/testimonial',hs_dsp:'💳 DSP processing',hs_long_tenure:'📅 12+ months',hs_positive_note:'👍 Positive note',intercom_csat:'⭐ Intercom CSAT',capterra_positive:'🌟 Capterra review',manual:'✅ Manually verified'};
+  const sigs=(a.signals||[]);
+  const sigHtml=sigs.length?`<div style="margin-top:7px;padding:6px 8px;background:#F0FFF4;border-radius:5px;"><div style="font-size:9px;font-weight:700;color:#166534;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px">Verified by</div><div style="display:flex;flex-wrap:wrap;gap:3px">${sigs.map(s=>`<span class="bg" style="background:#DCFCE7;color:#166534;font-size:9.5px">${SIGNAL_LABELS[s]||s}</span>`).join('')}</div></div>`:'';
   return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div class="pty">${tl}</div></div>
 <div class="pb">${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.notes?`<div class="pmx" style="background:#F0FFF4;color:#166534">ℹ️ ${a.notes}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
 }
