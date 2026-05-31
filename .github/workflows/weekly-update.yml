@@ -3,15 +3,14 @@ name: Weekly Advocate Map Refresh
 on:
   schedule:
     - cron: "0 13 * * 1"   # Every Monday 9am ET (1pm UTC)
-  workflow_dispatch:         # Also triggerable manually from GitHub UI
+  workflow_dispatch:         # Manual trigger from GitHub Actions tab
 
 permissions:
-  contents: write            # Needed to commit advocates.json back to the repo
+  contents: write
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -22,17 +21,14 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests beautifulsoup4 lxml
 
       - name: Run update script
-        id: update
         env:
           HUBSPOT_TOKEN:  ${{ secrets.HUBSPOT_TOKEN }}
           INTERCOM_TOKEN: ${{ secrets.INTERCOM_TOKEN }}
           SLACK_WEBHOOK:  ${{ secrets.SLACK_WEBHOOK }}
-        run: |
-          python update_advocates.py
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
+        run: python update_advocates.py
 
       - name: Commit updated data if changed
         run: |
@@ -43,4 +39,3 @@ jobs:
             git commit -m "data: weekly advocate refresh $(date +%Y-%m-%d)" &&
             git push
           )
-        # git push → Netlify detects the commit → auto-redeploys (free tier ✓)
