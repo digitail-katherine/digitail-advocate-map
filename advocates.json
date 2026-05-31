@@ -51,7 +51,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "north adams, MA",
+    "address": "North Adams, MA",
     "hsId": "7614138774",
     "signals": [
       "hs_long_tenure"
@@ -81,7 +81,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1115 Hampshire Dr, red oak, TX",
+    "address": "1115 Hampshire Dr, Red Oak, TX",
     "hsId": "17090879133",
     "signals": [
       "hs_long_tenure"
@@ -124,8 +124,8 @@
     "name": "AZPetVet",
     "city": "Glendale",
     "st": "IL",
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "ct": "general",
     "contact": null,
     "email": "oscar.chavez@azpetvet.com",
@@ -201,7 +201,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "375 W State St, Salem, Ohio, United States, 44460-2757, conneaut, OH, 44460",
+    "address": "375 W State St, Salem, Ohio, United States, 44460-2757, Conneaut, OH, 44460",
     "hsId": "9360397880",
     "signals": [
       "hs_long_tenure"
@@ -231,7 +231,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "28380 Old 41 Road, cape coral, FL, 34135",
+    "address": "28380 Old 41 Road, Cape Coral, FL, 34135",
     "hsId": "28786505846",
     "signals": [
       "hs_long_tenure"
@@ -291,7 +291,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "593 North McDowell Boulevard, petaluma, CA, 94954",
+    "address": "593 North McDowell Boulevard, Petaluma, CA, 94954",
     "hsId": "5069390611",
     "signals": [
       "hs_long_tenure"
@@ -364,8 +364,8 @@
     "name": "Align Vet Services",
     "city": "victoria",
     "st": "BC",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "info@alignvetservices.com",
@@ -381,7 +381,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "victoria, BC",
+    "address": "Victoria, BC",
     "hsId": "33254291508",
     "signals": [
       "hs_long_tenure"
@@ -429,7 +429,7 @@
     "ct": "general",
     "contact": null,
     "email": "barkerbarbara777@gmail.com",
-    "phone": "+1 928-505-6369",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "ClientTrax",
@@ -454,12 +454,12 @@
     "name": "Allard Animal Hospital LTD",
     "city": "Sherry",
     "st": "AB",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "sherryvb@hotmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -501,7 +501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "minneapolis, MN",
+    "address": "Minneapolis, MN",
     "hsId": "18991798055",
     "signals": [
       "hs_long_tenure"
@@ -531,7 +531,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "denver, CO",
+    "address": "Denver, CO",
     "hsId": "22474782643",
     "signals": [
       "hs_long_tenure"
@@ -651,7 +651,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "591 Lenertz Road, amery, WI, 54016",
+    "address": "591 Lenertz Road, Amery, WI, 54016",
     "hsId": "31074973849",
     "signals": [
       "hs_long_tenure"
@@ -681,7 +681,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "janesville, WI",
+    "address": "Janesville, WI",
     "hsId": "20782060430",
     "signals": [
       "hs_long_tenure"
@@ -801,7 +801,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "spring branch, NV, 89149",
+    "address": "Spring Branch, NV, 89149",
     "hsId": "47416422262",
     "signals": [
       "hs_long_tenure"
@@ -831,7 +831,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "101 South Milwaukee Avenue, grayslake, IL, 60046",
+    "address": "101 South Milwaukee Avenue, Grayslake, IL, 60046",
     "hsId": "20621661768",
     "signals": [
       "hs_long_tenure"
@@ -844,12 +844,12 @@
     "name": "Animal Hospital of Orleans",
     "city": "new bedford",
     "st": "MA",
-    "lat": 41.80533,
-    "lng": -88.33138,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "ahorleansmanagement@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -861,7 +861,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new bedford, MA",
+    "address": "New Bedford, MA",
     "hsId": "30515436122",
     "signals": [
       "hs_long_tenure"
@@ -879,7 +879,7 @@
     "ct": "general",
     "contact": null,
     "email": "anorman@happypawsvp.com",
-    "phone": "+1 928-505-6369",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark;None - paper files",
@@ -891,7 +891,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "9919 Westover Bluff, san antonio, TX, 78251",
+    "address": "9919 Westover Bluff, San Antonio, TX, 78251",
     "hsId": "31417881226",
     "signals": [
       "hs_long_tenure"
@@ -951,7 +951,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "middletown, DE",
+    "address": "Middletown, DE",
     "hsId": "6603153485",
     "signals": [
       "hs_long_tenure"
@@ -999,7 +999,7 @@
     "ct": "general",
     "contact": null,
     "email": "drelisedvm@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+117345292429",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1011,7 +1011,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ashburn, VA",
+    "address": "Ashburn, VA",
     "hsId": "22695614085",
     "signals": [
       "hs_long_tenure"
@@ -1041,7 +1041,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "phoenix, AZ",
+    "address": "Phoenix, AZ",
     "hsId": "18457985941",
     "signals": [
       "hs_long_tenure"
@@ -1071,7 +1071,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "201 Chain Lake Drive Unit 6, Oakville, Ontario, B3S 1C8",
+    "address": "201 Chain Lake Drive Unit 6, Oakville, ONTARIO, B3S 1C8",
     "hsId": "35642493732",
     "signals": [
       "hs_long_tenure"
@@ -1089,7 +1089,7 @@
     "ct": "general",
     "contact": null,
     "email": "rkt543@gmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1161,7 +1161,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "glenview, IL",
+    "address": "Glenview, IL",
     "hsId": "15772347746",
     "signals": [
       "hs_long_tenure"
@@ -1174,12 +1174,12 @@
     "name": "AscendVets",
     "city": "lakeland",
     "st": "FL",
-    "lat": null,
-    "lng": null,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "+117345292429",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -1191,7 +1191,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2940 Winter Lake Road,, lakeland, FL, 33803",
+    "address": "2940 Winter Lake Road,, Lakeland, FL, 33803",
     "hsId": "30627472395",
     "signals": [
       "hs_long_tenure"
@@ -1234,8 +1234,8 @@
     "name": "Ashland County-West Holmes Career Center",
     "city": "wooster",
     "st": "OH",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "leidigha@acwhcc.org",
@@ -1251,7 +1251,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1783 OH-60, wooster, OH, 44805",
+    "address": "1783 OH-60, Wooster, OH, 44805",
     "hsId": "33050493461",
     "signals": [
       "hs_long_tenure"
@@ -1281,7 +1281,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "morgantown, KY",
+    "address": "Morgantown, KY",
     "hsId": "31286535981",
     "signals": [
       "hs_long_tenure"
@@ -1294,8 +1294,8 @@
     "name": "At Home Vet",
     "city": "naples",
     "st": "FL",
-    "lat": 40.36144,
-    "lng": -111.97514,
+    "lat": 40.36161,
+    "lng": -111.97498,
     "ct": "general",
     "contact": null,
     "email": "athomevetdr.b@gmail.com",
@@ -1311,7 +1311,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "naples, FL",
+    "address": "Naples, FL",
     "hsId": "9802147148",
     "signals": [
       "hs_long_tenure"
@@ -1354,8 +1354,8 @@
     "name": "Atlantic East Vet",
     "city": "Atlantic Beach",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "kelley.batten@live.com",
@@ -1401,7 +1401,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1624 East Liberty Street, mexico, MO, 65265",
+    "address": "1624 East Liberty Street, Mexico, MO, 65265",
     "hsId": "17696420240",
     "signals": [
       "hs_long_tenure"
@@ -1461,7 +1461,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "25297 Big Valley Road Northeast, poulsbo, WA, 98370",
+    "address": "25297 Big Valley Road Northeast, Poulsbo, WA, 98370",
     "hsId": "16849568420",
     "signals": [
       "hs_long_tenure"
@@ -1491,7 +1491,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "puyallup, WA",
+    "address": "Puyallup, WA",
     "hsId": "9226553707",
     "signals": [
       "hs_long_tenure"
@@ -1534,12 +1534,12 @@
     "name": "Bark Avenue Veterinary Services",
     "city": "clifton",
     "st": "NJ",
-    "lat": null,
-    "lng": null,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "crimprim54@gmail.com",
-    "phone": "+17153868878",
+    "phone": "+1 514 735 2711",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1551,7 +1551,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clifton, NJ",
+    "address": "Clifton, NJ",
     "hsId": "47389370245",
     "signals": [
       "hs_long_tenure"
@@ -1594,12 +1594,12 @@
     "name": "Barker Veterinary Services",
     "city": "dallas",
     "st": "TX",
-    "lat": null,
-    "lng": null,
+    "lat": 38.93379,
+    "lng": -104.74689,
     "ct": "general",
     "contact": null,
     "email": "barkerbvs@gmail.com",
-    "phone": "+117345292429",
+    "phone": "+1 720-273-0816",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1611,7 +1611,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "dallas, TX",
+    "address": "Dallas, TX",
     "hsId": "29670981382",
     "signals": [
       "hs_long_tenure"
@@ -1654,12 +1654,12 @@
     "name": "BayVETS Urgent Care",
     "city": "barrie",
     "st": "ON",
-    "lat": 49.15894,
-    "lng": -122.66718,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "beckycraigdvm@gmail.com",
-    "phone": "+16043713301",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1671,7 +1671,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "PO Box 8006 RPO Hurontario, barrie, ON",
+    "address": "Barrie, ON",
     "hsId": "28356447647",
     "signals": [
       "hs_long_tenure"
@@ -1731,7 +1731,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1269 Main St, Glastonbury, CT 06033, United States, glastonbury, CT, 06033",
+    "address": "1269 Main St, Glastonbury, CT 06033, United States, Glastonbury, CT, 06033",
     "hsId": "16400854901",
     "signals": [
       "hs_long_tenure"
@@ -1769,12 +1769,12 @@
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
     "st": "TX",
-    "lat": null,
-    "lng": null,
+    "lat": 40.34468,
+    "lng": -80.05106,
     "ct": "general",
     "contact": null,
     "email": "beevet@att.net",
-    "phone": "+19167233456",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -1786,7 +1786,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1900 North Saint Marys Street, beeville, TX, 78102",
+    "address": "1900 North Saint Marys Street, Beeville, TX, 78102",
     "hsId": "23841559449",
     "signals": [
       "hs_long_tenure"
@@ -1846,7 +1846,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "800 East Broadway, frederick, MD, 53716",
+    "address": "800 East Broadway, Frederick, MD, 53716",
     "hsId": "6572012080",
     "signals": [
       "hs_long_tenure"
@@ -1876,7 +1876,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1638 Stefan Cole Lane, pembroke pines, FL",
+    "address": "1638 Stefan Cole Lane, Pembroke Pines, FL",
     "hsId": "21912315804",
     "signals": [
       "hs_long_tenure"
@@ -1889,8 +1889,8 @@
     "name": "Bethel Pet Hospital",
     "city": "miami",
     "st": "FL",
-    "lat": 25.69912,
-    "lng": -80.43751,
+    "lat": 25.69916,
+    "lng": -80.43653,
     "ct": "general",
     "contact": null,
     "email": "moshehramirez@gmail.com",
@@ -1906,7 +1906,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "15072 sw 72nd street, miami, FL",
+    "address": "15072 sw 72nd street, Miami, FL",
     "hsId": "16047382037",
     "signals": [
       "hs_long_tenure"
@@ -1919,12 +1919,12 @@
     "name": "Billiar Animal Hospital",
     "city": "dunnellon",
     "st": "FL",
-    "lat": 49.15894,
-    "lng": -122.66718,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "sbilliar@aol.com",
-    "phone": "+16043713301",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1936,7 +1936,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "dunnellon, FL",
+    "address": "Dunnellon, FL",
     "hsId": "33429211144",
     "signals": [
       "hs_long_tenure"
@@ -1966,7 +1966,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "aberdeen, WA",
+    "address": "Aberdeen, WA",
     "hsId": "18984544864",
     "signals": [
       "hs_long_tenure"
@@ -2009,8 +2009,8 @@
     "name": "Bluewater Bay Animal Hospital",
     "city": "niceville",
     "st": "VA",
-    "lat": null,
-    "lng": null,
+    "lat": 52.83151,
+    "lng": -119.28058,
     "ct": "general",
     "contact": null,
     "email": "wakeboardlegend@gmail.com",
@@ -2026,7 +2026,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "niceville, VA",
+    "address": "Niceville, VA",
     "hsId": "7743340151",
     "signals": [
       "hs_long_tenure"
@@ -2146,7 +2146,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "16612 NE 91st, seattle, WA, 98052",
+    "address": "16612 NE 91st, Seattle, WA, 98052",
     "hsId": "8627056981",
     "signals": [
       "hs_long_tenure"
@@ -2164,7 +2164,7 @@
     "ct": "general",
     "contact": null,
     "email": "bridgeviewanimalhospital@hotmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -2236,7 +2236,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "988b Morris Park Avenue, syosset, NY, 10462",
+    "address": "988b Morris Park Avenue, Syosset, NY, 10462",
     "hsId": "6120353182",
     "signals": [
       "hs_long_tenure"
@@ -2266,7 +2266,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "989 Eaton Avenue, hamilton, OH, 45013",
+    "address": "989 Eaton Avenue, Hamilton, OH, 45013",
     "hsId": "9669604379",
     "signals": [
       "hs_long_tenure"
@@ -2326,7 +2326,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "909 South 25th Street, sullivan, IN, 47803",
+    "address": "909 South 25th Street, Sullivan, IN, 47803",
     "hsId": "17800322985",
     "signals": [
       "hs_long_tenure"
@@ -2399,7 +2399,7 @@
     "name": "CUYAMACA ANIMAL HOSPITAL",
     "city": "Santee",
     "st": "CA",
-    "lat": 32.83599,
+    "lat": 32.83587,
     "lng": -116.9839,
     "ct": "general",
     "contact": null,
@@ -2459,7 +2459,7 @@
     "name": "Cactus Pet Hospital",
     "city": "las vegas",
     "st": "NV",
-    "lat": 32.83599,
+    "lat": 32.83587,
     "lng": -116.9839,
     "ct": "general",
     "contact": null,
@@ -2476,7 +2476,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4352 West Cactus Avenue, las vegas, NV, 89141",
+    "address": "4352 West Cactus Avenue, Las Vegas, NV, 89141",
     "hsId": "18251279471",
     "signals": [
       "hs_long_tenure"
@@ -2519,8 +2519,8 @@
     "name": "Canal Veterinary Hospital",
     "city": "ripon",
     "st": "CA",
-    "lat": null,
-    "lng": null,
+    "lat": 42.23351,
+    "lng": -71.70794,
     "ct": "general",
     "contact": null,
     "email": "cvhturlock@gmail.com",
@@ -2536,7 +2536,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2040 E Canal Drive, ripon, CA, 95380",
+    "address": "2040 E Canal Drive, Ripon, CA, 95380",
     "hsId": "32039294373",
     "signals": [
       "hs_long_tenure"
@@ -2596,7 +2596,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "P.O. BOX 1018, sanford, NC",
+    "address": "Sanford, NC",
     "hsId": "16343380870",
     "signals": [
       "hs_long_tenure"
@@ -2881,7 +2881,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1287 W Pueblo Blvd, monument, CO",
+    "address": "1287 W Pueblo Blvd, Monument, CO",
     "hsId": "32497495986",
     "signals": [
       "hs_long_tenure"
@@ -3001,7 +3001,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5170 Liberty Avenue, ashburn, VA, 15224",
+    "address": "5170 Liberty Avenue, Ashburn, VA, 15224",
     "hsId": "21833647530",
     "signals": [
       "hs_long_tenure"
@@ -3031,7 +3031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "9812 215th Avenue Southeast, edmonds, WA, 98290",
+    "address": "9812 215th Avenue Southeast, Edmonds, WA, 98290",
     "hsId": "8476074600",
     "signals": [
       "hs_long_tenure"
@@ -3061,7 +3061,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4100 Strandherd Dr, nepean, ON, K2J 0V2",
+    "address": "4100 Strandherd Dr, Nepean, ON, K2J 0V2",
     "hsId": "17871283218",
     "signals": [
       "hs_long_tenure"
@@ -3079,7 +3079,7 @@
     "ct": "general",
     "contact": null,
     "email": "ckvcmanager@gmail.com",
-    "phone": "+19167233456",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "Covetrus Pulse",
@@ -3121,7 +3121,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "12076 Hartwood Meadow Place, Bristow VA 20136, Bristow, virginia",
+    "address": "12076 Hartwood Meadow Place, Bristow VA 20136, Bristow, VIRGINIA",
     "hsId": "6725841188",
     "signals": [
       "hs_long_tenure"
@@ -3164,7 +3164,7 @@
     "ct": "general",
     "contact": null,
     "email": "cmacdougall@happypawsvp.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -3206,7 +3206,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "north olmsted, OH",
+    "address": "North Olmsted, OH",
     "hsId": "20224336054",
     "signals": [
       "hs_long_tenure"
@@ -3326,7 +3326,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7218 KING GEORGE BLVD SUITE 120, surrey, BC, V3W 5A5",
+    "address": "7218 KING GEORGE BLVD SUITE 120, Surrey, BC, V3W 5A5",
     "hsId": "18016049746",
     "signals": [
       "hs_long_tenure"
@@ -3356,7 +3356,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "106-3021 Shakespeare Street, victoria, BC",
+    "address": "106-3021 Shakespeare Street, Victoria, BC",
     "hsId": "19253365252",
     "signals": [
       "hs_long_tenure"
@@ -3374,7 +3374,7 @@
     "ct": "general",
     "contact": null,
     "email": "juliegeisler7@gmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -3386,7 +3386,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "philadelphia, PA",
+    "address": "Philadelphia, PA",
     "hsId": "28652056071",
     "signals": [
       "hs_long_tenure"
@@ -3416,7 +3416,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "guelph, ON",
+    "address": "Guelph, ON",
     "hsId": "6212657066",
     "signals": [
       "hs_long_tenure"
@@ -3476,7 +3476,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1016 Northeast Forest Rock Lane, poulsbo, TN, 98370",
+    "address": "1016 Northeast Forest Rock Lane, Poulsbo, TN, 98370",
     "hsId": "6582056610",
     "signals": [
       "hs_long_tenure"
@@ -3494,7 +3494,7 @@
     "ct": "general",
     "contact": null,
     "email": "zoradmv@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+16163430025",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -3506,7 +3506,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "sainte-marie, QC",
+    "address": "Sainte-Marie, QC",
     "hsId": "33226838888",
     "signals": [
       "hs_long_tenure"
@@ -3519,12 +3519,12 @@
     "name": "Clinique Maguire Médecine Vétérinaire",
     "city": "north charleston",
     "st": "QC",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "beatrice.martel.mv@gmail.com",
-    "phone": "+1 806-272-3061",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "LogiVet",
@@ -3536,7 +3536,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1394 Av. Maguire bur.150, north charleston, QC, G1T 1Z3",
+    "address": "1394 Av. Maguire bur.150, North Charleston, QC, G1T 1Z3",
     "hsId": "33838054495",
     "signals": [
       "hs_long_tenure"
@@ -3566,7 +3566,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "beaconsfield, QC",
+    "address": "Beaconsfield, QC",
     "hsId": "22573153913",
     "signals": [
       "hs_long_tenure"
@@ -3596,7 +3596,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3087 Blvd., laval, QC, H7E 2C1",
+    "address": "3087 Blvd., Laval, QC, H7E 2C1",
     "hsId": "18746969352",
     "signals": [
       "hs_long_tenure"
@@ -3626,7 +3626,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Address: 155 Rue Sauvé, sherbrooke, QC, J1L 1L6",
+    "address": "Address: 155 Rue Sauvé, Sherbrooke, QC, J1L 1L6",
     "hsId": "33257471333",
     "signals": [
       "hs_long_tenure"
@@ -3674,7 +3674,7 @@
     "ct": "general",
     "contact": null,
     "email": "raduvet@gmail.com",
-    "phone": "+1 714-623-7713",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "LogiVet",
@@ -3686,7 +3686,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "788 Rue Labelle, laval, QC, J7Z 5M3",
+    "address": "788 Rue Labelle, Laval, QC, J7Z 5M3",
     "hsId": "26564520818",
     "signals": [
       "hs_long_tenure"
@@ -3704,7 +3704,7 @@
     "ct": "general",
     "contact": null,
     "email": "valerie.gagnon@outlook.com",
-    "phone": "+1 928-505-6369",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -3716,7 +3716,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "crabtree, QC",
+    "address": "Crabtree, QC",
     "hsId": "33361101146",
     "signals": [
       "hs_long_tenure"
@@ -3746,7 +3746,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6406 Southeast 91st Avenue, portland, OR, 97266",
+    "address": "6406 Southeast 91st Avenue, Portland, OR, 97266",
     "hsId": "20302725011",
     "signals": [
       "hs_long_tenure"
@@ -3776,7 +3776,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1019 Highland Avenue, largo, FL, 33770",
+    "address": "1019 Highland Avenue, Largo, FL, 33770",
     "hsId": "9384507787",
     "signals": [
       "hs_long_tenure"
@@ -3806,7 +3806,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "brunswick, GA",
+    "address": "Brunswick, GA",
     "hsId": "6560638218",
     "signals": [
       "hs_long_tenure"
@@ -3836,7 +3836,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Billing Address: 15518 SE 24th Street, Bellevue, WA 98007, issaquah, WA, 98007",
+    "address": "Billing Address: 15518 SE 24th Street, Bellevue, WA 98007, Issaquah, WA, 98007",
     "hsId": "6642878532",
     "signals": [
       "hs_long_tenure"
@@ -3896,7 +3896,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "163 County Rd 537, matawan, NJ, 07722",
+    "address": "163 County Rd 537, Matawan, NJ, 07722",
     "hsId": "18365294220",
     "signals": [
       "hs_long_tenure"
@@ -3956,7 +3956,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7815 Barstow St., los angeles, CA",
+    "address": "7815 Barstow St., Los Angeles, CA",
     "hsId": "18125212573",
     "signals": [
       "hs_long_tenure"
@@ -4016,7 +4016,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "madison, WI",
+    "address": "Madison, WI",
     "hsId": "19699077925",
     "signals": [
       "hs_long_tenure"
@@ -4046,7 +4046,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new ipswich, NH",
+    "address": "New Ipswich, NH",
     "hsId": "9179225732",
     "signals": [
       "hs_long_tenure"
@@ -4076,7 +4076,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3010 South Chase Avenue, milwaukee, WI, 53207",
+    "address": "3010 South Chase Avenue, Milwaukee, WI, 53207",
     "hsId": "20345650002",
     "signals": [
       "hs_long_tenure"
@@ -4136,7 +4136,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3500 West Olive Avenue, canyon country, CA, 91505",
+    "address": "3500 West Olive Avenue, Canyon Country, CA, 91505",
     "hsId": "22305604868",
     "signals": [
       "hs_long_tenure"
@@ -4179,12 +4179,12 @@
     "name": "Concierge Pet Vet",
     "city": "miami",
     "st": "FL",
-    "lat": 41.80533,
-    "lng": -88.33138,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "theconciergepetvet@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -4196,7 +4196,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "16671 South West 79th Court, miami, FL",
+    "address": "16671 South West 79th Court, Miami, FL",
     "hsId": "30211592461",
     "signals": [
       "hs_long_tenure"
@@ -4239,12 +4239,12 @@
     "name": "Corvet Dentist",
     "city": "gastonia",
     "st": "TN",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "info@corvetdentist.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 514 735 2711",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -4256,7 +4256,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3404 Pebble Drive, gastonia, TN, 28110",
+    "address": "3404 Pebble Drive, Gastonia, TN, 28110",
     "hsId": "26733489450",
     "signals": [
       "hs_long_tenure"
@@ -4286,7 +4286,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Westerlo, new york",
+    "address": "Westerlo, NEW YORK",
     "hsId": "5630622122",
     "signals": [
       "hs_long_tenure"
@@ -4316,7 +4316,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "114 Bishops Branch Rd, Pendleton, SC 29670, fayetteville, SC",
+    "address": "114 Bishops Branch Rd, Pendleton, SC 29670, Fayetteville, SC",
     "hsId": "16357332892",
     "signals": [
       "hs_long_tenure"
@@ -4346,7 +4346,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "17449 330th Street, ashburn, VA",
+    "address": "17449 330th Street, Ashburn, VA",
     "hsId": "22551388016",
     "signals": [
       "hs_long_tenure"
@@ -4436,7 +4436,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3456 Lincoln Highway, coatesville, PA, 19372",
+    "address": "3456 Lincoln Highway, Coatesville, PA, 19372",
     "hsId": "7976284081",
     "signals": [
       "hs_long_tenure"
@@ -4466,7 +4466,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "hereford, AZ",
+    "address": "Hereford, AZ",
     "hsId": "13566081857",
     "signals": [
       "hs_long_tenure"
@@ -4556,7 +4556,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "allentown",
+    "address": "Allentown",
     "hsId": "5529072912",
     "signals": [
       "hs_long_tenure"
@@ -4616,7 +4616,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "flesherton, Iași County",
+    "address": "Flesherton, IAȘI COUNTY",
     "hsId": "23808898944",
     "signals": [
       "hs_long_tenure"
@@ -4676,7 +4676,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1275 Indiana Street Unit 302, san francisco, CA",
+    "address": "1275 Indiana Street Unit 302, San Francisco, CA",
     "hsId": "20583371157",
     "signals": [
       "hs_long_tenure"
@@ -4694,7 +4694,7 @@
     "ct": "general",
     "contact": null,
     "email": "cortneb94@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+19167233456",
     "features": "Tails",
     "dgtId": null,
     "pims": "2iNova",
@@ -4706,7 +4706,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "406 W Broad St, PO Box 1386, hollywood, SC",
+    "address": "Hollywood, SC",
     "hsId": "23331402063",
     "signals": [
       "hs_long_tenure"
@@ -4736,7 +4736,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "orlando, FL",
+    "address": "Orlando, FL",
     "hsId": "7954928656",
     "signals": [
       "hs_long_tenure"
@@ -4766,7 +4766,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "28063 Faith Lane, Hilliard, FL 32046, miami, FL",
+    "address": "28063 Faith Lane, Hilliard, FL 32046, Miami, FL",
     "hsId": "31906241448",
     "signals": [
       "hs_long_tenure"
@@ -4796,7 +4796,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7517 Cox Rd.Cheyenne, WY 82009, denver, CO, 80534",
+    "address": "7517 Cox Rd.Cheyenne, WY 82009, Denver, CO, 80534",
     "hsId": "9578721572",
     "signals": [
       "hs_long_tenure"
@@ -4809,12 +4809,12 @@
     "name": "Dr House Paws",
     "city": "atlanta",
     "st": "GA",
-    "lat": 49.15894,
-    "lng": -122.66718,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "drhousepaws@gmail.com",
-    "phone": "+16043713301",
+    "phone": "+1 514 527 3311",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -4826,7 +4826,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1701 Oak Bowery Ln, atlanta, GA, 36271",
+    "address": "1701 Oak Bowery Ln, Atlanta, GA, 36271",
     "hsId": "23140315803",
     "signals": [
       "hs_long_tenure"
@@ -4839,8 +4839,8 @@
     "name": "Dr. Alana’s Veterinary Care",
     "city": "Wading River",
     "st": "NY",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "alanalauritano@gmail.com",
@@ -4869,8 +4869,8 @@
     "name": "Dr. Alistair's TeleHealth Clinic",
     "city": "kitchener",
     "st": "ON",
-    "lat": 35.78829,
-    "lng": -78.78121,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "mobilepethealthcarepartners@outlook.com",
@@ -4886,7 +4886,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "kitchener, ON",
+    "address": "Kitchener, ON",
     "hsId": "32860955803",
     "signals": [
       "hs_long_tenure"
@@ -5019,8 +5019,8 @@
     "name": "Dr. Posey's New Mobile Clinic",
     "city": "beavercreek",
     "st": "OR",
-    "lat": 34.17561,
-    "lng": -82.02417,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "letitiann@gmail.com",
@@ -5036,7 +5036,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "beavercreek, OR",
+    "address": "Beavercreek, OR",
     "hsId": "29575663992",
     "signals": [
       "hs_long_tenure"
@@ -5079,8 +5079,8 @@
     "name": "Dr. Scharlet and Dr. Laila's New Practice",
     "city": "carlsbad",
     "st": "CA",
-    "lat": 19.32077,
-    "lng": -99.15147,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "laila.proenca@vetahead.vet",
@@ -5096,7 +5096,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5739 Kanan Road #108, carlsbad, CA",
+    "address": "5739 Kanan Road #108, Carlsbad, CA",
     "hsId": "25983418210",
     "signals": [
       "hs_long_tenure"
@@ -5126,7 +5126,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "mountain view, CA",
+    "address": "Mountain View, CA",
     "hsId": "17702216110",
     "signals": [
       "hs_long_tenure"
@@ -5156,7 +5156,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "susanville, CA",
+    "address": "Susanville, CA",
     "hsId": "31274531617",
     "signals": [
       "hs_long_tenure"
@@ -5186,7 +5186,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "san antonio",
+    "address": "San Antonio",
     "hsId": "5294317333",
     "signals": [
       "hs_long_tenure"
@@ -5216,7 +5216,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1090 Pleasant Grove Boulevard, roseville, CA, 95678",
+    "address": "1090 Pleasant Grove Boulevard, Roseville, CA, 95678",
     "hsId": "6747014515",
     "signals": [
       "hs_long_tenure"
@@ -5259,12 +5259,12 @@
     "name": "E-motion Veterinary Rehabilitation",
     "city": "victoria",
     "st": "BC",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "mandamail2002@yahoo.ca",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 514 527 3311",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -5276,7 +5276,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "40 Tovey Cres, victoria, BC",
+    "address": "40 Tovey Cres, Victoria, BC",
     "hsId": "22748153781",
     "signals": [
       "hs_long_tenure"
@@ -5319,8 +5319,8 @@
     "name": "East Poplarville Veterinary Clinic, P.A.",
     "city": "dallas",
     "st": "MS",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "epvc10@gmail.com",
@@ -5336,7 +5336,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "859 Mississippi 26, dallas, MS, 39470",
+    "address": "859 Mississippi 26, Dallas, MS, 39470",
     "hsId": "6993393508",
     "signals": [
       "hs_long_tenure"
@@ -5349,8 +5349,8 @@
     "name": "East Tennessee Veterinary Dental Services",
     "city": "knoxville",
     "st": "TN",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "stepgmc@hotmail.com",
@@ -5366,7 +5366,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "knoxville, TN",
+    "address": "Knoxville, TN",
     "hsId": "33489942576",
     "signals": [
       "hs_long_tenure"
@@ -5426,7 +5426,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "chula vista",
+    "address": "Chula Vista",
     "hsId": "8741970856",
     "signals": [
       "hs_long_tenure"
@@ -5439,8 +5439,8 @@
     "name": "Elevate Pet Wellness Center",
     "city": "Bend",
     "st": "OR",
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "ct": "general",
     "contact": null,
     "email": "drjacoby@elevatepetbend.com",
@@ -5516,7 +5516,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "monroe, CT",
+    "address": "Monroe, CT",
     "hsId": "6250277934",
     "signals": [
       "hs_long_tenure"
@@ -5546,7 +5546,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "allen, TX",
+    "address": "Allen, TX",
     "hsId": "21850875425",
     "signals": [
       "hs_long_tenure"
@@ -5576,7 +5576,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "90 East Avenue, saratoga springs, NY, 12866",
+    "address": "90 East Avenue, Saratoga Springs, NY, 12866",
     "hsId": "44331451917",
     "signals": [
       "hs_long_tenure"
@@ -5594,7 +5594,7 @@
     "ct": "general",
     "contact": null,
     "email": "abbyw0587@yahoo.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "Digitail",
@@ -5606,7 +5606,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "24 Gables Drive SE, rome, GA",
+    "address": "24 Gables Drive SE, Rome, GA",
     "hsId": "31198692876",
     "signals": [
       "hs_long_tenure"
@@ -5619,8 +5619,8 @@
     "name": "Exotic Vet Care",
     "city": "charleston",
     "st": "SC",
-    "lat": 32.81048,
-    "lng": -79.87154,
+    "lat": 32.8094,
+    "lng": -79.87591,
     "ct": "general",
     "contact": null,
     "email": "manager@birdsandexotics.com",
@@ -5636,7 +5636,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "814 Johnnie Dodds Boulevard, charleston, SC, 29464",
+    "address": "814 Johnnie Dodds Boulevard, Charleston, SC, 29464",
     "hsId": "19539683111",
     "signals": [
       "hs_long_tenure"
@@ -5679,8 +5679,8 @@
     "name": "Fairview Animal Hospital",
     "city": "arden",
     "st": "NC",
-    "lat": 19.32077,
-    "lng": -99.15147,
+    "lat": 35.94831,
+    "lng": -78.17757,
     "ct": "general",
     "contact": null,
     "email": "sarah@fairviewveterinary.com",
@@ -5696,7 +5696,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "867a Charlotte Highway, arden, NC, 28730",
+    "address": "867a Charlotte Highway, Arden, NC, 28730",
     "hsId": "25294276532",
     "signals": [
       "hs_long_tenure"
@@ -5709,8 +5709,8 @@
     "name": "Family Pet Practice - HQ",
     "city": "jackson",
     "st": "MI",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "wfppmanager@familypetpractice.com",
@@ -5726,7 +5726,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "jackson, MI",
+    "address": "Jackson, MI",
     "hsId": "21008841046",
     "signals": [
       "hs_long_tenure"
@@ -5739,8 +5739,8 @@
     "name": "Family Pet Practice Waterford",
     "city": "jackson",
     "st": "MI",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "wfppmanager@familypetpractice.com",
@@ -5756,7 +5756,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4260 Elizabeth Lake Road, jackson, MI",
+    "address": "4260 Elizabeth Lake Road, Jackson, MI",
     "hsId": "21008841034",
     "signals": [
       "hs_long_tenure"
@@ -5786,7 +5786,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "49315 Pontiac Trail, jackson, MI, 48393",
+    "address": "49315 Pontiac Trail, Jackson, MI, 48393",
     "hsId": "18065812119",
     "signals": [
       "hs_long_tenure"
@@ -5816,7 +5816,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "lexington, KY, 16415",
+    "address": "Lexington, KY, 16415",
     "hsId": "31573502542",
     "signals": [
       "hs_long_tenure"
@@ -5846,7 +5846,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2402 Oxford Drive, bethel park, PA, 15102",
+    "address": "2402 Oxford Drive, Bethel Park, PA, 15102",
     "hsId": "23830859910",
     "signals": [
       "hs_long_tenure"
@@ -5876,7 +5876,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "parksville, BC",
+    "address": "Parksville, BC",
     "hsId": "15439885826",
     "signals": [
       "hs_long_tenure"
@@ -5906,7 +5906,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "908 Conklin Street, farmingdale, NY, 11735",
+    "address": "908 Conklin Street, Farmingdale, NY, 11735",
     "hsId": "16045824385",
     "signals": [
       "hs_long_tenure"
@@ -5936,7 +5936,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "20535 W, Hwy 102,Decatur,AR,72722, decatur, AR",
+    "address": "20535 W, Hwy 102,Decatur,AR,72722, Decatur, AR",
     "hsId": "14883398018",
     "signals": [
       "hs_long_tenure"
@@ -5966,7 +5966,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2880 Main Street Southeast, airdrie, AB, T4B 3G4",
+    "address": "2880 Main Street Southeast, Airdrie, AB, T4B 3G4",
     "hsId": "9483565399",
     "signals": [
       "hs_long_tenure"
@@ -6099,8 +6099,8 @@
     "name": "Firehouse Animal Health Centers",
     "city": "Austin",
     "st": "TX",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "westlakeinfo@firehouse.vet",
@@ -6176,7 +6176,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4511 John Tyler Hwy Unit C, williamsburg, VA, 23185",
+    "address": "4511 John Tyler Hwy Unit C, Williamsburg, VA, 23185",
     "hsId": "18311362593",
     "signals": [
       "hs_long_tenure"
@@ -6206,7 +6206,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "murfreesboro, TN",
+    "address": "Murfreesboro, TN",
     "hsId": "19598320539",
     "signals": [
       "hs_long_tenure"
@@ -6249,8 +6249,8 @@
     "name": "Flex Vet Atl",
     "city": "Hapeville",
     "st": "GA",
-    "lat": 25.69912,
-    "lng": -80.43751,
+    "lat": 25.69916,
+    "lng": -80.43653,
     "ct": "general",
     "contact": null,
     "email": "flexvetatl@gmail.com",
@@ -6296,7 +6296,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "26 County Road 3501, memphis, TN",
+    "address": "26 County Road 3501, Memphis, TN",
     "hsId": "22535886605",
     "signals": [
       "hs_long_tenure"
@@ -6326,7 +6326,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "101 Frederick Street, stratford, ON, N2H 6R2",
+    "address": "101 Frederick Street, Stratford, ON, N2H 6R2",
     "hsId": "18261192562",
     "signals": [
       "hs_long_tenure"
@@ -6416,7 +6416,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "25155 Creek Hollow Dr, ramona, CA, 92065",
+    "address": "25155 Creek Hollow Dr, Ramona, CA, 92065",
     "hsId": "18995538456",
     "signals": [
       "hs_long_tenure"
@@ -6454,12 +6454,12 @@
     "name": "Frankfort Animal Clinic, PSC.",
     "city": "frankfort",
     "st": "KY",
-    "lat": null,
-    "lng": null,
+    "lat": 43.42708,
+    "lng": -86.34644,
     "ct": "general",
     "contact": null,
     "email": "wwking2@gmail.com",
-    "phone": "+19167233456",
+    "phone": "+17153868878",
     "features": "Tails",
     "dgtId": null,
     "pims": "Advantage",
@@ -6471,7 +6471,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "frankfort, KY",
+    "address": "Frankfort, KY",
     "hsId": "31179015018",
     "signals": [
       "hs_long_tenure"
@@ -6484,8 +6484,8 @@
     "name": "Frontier Veterinary Clinic",
     "city": "clio",
     "st": "MI",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "frontier_requests@yahoo.com",
@@ -6501,7 +6501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7517 South Jennings Road, clio, MI, 48473",
+    "address": "7517 South Jennings Road, Clio, MI, 48473",
     "hsId": "27492848514",
     "signals": [
       "hs_long_tenure"
@@ -6561,7 +6561,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1901 Brushy Creek Road, greenville, SC, 29650",
+    "address": "1901 Brushy Creek Road, Greenville, SC, 29650",
     "hsId": "29917835778",
     "signals": [
       "hs_long_tenure"
@@ -6591,7 +6591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1240 East Butler Road, greenville, SC, 29607",
+    "address": "1240 East Butler Road, Greenville, SC, 29607",
     "hsId": "30934626830",
     "signals": [
       "hs_long_tenure"
@@ -6604,8 +6604,8 @@
     "name": "GUADALUPE VALLEY VETERINARY CLINIC",
     "city": "boerne",
     "st": "TX",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "hsfoxdvm@gmail.com",
@@ -6621,7 +6621,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2004 Church Street, boerne, TX, 78629",
+    "address": "2004 Church Street, Boerne, TX, 78629",
     "hsId": "6995682162",
     "signals": [
       "hs_long_tenure"
@@ -6634,8 +6634,8 @@
     "name": "Galaxy Vets - HQ",
     "city": "Pearland",
     "st": "TX",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "rory@galaxyvets.com",
@@ -6669,7 +6669,7 @@
     "ct": "general",
     "contact": null,
     "email": "gentlepetfsj@gmail.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -6694,12 +6694,12 @@
     "name": "Gentle Touch Veterinary Hospital",
     "city": "fayetteville",
     "st": "NC",
-    "lat": null,
-    "lng": null,
+    "lat": 42.23351,
+    "lng": -71.70794,
     "ct": "general",
     "contact": null,
     "email": "nccatvet411@gmail.com",
-    "phone": "+17153868878",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -6711,7 +6711,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4280 Wallburg Road., fayetteville, NC",
+    "address": "4280 Wallburg Road., Fayetteville, NC",
     "hsId": "32110928808",
     "signals": [
       "hs_long_tenure"
@@ -6741,7 +6741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "401 North Fillmore Street, parker, CO, 80112",
+    "address": "401 North Fillmore Street, Parker, CO, 80112",
     "hsId": "29644889959",
     "signals": [
       "hs_long_tenure"
@@ -6759,7 +6759,7 @@
     "ct": "general",
     "contact": null,
     "email": "drvsyadav@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+12076642944",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -6771,7 +6771,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "32660 George Ferguson Way #104, abbotsford, BC",
+    "address": "32660 George Ferguson Way #104, Abbotsford, BC",
     "hsId": "31888799560",
     "signals": [
       "hs_long_tenure"
@@ -6784,8 +6784,8 @@
     "name": "Golden Eagle House Call Vet",
     "city": "burlington",
     "st": "ON",
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "ct": "general",
     "contact": null,
     "email": "drjacoby@elevatepetbend.com",
@@ -6801,7 +6801,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "burlington, ON",
+    "address": "Burlington, ON",
     "hsId": "6281128471",
     "signals": [
       "hs_long_tenure"
@@ -6814,12 +6814,12 @@
     "name": "Goldenrod Veterinary Hospital",
     "city": "orlando",
     "st": "FL",
-    "lat": 38.18293,
-    "lng": -84.55964,
+    "lat": 49.05478,
+    "lng": -122.31942,
     "ct": "general",
     "contact": null,
     "email": "elayman_dvm@yahoo.com",
-    "phone": "+19167233456",
+    "phone": "+19048822061",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -6831,7 +6831,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "orlando, FL",
+    "address": "Orlando, FL",
     "hsId": "31910299313",
     "signals": [
       "hs_long_tenure"
@@ -6874,8 +6874,8 @@
     "name": "Great Lakes Veterinary Imaging",
     "city": "Pinckney",
     "st": "MI",
-    "lat": 40.36144,
-    "lng": -111.97514,
+    "lat": 40.36161,
+    "lng": -111.97498,
     "ct": "general",
     "contact": null,
     "email": "info@greatlakesvetimaging.com",
@@ -6904,8 +6904,8 @@
     "name": "Greenville Animal Hospital",
     "city": "Greenville",
     "st": "MI",
-    "lat": 49.05478,
-    "lng": -122.31942,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "dr.kinser@greenvilleanimal.com",
@@ -6951,7 +6951,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "chicago, IL",
+    "address": "Chicago, IL",
     "hsId": "18654319692",
     "signals": [
       "hs_long_tenure"
@@ -6994,12 +6994,12 @@
     "name": "Gulf Winds Animal Hospital",
     "city": "panama city beach",
     "st": "FL",
-    "lat": 19.32077,
-    "lng": -99.15147,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "shannonreelgwah@gmail.com",
-    "phone": "+1 928-505-6369",
+    "phone": "+1 866 209 1001",
     "features": "Tails",
     "dgtId": null,
     "pims": "ClientTrax;None - paper files",
@@ -7011,7 +7011,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "201 Florida 79, panama city beach, FL, 32413",
+    "address": "201 Florida 79, Panama City Beach, FL, 32413",
     "hsId": "27113026191",
     "signals": [
       "hs_long_tenure"
@@ -7029,7 +7029,7 @@
     "ct": "general",
     "contact": null,
     "email": "vetharman@gmail.com",
-    "phone": "+117345292429",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -7071,7 +7071,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1910 Loch Haven Drive, ashburn, VA, 24019",
+    "address": "1910 Loch Haven Drive, Ashburn, VA, 24019",
     "hsId": "8343721005",
     "signals": [
       "hs_long_tenure"
@@ -7084,12 +7084,12 @@
     "name": "Happy Paws - HQ",
     "city": "phoenix",
     "st": "AZ",
-    "lat": 38.93379,
-    "lng": -104.74689,
+    "lat": 34.17561,
+    "lng": -82.02417,
     "ct": "general",
     "contact": null,
     "email": "anorman@happypawsvp.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark;Cornerstone;None - paper files",
@@ -7101,7 +7101,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6315 Losee Road, phoenix, AZ, 89081",
+    "address": "6315 Losee Road, Phoenix, AZ, 89081",
     "hsId": "29363562329",
     "signals": [
       "hs_long_tenure"
@@ -7161,7 +7161,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "west palm beach, FL",
+    "address": "West Palm Beach, FL",
     "hsId": "26460351661",
     "signals": [
       "hs_long_tenure"
@@ -7209,7 +7209,7 @@
     "ct": "general",
     "contact": null,
     "email": "denise@harmonyvetva.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "Daysmart",
@@ -7221,7 +7221,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6940 S Kings Hwy, springfield, VA, 22310",
+    "address": "6940 S Kings Hwy, Springfield, VA, 22310",
     "hsId": "34211116113",
     "signals": [
       "hs_long_tenure"
@@ -7281,7 +7281,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "whistler, BC",
+    "address": "Whistler, BC",
     "hsId": "18459755848",
     "signals": [
       "hs_long_tenure"
@@ -7294,12 +7294,12 @@
     "name": "Harmony Veterinary ServiceS LTD - SQ",
     "city": "Vancouver",
     "st": "BC",
-    "lat": null,
-    "lng": null,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "info@harmonyvets.ca",
-    "phone": "+12096681807",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -7341,7 +7341,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1603 Hawthorne St, victoria, BC, V8N 2M3",
+    "address": "1603 Hawthorne St, Victoria, BC, V8N 2M3",
     "hsId": "17519441515",
     "signals": [
       "hs_long_tenure"
@@ -7371,7 +7371,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "st. john's, NL",
+    "address": "St. John'S, NL",
     "hsId": "22295479863",
     "signals": [
       "hs_long_tenure"
@@ -7401,7 +7401,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1000 NW 150th, mckinney, TX, 73003",
+    "address": "1000 NW 150th, Mckinney, TX, 73003",
     "hsId": "18429012246",
     "signals": [
       "hs_long_tenure"
@@ -7431,7 +7431,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2324 Centerville Road, tallahassee, FL, 32308",
+    "address": "2324 Centerville Road, Tallahassee, FL, 32308",
     "hsId": "5571234913",
     "signals": [
       "hs_long_tenure"
@@ -7444,12 +7444,12 @@
     "name": "Healing Paws Veterinary Services",
     "city": "orlando",
     "st": "FL",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 43.42708,
+    "lng": -86.34644,
     "ct": "general",
     "contact": null,
     "email": "healingpawsveterinaryservices@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -7461,7 +7461,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "orlando, FL",
+    "address": "Orlando, FL",
     "hsId": "31198676617",
     "signals": [
       "hs_long_tenure"
@@ -7491,7 +7491,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "edgewood, MD",
+    "address": "Edgewood, MD",
     "hsId": "8409276820",
     "signals": [
       "hs_long_tenure"
@@ -7504,8 +7504,8 @@
     "name": "Heartkind Home Veterinary Care",
     "city": "everett",
     "st": "WA",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "cnawashdvm@gmail.com",
@@ -7521,7 +7521,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "everett, WA",
+    "address": "Everett, WA",
     "hsId": "33212704612",
     "signals": [
       "hs_long_tenure"
@@ -7534,12 +7534,12 @@
     "name": "Hearts at Ease Animal Care",
     "city": "los angeles",
     "st": "CA",
-    "lat": null,
-    "lng": null,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "sumianilov@gmail.com",
-    "phone": "+117345292429",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -7551,7 +7551,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "los angeles, CA",
+    "address": "Los Angeles, CA",
     "hsId": "26583350296",
     "signals": [
       "hs_long_tenure"
@@ -7581,7 +7581,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "atlanta, GA",
+    "address": "Atlanta, GA",
     "hsId": "18124972166",
     "signals": [
       "hs_long_tenure"
@@ -7611,7 +7611,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7124 West Hefner Road, dallas, OK, 73162",
+    "address": "7124 West Hefner Road, Dallas, OK, 73162",
     "hsId": "21507806557",
     "signals": [
       "hs_long_tenure"
@@ -7641,7 +7641,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1314 West 4th Avenue, vancouver, BC, V6H 4A3",
+    "address": "1314 West 4th Avenue, Vancouver, BC, V6H 4A3",
     "hsId": "21534593818",
     "signals": [
       "hs_long_tenure"
@@ -7671,7 +7671,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "hiawatha, KS",
+    "address": "Hiawatha, KS",
     "hsId": "19698724238",
     "signals": [
       "hs_long_tenure"
@@ -7701,7 +7701,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "200 HIGHLAND RD W, kitchener, ON, N2M 3C2",
+    "address": "200 HIGHLAND RD W, Kitchener, ON, N2M 3C2",
     "hsId": "5518146326",
     "signals": [
       "hs_long_tenure"
@@ -7761,7 +7761,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "38 Springer Drive, englewood, CO, 80129",
+    "address": "38 Springer Drive, Englewood, CO, 80129",
     "hsId": "10434680465",
     "signals": [
       "hs_long_tenure"
@@ -7791,7 +7791,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5900 Balcones Dr. STE 8231, lehi, UT",
+    "address": "5900 Balcones Dr. STE 8231, Lehi, UT",
     "hsId": "22253876643",
     "signals": [
       "hs_long_tenure"
@@ -7821,7 +7821,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3800 Horizon Boulevard, salem, OR, 19053",
+    "address": "3800 Horizon Boulevard, Salem, OR, 19053",
     "hsId": "4462711240",
     "signals": [
       "hs_long_tenure"
@@ -7864,12 +7864,12 @@
     "name": "HomeLove",
     "city": "Austin",
     "st": "TX",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "andrew@hound.vet",
-    "phone": "+1 810-655-6060",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -7971,7 +7971,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7375 Middlebranch Avenue Northeast, north canton, OH, 44721",
+    "address": "7375 Middlebranch Avenue Northeast, North Canton, OH, 44721",
     "hsId": "9977187725",
     "signals": [
       "hs_long_tenure"
@@ -8061,7 +8061,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "montreal, QC",
+    "address": "Montreal, QC",
     "hsId": "20977316782",
     "signals": [
       "hs_long_tenure"
@@ -8074,12 +8074,12 @@
     "name": "Horizon Veterinary Services, PLLC (DBA Horizon Mobile Veterinary Care)",
     "city": "Miami",
     "st": "NC",
-    "lat": 43.10849,
-    "lng": -79.07186,
+    "lat": 35.94831,
+    "lng": -78.17757,
     "ct": "general",
     "contact": null,
     "email": "horizondvmservices@gmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 806-272-3061",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -8091,7 +8091,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "PO Box 810, Miami, NC, 27591",
+    "address": "Miami, NC, 27591",
     "hsId": "25292436324",
     "signals": [
       "hs_long_tenure"
@@ -8181,7 +8181,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4408 Augusta Avenue, richmond, VA, 23230",
+    "address": "4408 Augusta Avenue, Richmond, VA, 23230",
     "hsId": "2304884817",
     "signals": [
       "hs_long_tenure"
@@ -8194,12 +8194,12 @@
     "name": "Howard County Animal",
     "city": "ellicott city",
     "st": "MD",
-    "lat": 39.28433,
-    "lng": -76.80565,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "ekeil.ross@gmail.com",
-    "phone": "+1 806-272-3061",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -8211,7 +8211,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "8459 Baltimore National Pike, ellicott city, MD, 21043",
+    "address": "8459 Baltimore National Pike, Ellicott City, MD, 21043",
     "hsId": "30195833983",
     "signals": [
       "hs_long_tenure"
@@ -8241,7 +8241,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1924 SURREY WAY, paso robles, CA, 93447",
+    "address": "1924 SURREY WAY, Paso Robles, CA, 93447",
     "hsId": "5800153525",
     "signals": [
       "hs_long_tenure"
@@ -8271,7 +8271,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "port angeles, WA",
+    "address": "Port Angeles, WA",
     "hsId": "15685542922",
     "signals": [
       "hs_long_tenure"
@@ -8289,7 +8289,7 @@
     "ct": "general",
     "contact": null,
     "email": "nath_chiasson@hotmail.com",
-    "phone": "+1 828-628-3557",
+    "phone": "+1 864-292-6433",
     "features": "Tails",
     "dgtId": null,
     "pims": "LogiVet",
@@ -8301,7 +8301,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "newcastle, NB",
+    "address": "Newcastle, NB",
     "hsId": "30954758068",
     "signals": [
       "hs_long_tenure"
@@ -8391,7 +8391,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ashburn, VA",
+    "address": "Ashburn, VA",
     "hsId": "6431745948",
     "signals": [
       "hs_long_tenure"
@@ -8421,7 +8421,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "970 West Valley Parkway, kihei, HI, 92026",
+    "address": "970 West Valley Parkway, Kihei, HI, 92026",
     "hsId": "29457228833",
     "signals": [
       "hs_long_tenure"
@@ -8571,7 +8571,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "etobicoke",
+    "address": "Etobicoke",
     "hsId": "45977870435",
     "signals": [
       "hs_long_tenure"
@@ -8644,8 +8644,8 @@
     "name": "Jasper Veterinary Clinic",
     "city": "Valemount",
     "st": "AB",
-    "lat": null,
-    "lng": null,
+    "lat": 52.83151,
+    "lng": -119.28058,
     "ct": "general",
     "contact": null,
     "email": "reception.jvc@telus.net",
@@ -8661,7 +8661,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "PO Box 968, Valemount, AB, T0E 1E0",
+    "address": "Valemount, AB, T0E 1E0",
     "hsId": "7730894939",
     "signals": [
       "hs_long_tenure"
@@ -8811,7 +8811,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1016 South Main Street, walla walla, OR, 97862",
+    "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "hsId": "4676333282",
     "signals": [
       "hs_long_tenure"
@@ -8841,7 +8841,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7380 King George Boulevard, vancouver, BC, V3W 5A5",
+    "address": "7380 King George Boulevard, Vancouver, BC, V3W 5A5",
     "hsId": "9837927826",
     "signals": [
       "hs_long_tenure"
@@ -8854,8 +8854,8 @@
     "name": "Kings Court Veterinary Services",
     "city": "williamstown",
     "st": "NJ",
-    "lat": 39.28433,
-    "lng": -76.80565,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "erbrigrh85@gmail.com",
@@ -8871,7 +8871,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "williamstown, NJ",
+    "address": "Williamstown, NJ",
     "hsId": "31786930539",
     "signals": [
       "hs_long_tenure"
@@ -8961,7 +8961,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "california",
+    "address": "CALIFORNIA",
     "hsId": "6089358494",
     "signals": [
       "hs_long_tenure"
@@ -9021,7 +9021,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "dallas, TX",
+    "address": "Dallas, TX",
     "hsId": "20467355698",
     "signals": [
       "hs_long_tenure"
@@ -9051,7 +9051,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new market, MD",
+    "address": "New Market, MD",
     "hsId": "9852878674",
     "signals": [
       "hs_long_tenure"
@@ -9081,7 +9081,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2214 Highland River Dr. Houston, TX 77089, houston, TX",
+    "address": "2214 Highland River Dr. Houston, TX 77089, Houston, TX",
     "hsId": "18940314242",
     "signals": [
       "hs_long_tenure"
@@ -9111,7 +9111,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "472 -380 Theater Road ,, seattle, CA, 96130",
+    "address": "472 -380 Theater Road ,, Seattle, CA, 96130",
     "hsId": "18409283227",
     "signals": [
       "hs_long_tenure"
@@ -9141,7 +9141,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "454 Hayes St, austin, TX, 75166",
+    "address": "454 Hayes St, Austin, TX, 75166",
     "hsId": "17549208074",
     "signals": [
       "hs_long_tenure"
@@ -9159,7 +9159,7 @@
     "ct": "general",
     "contact": null,
     "email": "becca@lazypawvet.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "Via",
@@ -9171,7 +9171,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7380 Stonebrook Parkway, frisco, TX, 75034",
+    "address": "7380 Stonebrook Parkway, Frisco, TX, 75034",
     "hsId": "25073861387",
     "signals": [
       "hs_long_tenure"
@@ -9184,8 +9184,8 @@
     "name": "Lefebvre Veterinary Medical Center",
     "city": "Monroe",
     "st": "LA",
-    "lat": 32.53982,
-    "lng": -92.10298,
+    "lat": 32.53833,
+    "lng": -92.10175,
     "ct": "general",
     "contact": null,
     "email": "beth@lvmcmonroe.net",
@@ -9214,12 +9214,12 @@
     "name": "Leo Vets",
     "city": "brantford",
     "st": "ON",
-    "lat": null,
-    "lng": null,
+    "lat": 41.78494,
+    "lng": -88.14773,
     "ct": "general",
     "contact": null,
     "email": "juliaclounsbury@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -9231,7 +9231,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "brantford, ON",
+    "address": "Brantford, ON",
     "hsId": "26512027238",
     "signals": [
       "hs_long_tenure"
@@ -9261,7 +9261,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Mexico",
+    "address": "MEXICO",
     "hsId": "8742588530",
     "signals": [
       "hs_long_tenure"
@@ -9291,7 +9291,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "316 Texas Street, san jose, CA, 96052",
+    "address": "316 Texas Street, San Jose, CA, 96052",
     "hsId": "17768628298",
     "signals": [
       "hs_long_tenure"
@@ -9304,8 +9304,8 @@
     "name": "LightSpring Virtual Veterinary Care",
     "city": "waynesboro",
     "st": "VA",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "lightspring.vet@gmail.com",
@@ -9321,7 +9321,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "waynesboro, VA",
+    "address": "Waynesboro, VA",
     "hsId": "33049312273",
     "signals": [
       "hs_long_tenure"
@@ -9334,8 +9334,8 @@
     "name": "Lighthouse Veterinary Services",
     "city": "helena",
     "st": "MT",
-    "lat": 35.29418,
-    "lng": -120.6719,
+    "lat": 35.29378,
+    "lng": -120.67197,
     "ct": "general",
     "contact": null,
     "email": "nancymayer406@msn.com",
@@ -9351,7 +9351,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5666 Eagle Ridge Rd.,  Helena, MT  59602, helena, MT",
+    "address": "5666 Eagle Ridge Rd.,  Helena, MT  59602, Helena, MT",
     "hsId": "16251031084",
     "signals": [
       "hs_long_tenure"
@@ -9441,7 +9441,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "riverview, FL",
+    "address": "Riverview, FL",
     "hsId": "9500658222",
     "signals": [
       "hs_long_tenure"
@@ -9471,7 +9471,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "pinson, AL",
+    "address": "Pinson, AL",
     "hsId": "32398919349",
     "signals": [
       "hs_long_tenure"
@@ -9501,7 +9501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "queens, NY",
+    "address": "Queens, NY",
     "hsId": "21592711512",
     "signals": [
       "hs_long_tenure"
@@ -9591,7 +9591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "manchester, NH, 03801",
+    "address": "Manchester, NH, 03801",
     "hsId": "8965380706",
     "signals": [
       "hs_long_tenure"
@@ -9681,7 +9681,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "lockport, NY",
+    "address": "Lockport, NY",
     "hsId": "9578181293",
     "signals": [
       "hs_long_tenure"
@@ -9694,12 +9694,12 @@
     "name": "Manitoulin Island Mobile Animal Doctor",
     "city": "toronto",
     "st": "ON",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "auntieslosh@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 514 527 3311",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -9711,7 +9711,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "toronto, ON",
+    "address": "Toronto, ON",
     "hsId": "23004175533",
     "signals": [
       "hs_long_tenure"
@@ -9741,7 +9741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "19 Atlantic Avenue, marblehead, MA, 01945",
+    "address": "19 Atlantic Avenue, Marblehead, MA, 01945",
     "hsId": "15411791360",
     "signals": [
       "hs_long_tenure"
@@ -9771,7 +9771,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "weyers cave, VA",
+    "address": "Weyers Cave, VA",
     "hsId": "6680963954",
     "signals": [
       "hs_long_tenure"
@@ -9814,12 +9814,12 @@
     "name": "Massachusetts Veterinary Behavior - MA",
     "city": "Orleans",
     "st": "MA",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "ahorleansmanagement@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Daysmart",
@@ -9891,7 +9891,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new orleans, LA",
+    "address": "New Orleans, LA",
     "hsId": "32031528076",
     "signals": [
       "hs_long_tenure"
@@ -9921,7 +9921,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "bridgeton, NJ",
+    "address": "Bridgeton, NJ",
     "hsId": "16613169028",
     "signals": [
       "hs_long_tenure"
@@ -9964,8 +9964,8 @@
     "name": "Mercy Pet Hospital Citrus Heights",
     "city": "Citrus Heights, 95621",
     "st": "CA",
-    "lat": 43.42708,
-    "lng": -86.34644,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "mlinettdvm@gmail.com",
@@ -10011,7 +10011,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ashburn, VA",
+    "address": "Ashburn, VA",
     "hsId": "7188514380",
     "signals": [
       "hs_long_tenure"
@@ -10041,7 +10041,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "105 University Boulevard West, washington, DC, 20901",
+    "address": "105 University Boulevard West, Washington, DC, 20901",
     "hsId": "5689889290",
     "signals": [
       "hs_long_tenure"
@@ -10054,12 +10054,12 @@
     "name": "Miami Pet Wellness",
     "city": "hialeah",
     "st": "FL",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "doctorsaldana@miamipetwellness.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -10071,7 +10071,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "10 Canal St #200, hialeah, FL",
+    "address": "10 Canal St #200, Hialeah, FL",
     "hsId": "33443820402",
     "signals": [
       "hs_long_tenure"
@@ -10101,7 +10101,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6330 Snow Ave SE, Alto, MI 49302., caledonia, VA",
+    "address": "6330 Snow Ave SE, Alto, MI 49302., Caledonia, VA",
     "hsId": "16721564082",
     "signals": [
       "hs_long_tenure"
@@ -10191,7 +10191,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1342 Ontario 9, mildmay, ON, N0G 2J0",
+    "address": "1342 Ontario 9, Mildmay, ON, N0G 2J0",
     "hsId": "17549208225",
     "signals": [
       "hs_long_tenure"
@@ -10221,7 +10221,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "143 Main Street, Odessa, ON K0H 2H0, odessa, ON, K0H 2H0",
+    "address": "143 Main Street, Odessa, ON K0H 2H0, Odessa, ON, K0H 2H0",
     "hsId": "17289447278",
     "signals": [
       "hs_long_tenure"
@@ -10251,7 +10251,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "vancouver, BC",
+    "address": "Vancouver, BC",
     "hsId": "18115082126",
     "signals": [
       "hs_long_tenure"
@@ -10281,7 +10281,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Windham, NH USA, NH",
+    "address": "Windham, Nh Usa, NH",
     "hsId": "7032282019",
     "signals": [
       "hs_long_tenure"
@@ -10341,7 +10341,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "bellingham, washington",
+    "address": "Bellingham, WASHINGTON",
     "hsId": "22124229722",
     "signals": [
       "hs_long_tenure"
@@ -10401,7 +10401,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5790 County Road F, ashburn, VA, 54495",
+    "address": "5790 County Road F, Ashburn, VA, 54495",
     "hsId": "5817833112",
     "signals": [
       "hs_long_tenure"
@@ -10431,7 +10431,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "9710 Traville Gateway Drive, frederick, MD, 20850",
+    "address": "9710 Traville Gateway Drive, Frederick, MD, 20850",
     "hsId": "5070632387",
     "signals": [
       "hs_long_tenure"
@@ -10521,7 +10521,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2026 South Sheridan Avenue, moncton, NB, 82801",
+    "address": "2026 South Sheridan Avenue, Moncton, NB, 82801",
     "hsId": "8950810927",
     "signals": [
       "hs_long_tenure"
@@ -10551,7 +10551,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1115 Young Street, honolulu, HI, 96814",
+    "address": "1115 Young Street, Honolulu, HI, 96814",
     "hsId": "18277241874",
     "signals": [
       "hs_long_tenure"
@@ -10581,7 +10581,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5900 Balcones Drive, austin, TX, 78731",
+    "address": "5900 Balcones Drive, Austin, TX, 78731",
     "hsId": "17660367971",
     "signals": [
       "hs_long_tenure"
@@ -10701,7 +10701,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "100 Littleton Road, westford, MA, 01886",
+    "address": "100 Littleton Road, Westford, MA, 01886",
     "hsId": "17703795064",
     "signals": [
       "hs_long_tenure"
@@ -10744,8 +10744,8 @@
     "name": "Nelson Veterinary Services",
     "city": "Susanville",
     "st": "WA",
-    "lat": 32.81048,
-    "lng": -79.87154,
+    "lat": 32.8094,
+    "lng": -79.87591,
     "ct": "general",
     "contact": null,
     "email": "annettethevet@gmail.com",
@@ -10791,7 +10791,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "missouri city, TX",
+    "address": "Missouri City, TX",
     "hsId": "9133809461",
     "signals": [
       "hs_long_tenure"
@@ -10851,7 +10851,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "PO Box 393, north grafton, MA, 01519",
+    "address": "North Grafton, MA, 01519",
     "hsId": "31972413880",
     "signals": [
       "hs_long_tenure"
@@ -10929,7 +10929,7 @@
     "ct": "general",
     "contact": null,
     "email": "96vetcaremgr@gmail.com",
-    "phone": "+1 714-623-7713",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -10941,7 +10941,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "108 West Main Street, ninety six, SC",
+    "address": "108 West Main Street, Ninety Six, SC",
     "hsId": "29373576867",
     "signals": [
       "hs_long_tenure"
@@ -10971,7 +10971,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "456 Auburn Street, boston, MA, 04103",
+    "address": "456 Auburn Street, Boston, MA, 04103",
     "hsId": "16965664848",
     "signals": [
       "hs_long_tenure"
@@ -11001,7 +11001,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "12076 Hartwood Meadow Place, Bristow VA 20136, Bristow, virginia",
+    "address": "12076 Hartwood Meadow Place, Bristow VA 20136, Bristow, VIRGINIA",
     "hsId": "6708769652",
     "signals": [
       "hs_long_tenure"
@@ -11031,7 +11031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "15452 29th St. SE, fargo, ND, 58012",
+    "address": "15452 29th St. SE, Fargo, ND, 58012",
     "hsId": "18474138270",
     "signals": [
       "hs_long_tenure"
@@ -11061,7 +11061,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "scottsdale, AZ",
+    "address": "Scottsdale, AZ",
     "hsId": "28274367582",
     "signals": [
       "hs_long_tenure"
@@ -11109,7 +11109,7 @@
     "ct": "general",
     "contact": null,
     "email": "melissa@oceanavetclinic.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -11151,7 +11151,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "47 Four Paws Ln, bass harbor, ME, 04605",
+    "address": "47 Four Paws Ln, Bass Harbor, ME, 04605",
     "hsId": "31779728468",
     "signals": [
       "hs_long_tenure"
@@ -11181,7 +11181,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "100 Ridge Road, glen mills, NJ, 19317",
+    "address": "100 Ridge Road, Glen Mills, NJ, 19317",
     "hsId": "5721778603",
     "signals": [
       "hs_long_tenure"
@@ -11211,7 +11211,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1730 Kingwood Street, florence, OR, 97439",
+    "address": "1730 Kingwood Street, Florence, OR, 97439",
     "hsId": "21713626383",
     "signals": [
       "hs_long_tenure"
@@ -11224,12 +11224,12 @@
     "name": "Ottawa Valley Spay Neuter Clinic",
     "city": "Kemptville,",
     "st": "ON",
-    "lat": 43.42708,
-    "lng": -86.34644,
+    "lat": 56.24677,
+    "lng": -120.81303,
     "ct": "general",
     "contact": null,
     "email": "marissakelso@hotmail.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "None",
@@ -11254,8 +11254,8 @@
     "name": "Ottawa Veterinary Walk-In & Urgent Care",
     "city": "Halifax",
     "st": "ON",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "sarah.h@galaxyvets.com",
@@ -11301,7 +11301,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "phoenix, AZ",
+    "address": "Phoenix, AZ",
     "hsId": "15353639761",
     "signals": [
       "hs_long_tenure"
@@ -11344,8 +11344,8 @@
     "name": "Ozark Spay Neuter",
     "city": "Harrison",
     "st": "VA",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "sseward75@yahoo.com",
@@ -11391,7 +11391,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1016 South Main Street, walla walla, OR, 97862",
+    "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "hsId": "4818484586",
     "signals": [
       "hs_long_tenure"
@@ -11421,7 +11421,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5370 51st Avenue South, fargo, ND, 58104",
+    "address": "5370 51st Avenue South, Fargo, ND, 58104",
     "hsId": "18820128333",
     "signals": [
       "hs_long_tenure"
@@ -11451,7 +11451,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "bear, DE",
+    "address": "Bear, DE",
     "hsId": "9280226594",
     "signals": [
       "hs_long_tenure"
@@ -11481,7 +11481,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1610 Philadelphia Pike, bear, DE",
+    "address": "1610 Philadelphia Pike, Bear, DE",
     "hsId": "28226688057",
     "signals": [
       "hs_long_tenure"
@@ -11541,7 +11541,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "501 H St NE, brooklyn, TX",
+    "address": "501 H St NE, Brooklyn, TX",
     "hsId": "15466430990",
     "signals": [
       "hs_long_tenure"
@@ -11571,7 +11571,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "hereford, AZ",
+    "address": "Hereford, AZ",
     "hsId": "9507654278",
     "signals": [
       "hs_long_tenure"
@@ -11601,7 +11601,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5790 County Road F, ashburn, VA, 54495",
+    "address": "5790 County Road F, Ashburn, VA, 54495",
     "hsId": "5874602392",
     "signals": [
       "hs_long_tenure"
@@ -11614,12 +11614,12 @@
     "name": "Parkway Centre Pet Hospital",
     "city": "Peterborough",
     "st": "ON",
-    "lat": null,
-    "lng": null,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "arunavetlk@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 866 209 1001",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -11721,7 +11721,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3200 Southwest 27th Avenue, ocala, FL, 34474",
+    "address": "3200 Southwest 27th Avenue, Ocala, FL, 34474",
     "hsId": "18195412843",
     "signals": [
       "hs_long_tenure"
@@ -11841,7 +11841,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "red deer, AB",
+    "address": "Red Deer, AB",
     "hsId": "18595412303",
     "signals": [
       "hs_long_tenure"
@@ -11854,8 +11854,8 @@
     "name": "Paws Care Vet Clinic",
     "city": "sanford",
     "st": "FL",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "drgdvm14@gmail.com",
@@ -11871,7 +11871,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2620 S Orlando Drive, sanford, FL",
+    "address": "2620 S Orlando Drive, Sanford, FL",
     "hsId": "20997779517",
     "signals": [
       "hs_long_tenure"
@@ -11901,7 +11901,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2715 Maricopa Avenue, lake havasu city, AZ, 86406",
+    "address": "2715 Maricopa Avenue, Lake Havasu City, AZ, 86406",
     "hsId": "30753401091",
     "signals": [
       "hs_long_tenure"
@@ -11961,7 +11961,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "santa barbara, CA, 94158",
+    "address": "Santa Barbara, CA, 94158",
     "hsId": "17455034197",
     "signals": [
       "hs_long_tenure"
@@ -12009,7 +12009,7 @@
     "ct": "general",
     "contact": null,
     "email": "nutrition@peakveterinaryspecialists.com",
-    "phone": "+19167233456",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
     "pims": "None",
@@ -12021,7 +12021,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "cary, north carolina",
+    "address": "Cary, NORTH CAROLINA",
     "hsId": "32130727307",
     "signals": [
       "hs_long_tenure"
@@ -12051,7 +12051,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5438 South Pennsylvania Avenue, lansing, MI, 48911",
+    "address": "5438 South Pennsylvania Avenue, Lansing, MI, 48911",
     "hsId": "18336993838",
     "signals": [
       "hs_long_tenure"
@@ -12064,8 +12064,8 @@
     "name": "Pet Care Naturally",
     "city": "san jose",
     "st": "CA",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "neal@wellnesspetvet.com",
@@ -12081,7 +12081,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2457 Athens Avenue, san jose, CA, 96001",
+    "address": "2457 Athens Avenue, San Jose, CA, 96001",
     "hsId": "21221900179",
     "signals": [
       "hs_long_tenure"
@@ -12111,7 +12111,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "seattle, WA",
+    "address": "Seattle, WA",
     "hsId": "8017002130",
     "signals": [
       "hs_long_tenure"
@@ -12141,7 +12141,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1116 East 59th Street, kansas city, MO, 64110",
+    "address": "1116 East 59th Street, Kansas City, MO, 64110",
     "hsId": "10392030112",
     "signals": [
       "hs_long_tenure"
@@ -12171,7 +12171,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "467 Noah Ave, Myrtle Beach SC 29579, myrtle beach, SC",
+    "address": "467 Noah Ave, Myrtle Beach SC 29579, Myrtle Beach, SC",
     "hsId": "16800015685",
     "signals": [
       "hs_long_tenure"
@@ -12184,12 +12184,12 @@
     "name": "Pet Vet Animal Hospitals",
     "city": "houston",
     "st": "TX",
-    "lat": null,
-    "lng": null,
+    "lat": 34.23706,
+    "lng": -85.15072,
     "ct": "general",
     "contact": null,
     "email": "petvetdoctorb@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "Covetrus Pulse",
@@ -12201,7 +12201,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1520 W Bay Area Blvd #7, houston, TX, 77546",
+    "address": "1520 W Bay Area Blvd #7, Houston, TX, 77546",
     "hsId": "31274701450",
     "signals": [
       "hs_long_tenure"
@@ -12231,7 +12231,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "barrie, ON",
+    "address": "Barrie, ON",
     "hsId": "22188380251",
     "signals": [
       "hs_long_tenure"
@@ -12261,7 +12261,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "lincoln, NE",
+    "address": "Lincoln, NE",
     "hsId": "18603623174",
     "signals": [
       "hs_long_tenure"
@@ -12274,8 +12274,8 @@
     "name": "PetPlate Inc",
     "city": "New York",
     "st": "NY",
-    "lat": 40.75363,
-    "lng": -73.98685,
+    "lat": 40.75379,
+    "lng": -73.98683,
     "ct": "general",
     "contact": null,
     "email": "drgardenfors@gmail.com",
@@ -12321,7 +12321,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "mountain view",
+    "address": "Mountain View",
     "hsId": "9012024168",
     "signals": [
       "hs_long_tenure"
@@ -12334,8 +12334,8 @@
     "name": "Pets & Hearts Animal Clinic (formerly Chien Inc)",
     "city": "Davie",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "mariacadominguez@gmail.com",
@@ -12441,7 +12441,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1483 Kennesaw Due West NW Rd, marietta, GA, 30152",
+    "address": "1483 Kennesaw Due West NW Rd, Marietta, GA, 30152",
     "hsId": "9053969566",
     "signals": [
       "hs_long_tenure"
@@ -12501,7 +12501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "innisfail, AB",
+    "address": "Innisfail, AB",
     "hsId": "18594875289",
     "signals": [
       "hs_long_tenure"
@@ -12531,7 +12531,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "custer, SD",
+    "address": "Custer, SD",
     "hsId": "18381597752",
     "signals": [
       "hs_long_tenure"
@@ -12561,7 +12561,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3765 Hollywood Blvd, hollywood, FL, 33021",
+    "address": "3765 Hollywood Blvd, Hollywood, FL, 33021",
     "hsId": "20317690765",
     "signals": [
       "hs_long_tenure"
@@ -12574,8 +12574,8 @@
     "name": "Prevent a litter of central Texas (PALS)",
     "city": "atlanta",
     "st": "GA",
-    "lat": 35.25219,
-    "lng": -120.67053,
+    "lat": 35.25256,
+    "lng": -120.66975,
     "ct": "general",
     "contact": null,
     "email": "afoye@hotmail.com",
@@ -12591,7 +12591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "atlanta, GA",
+    "address": "Atlanta, GA",
     "hsId": "10829186326",
     "signals": [
       "hs_long_tenure"
@@ -12621,7 +12621,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "12613 1/2 Venice Blvd. Los Angeles, CA 90066, LA, CA",
+    "address": "12613 1/2 Venice Blvd. Los Angeles, CA 90066, La, CA",
     "hsId": "9969973170",
     "signals": [
       "hs_long_tenure"
@@ -12634,12 +12634,12 @@
     "name": "Prince George's Animal Hospital",
     "city": "cary",
     "st": "NC",
-    "lat": null,
-    "lng": null,
+    "lat": 30.17019,
+    "lng": -82.8285,
     "ct": "general",
     "contact": null,
     "email": "sarahvs.management@gmail.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -12651,7 +12651,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7440 Annapolis Road, cary, NC, 20784",
+    "address": "7440 Annapolis Road, Cary, NC, 20784",
     "hsId": "31415339040",
     "signals": [
       "hs_long_tenure"
@@ -12741,7 +12741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "san antonio, TX",
+    "address": "San Antonio, TX",
     "hsId": "8690257424",
     "signals": [
       "hs_long_tenure"
@@ -12759,7 +12759,7 @@
     "ct": "general",
     "contact": null,
     "email": "krysta@pugandhound.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 864-292-6433",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -12771,7 +12771,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "308 West State Street, aurora, IL, 60134",
+    "address": "308 West State Street, Aurora, IL, 60134",
     "hsId": "30087186978",
     "signals": [
       "hs_long_tenure"
@@ -12849,7 +12849,7 @@
     "ct": "general",
     "contact": null,
     "email": "breannef08dvm@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -12861,7 +12861,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "827 N Washington, naperville, IL",
+    "address": "827 N Washington, Naperville, IL",
     "hsId": "26525393435",
     "signals": [
       "hs_long_tenure"
@@ -12891,7 +12891,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "30 Danforth St, rochester, ME, 04101",
+    "address": "30 Danforth St, Rochester, ME, 04101",
     "hsId": "9484365462",
     "signals": [
       "hs_long_tenure"
@@ -12921,7 +12921,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "27 Pearl Street, kennebunk, ME, 04101",
+    "address": "27 Pearl Street, Kennebunk, ME, 04101",
     "hsId": "7431825964",
     "signals": [
       "hs_long_tenure"
@@ -12934,8 +12934,8 @@
     "name": "Raspberry Mobile Vet",
     "city": "Broomfield",
     "st": "CO",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "raspberrymobilevet@gmail.com",
@@ -12969,7 +12969,7 @@
     "ct": "general",
     "contact": null,
     "email": "rrifkin@ethergate.org",
-    "phone": "+19167233456",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - paper files",
@@ -12981,7 +12981,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "212 College Hill Road, new york, NY",
+    "address": "212 College Hill Road, New York, NY",
     "hsId": "23627526481",
     "signals": [
       "hs_long_tenure"
@@ -13071,7 +13071,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "951 Hillcrest Road, mobile, AL, 36695",
+    "address": "951 Hillcrest Road, Mobile, AL, 36695",
     "hsId": "6089358882",
     "signals": [
       "hs_long_tenure"
@@ -13114,8 +13114,8 @@
     "name": "Richards Veterinary Services LLC",
     "city": "pulaski",
     "st": "TN",
-    "lat": 35.25219,
-    "lng": -120.67053,
+    "lat": 35.25256,
+    "lng": -120.66975,
     "ct": "general",
     "contact": null,
     "email": "sconedvm@gmail.com",
@@ -13131,7 +13131,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "pulaski, TN",
+    "address": "Pulaski, TN",
     "hsId": "10864661318",
     "signals": [
       "hs_long_tenure"
@@ -13221,7 +13221,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4016 River Oaks Drive, Myrtle beach, SC, 29579",
+    "address": "4016 River Oaks Drive, Myrtle Beach, SC, 29579",
     "hsId": "7918158169",
     "signals": [
       "hs_long_tenure"
@@ -13251,7 +13251,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3326 West Vel Marge Parkway, janesville, WI, 53511",
+    "address": "3326 West Vel Marge Parkway, Janesville, WI, 53511",
     "hsId": "21554598508",
     "signals": [
       "hs_long_tenure"
@@ -13264,12 +13264,12 @@
     "name": "Roadrunner Veterinary Care LLC",
     "city": "blanchard",
     "st": "OK",
-    "lat": 43.10849,
-    "lng": -79.07186,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "esandefur_x@hotmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -13281,7 +13281,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2216 Wintercreek Blvd, blanchard, OK, 73010",
+    "address": "2216 Wintercreek Blvd, Blanchard, OK, 73010",
     "hsId": "33359831990",
     "signals": [
       "hs_long_tenure"
@@ -13299,7 +13299,7 @@
     "ct": "general",
     "contact": null,
     "email": "dr.kelly@whitewhiskers.vet",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -13311,7 +13311,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4588 Bridle Pass Drive, colorado springs, CO",
+    "address": "4588 Bridle Pass Drive, Colorado Springs, CO",
     "hsId": "29626821162",
     "signals": [
       "hs_long_tenure"
@@ -13371,7 +13371,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ashburn, VA",
+    "address": "Ashburn, VA",
     "hsId": "5723033205",
     "signals": [
       "hs_long_tenure"
@@ -13461,7 +13461,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1470 Earl L Core Road, atlantic beach, FL, 26505",
+    "address": "1470 Earl L Core Road, Atlantic Beach, FL, 26505",
     "hsId": "17723350620",
     "signals": [
       "hs_long_tenure"
@@ -13491,7 +13491,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3096 Michigan Avenue, orlando, FL, 34744",
+    "address": "3096 Michigan Avenue, Orlando, FL, 34744",
     "hsId": "6220940917",
     "signals": [
       "hs_long_tenure"
@@ -13521,7 +13521,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1751 South Orange Avenue, orlando, FL, 32806",
+    "address": "1751 South Orange Avenue, Orlando, FL, 32806",
     "hsId": "21465723235",
     "signals": [
       "hs_long_tenure"
@@ -13534,8 +13534,8 @@
     "name": "SPCA Montréal",
     "city": "verdun",
     "st": "QC",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "gcarriere@spcamontreal.com",
@@ -13551,7 +13551,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5215 Rue Jean-Talon Ouest, verdun, QC, H4P 1X4",
+    "address": "5215 Rue Jean-Talon Ouest, Verdun, QC, H4P 1X4",
     "hsId": "26625774253",
     "signals": [
       "hs_long_tenure"
@@ -13581,7 +13581,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "178 Chemin du Vide, Ste-Angele-de-Monnoir, QC, J0L 1P0",
+    "address": "178 Chemin du Vide, Ste-Angele-De-Monnoir, QC, J0L 1P0",
     "hsId": "7317291668",
     "signals": [
       "hs_long_tenure"
@@ -13641,7 +13641,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Virgin Islands",
+    "address": "VIRGIN ISLANDS",
     "hsId": "16401208423",
     "signals": [
       "hs_long_tenure"
@@ -13671,7 +13671,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6509 Whittlesey Road, middleton, WI, 53562",
+    "address": "6509 Whittlesey Road, Middleton, WI, 53562",
     "hsId": "6141075473",
     "signals": [
       "hs_long_tenure"
@@ -13684,8 +13684,8 @@
     "name": "Sakura Holistic Veterinary Services",
     "city": "seattle",
     "st": "WA",
-    "lat": 38.93379,
-    "lng": -104.74689,
+    "lat": 43.42708,
+    "lng": -86.34644,
     "ct": "general",
     "contact": null,
     "email": "drkanbe@hotmail.co.jp",
@@ -13701,7 +13701,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "170 East Yorba Linda Blvd, seattle, WA, 92870",
+    "address": "170 East Yorba Linda Blvd, Seattle, WA, 92870",
     "hsId": "31185025619",
     "signals": [
       "hs_long_tenure"
@@ -13714,12 +13714,12 @@
     "name": "Sale Creek Veterinary Services",
     "city": "harrogate",
     "st": "TN",
-    "lat": 43.03012,
-    "lng": -75.0024,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "yourgoatdoc@salecreek.vet",
-    "phone": "+19167233456",
+    "phone": "+1 866 209 1001",
     "features": "Tails",
     "dgtId": null,
     "pims": "Covetrus Pulse",
@@ -13731,7 +13731,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "14801 May Road, harrogate, TN, 37373",
+    "address": "14801 May Road, Harrogate, TN, 37373",
     "hsId": "26944088923",
     "signals": [
       "hs_long_tenure"
@@ -13761,7 +13761,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2530 19th St SE, salem, OR",
+    "address": "2530 19th St SE, Salem, OR",
     "hsId": "34182980778",
     "signals": [
       "hs_long_tenure"
@@ -13851,7 +13851,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "62 Mary St Box 162 Clermont, IA 52135, waukon, IA",
+    "address": "62 Mary St Box 162 Clermont, IA 52135, Waukon, IA",
     "hsId": "16284510495",
     "signals": [
       "hs_long_tenure"
@@ -13881,7 +13881,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2867 Ashmun Street, sault ste. marie, MI, 49783",
+    "address": "2867 Ashmun Street, Sault Ste. Marie, MI, 49783",
     "hsId": "3840183334",
     "signals": [
       "hs_long_tenure"
@@ -13911,7 +13911,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "sylva, NC",
+    "address": "Sylva, NC",
     "hsId": "5777249198",
     "signals": [
       "hs_long_tenure"
@@ -13924,8 +13924,8 @@
     "name": "Saving Grace Mobile Veterinary Services",
     "city": "los angeles",
     "st": "CA",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "savinggraceveterinaryservices@gmail.com",
@@ -13941,7 +13941,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "los angeles, CA",
+    "address": "Los Angeles, CA",
     "hsId": "33049310774",
     "signals": [
       "hs_long_tenure"
@@ -13971,7 +13971,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "364 Walnut Hill Road, athol, MA, 01364",
+    "address": "364 Walnut Hill Road, Athol, MA, 01364",
     "hsId": "29284544114",
     "signals": [
       "hs_long_tenure"
@@ -14001,7 +14001,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3642 East Indian Trail, beaverton, OR",
+    "address": "3642 East Indian Trail, Beaverton, OR",
     "hsId": "21998242707",
     "signals": [
       "hs_long_tenure"
@@ -14014,12 +14014,12 @@
     "name": "Seaside Veterinary Cardiac Imaging",
     "city": "hampton",
     "st": "VA",
-    "lat": 43.42708,
-    "lng": -86.34644,
+    "lat": 40.34468,
+    "lng": -80.05106,
     "ct": "general",
     "contact": null,
     "email": "seasidecardiacimaging@gmail.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -14031,7 +14031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "hampton, VA",
+    "address": "Hampton, VA",
     "hsId": "23935038868",
     "signals": [
       "hs_long_tenure"
@@ -14061,7 +14061,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "42808 Joshua Tree Court Murrieta, CA 92562, murrieta, CA, 92562",
+    "address": "42808 Joshua Tree Court Murrieta, CA 92562, Murrieta, CA, 92562",
     "hsId": "6797268357",
     "signals": [
       "hs_long_tenure"
@@ -14121,7 +14121,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2323 Shallowford Rd, atlanta, GA, 30066",
+    "address": "2323 Shallowford Rd, Atlanta, GA, 30066",
     "hsId": "31604168512",
     "signals": [
       "hs_long_tenure"
@@ -14134,8 +14134,8 @@
     "name": "Shameless Pets LLC",
     "city": "Chicago",
     "st": "IL",
-    "lat": 40.75363,
-    "lng": -73.98685,
+    "lat": 40.75379,
+    "lng": -73.98683,
     "ct": "general",
     "contact": null,
     "email": "drgardenfors@gmail.com",
@@ -14164,8 +14164,8 @@
     "name": "Sharon Center Veterinary Hospital",
     "city": "Medina",
     "st": "OH",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "christy.essary@sharoncentervethospital.com",
@@ -14194,12 +14194,12 @@
     "name": "Shenandoah Valley Veterinary",
     "city": "portland",
     "st": "OR",
-    "lat": 34.23706,
-    "lng": -85.15072,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "sv.vc@hotmail.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "Advantage",
@@ -14211,7 +14211,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "17705 C Hwy 49, portland, OR, 95669",
+    "address": "17705 C Hwy 49, Portland, OR, 95669",
     "hsId": "29493144167",
     "signals": [
       "hs_long_tenure"
@@ -14331,7 +14331,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "alliston, ON",
+    "address": "Alliston, ON",
     "hsId": "16357648721",
     "signals": [
       "hs_long_tenure"
@@ -14361,7 +14361,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "121 Church Street, decatur, GA, 30030",
+    "address": "121 Church Street, Decatur, GA, 30030",
     "hsId": "15393348498",
     "signals": [
       "hs_long_tenure"
@@ -14451,7 +14451,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "110 Aurora Lights Trail, Aurora, TX 76078, fort worth, TX, 76078",
+    "address": "110 Aurora Lights Trail, Aurora, TX 76078, Fort Worth, TX, 76078",
     "hsId": "15963626874",
     "signals": [
       "hs_long_tenure"
@@ -14481,7 +14481,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "fresno, CA",
+    "address": "Fresno, CA",
     "hsId": "6054868537",
     "signals": [
       "hs_long_tenure"
@@ -14494,12 +14494,12 @@
     "name": "South County Veterinary Hospital",
     "city": "fresno",
     "st": "CA",
-    "lat": null,
-    "lng": null,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "kyle@soco.vet",
-    "phone": "+12096681807",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -14511,7 +14511,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "fresno, CA",
+    "address": "Fresno, CA",
     "hsId": "30444954763",
     "signals": [
       "hs_long_tenure"
@@ -14541,7 +14541,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1535 Route 22Brewster New York 10509, new york, NY",
+    "address": "1535 Route 22Brewster New York 10509, New York, NY",
     "hsId": "6587260188",
     "signals": [
       "hs_long_tenure"
@@ -14571,7 +14571,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "anderson, SC",
+    "address": "Anderson, SC",
     "hsId": "18327802130",
     "signals": [
       "hs_long_tenure"
@@ -14584,8 +14584,8 @@
     "name": "Spay Neuter Is Provided In Tennessee SNIP IT",
     "city": "knoxville",
     "st": "TN",
-    "lat": 40.36144,
-    "lng": -111.97514,
+    "lat": 40.36161,
+    "lng": -111.97498,
     "ct": "general",
     "contact": null,
     "email": "cillavet@hotmail.com",
@@ -14601,7 +14601,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "knoxville, TN",
+    "address": "Knoxville, TN",
     "hsId": "9785513473",
     "signals": [
       "hs_long_tenure"
@@ -14631,7 +14631,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "600 Prosperity Ln, Unit 15, Monroe Township, NJ 08831, monroe township, NJ",
+    "address": "600 Prosperity Ln, Unit 15, Monroe Township, NJ 08831, Monroe Township, NJ",
     "hsId": "17467174457",
     "signals": [
       "hs_long_tenure"
@@ -14661,7 +14661,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "temecula, CA",
+    "address": "Temecula, CA",
     "hsId": "18171932086",
     "signals": [
       "hs_long_tenure"
@@ -14691,7 +14691,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1671 NE State Road 47, trenton, GA",
+    "address": "1671 NE State Road 47, Trenton, GA",
     "hsId": "18586466361",
     "signals": [
       "hs_long_tenure"
@@ -14721,7 +14721,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "9250 CLIFTON HL, bogota, VI, 00850",
+    "address": "9250 CLIFTON HL, Bogota, VI, 00850",
     "hsId": "18170158257",
     "signals": [
       "hs_long_tenure"
@@ -14781,7 +14781,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "165 North 100 East, mount pleasant, UT",
+    "address": "165 North 100 East, Mount Pleasant, UT",
     "hsId": "22049095003",
     "signals": [
       "hs_long_tenure"
@@ -14841,7 +14841,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "35 Sunmills Drive SE, calgary, AB, T2X 2W6",
+    "address": "35 Sunmills Drive SE, Calgary, AB, T2X 2W6",
     "hsId": "18854281277",
     "signals": [
       "hs_long_tenure"
@@ -14854,12 +14854,12 @@
     "name": "Sunrise Pet Hospital",
     "city": "Vancouver",
     "st": "BC",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "gurmeetkm@yahoo.ca",
-    "phone": "+1 514 735 2711",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -14901,7 +14901,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "broken arrrow, OK",
+    "address": "Broken Arrrow, OK",
     "hsId": "17182671618",
     "signals": [
       "hs_long_tenure"
@@ -14961,7 +14961,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new kensington, PA",
+    "address": "New Kensington, PA",
     "hsId": "32787362073",
     "signals": [
       "hs_long_tenure"
@@ -14974,12 +14974,12 @@
     "name": "Texas Equine Medical Associates",
     "city": "austin",
     "st": "TX",
-    "lat": 19.32077,
-    "lng": -99.15147,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "piper@texasema.com",
-    "phone": "+1 828-628-3557",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "Other",
@@ -14991,7 +14991,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "8720 US-377, austin, TX, 76258",
+    "address": "8720 US-377, Austin, TX, 76258",
     "hsId": "27592403083",
     "signals": [
       "hs_long_tenure"
@@ -15021,7 +15021,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "24950 Spring Ridge Drive, los angeles, CA, 77386",
+    "address": "24950 Spring Ridge Drive, Los Angeles, CA, 77386",
     "hsId": "15352565815",
     "signals": [
       "hs_long_tenure"
@@ -15034,8 +15034,8 @@
     "name": "The Barn Veterinary Services Ltd.",
     "city": "cairo",
     "st": "BC",
-    "lat": 34.17561,
-    "lng": -82.02417,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "thebarnvet@gmail.com",
@@ -15051,7 +15051,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "cairo, BC",
+    "address": "Cairo, BC",
     "hsId": "29375687473",
     "signals": [
       "hs_long_tenure"
@@ -15081,7 +15081,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "alpine, CA",
+    "address": "Alpine, CA",
     "hsId": "6753996331",
     "signals": [
       "hs_long_tenure"
@@ -15141,7 +15141,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "perkasie, PA, 11226",
+    "address": "Perkasie, PA, 11226",
     "hsId": "18060222625",
     "signals": [
       "hs_long_tenure"
@@ -15171,7 +15171,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "15301 S Dixie Hwy,Palmetto Bay, FL 33157, palmetto bay, FL",
+    "address": "15301 S Dixie Hwy,Palmetto Bay, FL 33157, Palmetto Bay, FL",
     "hsId": "16992997012",
     "signals": [
       "hs_long_tenure"
@@ -15184,8 +15184,8 @@
     "name": "The Feline Vet Care",
     "city": "silver spring",
     "st": "MD",
-    "lat": 35.29418,
-    "lng": -120.6719,
+    "lat": 35.29378,
+    "lng": -120.67197,
     "ct": "general",
     "contact": null,
     "email": "sjgvet.llc@gmail.com",
@@ -15201,7 +15201,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "14811 Hammersmith Cir Silver Spring MD 20906, silver spring, MD",
+    "address": "14811 Hammersmith Cir Silver Spring MD 20906, Silver Spring, MD",
     "hsId": "16247539830",
     "signals": [
       "hs_long_tenure"
@@ -15231,7 +15231,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "waterford, ON",
+    "address": "Waterford, ON",
     "hsId": "10627781387",
     "signals": [
       "hs_long_tenure"
@@ -15244,12 +15244,12 @@
     "name": "The Happy Cat Vet",
     "city": "olympia",
     "st": "WA",
-    "lat": 41.78494,
-    "lng": -88.14773,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "doc@happycat.vet",
-    "phone": "+1 864-292-6433",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -15261,7 +15261,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "olympia, WA",
+    "address": "Olympia, WA",
     "hsId": "35432518270",
     "signals": [
       "hs_long_tenure"
@@ -15351,7 +15351,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "25269 The Old Rd #G, palmdale, CA, 91381",
+    "address": "25269 The Old Rd #G, Palmdale, CA, 91381",
     "hsId": "31442939054",
     "signals": [
       "hs_long_tenure"
@@ -15381,7 +15381,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "3908 Flatiron Loop, wesley chapel, FL, 33544",
+    "address": "3908 Flatiron Loop, Wesley Chapel, FL, 33544",
     "hsId": "24994292024",
     "signals": [
       "hs_long_tenure"
@@ -15501,7 +15501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "vista, CA",
+    "address": "Vista, CA",
     "hsId": "8579421712",
     "signals": [
       "hs_long_tenure"
@@ -15544,8 +15544,8 @@
     "name": "Thurman Veterinary Center",
     "city": "provo",
     "st": "UT",
-    "lat": 39.28433,
-    "lng": -76.80565,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "Jillian Shipley",
@@ -15561,7 +15561,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "12816 Jomani Drive, provo, UT, 93312",
+    "address": "12816 Jomani Drive, Provo, UT, 93312",
     "hsId": "30204951565",
     "signals": [
       "hs_long_tenure"
@@ -15591,7 +15591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "york, pennsylvania",
+    "address": "York, PENNSYLVANIA",
     "hsId": "18335735661",
     "signals": [
       "hs_long_tenure"
@@ -15621,7 +15621,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "los angeles, CA",
+    "address": "Los Angeles, CA",
     "hsId": "18884933454",
     "signals": [
       "hs_long_tenure"
@@ -15651,7 +15651,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2214 Lancaster Avenue, knoxville, NC, 28112",
+    "address": "2214 Lancaster Avenue, Knoxville, NC, 28112",
     "hsId": "15597404222",
     "signals": [
       "hs_long_tenure"
@@ -15741,7 +15741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "seattle, AK",
+    "address": "Seattle, AK",
     "hsId": "9905312268",
     "signals": [
       "hs_long_tenure"
@@ -15784,8 +15784,8 @@
     "name": "Trailwood Cat Hospital",
     "city": "san diego",
     "st": "CA",
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "ct": "general",
     "contact": null,
     "email": "dranna@trailwoodcathospital.com",
@@ -15801,7 +15801,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "9691 Trailwood Drive, san diego, CA, 89134",
+    "address": "9691 Trailwood Drive, San Diego, CA, 89134",
     "hsId": "8767012420",
     "signals": [
       "hs_long_tenure"
@@ -15969,7 +15969,7 @@
     "ct": "general",
     "contact": null,
     "email": "truenorthvetserv@gmail.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -15981,7 +15981,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "calgary, AB",
+    "address": "Calgary, AB",
     "hsId": "33706470512",
     "signals": [
       "hs_long_tenure"
@@ -16024,8 +16024,8 @@
     "name": "Truro Veterinary Walk-In & Urgent Care",
     "city": "Halifax",
     "st": "NS",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "sarah.h@galaxyvets.com",
@@ -16054,8 +16054,8 @@
     "name": "Truss Vet - HQ",
     "city": "Durham",
     "st": "NC",
-    "lat": null,
-    "lng": null,
+    "lat": 52.83151,
+    "lng": -119.28058,
     "ct": "general",
     "contact": null,
     "email": "monica.dunlap@trussvet.com",
@@ -16084,12 +16084,12 @@
     "name": "Two Tree Veterinary LLC",
     "city": "dover",
     "st": "NH",
-    "lat": 41.80533,
-    "lng": -88.33138,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "info@twotreevet.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+1 507-442-8387",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -16101,7 +16101,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "12 Folcutt Rd., dover, NH",
+    "address": "12 Folcutt Rd., Dover, NH",
     "hsId": "29493143878",
     "signals": [
       "hs_long_tenure"
@@ -16161,7 +16161,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "220 South Woodland Boulevard, deland, FL, 32724",
+    "address": "220 South Woodland Boulevard, Deland, FL, 32724",
     "hsId": "18556740261",
     "signals": [
       "hs_long_tenure"
@@ -16204,8 +16204,8 @@
     "name": "Valemount Veterinary Clinic",
     "city": "Valemount",
     "st": "BC",
-    "lat": null,
-    "lng": null,
+    "lat": 52.83151,
+    "lng": -119.28058,
     "ct": "general",
     "contact": null,
     "email": "reception.jvc@telus.net",
@@ -16221,7 +16221,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "PO Box 1117, Valemount, BC, V0E 2Z0",
+    "address": "Valemount, BC, V0E 2Z0",
     "hsId": "7730844192",
     "signals": [
       "hs_long_tenure"
@@ -16251,7 +16251,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Puyallup, washington",
+    "address": "Puyallup, WASHINGTON",
     "hsId": "12074894112",
     "signals": [
       "hs_long_tenure"
@@ -16281,7 +16281,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "FL, FL",
+    "address": "Fl, FL",
     "hsId": "31950521423",
     "signals": [
       "hs_long_tenure"
@@ -16311,7 +16311,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "port saint lucie, FL",
+    "address": "Port Saint Lucie, FL",
     "hsId": "31772425273",
     "signals": [
       "hs_long_tenure"
@@ -16341,7 +16341,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "7997 Wade Blvd Apt 637, fisco, TX, 75034",
+    "address": "7997 Wade Blvd Apt 637, Fisco, TX, 75034",
     "hsId": "22651453816",
     "signals": [
       "hs_long_tenure"
@@ -16371,7 +16371,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ashburn, TX",
+    "address": "Ashburn, TX",
     "hsId": "5668929927",
     "signals": [
       "hs_long_tenure"
@@ -16401,7 +16401,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "911 Paseo Estrella del Mar, tijuana, Baja California, 22200",
+    "address": "911 Paseo Estrella del Mar, Tijuana, BAJA CALIFORNIA, 22200",
     "hsId": "40201543437",
     "signals": [
       "hs_long_tenure"
@@ -16431,7 +16431,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2714 S Raymond Rd,, college place, WA, 33186",
+    "address": "2714 S Raymond Rd,, College Place, WA, 33186",
     "hsId": "22509335080",
     "signals": [
       "hs_long_tenure"
@@ -16534,8 +16534,8 @@
     "name": "VetForPet Animal Hospital",
     "city": "revere",
     "st": "MA",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "hashim.ali1738@gmail.com",
@@ -16551,7 +16551,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "765 Main St East, revere, MA, 06108",
+    "address": "765 Main St East, Revere, MA, 06108",
     "hsId": "21239474830",
     "signals": [
       "hs_long_tenure"
@@ -16641,7 +16641,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Monterrey, Mexico",
+    "address": "Monterrey, MEXICO",
     "hsId": "15890825850",
     "signals": [
       "hs_long_tenure"
@@ -16654,8 +16654,8 @@
     "name": "Vetama - HQ",
     "city": "san luis obispo",
     "st": "CA",
-    "lat": 35.29418,
-    "lng": -120.6719,
+    "lat": 35.29378,
+    "lng": -120.67197,
     "ct": "general",
     "contact": null,
     "email": "danielrobertsnc@gmail.com",
@@ -16671,7 +16671,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "793 Foothill Boulevard, san luis obispo, CA, 93405",
+    "address": "793 Foothill Boulevard, San Luis Obispo, CA, 93405",
     "hsId": "16209737783",
     "signals": [
       "hs_long_tenure"
@@ -16774,8 +16774,8 @@
     "name": "Veterinary United",
     "city": "Clinton Township",
     "st": "MI",
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "ct": "general",
     "contact": null,
     "email": "rhoney@veterinaryunited.com",
@@ -16804,8 +16804,8 @@
     "name": "Veterinary Way Animal Hospital",
     "city": "Albany",
     "st": "GA",
-    "lat": 33.85642,
-    "lng": -79.7314,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "veterinarywayah@gmail.com",
@@ -16851,7 +16851,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "51 Charles St W Kitchener ON N2G 1J6, cambridge, ON",
+    "address": "51 Charles St W Kitchener ON N2G 1J6, Cambridge, ON",
     "hsId": "16072500133",
     "signals": [
       "hs_long_tenure"
@@ -16894,12 +16894,12 @@
     "name": "Vetopia Animal Health",
     "city": "las vegas",
     "st": "TN",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": 40.34468,
+    "lng": -80.05106,
     "ct": "general",
     "contact": null,
     "email": "jerrenh@intelligentdesignflows.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -16911,7 +16911,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1816 Colonial Way Circle, las vegas, TN, 37343",
+    "address": "1816 Colonial Way Circle, Las Vegas, TN, 37343",
     "hsId": "23841559193",
     "signals": [
       "hs_long_tenure"
@@ -16984,12 +16984,12 @@
     "name": "Vetter Pet Care",
     "city": "ottawa",
     "st": "ON",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": 42.23351,
+    "lng": -71.70794,
     "ct": "general",
     "contact": null,
     "email": "natalia.kravech@gmail.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -17001,7 +17001,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "ottawa, ON",
+    "address": "Ottawa, ON",
     "hsId": "32167510313",
     "signals": [
       "hs_long_tenure"
@@ -17031,7 +17031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "orlando, FL",
+    "address": "Orlando, FL",
     "hsId": "6595125640",
     "signals": [
       "hs_long_tenure"
@@ -17061,7 +17061,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "papillion, NE",
+    "address": "Papillion, NE",
     "hsId": "20364473962",
     "signals": [
       "hs_long_tenure"
@@ -17074,12 +17074,12 @@
     "name": "Village Veterinary Care",
     "city": "winkler",
     "st": "MB",
-    "lat": null,
-    "lng": null,
+    "lat": 42.23351,
+    "lng": -71.70794,
     "ct": "general",
     "contact": null,
     "email": "jenesabanman@hotmail.com",
-    "phone": "+1 714-623-7713",
+    "phone": "+13096854707",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -17091,7 +17091,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "winkler, MB",
+    "address": "Winkler, MB",
     "hsId": "32022971811",
     "signals": [
       "hs_long_tenure"
@@ -17134,8 +17134,8 @@
     "name": "Vital Vet Nutrition",
     "city": "miami",
     "st": "FL",
-    "lat": 25.69912,
-    "lng": -80.43751,
+    "lat": 25.69916,
+    "lng": -80.43653,
     "ct": "general",
     "contact": null,
     "email": "dconwaydvm@gmail.com",
@@ -17151,7 +17151,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "15072 sw 72nd street, miami, FL",
+    "address": "15072 sw 72nd street, Miami, FL",
     "hsId": "16067383187",
     "signals": [
       "hs_long_tenure"
@@ -17164,8 +17164,8 @@
     "name": "Vital Veterinary Care",
     "city": "Eagle Mountain",
     "st": "UT",
-    "lat": 40.36144,
-    "lng": -111.97514,
+    "lat": 40.36161,
+    "lng": -111.97498,
     "ct": "general",
     "contact": null,
     "email": "kate.hooley.vet@gmail.com",
@@ -17224,8 +17224,8 @@
     "name": "WE Pet Concierge",
     "city": "Wading River",
     "st": "MO",
-    "lat": 30.33754,
-    "lng": -97.80376,
+    "lat": 30.3352,
+    "lng": -97.80518,
     "ct": "general",
     "contact": null,
     "email": "wepetcarejc@gmail.com",
@@ -17271,7 +17271,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "san juan, PR",
+    "address": "San Juan, PR",
     "hsId": "8742589533",
     "signals": [
       "hs_long_tenure"
@@ -17284,12 +17284,12 @@
     "name": "Walker Veterinary Hospital - Puerto Rico",
     "city": "Trujillo Alto",
     "st": "PR",
-    "lat": null,
-    "lng": null,
+    "lat": 39.28458,
+    "lng": -76.80521,
     "ct": "general",
     "contact": null,
     "email": "walkerdjenniffer@icloud.com",
-    "phone": "+117345292429",
+    "phone": "+16619421489",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -17361,7 +17361,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4195 Fishermans Lane, maiden NC 28650, maiden, NC",
+    "address": "4195 Fishermans Lane, maiden NC 28650, Maiden, NC",
     "hsId": "17085818954",
     "signals": [
       "hs_long_tenure"
@@ -17391,7 +17391,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1 Tobey Road, wareham, MA, 02571",
+    "address": "1 Tobey Road, Wareham, MA, 02571",
     "hsId": "16850270627",
     "signals": [
       "hs_long_tenure"
@@ -17421,7 +17421,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "224 Dawson Rd,, ashburn, VA",
+    "address": "224 Dawson Rd,, Ashburn, VA",
     "hsId": "29946506354",
     "signals": [
       "hs_long_tenure"
@@ -17451,7 +17451,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "north vancouver, BC",
+    "address": "North Vancouver, BC",
     "hsId": "18836035193",
     "signals": [
       "hs_long_tenure"
@@ -17469,7 +17469,7 @@
     "ct": "general",
     "contact": null,
     "email": "theresa.vonalmen@watervilleanimalgroup.com",
-    "phone": "+19167233456",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "Daysmart",
@@ -17511,7 +17511,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2411 Hamburg Turnpike, wayne, NJ, 07470",
+    "address": "2411 Hamburg Turnpike, Wayne, NJ, 07470",
     "hsId": "17063951118",
     "signals": [
       "hs_long_tenure"
@@ -17571,7 +17571,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "110 Commercial Street #2Boston, Massachusetts, 02109, USA, boston, MA",
+    "address": "110 Commercial Street #2Boston, Massachusetts, 02109, USA, Boston, MA",
     "hsId": "14753932102",
     "signals": [
       "hs_long_tenure"
@@ -17631,7 +17631,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6605 Mineral Point Road, madison, WI, 53719",
+    "address": "6605 Mineral Point Road, Madison, WI, 53719",
     "hsId": "6203232591",
     "signals": [
       "hs_long_tenure"
@@ -17649,7 +17649,7 @@
     "ct": "general",
     "contact": null,
     "email": "melissa@whitelakeanimalclinic.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+17153868878",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -17734,8 +17734,8 @@
     "name": "Whitney Veterinary Hospital",
     "city": "chicago",
     "st": "IL",
-    "lat": 34.89901,
-    "lng": -82.2883,
+    "lat": 49.05478,
+    "lng": -122.31942,
     "ct": "general",
     "contact": null,
     "email": "jillbrecklin@yahoo.com",
@@ -17751,7 +17751,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2627 N Knoxville Ave, chicago, IL, 61604",
+    "address": "2627 N Knoxville Ave, Chicago, IL, 61604",
     "hsId": "31936586001",
     "signals": [
       "hs_long_tenure"
@@ -17764,12 +17764,12 @@
     "name": "Wild Flower Traveling Vet",
     "city": "anderson",
     "st": "SC",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "stewart@wildflowertravelingvet.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 514 527 3311",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -17781,7 +17781,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "anderson, SC",
+    "address": "Anderson, SC",
     "hsId": "22998140707",
     "signals": [
       "hs_long_tenure"
@@ -17824,8 +17824,8 @@
     "name": "Wild Things Mobile Veterinary Clinic",
     "city": "Atlanta",
     "st": "GA",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "wildthingsvet@gmail.com",
@@ -17871,7 +17871,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "8590 200 Street, langley, BC, V2Y 2B9",
+    "address": "8590 200 Street, Langley, BC, V2Y 2B9",
     "hsId": "28948333668",
     "signals": [
       "hs_long_tenure"
@@ -17931,7 +17931,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4626 sassafras avenue, windsor, ON, N9G3C9",
+    "address": "4626 sassafras avenue, Windsor, ON, N9G3C9",
     "hsId": "22124816188",
     "signals": [
       "hs_long_tenure"
@@ -17961,7 +17961,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "809 Hubbard Rd, Kelowna, BCV1W 1N5Canada, kelowna, BC",
+    "address": "809 Hubbard Rd, Kelowna, BCV1W 1N5Canada, Kelowna, BC",
     "hsId": "16389828102",
     "signals": [
       "hs_long_tenure"
@@ -17991,7 +17991,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Woodruff Veterinary Services Ltd.PO Box 12Tomahawk, AB  CanadaT0E2H0, evansburg, AB",
+    "address": "Evansburg, AB",
     "hsId": "10763642727",
     "signals": [
       "hs_long_tenure"
@@ -18051,7 +18051,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "889 U.S. 321, lancaster, SC, 29745",
+    "address": "889 U.S. 321, Lancaster, SC, 29745",
     "hsId": "9508622620",
     "signals": [
       "hs_long_tenure"
@@ -18081,7 +18081,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new york, NY",
+    "address": "New York, NY",
     "hsId": "8535388481",
     "signals": [
       "hs_long_tenure"
@@ -18201,7 +18201,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "9106457517",
     "signals": [
       "hs_long_tenure"
@@ -18291,7 +18291,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "9106457437",
     "signals": [
       "hs_long_tenure"
@@ -18321,7 +18321,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "9106763383",
     "signals": [
       "hs_long_tenure"
@@ -18351,7 +18351,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "9106763424",
     "signals": [
       "hs_long_tenure"
@@ -18381,7 +18381,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "9106763590",
     "signals": [
       "hs_long_tenure"
@@ -18441,7 +18441,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106991124",
     "signals": [
       "hs_long_tenure"
@@ -18471,7 +18471,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106991190",
     "signals": [
       "hs_long_tenure"
@@ -18501,7 +18501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106927277",
     "signals": [
       "hs_long_tenure"
@@ -18531,7 +18531,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106990975",
     "signals": [
       "hs_long_tenure"
@@ -18561,7 +18561,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106990383",
     "signals": [
       "hs_long_tenure"
@@ -18591,7 +18591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106926894",
     "signals": [
       "hs_long_tenure"
@@ -18621,7 +18621,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106990643",
     "signals": [
       "hs_long_tenure"
@@ -18651,7 +18651,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106927134",
     "signals": [
       "hs_long_tenure"
@@ -18681,7 +18681,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "NY, NY",
+    "address": "Ny, NY",
     "hsId": "9106990756",
     "signals": [
       "hs_long_tenure"
@@ -18741,7 +18741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "2521 Woodruff Road, charlotte, SC, 29681",
+    "address": "2521 Woodruff Road, Charlotte, SC, 29681",
     "hsId": "11607382957",
     "signals": [
       "hs_long_tenure"
@@ -18754,15 +18754,15 @@
     "name": "[Acharavet] Lyman Vet",
     "city": "greenville",
     "st": "SC",
-    "lat": null,
-    "lng": null,
+    "lat": 56.24677,
+    "lng": -120.81303,
     "ct": "general",
     "contact": null,
     "email": "Dermot",
     "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
-    "pims": "Covetrus Pulse",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -18771,7 +18771,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "greenville, SC",
+    "address": "Greenville, SC",
     "hsId": "28243766089",
     "signals": [
       "hs_long_tenure"
@@ -18801,7 +18801,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "110 North Main Street, Suite B, piedmont, SC, 29662",
+    "address": "110 North Main Street, Suite B, Piedmont, SC, 29662",
     "hsId": "15380142264",
     "signals": [
       "hs_long_tenure"
@@ -18814,15 +18814,15 @@
     "name": "[Acharavet] Riverfront Vet",
     "city": "greenville",
     "st": "SC",
-    "lat": null,
-    "lng": null,
+    "lat": 56.24677,
+    "lng": -120.81303,
     "ct": "general",
     "contact": null,
     "email": "Dermot",
-    "phone": "+12096681807",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -18831,7 +18831,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "greenville, SC",
+    "address": "Greenville, SC",
     "hsId": "28243766078",
     "signals": [
       "hs_long_tenure"
@@ -18861,7 +18861,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1285 South Suber Road, greenville, NC, 29650",
+    "address": "1285 South Suber Road, Greenville, NC, 29650",
     "hsId": "15380000104",
     "signals": [
       "hs_long_tenure"
@@ -18874,8 +18874,8 @@
     "name": "[Acharavet] Southern Trails Vet",
     "city": "greenville",
     "st": "SC",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "Manager@southerntrailsvet.com",
@@ -18891,7 +18891,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "greenville, SC",
+    "address": "Greenville, SC",
     "hsId": "20999141893",
     "signals": [
       "hs_long_tenure"
@@ -18921,7 +18921,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "413 West Stone Avenue, greenville, SC, 29609",
+    "address": "413 West Stone Avenue, Greenville, SC, 29609",
     "hsId": "15380142480",
     "signals": [
       "hs_long_tenure"
@@ -18934,15 +18934,15 @@
     "name": "[Acharavet] WAG Vet",
     "city": "greenville",
     "st": "SC",
-    "lat": 49.15894,
-    "lng": -122.66718,
+    "lat": 56.24677,
+    "lng": -120.81303,
     "ct": "general",
     "contact": null,
     "email": "Dermot",
-    "phone": "+16043713301",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
-    "pims": "Impromed Infinity",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -18951,7 +18951,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "greenville, SC",
+    "address": "Greenville, SC",
     "hsId": "28243766053",
     "signals": [
       "hs_long_tenure"
@@ -18964,8 +18964,8 @@
     "name": "[Acharavet] Wills Park Vet",
     "city": "Alpharetta,",
     "st": "SC",
-    "lat": 28.77956,
-    "lng": -81.27403,
+    "lat": 28.78046,
+    "lng": -81.27341,
     "ct": "general",
     "contact": null,
     "email": "lamendolare@riversidevetsc.com",
@@ -19029,7 +19029,7 @@
     "ct": "general",
     "contact": null,
     "email": "chad@aprilvets.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 714-623-7713",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -19114,15 +19114,15 @@
     "name": "[AprilVets] Fredericton",
     "city": "Fredericton",
     "st": "ON",
-    "lat": 43.10849,
-    "lng": -79.07186,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "chad@aprilvets.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 866 209 1001",
     "features": "Tails",
     "dgtId": null,
-    "pims": "AVImark",
+    "pims": "ClientTrax;None - paper files",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -19144,12 +19144,12 @@
     "name": "[AscendVets] Auburndale Veterinary Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 34.23706,
-    "lng": -85.15072,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "(920) 898-4227",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -19174,12 +19174,12 @@
     "name": "[AscendVets] Lakeland Animal Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": null,
-    "lng": null,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "+117345292429",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -19204,12 +19204,12 @@
     "name": "[AscendVets] Main Street Veterinary Center",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 49.15894,
-    "lng": -122.66718,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "+16043713301",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -19234,12 +19234,12 @@
     "name": "[AscendVets] Parkway Veterinary Emergency Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": null,
-    "lng": null,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "+117345292429",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -19264,12 +19264,12 @@
     "name": "[AscendVets] Plant City Animal Hospital",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 34.23706,
-    "lng": -85.15072,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "jim@ascendvets.com",
-    "phone": "(920) 898-4227",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -19294,15 +19294,15 @@
     "name": "[BLVD] - Ravenswood",
     "city": "chicago",
     "st": "IL",
-    "lat": 34.17561,
-    "lng": -82.02417,
+    "lat": 35.78829,
+    "lng": -78.78121,
     "ct": "general",
     "contact": null,
     "email": "ashli@blvd.vet",
-    "phone": "+1 714-623-7713",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -19311,7 +19311,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "123 cool st., chicago, IL",
+    "address": "123 cool st., Chicago, IL",
     "hsId": "32305237356",
     "signals": [
       "hs_long_tenure"
@@ -19324,15 +19324,15 @@
     "name": "[BLVD] BLVD Cat",
     "city": "IL",
     "st": "IL",
-    "lat": null,
-    "lng": null,
+    "lat": 35.78829,
+    "lng": -78.78121,
     "ct": "general",
     "contact": null,
     "email": "ashli@blvd.vet",
-    "phone": "+1 928-505-6369",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -19341,7 +19341,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "IL, IL",
+    "address": "Il, IL",
     "hsId": "32316671145",
     "signals": [
       "hs_long_tenure"
@@ -19371,7 +19371,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "510 W Diversey Pkwy, chicago, IL, 60614",
+    "address": "510 W Diversey Pkwy, Chicago, IL, 60614",
     "hsId": "32316670831",
     "signals": [
       "hs_long_tenure"
@@ -19384,15 +19384,15 @@
     "name": "[BLVD] Logan Square",
     "city": "IL",
     "st": "IL",
-    "lat": null,
-    "lng": null,
+    "lat": 35.78829,
+    "lng": -78.78121,
     "ct": "general",
     "contact": null,
     "email": "ashli@blvd.vet",
     "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
-    "pims": "AVImark",
+    "pims": "None",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -19401,7 +19401,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "IL, IL",
+    "address": "Il, IL",
     "hsId": "32316671104",
     "signals": [
       "hs_long_tenure"
@@ -19414,15 +19414,15 @@
     "name": "[BLVD] River North",
     "city": "IL",
     "st": "IL",
-    "lat": null,
-    "lng": null,
+    "lat": 35.78829,
+    "lng": -78.78121,
     "ct": "general",
     "contact": null,
     "email": "ashli@blvd.vet",
-    "phone": "+117345292429",
+    "phone": "+12096681807",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -19431,7 +19431,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "IL, IL",
+    "address": "Il, IL",
     "hsId": "32316671124",
     "signals": [
       "hs_long_tenure"
@@ -19581,7 +19581,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "6200 Variel Ave. Suite D, orange, CA, 91367",
+    "address": "6200 Variel Ave. Suite D, Orange, CA, 91367",
     "hsId": "26597137707",
     "signals": [
       "hs_long_tenure"
@@ -19821,7 +19821,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5201 Virginia Beach Boulevard, virginia beach, VA, 23462",
+    "address": "5201 Virginia Beach Boulevard, Virginia Beach, VA, 23462",
     "hsId": "15843992494",
     "signals": [
       "hs_long_tenure"
@@ -19851,7 +19851,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "airdrie, AB",
+    "address": "Airdrie, AB",
     "hsId": "10032371803",
     "signals": [
       "hs_long_tenure"
@@ -19894,8 +19894,8 @@
     "name": "[Galaxy Vets] Newfoundland Veterinary Walk-In & Urgent Care",
     "city": "Halifax",
     "st": "NL",
-    "lat": 39.36449,
-    "lng": -94.37069,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "sarah.h@galaxyvets.com",
@@ -19924,15 +19924,15 @@
     "name": "[Galaxy Vets] Pearland de novo (Houston Veterinary Urgent Care & Walk In)",
     "city": "Halifax",
     "st": "TX",
-    "lat": 34.8168,
-    "lng": -82.27119,
+    "lat": 42.02508,
+    "lng": -88.13529,
     "ct": "general",
     "contact": null,
     "email": "sarah.h@galaxyvets.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
-    "pims": "Daysmart",
+    "pims": "None",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -20001,7 +20001,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "airdrie, AB",
+    "address": "Airdrie, AB",
     "hsId": "19098214412",
     "signals": [
       "hs_long_tenure"
@@ -20031,7 +20031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "594 11th Street, toronto, ON, N4N 1T5",
+    "address": "594 11th Street, Toronto, ON, N4N 1T5",
     "hsId": "18459480230",
     "signals": [
       "hs_long_tenure"
@@ -20091,7 +20091,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "553 Lake Drive Road, tyler, MN, 53534",
+    "address": "553 Lake Drive Road, Tyler, MN, 53534",
     "hsId": "28975844007",
     "signals": [
       "hs_long_tenure"
@@ -20104,8 +20104,8 @@
     "name": "[Heritage Vet] Muleshoe Animal Clinic",
     "city": "dallas",
     "st": "TX",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": 33.13504,
+    "lng": -96.82112,
     "ct": "general",
     "contact": null,
     "email": "dr.steele@heritage.vet",
@@ -20121,7 +20121,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1430 U.S. 84, dallas, TX, 79347",
+    "address": "1430 U.S. 84, Dallas, TX, 79347",
     "hsId": "28975843982",
     "signals": [
       "hs_long_tenure"
@@ -20134,8 +20134,8 @@
     "name": "[Heritage Vet] St. Anna Veterinary Clinic",
     "city": "fond du lac",
     "st": "WI",
-    "lat": 39.28433,
-    "lng": -76.80565,
+    "lat": 33.13504,
+    "lng": -96.82112,
     "ct": "general",
     "contact": null,
     "email": "jkestell@heritage.vet",
@@ -20151,7 +20151,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "W2132 Hwy Q, fond du lac, WI, 53020",
+    "address": "W2132 Hwy Q, Fond Du Lac, WI, 53020",
     "hsId": "29511579824",
     "signals": [
       "hs_long_tenure"
@@ -20164,12 +20164,12 @@
     "name": "[Heritage Veterinary Partners] Animal Medical Centers | Hartley (AMC)",
     "city": "Spencer",
     "st": "IA",
-    "lat": null,
-    "lng": null,
+    "lat": 45.55861,
+    "lng": -73.68181,
     "ct": "general",
     "contact": null,
     "email": "david@digitail.io",
-    "phone": "+117345292429",
+    "phone": "+1 810-655-6060",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -20254,12 +20254,12 @@
     "name": "[Hometown Veterinary Partners] Canton",
     "city": "Canton",
     "st": "MA",
-    "lat": null,
-    "lng": null,
+    "lat": 38.18293,
+    "lng": -84.55964,
     "ct": "general",
     "contact": null,
     "email": "RebeccaLussier@hometownvetpartners.com",
-    "phone": "+12096681807",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -20314,12 +20314,12 @@
     "name": "[Hometown Veterinary Partners] Crestwood",
     "city": "St. Paul",
     "st": "MN",
-    "lat": 19.32077,
-    "lng": -99.15147,
+    "lat": 49.15894,
+    "lng": -122.66718,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "+1 828-628-3557",
+    "phone": "+16043713301",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -20344,15 +20344,15 @@
     "name": "[Hometown Veterinary Partners] Gurnee, IL",
     "city": "Gurnee",
     "st": "IL",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": 49.15894,
+    "lng": -122.66718,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "+1 806-272-3061",
+    "phone": "+16043713301",
     "features": "Tails",
     "dgtId": null,
-    "pims": "LogiVet",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -20391,7 +20391,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "dayton, MN",
+    "address": "Dayton, MN",
     "hsId": "15549479732",
     "signals": [
       "hs_long_tenure"
@@ -20404,12 +20404,12 @@
     "name": "[Hometown Veterinary Partners] Orland Park",
     "city": "Orland Park",
     "st": "IL",
-    "lat": 43.03012,
-    "lng": -75.0024,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "valerie.eisenbart@hometownvetpartners.com",
-    "phone": "+19167233456",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -20434,12 +20434,12 @@
     "name": "[Hometown Veterinary Partners] Sarasota, FL",
     "city": "Sarasota",
     "st": "FL",
-    "lat": 41.80533,
-    "lng": -88.33138,
+    "lat": 49.15894,
+    "lng": -122.66718,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "+1 810-655-6060",
+    "phone": "+16043713301",
     "features": "Tails",
     "dgtId": null,
     "pims": "AVImark",
@@ -20469,7 +20469,7 @@
     "ct": "general",
     "contact": null,
     "email": "CindyMakofski@hometownvetpartners.com",
-    "phone": "+1 714-623-7713",
+    "phone": "+1 888-280-2221",
     "features": "Tails",
     "dgtId": null,
     "pims": "Cornerstone",
@@ -20511,7 +20511,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "5707 Hadley Ave. N, dayton, MN",
+    "address": "5707 Hadley Ave. N, Dayton, MN",
     "hsId": "18111935846",
     "signals": [
       "hs_long_tenure"
@@ -20524,15 +20524,15 @@
     "name": "[Hometown Veterinary Partners] St Louis, MO",
     "city": "St Louis",
     "st": "MO",
-    "lat": null,
-    "lng": null,
+    "lat": 49.15894,
+    "lng": -122.66718,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "+12096681807",
+    "phone": "+16043713301",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -20554,15 +20554,15 @@
     "name": "[Hometown Veterinary Partners] St. Paul",
     "city": "St. Paul",
     "st": "MN",
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": 49.15894,
+    "lng": -122.66718,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "+1 864-292-6433",
+    "phone": "+16043713301",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "AVImark",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -20584,12 +20584,12 @@
     "name": "[Hometown Veterinary Partners] St. Petersburg",
     "city": "St. Petersburg",
     "st": "FL",
-    "lat": null,
-    "lng": null,
+    "lat": 38.18293,
+    "lng": -84.55964,
     "ct": "general",
     "contact": null,
     "email": "tiagregorio@hometownvetpartners.com",
-    "phone": "(920) 898-4227",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -20631,7 +20631,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "aubrey, TX",
+    "address": "Aubrey, TX",
     "hsId": "7027932741",
     "signals": [
       "hs_long_tenure"
@@ -20764,8 +20764,8 @@
     "name": "[Paw Haven] Animal Hospital Lakeland",
     "city": "Winter Haven",
     "st": "FL",
-    "lat": null,
-    "lng": null,
+    "lat": 56.24677,
+    "lng": -120.81303,
     "ct": "general",
     "contact": null,
     "email": "drorange@pawhavenvet.com",
@@ -20811,7 +20811,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4212 CORTEZ RD, WEST, mountain view, MA, 34210",
+    "address": "4212 CORTEZ RD, WEST, Mountain View, MA, 34210",
     "hsId": "9733700918",
     "signals": [
       "hs_long_tenure"
@@ -20841,7 +20841,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "LA, CA",
+    "address": "La, CA",
     "hsId": "21303899925",
     "signals": [
       "hs_long_tenure"
@@ -20854,8 +20854,8 @@
     "name": "[Rarebreed] Malvern Veterinary Hospital",
     "city": "Malvern",
     "st": "PA",
-    "lat": null,
-    "lng": null,
+    "lat": 52.83151,
+    "lng": -119.28058,
     "ct": "general",
     "contact": null,
     "email": "stephen.sciacchitano@gmail.com",
@@ -20901,7 +20901,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "1183 Massachusetts Avenue, belmont, MA, 02476",
+    "address": "1183 Massachusetts Avenue, Belmont, MA, 02476",
     "hsId": "9785296757",
     "signals": [
       "hs_long_tenure"
@@ -20931,7 +20931,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "163 Ulster Avenue, saugerties, NY, 12477",
+    "address": "163 Ulster Avenue, Saugerties, NY, 12477",
     "hsId": "8407612433",
     "signals": [
       "hs_long_tenure"
@@ -20991,7 +20991,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "24950 Spring Ridge Drive, los angeles, CA, 77386",
+    "address": "24950 Spring Ridge Drive, Los Angeles, CA, 77386",
     "hsId": "1823598723",
     "signals": [
       "hs_long_tenure"
@@ -21064,8 +21064,8 @@
     "name": "[VOTS] Diamond Springs",
     "city": "Davie",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "daniel@vots.vet",
@@ -21094,8 +21094,8 @@
     "name": "[VOTS] Indian River",
     "city": "Davie",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "daniel@vots.vet",
@@ -21124,8 +21124,8 @@
     "name": "[VOTS] Moyock",
     "city": "Davie",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "daniel@vots.vet",
@@ -21154,8 +21154,8 @@
     "name": "[VOTS] Oyster Point",
     "city": "Davie",
     "st": "FL",
-    "lat": 30.32359,
-    "lng": -81.4374,
+    "lat": 30.32461,
+    "lng": -81.40722,
     "ct": "general",
     "contact": null,
     "email": "wootenbrandee@icloud.com",
@@ -21201,7 +21201,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "california",
+    "address": "CALIFORNIA",
     "hsId": "15715419672",
     "signals": [
       "hs_long_tenure"
@@ -21231,7 +21231,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "233 Berry St, brooklyn, NY, 11249",
+    "address": "233 Berry St, Brooklyn, NY, 11249",
     "hsId": "15547087720",
     "signals": [
       "hs_long_tenure"
@@ -21291,7 +21291,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "639 New York 112, medford, NY, 11772",
+    "address": "639 New York 112, Medford, NY, 11772",
     "hsId": "14993105064",
     "signals": [
       "hs_long_tenure"
@@ -21351,7 +21351,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "22720 Portola Drive, carmel valley, CA, 93908",
+    "address": "22720 Portola Drive, Carmel Valley, CA, 93908",
     "hsId": "17914637829",
     "signals": [
       "hs_long_tenure"
@@ -21362,17 +21362,17 @@
   {
     "id": 44,
     "name": "[VPP] Toro Park Animal Hospital -CA",
-    "city": "Peterborough",
-    "st": "ON",
-    "lat": null,
-    "lng": null,
+    "city": "springfield",
+    "st": "VA",
+    "lat": 38.76941,
+    "lng": -77.11283,
     "ct": "general",
     "contact": null,
-    "email": "arunavetlk@gmail.com",
-    "phone": "+1 864-292-6433",
+    "email": "denise@harmonyvetva.com",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "Daysmart",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -21381,7 +21381,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "22720 Portola Drive, carmel valley, california, 93908",
+    "address": "22720 Portola Drive, Carmel Valley, CALIFORNIA, 93908",
     "hsId": "34196723847",
     "signals": [
       "hs_long_tenure"
@@ -21392,17 +21392,17 @@
   {
     "id": 44,
     "name": "[VPP] Veterinary Practice Partners",
-    "city": "olympia",
-    "st": "WA",
-    "lat": 41.78494,
-    "lng": -88.14773,
+    "city": "north charleston",
+    "st": "QC",
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
-    "email": "doc@happycat.vet",
-    "phone": "+1 864-292-6433",
+    "email": "beatrice.martel.mv@gmail.com",
+    "phone": "+18198211161",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "LogiVet",
     "notes": "Location unknown",
     "verify": false,
     "approx": false,
@@ -21411,7 +21411,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "601 S. Henderson Road Suite 155, King of Prussia, pennsylvania, 19406",
+    "address": "601 S. Henderson Road Suite 155, King Of Prussia, PENNSYLVANIA, 19406",
     "hsId": "34209877337",
     "signals": [
       "hs_long_tenure"
@@ -21441,7 +21441,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "601 South Henderson Road, King of Prussia, PA, 19406",
+    "address": "601 South Henderson Road, King Of Prussia, PA, 19406",
     "hsId": "6418633055",
     "signals": [
       "hs_long_tenure"
@@ -21471,7 +21471,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15920555339",
     "signals": [
       "hs_long_tenure"
@@ -21501,7 +21501,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15921838363",
     "signals": [
       "hs_long_tenure"
@@ -21531,7 +21531,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15921907892",
     "signals": [
       "hs_long_tenure"
@@ -21544,12 +21544,12 @@
     "name": "[VU] Kitty Clinic",
     "city": "clinton township",
     "st": "MI",
-    "lat": null,
-    "lng": null,
+    "lat": 38.04641,
+    "lng": -84.49704,
     "ct": "general",
     "contact": null,
     "email": "rhoney@veterinaryunited.com",
-    "phone": "+1 514 527 3311",
+    "phone": "+18144741504",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -21561,7 +21561,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township, MI",
+    "address": "Clinton Township, MI",
     "hsId": "31622914679",
     "signals": [
       "hs_long_tenure"
@@ -21591,7 +21591,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15920143685",
     "signals": [
       "hs_long_tenure"
@@ -21621,7 +21621,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "51336 Romeo Plank Road, port huron, MI, 48042",
+    "address": "51336 Romeo Plank Road, Port Huron, MI, 48042",
     "hsId": "8017705551",
     "signals": [
       "hs_long_tenure"
@@ -21651,7 +21651,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15921838174",
     "signals": [
       "hs_long_tenure"
@@ -21681,7 +21681,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15921838204",
     "signals": [
       "hs_long_tenure"
@@ -21694,12 +21694,12 @@
     "name": "[VU] Thomson Animal Clinic",
     "city": "Saint Claire Shores",
     "st": "MI",
-    "lat": 42.02508,
-    "lng": -88.13529,
+    "lat": 43.10849,
+    "lng": -79.07186,
     "ct": "general",
     "contact": null,
     "email": "dmeske@veterinaryunited.com",
-    "phone": "+1 514 735 2711",
+    "phone": "+1 828-628-3557",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -21741,7 +21741,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township",
+    "address": "Clinton Township",
     "hsId": "15920555187",
     "signals": [
       "hs_long_tenure"
@@ -21771,7 +21771,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "clinton township, MI",
+    "address": "Clinton Township, MI",
     "hsId": "18943743505",
     "signals": [
       "hs_long_tenure"
@@ -21801,7 +21801,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "4806 Center St #b, bellevue, WA, 98409",
+    "address": "4806 Center St #b, Bellevue, WA, 98409",
     "hsId": "3400461288",
     "signals": [
       "hs_long_tenure"
@@ -21831,7 +21831,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "bellevue, WA",
+    "address": "Bellevue, WA",
     "hsId": "11588947079",
     "signals": [
       "hs_long_tenure"
@@ -21879,7 +21879,7 @@
     "ct": "general",
     "contact": null,
     "email": "marion@vetalia.vet",
-    "phone": "+19167233456",
+    "phone": "+1 928-505-6369",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -21891,7 +21891,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "MX, Mexico",
+    "address": "Mx, MEXICO",
     "hsId": "30934836324",
     "signals": [
       "hs_long_tenure"
@@ -21921,7 +21921,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Mexico City, Mexico",
+    "address": "Mexico City, MEXICO",
     "hsId": "33604428035",
     "signals": [
       "hs_long_tenure"
@@ -21981,7 +21981,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Av. Coyoacan 1052, Del Valle Centro, Benito Juarez, 03100, Benito Juarez",
+    "address": "Av. Coyoacan 1052, Del Valle Centro, Benito Juarez, 03100, BENITO JUAREZ",
     "hsId": "21628307230",
     "signals": [
       "hs_long_tenure"
@@ -22011,7 +22011,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Parques de la Herradura, Naucalpan De Juárez",
+    "address": "Parques De La Herradura, NAUCALPAN DE JUÁREZ",
     "hsId": "18644644379",
     "signals": [
       "hs_long_tenure"
@@ -22041,7 +22041,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Monterrey, Mexico",
+    "address": "Monterrey, MEXICO",
     "hsId": "33604488775",
     "signals": [
       "hs_long_tenure"
@@ -22071,7 +22071,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Polanco, Ciudad De México",
+    "address": "Polanco, CIUDAD DE MÉXICO",
     "hsId": "15891019415",
     "signals": [
       "hs_long_tenure"
@@ -22089,7 +22089,7 @@
     "ct": "general",
     "contact": null,
     "email": "maria@vetalia.vet",
-    "phone": "+1 928-505-6369",
+    "phone": "+1 864-292-6433",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -22101,7 +22101,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Mexico City, Mexico",
+    "address": "Mexico City, MEXICO",
     "hsId": "29946508805",
     "signals": [
       "hs_long_tenure"
@@ -22114,8 +22114,8 @@
     "name": "[Vetama] Central Coast Veterinary Services",
     "city": "San Luis Obispo",
     "st": "CA",
-    "lat": 35.25219,
-    "lng": -120.67053,
+    "lat": 35.25256,
+    "lng": -120.66975,
     "ct": "general",
     "contact": null,
     "email": "admin@saltmarshvet.com",
@@ -22191,7 +22191,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "793 Foothill Boulevard, san jose, OR, 93405",
+    "address": "793 Foothill Boulevard, San Jose, OR, 93405",
     "hsId": "15892614048",
     "signals": [
       "hs_long_tenure"
@@ -22701,7 +22701,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "new york city, NY",
+    "address": "New York City, NY",
     "hsId": "18334195556",
     "signals": [
       "hs_long_tenure"
@@ -22791,7 +22791,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "171 Tremont Street Melrose, MA 02176, MA",
+    "address": "171 Tremont Street Melrose, Ma 02176, MA",
     "hsId": "21610799490",
     "signals": [
       "hs_long_tenure"
@@ -22941,7 +22941,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "175 Silver Lane, eugene, OR, 97404",
+    "address": "175 Silver Lane, Eugene, OR, 97404",
     "hsId": "4462722682",
     "signals": [
       "hs_long_tenure"
@@ -23031,7 +23031,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Timisoara, Romania",
+    "address": "Timisoara, ROMANIA",
     "hsId": "927295790",
     "signals": [
       "hs_long_tenure"
@@ -23121,7 +23121,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "stirling, ON",
+    "address": "Stirling, ON",
     "hsId": "9929603212",
     "signals": [
       "hs_long_tenure"
@@ -23181,7 +23181,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "iasi, iasi",
+    "address": "Iasi, IASI",
     "hsId": "26132738866",
     "signals": [
       "hs_long_tenure"
@@ -23211,7 +23211,7 @@
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Timisoara, Romania",
+    "address": "Timisoara, ROMANIA",
     "hsId": "927704710",
     "signals": [
       "hs_long_tenure"
