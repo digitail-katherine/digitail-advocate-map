@@ -65,6 +65,16 @@ US_STATES    = set("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD 
                    "SD TN TX UT VT VA WA WV WI WY DC".split())
 CA_PROVINCES = set("AB BC MB NB NL NS NT NU ON PE QC SK YT".split())
 
+def is_excluded_non_clinic(props: dict) -> bool:
+    """Return True for obvious non-veterinary records."""
+    name   = (props.get("name")   or "").lower()
+    domain = (props.get("domain") or "").lower()
+    if any(f in name for f in EXCLUDE_NAME_FRAGMENTS):
+        return True
+    if any(d in domain for d in EXCLUDE_DOMAINS):
+        return True
+    return False
+
 # ── HubSpot ───────────────────────────────────────────────────────────────────
 
 HS_PROPS = [
@@ -92,20 +102,16 @@ def is_negative(props: dict) -> bool:
 def hs_signals(props: dict) -> list[str]:
     sigs, media = [], (props.get("media_testimonials_dsp") or "").lower()
     notes = (props.get("internal_comments") or "").lower()
-    if any(k in media for k in ["article","video","testimonial","dsp","6 figure","6-figure"]):
+    # Testimonial/article/video — strong affirmative signal
+    if any(k in media for k in ["article","video","testimonial"]):
         sigs.append("hs_testimonial")
+    # DSP — financial commitment signal
     if any(k in media for k in ["dsp","6 figure","6-figure"]):
         sigs.append("hs_dsp")
-    try:
-        created = props.get("createdate","")
-        if created:
-            dt = datetime.fromisoformat(created.replace("Z","+00:00"))
-            if (datetime.now(timezone.utc) - dt).days > 365:
-                sigs.append("hs_long_tenure")
-    except Exception:
-        pass
+    # Positive team note — must have no negative keywords present
     if any(k in notes for k in POSITIVE_KW) and not any(k in notes for k in NEGATIVE_KW):
         sigs.append("hs_positive_note")
+    # NOTE: hs_long_tenure intentionally excluded — not a happiness indicator
     return list(set(sigs))
 
 def build_address(props: dict) -> str:
@@ -192,35 +198,50 @@ def hs_get_closedwon_company_ids() -> set:
 
 def hs_get_customers() -> list[dict]:
     """
-    Pull all HubSpot companies that are either:
-      (a) flagged as hs_current_customer = true, or
-      (b) associated with a closed-won deal
+    Pull all HubSpot companies that are customers, trying multiple filters:
+      (a) lifecyclestage = customer  (most reliable standard property)
+      (b) hs_current_customer = true (Customer Success Workspace)
+      (c) associated with a closed-won deal
     Returns deduplicated list.
     """
     closed_won_ids = hs_get_closedwon_company_ids()
     results_by_id, after = {}, None
 
-    # Pull current customers
-    while True:
-        payload = {
-            "filterGroups": [{"filters": [{"propertyName": "hs_current_customer", "operator": "EQ", "value": "true"}]}],
-            "properties": HS_PROPS,
-            "limit": 100,
-        }
-        if after:
-            payload["after"] = after
-        r = requests.post(
-            "https://api.hubapi.com/crm/v3/objects/companies/search",
-            json=payload, headers=hs_h(), timeout=15,
-        )
-        if r.status_code != 200:
-            break
-        data = r.json()
-        for c in data.get("results", []):
-            results_by_id[c["id"]] = c
-        after = data.get("paging", {}).get("next", {}).get("after")
-        if not after:
-            break
+    # Try multiple customer filters — use whichever returns results
+    customer_filters = [
+        {"propertyName": "lifecyclestage",    "operator": "EQ", "value": "customer"},
+        {"propertyName": "hs_current_customer","operator": "EQ", "value": "true"},
+    ]
+    for filt in customer_filters:
+        after = None
+        batch = {}
+        while True:
+            payload = {
+                "filterGroups": [{"filters": [filt]}],
+                "properties": HS_PROPS,
+                "limit": 100,
+            }
+            if after:
+                payload["after"] = after
+            r = requests.post(
+                "https://api.hubapi.com/crm/v3/objects/companies/search",
+                json=payload, headers=hs_h(), timeout=15,
+            )
+            if r.status_code != 200:
+                print(f"  HubSpot filter '{filt['propertyName']}' error: {r.status_code}")
+                break
+            data = r.json()
+            for c in data.get("results", []):
+                batch[c["id"]] = c
+            after = data.get("paging", {}).get("next", {}).get("after")
+            if not after:
+                break
+        if batch:
+            results_by_id.update(batch)
+            print(f"  HubSpot filter '{filt['propertyName']}': {len(batch)} companies")
+            break  # Found results — no need to try next filter
+        else:
+            print(f"  HubSpot filter '{filt['propertyName']}': 0 results, trying next…")
 
     # Fetch closed-won companies not already in results
     new_ids = closed_won_ids - set(results_by_id.keys())
@@ -317,6 +338,43 @@ def _ic_extract(convo, headers, results):
         key = name.lower().strip()
         if key not in results:
             results[key] = {"signal":"intercom_csat","quote":remark[:300] if remark else None,"company":name}
+
+def fetch_intercom_negative() -> set:
+    """
+    Return set of lowercased company names with BAD Intercom CSAT (1-2★)
+    in the last 90 days. These companies are excluded from the map regardless
+    of other positive signals.
+    """
+    if not IC_TOKEN:
+        return set()
+    headers = {"Authorization": f"Bearer {IC_TOKEN}", "Accept": "application/json", "Intercom-Version": "2.10"}
+    bad_companies = set()
+    cutoff = int((datetime.now(timezone.utc) - timedelta(days=90)).timestamp())
+    for field, value in [("conversation_rating.rating","terrible"),
+                         ("conversation_rating.rating","bad"),
+                         ("rating","terrible"),("rating","bad")]:
+        try:
+            r = requests.post(
+                "https://api.intercom.io/conversations/search",
+                json={"query":{"operator":"AND","value":[
+                    {"field":field,"operator":"=","value":value},
+                ]},"pagination":{"per_page":100}},
+                headers=headers, timeout=15,
+            )
+            if r.status_code == 200:
+                convos = r.json().get("conversations",[])
+                if convos:
+                    tmp = {}
+                    for c in convos:
+                        _ic_extract(c, headers, tmp)
+                    for k in tmp:
+                        bad_companies.add(k)
+                    break
+        except Exception:
+            continue
+    if bad_companies:
+        print(f"  Intercom negative signals: {len(bad_companies)} companies flagged (excluded from map)")
+    return bad_companies
 
 # ── Review scrapers ───────────────────────────────────────────────────────────
 
@@ -577,7 +635,8 @@ def main():
 
     # ── Pull all signals ───────────────────────────────────────────────────────
     print("── Intercom ───────────────────────────────────────────────")
-    ic_sigs = fetch_intercom_csat()
+    ic_sigs     = fetch_intercom_csat()
+    ic_negative = fetch_intercom_negative()
 
     print("\n── Review sites ───────────────────────────────────────────")
     all_reviews = (scrape_capterra() + scrape_g2() +
@@ -612,13 +671,27 @@ def main():
         if not name:
             continue
 
+        # Non-clinic exclusion
+        if is_excluded_non_clinic(props):
+            print(f"  ✗ Excluded (non-clinic): {name}")
+            continue
+
         # North America only
         if not is_north_america(props):
             continue
 
-        # Hard exclude — negative flags
+        # Hard exclude — negative HubSpot flags
         if is_negative(props):
-            print(f"  ✗ Excluded (negative): {name}")
+            print(f"  ✗ Excluded (negative HubSpot note): {name}")
+            continue
+
+        # Hard exclude — recent bad Intercom CSAT (last 90 days)
+        if name.lower().strip() in ic_negative:
+            print(f"  ✗ Excluded (recent bad CSAT): {name}")
+            continue
+        # Also check fuzzy match against negative set
+        if any(names_match(name, bad) for bad in ic_negative):
+            print(f"  ✗ Excluded (recent bad CSAT match): {name}")
             continue
 
         # Collect signals
