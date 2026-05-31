@@ -35,19 +35,20 @@ DATA_FILE     = "advocates.json"
 # ── Signals ───────────────────────────────────────────────────────────────────
 # hs_long_tenure intentionally excluded — not a happiness signal
 SIGNAL_LABELS = {
-    "hs_testimonial":    "Published a case study or article with Digitail",
-    "hs_dsp":            "Runs 6-figure payment processing through Digitail",
-    "hs_positive_note":  "Noted as a happy customer by our team",
-    "intercom_csat":     "Gave Digitail support a 5-star rating",
-    "capterra_positive": "Left a positive review on Capterra",
-    "g2_positive":       "Left a positive review on G2",
-    "softwareadvice":    "Left a positive review on Software Advice",
-    "getapp":            "Left a positive review on GetApp",
-    "reddit_mention":    "Mentioned Digitail positively on Reddit",
-    "google_review":     "Left a positive Google review",
-    "google_mention":    "Mentioned positively in a public web search",
-    "facebook_review":   "Left a positive Facebook review",
-    "manual":            "Manually verified by the Digitail team",
+    "hs_testimonial":    "Case Study / Article Published",
+    "hs_dsp":            "DSP Payment Processing",
+    "hs_positive_note":  "Team Verified Happy",
+    "hs_long_tenure":    "Active Customer 12+ Months",
+    "intercom_csat":     "5★ Support Rating",
+    "capterra_positive": "Capterra Review",
+    "g2_positive":       "G2 Review",
+    "softwareadvice":    "Software Advice Review",
+    "getapp":            "GetApp Review",
+    "reddit_mention":    "Reddit Mention",
+    "google_review":     "Google Review",
+    "google_mention":    "Web Mention",
+    "facebook_review":   "Facebook Review",
+    "manual":            "Manually Verified",
 }
 
 NEGATIVE_KW = [
@@ -151,6 +152,15 @@ def hs_signals(props: dict) -> list:
         sigs.append("hs_dsp")
     if any(k in notes for k in POSITIVE_KW) and not any(k in notes for k in NEGATIVE_KW):
         sigs.append("hs_positive_note")
+    # Tenure — valid signal, displayed transparently so reps know the basis
+    try:
+        created = props.get("createdate", "")
+        if created:
+            dt = datetime.fromisoformat(created.replace("Z", "+00:00"))
+            if (datetime.now(timezone.utc) - dt).days > 365:
+                sigs.append("hs_long_tenure")
+    except Exception:
+        pass
     return list(set(sigs))
 
 def build_address(props: dict) -> str:
@@ -585,15 +595,10 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # Clean hs_long_tenure from all existing records
-    cleaned = 0
+    # Clean any bad coordinates from existing records (outside NA bounds)
     for rec in existing:
-        sigs = rec.get("signals", [])
-        if "hs_long_tenure" in sigs:
-            rec["signals"] = [s for s in sigs if s != "hs_long_tenure"]
-            cleaned += 1
-    if cleaned:
-        print(f"Cleaned hs_long_tenure from {cleaned} existing records")
+        if rec.get("lat") and not in_na_bounds(rec["lat"], rec.get("lng", 0)):
+            rec["lat"], rec["lng"] = None, None
 
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
@@ -651,7 +656,7 @@ def main():
             print(f"  ✗ Bad CSAT: {name}")
             continue
 
-        # Collect positive signals (excluding tenure)
+        # Collect positive signals
         signals = hs_signals(props)
         for ic_key in ic_sigs:
             if names_match(name, ic_key):
@@ -664,15 +669,12 @@ def main():
                 signals.append(ext["signal"])
                 if ext.get("text"):
                     matched_quotes.append(ext["text"])
-        signals = [s for s in set(signals) if s != "hs_long_tenure"]
+        signals = [s for s in set(signals) if s]
 
-        # Must have at least 1 real affirmative signal
+        # Must have at least 1 signal
         if not signals:
             excluded_no_signal += 1
             continue
-
-        # Find or create record
-        rec = by_hs_id.get(hs_id)
         if not rec:
             for k, v in by_name.items():
                 if names_match(name, k):
@@ -699,10 +701,10 @@ def main():
             if v:
                 rec[dest] = v
 
-        # Require contact info
+        # Require contact info — flag but don't exclude
         if not has_contact_info(props, rec):
             excluded_no_contact += 1
-            continue
+            # Still include — just won't have email/phone in popup
 
         # Address + geocode with NA bounds validation
         new_addr = hs_address_with_fallback(hs_id, props)
