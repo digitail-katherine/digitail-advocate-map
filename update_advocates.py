@@ -65,8 +65,10 @@ POSITIVE_KW = [
 MOBILE_TERMS = [
     "mobile", "house call", "housecall", "traveling", "on wheels", "doorstep",
     "home visit", "home vet", "at home", "at-home", "concierge", "on-site",
-    "onsite", "road", "wagon", "roaming", "wandervet", "doggie motion",
+    "onsite", "wagon", "roaming", "wandervet", "doggie motion",
     "paws on the move", "fetch the vet", "rideau river", "clinic nomad",
+    "on the road", "road vet", "road trip", "rolling",
+    # NOTE: "road" alone intentionally excluded — matches street names like "Hefner Road Animal Hospital"
 ]
 TELE_TERMS = ["tele", "virtual", "online", "remote"]
 
