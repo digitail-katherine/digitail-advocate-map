@@ -576,7 +576,90 @@ def fetch_facebook_reviews() -> list:
         print(f"  Facebook failed: {e}")
     return results
 
-# ── Name matching ─────────────────────────────────────────────────────────────
+# ── PIMS aliases for review matching ─────────────────────────────────────────
+# Keys = lowercase fragments to search for in review text
+# Values = fragments to match against HubSpot current_pims field
+PIMS_MATCH = {
+    "avimark":      ["avimark"],
+    "cornerstone":  ["cornerstone"],
+    "impromed":     ["impromed"],
+    "intravet":     ["intravet"],
+    "ezyvet":       ["ezyvet", "ezy vet"],
+    "dvmax":        ["dvmax"],
+    "pulse":        ["covetrus pulse", "pulse"],
+    "advantage":    ["advantage"],
+    "neo":          ["neo vet", "neovet"],
+    "rhapsody":     ["rhapsody"],
+    "hippomanager":  ["hippo", "hipposoft"],
+    "v-tech":       ["v-tech", "vtech platinum"],
+    "logivel":      ["logivel"],
+}
+
+# ── Review → HubSpot matching ─────────────────────────────────────────────────
+
+def build_review_matches(all_external: list, hs_customers: list) -> dict:
+    """
+    For each external review/mention, find the best-matching HubSpot company
+    using a multi-signal scoring approach:
+      +10  reviewer name matches company name
+      +8   company name appears in review text
+      +6   PIMS mentioned in review matches HubSpot current_pims
+      +4   city mentioned in review matches company city
+      +2   state match
+
+    Only links with score ≥ 8 are accepted to avoid false positives.
+    Returns dict: hs_id → list of matched external records.
+    """
+    matches = {}
+    unmatched = 0
+
+    for ext in all_external:
+        text     = (ext.get("text")     or "").lower()
+        reviewer = (ext.get("reviewer") or ext.get("author") or "").lower()
+        pims_in_review = ext.get("pims", "")  # may be set for Capterra records
+
+        best_id, best_score = None, 0
+
+        for customer in hs_customers:
+            props   = customer.get("properties", {})
+            hs_id   = str(customer["id"])
+            hs_name = (props.get("name")         or "").lower().strip()
+            hs_city = (props.get("city")         or "").lower().strip()
+            hs_st   = (props.get("state")        or "").lower().strip()
+            hs_pims = (props.get("current_pims") or "").lower().strip()
+            score   = 0
+
+            # Name match
+            if reviewer and names_match(hs_name, reviewer): score += 10
+            if hs_name  and hs_name in text:                score += 8
+            if reviewer and len(reviewer) > 4 and reviewer in hs_name: score += 8
+
+            # PIMS match — both from review text and from pre-known pims field
+            combined_pims_text = text + " " + pims_in_review.lower()
+            for pims_key, aliases in PIMS_MATCH.items():
+                if pims_key in hs_pims:
+                    if any(a in combined_pims_text for a in aliases):
+                        score += 6
+                        break
+
+            # Location match
+            if hs_city and len(hs_city) > 3 and hs_city in text: score += 4
+            if hs_st   and len(hs_st) > 1   and hs_st   in text: score += 2
+
+            if score > best_score:
+                best_score = score
+                best_id    = hs_id
+
+        if best_id and best_score >= 8:
+            matches.setdefault(best_id, []).append(ext)
+        else:
+            unmatched += 1
+
+    matched = sum(len(v) for v in matches.values())
+    print(f"  Review matching: {matched} reviews linked to HubSpot companies, {unmatched} unmatched")
+    return matches
+
+
 def names_match(a: str, b: str) -> bool:
     a, b = a.lower().strip(), b.lower().strip()
     if not a or not b:
@@ -614,6 +697,17 @@ def main():
     all_reviews = (scrape_capterra() + scrape_g2() +
                    scrape_software_advice() + scrape_getapp() + scrape_trustpilot())
 
+    # Enrich review records with known pims data from existing Capterra entries
+    pims_by_reviewer = {
+        a["contact"].lower(): a.get("pims","")
+        for a in existing
+        if a.get("src","") == "Capterra" and a.get("contact") and a.get("pims")
+    }
+    for rev in all_reviews:
+        reviewer = (rev.get("reviewer") or "").lower()
+        if reviewer in pims_by_reviewer:
+            rev["pims"] = pims_by_reviewer[reviewer]
+
     print("\n── Reddit ─────────────────────────────────────────────────")
     reddit_mentions = fetch_reddit_mentions()
 
@@ -628,6 +722,10 @@ def main():
 
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
+
+    # Pre-build review → company match index
+    print("\n── Matching reviews to HubSpot companies ──────────────────")
+    review_matches = build_review_matches(all_external, hs_customers)
 
     # ── Process each company ───────────────────────────────────────────────────
     new_advocates = []
