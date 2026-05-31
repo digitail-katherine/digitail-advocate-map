@@ -280,6 +280,19 @@ def hs_get_customers() -> list:
     return all_cos
 
 # ── Geocoding ─────────────────────────────────────────────────────────────────
+def coord_matches_country(lat: float, lng: float, country: str) -> bool:
+    """
+    Check if coordinates are plausible for the company's country.
+    Catches cases like Canadian company geocoded to Kansas.
+    """
+    cl = (country or "").lower()
+    if cl in {"canada", "ca"}:
+        # All inhabited Canadian territory: lat > 41.5, lng < -52
+        return lat > 41.5 and lng < -52.0
+    if cl in {"mexico", "mx"}:
+        return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
+    return True  # US and unknown — rely on NA bounds check only
+
 def geocode(address: str, country: str = ""):
     if not address_is_geocodable(address):
         return None, None
@@ -576,7 +589,23 @@ def fetch_facebook_reviews() -> list:
         print(f"  Facebook failed: {e}")
     return results
 
-# ── PIMS aliases for review matching ─────────────────────────────────────────
+# ── Manual review → HubSpot matches ──────────────────────────────────────────
+# Capterra only gives first name + initial, so automatic matching can't work.
+# These are manually confirmed. Key = reviewer name as it appears in advocates.json
+# Value = HubSpot company ID to attach the signal and quote to.
+MANUAL_REVIEW_MATCHES = {
+    # Confirmed by team
+    "christopher m., ceo":  "21507806557",  # Christopher Martin → Hefner Road Animal Hospital
+    "heidi t.":             "18856205671",  # Heidi Traylor → Covina Animal Hospital
+    "heather w.":           "6250277934",   # Heather Neidt → Embrace Animal Hospital
+    "donna r.":             "5649619997",   # Donna Robinson → Cimarron Canyon Mobile Vet
+    "anne s.":              "13566081857",  # Dr. Anna George → Cruisin' Vet, Happy Pet (AZ)
+    "emily p.":             "30735787553",  # → Oceana Veterinary Clinic (MI)
+    "tienne g.":            "4462711240",   # → Hoffman Veterinary Clinic (IntraVet → Digitail)
+    # Still unconfirmed — add below when identified:
+    # "alicia b.":          "HUBSPOT_ID",
+    # "kaitlynn s.":        "HUBSPOT_ID",
+}
 # Keys = lowercase fragments to search for in review text
 # Values = fragments to match against HubSpot current_pims field
 PIMS_MATCH = {
@@ -723,9 +752,20 @@ def main():
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
 
-    # Pre-build review → company match index
+    # Pre-build review → company match index (scoring engine)
     print("\n── Matching reviews to HubSpot companies ──────────────────")
     review_matches = build_review_matches(all_external, hs_customers)
+
+    # Apply manual matches — override or supplement scoring engine results
+    for ext in all_external:
+        reviewer_key = (ext.get("reviewer") or ext.get("contact") or "").lower().strip()
+        # Try both full reviewer string and last-name-initial variants
+        for key, hs_id in MANUAL_REVIEW_MATCHES.items():
+            if key in reviewer_key or reviewer_key in key or names_match(reviewer_key, key):
+                review_matches.setdefault(hs_id, [])
+                if ext not in review_matches[hs_id]:
+                    review_matches[hs_id].append(ext)
+                    print(f"  Manual match: '{reviewer_key}' → HubSpot {hs_id}")
 
     # ── Process each company ───────────────────────────────────────────────────
     new_advocates = []
@@ -820,10 +860,19 @@ def main():
                 if rec.get("lat") and not in_na_bounds(rec["lat"], rec.get("lng",0)):
                     rec["lat"], rec["lng"] = None, None
 
-        # Also validate any existing coordinates
-        if rec.get("lat") and not in_na_bounds(rec["lat"], rec.get("lng", 0)):
-            print(f"  Clearing invalid coords for {name}: {rec['lat']},{rec['lng']}")
-            rec["lat"], rec["lng"] = None, None
+        # Validate existing coordinates against known country
+        if rec.get("lat") and rec.get("lng"):
+            country_field = (props.get("country") or "").strip()
+            if not in_na_bounds(rec["lat"], rec["lng"]) or \
+               not coord_matches_country(rec["lat"], rec["lng"], country_field):
+                print(f"  Clearing bad coords for {name}: {rec['lat']},{rec['lng']} (country: {country_field})")
+                rec["lat"], rec["lng"] = None, None
+                # Force re-geocode with country context
+                if new_addr:
+                    lat, lng = geocode(new_addr, country_field)
+                    if lat:
+                        rec["lat"], rec["lng"] = lat, lng
+                        rec["approx"] = False
 
         if "manual" in rec.get("signals", []):
             signals.append("manual")
