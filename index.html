@@ -1,595 +1,301 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <title>Digitail Advocate Map 🐾</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-
 <style>
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F0F4F8;color:#1E293B}
-
 #hdr{height:52px;background:linear-gradient(135deg,#0A5F7A,#0B7D9E);display:flex;align-items:center;padding:0 14px;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);position:fixed;top:0;left:0;right:0;z-index:2000}
-
 .hl{color:#fff;font-size:15px;font-weight:700}.hs{color:rgba(255,255,255,.6);font-size:10px;margin-top:1px}
-
 .hdv{width:1px;height:20px;background:rgba(255,255,255,.2)}
-
 .sw{margin-left:auto;position:relative}
-
 .sw svg{position:absolute;left:8px;top:50%;transform:translateY(-50%);pointer-events:none}
-
 #si{padding:6px 10px 6px 27px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.13);color:#fff;font-size:12px;width:190px;outline:none}
-
 #si::placeholder{color:rgba(255,255,255,.5)}#si:focus{background:rgba(255,255,255,.22)}
-
 #layout{position:fixed;top:52px;left:0;right:0;bottom:0;display:flex}
-
 #sb{width:244px;flex-shrink:0;background:#fff;border-right:1px solid #E2E8F0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:10px}
-
 #main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-
 #map{width:100%;height:calc(100vh - 52px - 230px)}
-
 #lw{height:230px;flex-shrink:0;display:flex;flex-direction:column;border-top:2px solid #E2E8F0;background:#fff}
-
 .sc{background:linear-gradient(135deg,#EFF9FC,#E0F2FE);border:1px solid #BAE6FD;border-radius:9px;padding:9px;text-align:center}
-
 .sn{font-size:26px;font-weight:800;color:#0A5F7A;line-height:1}.sl{font-size:10px;color:#64748B;margin-top:3px}.ss{font-size:9.5px;color:#94A3B8;margin-top:1px}
-
 .fh{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
-
 .fh h3{font-size:9.5px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.7px}
-
 .fh button{font-size:9.5px;color:#0A5F7A;background:none;border:none;cursor:pointer;font-weight:500}.fh button:hover{text-decoration:underline}
-
 .cr{display:flex;align-items:center;gap:5px;padding:2.5px 0;cursor:pointer;font-size:11.5px;color:#374151;user-select:none}.cr:hover{color:#0A5F7A}
-
 .cr input{width:13px;height:13px;accent-color:#0A5F7A;flex-shrink:0;cursor:pointer}
-
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}.cc{font-size:9.5px;color:#94A3B8;margin-left:auto}
-
 .nb{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:5px;padding:6px 8px;font-size:10px;color:#64748B;line-height:1.5}
-
 .nf-box{background:#FFF7ED;border:1px solid #FED7AA;border-radius:9px;padding:9px}
-
 .nf-box h3{font-size:10px;font-weight:700;color:#92400E;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-
 .nf-row{display:flex;gap:5px}
-
 #nfInput{flex:1;padding:5px 8px;border:1px solid #E2E8F0;border-radius:5px;font-size:11px;outline:none;color:#1E293B}
-
 #nfInput:focus{border-color:#0A5F7A}
-
 #nfBtn{padding:5px 9px;background:#0A5F7A;color:#fff;border:none;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer}
-
 #nfBtn:hover{background:#0B7D9E}
-
 #nfResults{margin-top:7px;display:none;flex-direction:column;gap:4px}
-
 .nfr{display:flex;align-items:flex-start;gap:6px;padding:5px 7px;background:#fff;border-radius:5px;border:1px solid #E2E8F0;cursor:pointer}.nfr:hover{background:#F0F9FF;border-color:#BAE6FD}
-
 .nfr-rank{font-size:11px;font-weight:800;color:#0A5F7A;min-width:16px}
-
 .nfr-body{flex:1;min-width:0}.nfr-name{font-size:11px;font-weight:600;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nfr-dist{font-size:9.5px;color:#64748B}
-
 #nfStatus{font-size:10px;color:#94A3B8;margin-top:5px}
-
 #lhd{display:flex;align-items:center;gap:7px;padding:6px 10px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;flex-shrink:0}
-
 #lhd h2{font-size:11px;font-weight:700}#lct{background:#0A5F7A;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:9px}.ln{font-size:9.5px;color:#94A3B8}
-
 #ls{overflow-y:auto;flex:1}
-
 #tbl{width:100%;border-collapse:collapse;font-size:11px}
-
 #tbl thead th{position:sticky;top:0;background:#F8FAFC;padding:4px 8px;text-align:left;font-size:9px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #E2E8F0;white-space:nowrap;cursor:pointer;user-select:none}
-
 #tbl thead th:hover{background:#EFF6FF;color:#0A5F7A}
-
 #tbl tbody tr{border-bottom:1px solid #F1F5F9;cursor:pointer}#tbl tbody tr:hover{background:#F0F9FF}
-
 #tbl td{padding:4px 8px;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
-
 .tn{font-weight:600;color:#0F172A}.tl{color:#64748B;font-size:10.5px}.tnl{color:#CBD5E1;font-style:italic;font-size:10.5px}
-
 .te a{color:#0A5F7A;text-decoration:none}.te a:hover{text-decoration:underline}
-
 .bg{display:inline-block;padding:1px 5px;border-radius:7px;font-size:9.5px;font-weight:600;white-space:nowrap}
-
 .leaflet-popup-content-wrapper{border-radius:12px!important;padding:0!important;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.18)!important}
-
 .leaflet-popup-content{margin:0!important;min-width:260px;max-width:310px}
-
 .ph{padding:10px 12px 8px;background:linear-gradient(135deg,#0A5F7A,#0B7D9E);color:#fff}
-
 .pn{font-size:13px;font-weight:700;line-height:1.2}.pl{font-size:10px;opacity:.75;margin-top:2px}
-
 .pty{display:inline-block;margin-top:4px;font-size:9.5px;padding:2px 6px;border-radius:7px;background:rgba(255,255,255,.18);font-weight:500}
-
 .pb{padding:9px 12px 10px}
-
 .pr{display:flex;gap:5px;margin-bottom:3px;font-size:11px;align-items:flex-start}
-
 .plb{font-weight:700;color:#64748B;min-width:56px;flex-shrink:0;font-size:9px;text-transform:uppercase;letter-spacing:.3px;padding-top:1px}
-
 .pv{color:#1E293B;line-height:1.4;word-break:break-word}.pv a{color:#0A5F7A;text-decoration:none}.pv a:hover{text-decoration:underline}
-
 .pq{margin-top:6px;padding:6px 8px;background:#F0F9FF;border-left:3px solid #0A5F7A;border-radius:0 5px 5px 0;font-style:italic;font-size:10.5px;color:#475569;line-height:1.5}
-
 .pmx{margin-top:4px;padding:4px 7px;background:#F8FAFC;border-radius:5px;font-size:10px;color:#64748B}
-
 .pwn{margin-top:4px;padding:4px 7px;background:#FEF3C7;border-radius:5px;font-size:10px;color:#92400E;font-weight:600}
-
 .leaflet-tooltip{background:#fff!important;border:1px solid #E2E8F0!important;border-radius:7px!important;box-shadow:0 2px 10px rgba(0,0,0,.12)!important;padding:6px 8px!important;font-size:11.5px!important;font-family:-apple-system,sans-serif!important;color:#1E293B!important}
-
 .leaflet-tooltip::before{display:none!important}
-
 #loadMsg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px 28px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.12);font-size:13px;color:#64748B;z-index:10}
-
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:2px}
-
 </style>
-
 </head>
-
 <body>
-
 <div id="hdr">
-
   <span style="font-size:20px">🐾</span>
-
   <div><div class="hl">Digitail Advocate Map</div><div class="hs">Customer reference tool · Internal use only</div></div>
-
   <div class="hdv"></div>
-
   <div class="sw">
-
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-
     <input type="text" id="si" placeholder="Search clinic, city, contact…">
-
   </div>
-
 </div>
-
 <div id="layout">
-
   <div id="sb">
-
     <div class="sc"><div class="sn" id="vc">…</div><div class="sl">advocates visible</div><div class="ss" id="vs"></div></div>
-
     <div class="nf-box">
-
       <h3>📍 Find Nearest Advocate</h3>
-
       <div class="nf-row"><input type="text" id="nfInput" placeholder="Any address or city…"><button id="nfBtn" onclick="findNearest()">Find</button></div>
-
       <div id="nfStatus"></div><div id="nfResults"></div>
-
     </div>
-
     <div><div class="fh"><h3>Clinic Type</h3><button onclick="tAll(true)">All</button></div><div id="tf"></div></div>
-
+    <div><div class="fh"><h3>Practice Format</h3><button onclick="fmtAll(true)">All</button></div><div id="fmtf"></div></div>
     <div><div class="fh"><h3>PIMS Migrated From</h3><button onclick="pAll(true)">All</button></div><div id="pf"></div></div>
-
     <div><div class="fh"><h3>Source</h3><button onclick="sAll(true)">All</button></div><div id="srcf"></div></div>
-
     <div class="nb">⚠️ <b style="color:#92400E">Verify</b> = confirm with team before outreach.</div>
-
   </div>
-
   <div id="main">
-
     <div id="map"><div id="loadMsg">Loading advocate data…</div></div>
-
     <div id="lw">
-
       <div id="lhd"><h2>Advocate List</h2><span id="lct">…</span><span class="ln">· Click row to fly to pin · click header to sort</span></div>
-
       <div id="ls"><table id="tbl">
-
         <thead><tr>
-
           <th onclick="srt('name')">Clinic ↕</th><th onclick="srt('loc')">Location ↕</th>
-
           <th>Address</th><th onclick="srt('ct')">Type ↕</th><th onclick="srt('contact')">Contact ↕</th>
-
           <th>Email</th><th>Features</th><th onclick="srt('pims')">PIMS From ↕</th>
-
           <th onclick="srt('src')">Source ↕</th><th>Flags</th>
-
         </tr></thead>
-
         <tbody id="tb"></tbody>
-
       </table></div>
-
     </div>
-
   </div>
-
 </div>
-
 <script>
-
 const CT={
-
   general:    {l:'General practice / mixed animal', c:'#10B981'},
-
   smallAnimal:{l:'Small animal / companion animal',  c:'#3B82F6'},
-
   emergency:  {l:'Emergency & specialty',            c:'#F59E0B'},
-
   equine:     {l:'Equine / large animal',            c:'#8B5CF6'},
-
   corporate:  {l:'Corporate group / multi-location', c:'#EF4444'}
-
+};
+const FMT={
+  bnm:         {l:'🏥 Brick & Mortar', c:'#0369A1'},
+  mobile:      {l:'🚐 Mobile / House Call', c:'#7C3AED'},
+  telemedicine:{l:'💻 Telemedicine', c:'#0891B2'},
 };
 
-let D=[],selT,pimsV,selP,srcV,selS,q='',sc='name',sa=true,ml=[];
+// ── Runtime state (populated after JSON loads) ────────────────────────────────
+let D=[],selT,selFmt,pimsV,selP,srcV,selS,q='',sc='name',sa=true,ml=[];
 
+// ── Map ───────────────────────────────────────────────────────────────────────
 const map=L.map('map',{zoomControl:true}).setView([44,-95],4);
-
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-
   attribution:'© OpenStreetMap, © CARTO',subdomains:'abcd',maxZoom:19
-
 }).addTo(map);
 
+// ── Boot ──────────────────────────────────────────────────────────────────────
 function boot(data){
-
   document.getElementById('loadMsg')?.remove();
-
   D=data;
-
-  selT=new Set(Object.keys(CT));
-
-  pimsV=[...new Set(D.flatMap(a=>a.pims?a.pims.split(',').map(p=>p.trim()):[]))].filter(Boolean).sort();
-
-  selP=new Set(pimsV);
-
-  srcV=[...new Set(D.map(sg))].sort();
-
-  selS=new Set(srcV);
-
+  selT   = new Set(Object.keys(CT));
+  selFmt = new Set(Object.keys(FMT));
+  pimsV  = [...new Set(D.flatMap(a=>a.pims?a.pims.split(',').map(p=>p.trim()):[]))].filter(Boolean).sort();
+  selP   = new Set(pimsV);
+  srcV   = [...new Set(D.map(sg))].sort();
+  selS   = new Set(srcV);
   buildF(); render();
-
 }
 
 fetch('advocates.json')
-
   .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-
   .then(boot)
-
   .catch(err=>{
-
     document.getElementById('loadMsg').innerHTML=
-
       `<b style="color:#92400E">Could not load advocates.json</b><br>${err.message}<br><br>`+
-
       `<small>Local testing? Run: <code>python -m http.server 8000</code></small>`;
-
   });
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function sg(a){
-
   if((a.src||'').includes('Capterra')) return 'Capterra';
-
   if((a.src||'').includes('Intercom')) return 'Intercom CSAT';
-
   return 'Happy Customers';
-
 }
-
 function haversine(la1,lo1,la2,lo2){
-
   const R=3958.8,r=Math.PI/180,dLa=(la2-la1)*r,dLo=(lo2-lo1)*r;
-
   const a=Math.sin(dLa/2)**2+Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dLo/2)**2;
-
   return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-
 }
 
+// ── Nearest finder ────────────────────────────────────────────────────────────
 async function findNearest(){
-
   const inp=document.getElementById('nfInput').value.trim();
-
   if(!inp)return;
-
   const st=document.getElementById('nfStatus'),res=document.getElementById('nfResults');
-
   res.style.display='none';res.innerHTML='';st.textContent='🔍 Geocoding…';
-
   try{
-
     const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(inp)}&limit=1`,{headers:{'Accept-Language':'en'}});
-
     const d=await r.json();
-
     if(!d.length){st.textContent='Address not found — try a different format.';return;}
-
     const{lat,lon,display_name}=d[0];
-
     const sorted=D.filter(a=>a.lat&&a.lng).map(a=>({a,d:haversine(+lat,+lon,a.lat,a.lng)})).sort((a,b)=>a.d-b.d);
-
     st.textContent='Nearest to: '+display_name.split(',').slice(0,3).join(',');
-
     res.style.display='flex';
-
     sorted.slice(0,5).forEach(({a,d},i)=>{
-
       const div=document.createElement('div');div.className='nfr';
-
       div.innerHTML=`<span class="nfr-rank">#${i+1}</span><div class="nfr-body"><div class="nfr-name" title="${a.name}">${a.name}</div><div class="nfr-dist">${a.city||''}${a.st?', '+a.st:''} · <b>${Math.round(d)} mi</b>${a.contact?' · '+a.contact:''}</div></div>`;
-
       div.onclick=()=>fly(a.id);res.appendChild(div);
-
     });
-
     if(window._nfM)map.removeLayer(window._nfM);
-
     window._nfM=L.circleMarker([+lat,+lon],{radius:8,color:'#F59E0B',fillColor:'#FEF3C7',fillOpacity:1,weight:2}).addTo(map).bindPopup(`<b>Search location</b><br>${inp}`).openPopup();
-
     map.setView([+lat,+lon],7,{animate:true});
-
   }catch(e){st.textContent='Geocoding failed — check your connection.';}
-
 }
-
 document.getElementById('nfInput').addEventListener('keydown',e=>{if(e.key==='Enter')findNearest();});
 
+// ── Filters ───────────────────────────────────────────────────────────────────
 function buildF(){
-
   document.getElementById('tf').innerHTML=Object.entries(CT).map(([k,v])=>{
-
     const n=D.filter(a=>a.ct===k).length;
-
     return `<label class="cr"><input type="checkbox" data-t="${k}" checked onchange="tChg(this)"><span class="dot" style="background:${v.c}"></span>${v.l}<span class="cc">${n}</span></label>`;
-
   }).join('');
-
+  document.getElementById('fmtf').innerHTML=Object.entries(FMT).map(([k,v])=>{
+    const n=D.filter(a=>(a.format||'bnm')===k).length;
+    return `<label class="cr"><input type="checkbox" data-f="${k}" checked onchange="fmtChg(this)">${v.l}<span class="cc">${n}</span></label>`;
+  }).join('');
   document.getElementById('pf').innerHTML=pimsV.length?pimsV.map(p=>{
-
     const n=D.filter(a=>a.pims&&a.pims.includes(p)).length;
-
     return `<label class="cr"><input type="checkbox" data-p="${p}" checked onchange="pChg(this)">${p}<span class="cc">${n}</span></label>`;
-
   }).join(''):'<div style="font-size:11px;color:#94A3B8">No PIMS data</div>';
-
   document.getElementById('srcf').innerHTML=srcV.map(s=>{
-
     const n=D.filter(a=>sg(a)===s).length;
-
     return `<label class="cr"><input type="checkbox" data-s="${s}" checked onchange="sChg(this)">${s}<span class="cc">${n}</span></label>`;
-
   }).join('');
-
 }
-
 function tChg(el){el.checked?selT.add(el.dataset.t):selT.delete(el.dataset.t);render();}
-
+function fmtChg(el){el.checked?selFmt.add(el.dataset.f):selFmt.delete(el.dataset.f);render();}
 function pChg(el){el.checked?selP.add(el.dataset.p):selP.delete(el.dataset.p);render();}
-
 function sChg(el){el.checked?selS.add(el.dataset.s):selS.delete(el.dataset.s);render();}
-
 function tAll(v){selT=v?new Set(Object.keys(CT)):new Set();document.querySelectorAll('[data-t]').forEach(c=>c.checked=v);render();}
-
+function fmtAll(v){selFmt=v?new Set(Object.keys(FMT)):new Set();document.querySelectorAll('[data-f]').forEach(c=>c.checked=v);render();}
 function pAll(v){selP=v?new Set(pimsV):new Set();document.querySelectorAll('[data-p]').forEach(c=>c.checked=v);render();}
-
 function sAll(v){selS=v?new Set(srcV):new Set();document.querySelectorAll('[data-s]').forEach(c=>c.checked=v);render();}
 
 function filt(){
-
   return D.filter(a=>{
-
-    if(!selT.has(a.ct))return false;
-
+    if(!selT.has(a.ct)) return false;
+    const fmt=a.format||'bnm'; if(!selFmt.has(fmt)) return false;
     if(a.pims){const ps=a.pims.split(',').map(p=>p.trim());if(!ps.some(p=>selP.has(p)))return false;}
-
-    if(!selS.has(sg(a)))return false;
-
+    if(!selS.has(sg(a))) return false;
     if(q){const s=q.toLowerCase();if(!([a.name,a.city,a.st,a.contact,a.pm,a.address].some(f=>(f||'').toLowerCase().includes(s))))return false;}
-
     return true;
-
   });
-
 }
 
+// ── Icons & popups ────────────────────────────────────────────────────────────
 function mkIcon(ct,verify){
-
   const c=CT[ct]?.c||'#999';
-
   const inner=verify?`<text x="14" y="20" text-anchor="middle" fill="white" font-size="12" font-weight="900">!</text>`:`<circle cx="14" cy="14" r="5" fill="white" opacity=".85"/>`;
-
   return L.divIcon({html:`<svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.5C7.6 1.5 2.5 6.6 2.5 13C2.5 22.2 14 34.5 14 34.5S25.5 22.2 25.5 13C25.5 6.6 20.4 1.5 14 1.5Z" fill="${c}" stroke="rgba(0,0,0,.15)" stroke-width="1"/>${inner}</svg>`,className:'',iconSize:[28,36],iconAnchor:[14,36],popupAnchor:[0,-38]});
-
 }
-
 function mkPop(a){
-
   const loc=[a.city,a.st].filter(Boolean).join(', '),tl=CT[a.ct]?.l||a.ct;
-
   const ai=a.aiAdopter?`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-left:6px">🤖 ${a.aiAdopter}</span>`:'';
-
   const row=(l,v,st='')=>v?`<div class="pr"><span class="plb">${l}</span><span class="pv"${st?` style="${st}"`:''}>${v}</span></div>`:'';
-
   let b=row('Contact',a.contact)+row('PM/LVT',a.pm)+row('Address',a.address);
-
   b+=a.email?`<div class="pr"><span class="plb">Email</span><span class="pv"><a href="mailto:${a.email}">${a.email}</a></span></div>`:'';
-
   b+=row('Phone',a.phone);
-
   b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
-
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
-
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
-
-  // Signal badges
-
-  const SIGNAL_LABELS={
-
-    hs_testimonial:   '📰 Has published a testimonial or article with Digitail',
-
-    hs_dsp:           '💳 Actively processes payments through Digitail (6-figure)',
-
-    hs_positive_note: '👍 Noted as a happy customer by the team in HubSpot',
-
-    intercom_csat:    '⭐ Gave a 5★ rating in Intercom support',
-
-    capterra_positive:'🌟 Left a 4–5★ review on Capterra',
-
-    g2_positive:      '🌟 Left a 4–5★ review on G2',
-
-    softwareadvice:   '🌟 Left a review on Software Advice',
-
-    getapp:           '🌟 Left a review on GetApp',
-
-    reddit_mention:   '💬 Mentioned positively on Reddit',
-
-    google_review:    '⭐ Left a Google review',
-
-    google_mention:   '🔍 Mentioned positively in a public web search',
-
-    facebook_review:  '👍 Left a Facebook review',
-
-    manual:           '✅ Manually verified by the team',
-
-  };
-
-  const sigs = (a.signals || []);
-
-  const sigSection = sigs.length
-
-    ? `<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
-
-         <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Why this clinic is on the map</div>
-
-         <div style="display:flex;flex-direction:column;gap:4px">
-
-           ${sigs.map(s=>`<span style="font-size:11.5px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
-
-         </div>
-
-       </div>`
-
-    : `<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">
-
-         ⚠️ No verified signal on file — do not use as reference
-
-       </div>`;
-
+  // Why section — leads the popup body
+  const SIGNAL_LABELS={hs_testimonial:'📰 Article/testimonial on file',hs_dsp:'💳 Active DSP processing',hs_positive_note:'👍 Positive team note in HubSpot',intercom_csat:'⭐ 5★ Intercom CSAT',capterra_positive:'🌟 Capterra review (4–5★)',g2_positive:'🌟 G2 review (4–5★)',softwareadvice:'🌟 Software Advice review',getapp:'🌟 GetApp review',reddit_mention:'💬 Reddit mention',google_review:'⭐ Google review',google_mention:'🔍 Found on web',facebook_review:'👍 Facebook review',manual:'✅ Manually verified by team'};
+  const sigs=(a.signals||[]);
+  const sigSection=sigs.length
+    ?`<div style="margin:0 0 8px 0;padding:8px 10px;background:#F0FFF4;border-left:3px solid #16A34A;border-radius:0 6px 6px 0"><div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px">Why this clinic is on the map</div><div style="display:flex;flex-direction:column;gap:3px">${sigs.map(s=>`<span style="font-size:11px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}</div></div>`
+    :`<div style="margin:0 0 8px 0;padding:7px 9px;background:#FEF9C3;border-left:3px solid #CA8A04;border-radius:0 6px 6px 0;font-size:10.5px;color:#854D0E">⚠️ Signal source unknown — verify before using as reference</div>`;
   return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div class="pty">${tl}</div></div>
-
-<div class="pb">${sigSection}${b}
-
-${a.quote?`<div class="pq">"${a.quote}"</div>`:''}
-
-${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}
-
-${a.notes?`<div class="pmx" style="background:#F0FFF4;color:#166534">ℹ️ ${a.notes}</div>`:''}
-
-${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
-
+<div class="pb">${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.notes?`<div class="pmx" style="background:#F0FFF4;color:#166534">ℹ️ ${a.notes}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
 }
 
+// ── Render ────────────────────────────────────────────────────────────────────
 function rMap(f){
-
   ml.forEach(m=>map.removeLayer(m));ml=[];
-
   f.filter(a=>a.lat&&a.lng).forEach(a=>{
-
     const loc=[a.city,a.st].filter(Boolean).join(', ');
-
     const m=L.marker([a.lat,a.lng],{icon:mkIcon(a.ct,a.verify)});
-
     m.bindTooltip(`<strong>${a.name}</strong>${loc?'<br>'+loc:''}${a.contact?'<br><span style="color:#64748B;font-size:11px">'+a.contact+'</span>':''}`,{direction:'top',offset:[0,-38]});
-
     m.bindPopup(mkPop(a),{maxWidth:315});
-
     m.addTo(map);m._aid=a.id;ml.push(m);
-
   });
-
 }
-
 function rList(f){
-
   const s=[...f].sort((a,b)=>{
-
     const v={name:[a.name,b.name],loc:[a.st||'',b.st||''],ct:[a.ct,b.ct],contact:[a.contact||'',b.contact||''],pims:[a.pims||'',b.pims||''],src:[sg(a),sg(b)]};
-
     const[va,vb]=v[sc]||[a.name,b.name];return sa?va.localeCompare(vb):vb.localeCompare(va);
-
   });
-
   document.getElementById('tb').innerHTML=s.map(a=>{
-
     const loc=a.city?`${a.city}${a.st?', '+a.st:''}`:'',c=CT[a.ct]?.c||'#999',ts=(CT[a.ct]?.l||a.ct).split(' ')[0];
-
     let flags='';
-
     if(a.verify)flags+=`<span class="bg" style="background:#FEF3C7;color:#92400E;margin-right:2px">⚠️Verify</span>`;
-
     if(a.aiAdopter)flags+=`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-right:2px">🤖</span>`;
-
     if(!a.lat)flags+=`<span class="bg" style="background:#F1F5F9;color:#94A3B8">No pin</span>`;
-
     return `<tr onclick="fly(${a.id})"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
-
   }).join('');
-
 }
-
 function fly(id){
-
   const a=D.find(x=>x.id===id);
-
-  if(a&&a.lat&&a.lng){
-
-    map.setView([a.lat,a.lng],13,{animate:true});
-
-    const m=ml.find(x=>x._aid===id);
-
-    if(m)setTimeout(()=>m.openPopup(),350);
-
-  }
-
+  if(a&&a.lat&&a.lng){map.setView([a.lat,a.lng],13,{animate:true});const m=ml.find(x=>x._aid===id);if(m)setTimeout(()=>m.openPopup(),350);}
 }
-
 function srt(col){sc===col?sa=!sa:(sc=col,sa=true);rList(filt());}
-
 function render(){
-
   const f=filt(),wc=f.filter(a=>a.lat&&a.lng).length;
-
   rMap(f);rList(f);
-
   document.getElementById('vc').textContent=f.length;
-
   document.getElementById('vs').textContent=wc+' pinned on map';
-
   document.getElementById('lct').textContent=f.length;
-
 }
-
 document.getElementById('si').addEventListener('input',e=>{q=e.target.value.trim();render();});
-
 </script>
-
 </body>
-
 </html>
