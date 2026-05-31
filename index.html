@@ -169,27 +169,40 @@ function haversine(la1,lo1,la2,lo2){
 
 // ── Nearest finder ────────────────────────────────────────────────────────────
 async function findNearest(){
-  const inp=document.getElementById('nfInput').value.trim();
-  if(!inp)return;
-  const st=document.getElementById('nfStatus'),res=document.getElementById('nfResults');
-  res.style.display='none';res.innerHTML='';st.textContent='🔍 Geocoding…';
+  const input=document.getElementById('nfInput').value.trim();
+  if(!input) return;
+  const statusEl=document.getElementById('nfStatus');
+  const resultsEl=document.getElementById('nfResults');
+  resultsEl.style.display='none'; resultsEl.innerHTML='';
+  statusEl.textContent='🔍 Geocoding…';
   try{
-    const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(inp)}&limit=1`,{headers:{'Accept-Language':'en'}});
-    const d=await r.json();
-    if(!d.length){st.textContent='Address not found — try a different format.';return;}
-    const{lat,lon,display_name}=d[0];
-    const sorted=D.filter(a=>a.lat&&a.lng).map(a=>({a,d:haversine(+lat,+lon,a.lat,a.lng)})).sort((a,b)=>a.d-b.d);
-    st.textContent='Nearest to: '+display_name.split(',').slice(0,3).join(',');
-    res.style.display='flex';
-    sorted.slice(0,5).forEach(({a,d},i)=>{
-      const div=document.createElement('div');div.className='nfr';
-      div.innerHTML=`<span class="nfr-rank">#${i+1}</span><div class="nfr-body"><div class="nfr-name" title="${a.name}">${a.name}</div><div class="nfr-dist">${a.city||''}${a.st?', '+a.st:''} · <b>${Math.round(d)} mi</b>${a.contact?' · '+a.contact:''}</div></div>`;
-      div.onclick=()=>fly(a.id);res.appendChild(div);
+    const geoRes  = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input)}&limit=1`,{headers:{'Accept-Language':'en'}});
+    const geoData = await geoRes.json();
+    if(!geoData.length){statusEl.textContent='Address not found — try a different format.';return;}
+    const searchLat = parseFloat(geoData[0].lat);
+    const searchLng = parseFloat(geoData[0].lon);
+    const placeName = geoData[0].display_name;
+    if(isNaN(searchLat)||isNaN(searchLng)){statusEl.textContent='Could not get coordinates — try a more specific address.';return;}
+    const ranked = D
+      .filter(adv=>adv.lat&&adv.lng)
+      .map(adv=>({adv, miles: haversine(searchLat, searchLng, adv.lat, adv.lng)}))
+      .sort((x,y)=>x.miles - y.miles);
+    statusEl.textContent='Nearest to: '+placeName.split(',').slice(0,3).join(',');
+    resultsEl.style.display='flex';
+    ranked.slice(0,5).forEach(({adv, miles}, idx)=>{
+      const div=document.createElement('div');
+      div.className='nfr';
+      div.innerHTML=`<span class="nfr-rank">#${idx+1}</span><div class="nfr-body"><div class="nfr-name" title="${adv.name}">${adv.name}</div><div class="nfr-dist">${adv.city||''}${adv.st?', '+adv.st:''} · <b>${Math.round(miles)} mi</b>${adv.contact?' · '+adv.contact:''}</div></div>`;
+      div.onclick=()=>fly(adv.id);
+      resultsEl.appendChild(div);
     });
-    if(window._nfM)map.removeLayer(window._nfM);
-    window._nfM=L.circleMarker([+lat,+lon],{radius:8,color:'#F59E0B',fillColor:'#FEF3C7',fillOpacity:1,weight:2}).addTo(map).bindPopup(`<b>Search location</b><br>${inp}`).openPopup();
-    map.setView([+lat,+lon],7,{animate:true});
-  }catch(e){st.textContent='Geocoding failed — check your connection.';}
+    if(window._nfM) map.removeLayer(window._nfM);
+    window._nfM=L.circleMarker([searchLat,searchLng],{radius:8,color:'#F59E0B',fillColor:'#FEF3C7',fillOpacity:1,weight:2}).addTo(map).bindPopup(`<b>Search location</b><br>${input}`).openPopup();
+    map.setView([searchLat,searchLng],7,{animate:true});
+  }catch(err){
+    statusEl.textContent='Geocoding failed — check your connection.';
+    console.error('findNearest error:',err);
+  }
 }
 document.getElementById('nfInput').addEventListener('keydown',e=>{if(e.key==='Enter')findNearest();});
 
