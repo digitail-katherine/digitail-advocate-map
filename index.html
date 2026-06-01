@@ -193,7 +193,7 @@ async function findNearest(){
       const div=document.createElement('div');
       div.className='nfr';
       div.innerHTML=`<span class="nfr-rank">#${idx+1}</span><div class="nfr-body"><div class="nfr-name" title="${adv.name}">${adv.name}</div><div class="nfr-dist">${adv.city||''}${adv.st?', '+adv.st:''} · <b>${Math.round(miles)} mi</b>${adv.contact?' · '+adv.contact:''}</div></div>`;
-      div.onclick=()=>fly(adv.id);
+      div.onclick=()=>fly(adv.hsId||adv.id);
       resultsEl.appendChild(div);
     });
     if(window._nfM) map.removeLayer(window._nfM);
@@ -276,6 +276,8 @@ function mkPop(a){
     google_review:    '⭐ Google Review',
     google_mention:   '🔍 Web Mention',
     facebook_review:  '👍 Facebook Review',
+    slack_mention:    '💬 Positive Slack Mention',
+    fathom_call:      '📞 Positive Customer Call (Fathom)',
     manual:           '✅ Manually Verified',
   };
   const sigs=(a.signals||[]);
@@ -297,10 +299,11 @@ function rMap(f){
   ml.forEach(m=>map.removeLayer(m));ml=[];
   f.filter(a=>a.lat&&a.lng).forEach(a=>{
     const loc=[a.city,a.st].filter(Boolean).join(', ');
+    const uid = a.hsId || a.id;
     const m=L.marker([a.lat,a.lng],{icon:mkIcon(a.ct,a.verify)});
     m.bindTooltip(`<strong>${a.name}</strong>${loc?'<br>'+loc:''}${a.contact?'<br><span style="color:#64748B;font-size:11px">'+a.contact+'</span>':''}`,{direction:'top',offset:[0,-38]});
     m.bindPopup(mkPop(a),{maxWidth:315});
-    m.addTo(map);m._aid=a.id;ml.push(m);
+    m.addTo(map);m._uid=uid;ml.push(m);
   });
 }
 function rList(f){
@@ -314,7 +317,8 @@ function rList(f){
     if(a.verify)flags+=`<span class="bg" style="background:#FEF3C7;color:#92400E;margin-right:2px">⚠️Verify</span>`;
     if(a.aiAdopter)flags+=`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-right:2px">🤖</span>`;
     if(!a.lat)flags+=`<span class="bg" style="background:#F1F5F9;color:#94A3B8">No pin</span>`;
-    return `<tr onclick="fly(${a.id})"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
+    const uid = a.hsId || a.id;
+    return `<tr onclick="fly('${uid}')"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
   }).join('');
 }
 function fly(id){
