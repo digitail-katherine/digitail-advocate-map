@@ -24,11 +24,11 @@
     "address": "418 West Northwest Highway, Chicago, IL, 60056",
     "hsId": "39417757533",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-19"
   },
   {
     "id": 44,
@@ -55,11 +55,11 @@
     "address": "16300 S Figueroa St, Gardena, CA, 90248",
     "hsId": "55356742306",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-05-29"
   },
   {
     "id": 44,
@@ -86,11 +86,11 @@
     "address": "Detroit, MI",
     "hsId": "53879738510",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-17"
   },
   {
     "id": 44,
@@ -118,11 +118,11 @@
     "hsId": "9360397880",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-04-22"
   },
   {
     "id": 44,
@@ -180,11 +180,11 @@
     "hsId": "9536659994",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-09-06"
   },
   {
     "id": 44,
@@ -272,12 +272,11 @@
     "address": "2114 Ware Road NW, Sherry, AB, T6W 2T9",
     "hsId": "26268986949",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -305,11 +304,11 @@
     "hsId": "5961168491",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-08-13"
   },
   {
     "id": 44,
@@ -367,11 +366,11 @@
     "address": "New Athens, IL",
     "hsId": "37821142843",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-26"
   },
   {
     "id": 44,
@@ -429,12 +428,11 @@
     "address": "101 South Milwaukee Avenue, Grayslake, IL, 60046",
     "hsId": "20621661768",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-31"
   },
   {
     "id": 44,
@@ -461,12 +459,11 @@
     "address": "New Bedford, MA",
     "hsId": "30515436122",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-09"
   },
   {
     "id": 44,
@@ -493,12 +490,11 @@
     "address": "9919 Westover Bluff, San Antonio, TX, 78251",
     "hsId": "31417881226",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-05-09"
   },
   {
     "id": 44,
@@ -525,11 +521,11 @@
     "address": "Ashburn, VA",
     "hsId": "22695614085",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -556,12 +552,11 @@
     "address": "Phoenix, AZ",
     "hsId": "18457985941",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -588,11 +583,11 @@
     "address": "240 Main Street, Fort Mill, SC, 29715",
     "hsId": "41882760884",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-02-25"
   },
   {
     "id": 44,
@@ -619,12 +614,11 @@
     "address": "Port Alberni, BC",
     "hsId": "28902053703",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-17"
   },
   {
     "id": 44,
@@ -651,11 +645,11 @@
     "address": "Denver",
     "hsId": "47352695073",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-30"
   },
   {
     "id": 44,
@@ -682,12 +676,11 @@
     "address": "1624 East Liberty Street, Mexico, MO, 65265",
     "hsId": "17696420240",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -745,12 +738,11 @@
     "address": "Clifton, NJ",
     "hsId": "47389370245",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-16"
   },
   {
     "id": 44,
@@ -778,11 +770,11 @@
     "hsId": "29670981382",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-02-08"
   },
   {
     "id": 44,
@@ -810,11 +802,11 @@
     "hsId": "16400854901",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-28"
   },
   {
     "id": 44,
@@ -872,12 +864,11 @@
     "address": "800 East Broadway, Frederick, MD, 53716",
     "hsId": "6572012080",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -904,12 +895,11 @@
     "address": "Dunnellon, FL",
     "hsId": "33429211144",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-14"
   },
   {
     "id": 44,
@@ -937,11 +927,11 @@
     "hsId": "18984544864",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-02-08"
   },
   {
     "id": 44,
@@ -969,11 +959,11 @@
     "hsId": "15393725713",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-06-18"
   },
   {
     "id": 44,
@@ -1000,12 +990,11 @@
     "address": "Niceville, VA",
     "hsId": "7743340151",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-22"
   },
   {
     "id": 44,
@@ -1063,12 +1052,11 @@
     "address": "Kill Devil Hills, NC",
     "hsId": "18847238228",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -1096,11 +1084,11 @@
     "hsId": "25538304854",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-12-07"
   },
   {
     "id": 44,
@@ -1158,11 +1146,11 @@
     "hsId": "6120353182",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-08-15"
   },
   {
     "id": 44,
@@ -1190,11 +1178,11 @@
     "hsId": "9669604379",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-11-10"
   },
   {
     "id": 44,
@@ -1221,12 +1209,11 @@
     "address": "1111 East Main Street, Lake City, SC, 29560",
     "hsId": "22529828900",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -1375,11 +1362,11 @@
     "hsId": "18246679058",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-02-28"
   },
   {
     "id": 44,
@@ -1407,11 +1394,11 @@
     "hsId": "9827402347",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-11-02"
   },
   {
     "id": 44,
@@ -1755,12 +1742,11 @@
     "address": "1780 Bold Springs Church Road, Carnesville, GA",
     "hsId": "16779974991",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-11-21"
   },
   {
     "id": 44,
@@ -1787,11 +1773,11 @@
     "address": "28 Nekita Beasley Street, Carnesville, GA, 30521",
     "hsId": "45876360728",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-03"
   },
   {
     "id": 44,
@@ -1818,11 +1804,11 @@
     "address": "Denver, CO",
     "hsId": "37393102404",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-27"
   },
   {
     "id": 44,
@@ -1880,11 +1866,11 @@
     "hsId": "17871283218",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-11-14"
   },
   {
     "id": 44,
@@ -1912,11 +1898,11 @@
     "hsId": "26534596890",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-01-31"
   },
   {
     "id": 44,
@@ -1943,11 +1929,11 @@
     "address": "Oak Bluff, MB",
     "hsId": "36289352548",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-18"
   },
   {
     "id": 44,
@@ -1974,11 +1960,11 @@
     "address": "Winnipeg, MB",
     "hsId": "38789491206",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-29"
   },
   {
     "id": 44,
@@ -2036,11 +2022,11 @@
     "address": "8200 S King Dr., Chicago, IL, 60619",
     "hsId": "53465540791",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-31"
   },
   {
     "id": 44,
@@ -2190,12 +2176,11 @@
     "address": "Guelph, ON",
     "hsId": "6212657066",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -2223,11 +2208,11 @@
     "hsId": "15063386946",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-04-14"
   },
   {
     "id": 44,
@@ -2255,11 +2240,11 @@
     "hsId": "6582056610",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-06-05"
   },
   {
     "id": 44,
@@ -2318,11 +2303,11 @@
     "hsId": "6560638218",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2021-08-18"
   },
   {
     "id": 44,
@@ -2379,12 +2364,11 @@
     "address": "Billing Address: 15518 SE 24th Street, Bellevue, WA 98007, Issaquah, WA, 98007",
     "hsId": "6642878532",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -2411,12 +2395,11 @@
     "address": "163 County Rd 537, Matawan, NJ, 07722",
     "hsId": "18365294220",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-01"
   },
   {
     "id": 44,
@@ -2443,11 +2426,11 @@
     "address": "7815 Barstow St., Los Angeles, CA",
     "hsId": "18125212573",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -2474,12 +2457,11 @@
     "address": "Madison, WI",
     "hsId": "19699077925",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -2537,11 +2519,11 @@
     "hsId": "20345650002",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-05-16"
   },
   {
     "id": 44,
@@ -2599,12 +2581,11 @@
     "address": "NY",
     "hsId": "5630622122",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -2631,12 +2612,11 @@
     "address": "17449 330th Street, Ashburn, VA",
     "hsId": "22551388016",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -2663,11 +2643,11 @@
     "address": "2310 Brooklyn Rd, Jackson, MS, 49203",
     "hsId": "54175680770",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-05-29"
   },
   {
     "id": 44,
@@ -2694,12 +2674,11 @@
     "address": "302 East San Bernardino Road, Covina, CA, 91723",
     "hsId": "18856205671",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-01"
   },
   {
     "id": 44,
@@ -2726,11 +2705,11 @@
     "address": "Lincoln, NE",
     "hsId": "7139207843",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -2818,11 +2797,11 @@
     "address": "82 White Fox Dr, Fletcher, NC, 28732",
     "hsId": "50095106694",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-02-16"
   },
   {
     "id": 44,
@@ -2850,11 +2829,11 @@
     "hsId": "5721780295",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-03-31"
   },
   {
     "id": 44,
@@ -2881,11 +2860,11 @@
     "address": "Pittsburgh, MN",
     "hsId": "35907322186",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-11-28"
   },
   {
     "id": 44,
@@ -2912,12 +2891,11 @@
     "address": "Louisville, KY",
     "hsId": "6104206592",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 56,
@@ -3067,12 +3045,11 @@
     "address": "Salt Spring Island, BC",
     "hsId": "7361844277",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -3130,12 +3107,11 @@
     "address": "601 Riley St,, Dundee, NY",
     "hsId": "22597818803",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -3193,12 +3169,11 @@
     "address": "859 Mississippi 26, Dallas, MS, 39470",
     "hsId": "6993393508",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-30"
   },
   {
     "id": 44,
@@ -3226,11 +3201,11 @@
     "hsId": "33489942576",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-21"
   },
   {
     "id": 44,
@@ -3257,11 +3232,11 @@
     "address": "Houston, TX",
     "hsId": "53253245197",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-30"
   },
   {
     "id": 44,
@@ -3288,12 +3263,11 @@
     "address": "Monroe, CT",
     "hsId": "6250277934",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -3320,12 +3294,11 @@
     "address": "24 Gables Drive SE, Rome, GA",
     "hsId": "31198692876",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-27"
   },
   {
     "id": 44,
@@ -3352,11 +3325,11 @@
     "address": "1710 78th Street, Portland, WA, 98665",
     "hsId": "47215092311",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-31"
   },
   {
     "id": 44,
@@ -3384,11 +3357,11 @@
     "hsId": "25294276532",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-30"
   },
   {
     "id": 44,
@@ -3416,11 +3389,11 @@
     "hsId": "15439885826",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-02-10"
   },
   {
     "id": 44,
@@ -3448,11 +3421,11 @@
     "hsId": "14883398018",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-04-03"
   },
   {
     "id": 44,
@@ -3510,12 +3483,11 @@
     "address": "Merritt, MI",
     "hsId": "8310196141",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -3542,12 +3514,11 @@
     "address": "Georgetown County, SC",
     "hsId": "9905312155",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -3575,11 +3546,11 @@
     "hsId": "7985005617",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-02-24"
   },
   {
     "id": 44,
@@ -3637,11 +3608,11 @@
     "address": "Mesa, AZ",
     "hsId": "53724340101",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-04-28"
   },
   {
     "id": 44,
@@ -3669,11 +3640,11 @@
     "hsId": "22535886605",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-08-28"
   },
   {
     "id": 44,
@@ -3700,12 +3671,11 @@
     "address": "Stonewall, LA",
     "hsId": "8974574877",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -3764,11 +3734,11 @@
     "hsId": "27492848514",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-01-28"
   },
   {
     "id": 44,
@@ -3826,11 +3796,11 @@
     "address": "Ajax, ON",
     "hsId": "43460552288",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-11-03"
   },
   {
     "id": 44,
@@ -3857,12 +3827,11 @@
     "address": "2004 Church Street, Boerne, TX, 78629",
     "hsId": "6995682162",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-07"
   },
   {
     "id": 44,
@@ -3951,11 +3920,11 @@
     "hsId": "31888799560",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-04-15"
   },
   {
     "id": 44,
@@ -3982,11 +3951,11 @@
     "address": "9570 Vaughn Road, Toronto, AL, 36064",
     "hsId": "50566776690",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-27"
   },
   {
     "id": 44,
@@ -4044,11 +4013,11 @@
     "address": "Durham",
     "hsId": "53213541430",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-03-25"
   },
   {
     "id": 44,
@@ -4075,12 +4044,11 @@
     "address": "Greenville, MI",
     "hsId": "33079053415",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-09"
   },
   {
     "id": 54,
@@ -4138,11 +4106,11 @@
     "hsId": "27113026191",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-02-28"
   },
   {
     "id": 44,
@@ -4200,11 +4168,11 @@
     "hsId": "34115282324",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-02-28"
   },
   {
     "id": 44,
@@ -4232,11 +4200,11 @@
     "hsId": "8343721005",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-05-18"
   },
   {
     "id": 44,
@@ -4266,7 +4234,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -4294,11 +4263,11 @@
     "hsId": "26460351661",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-11-29"
   },
   {
     "id": 44,
@@ -4325,12 +4294,11 @@
     "address": "6940 S Kings Hwy, Springfield, VA, 22310",
     "hsId": "34211116113",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-30"
   },
   {
     "id": 44,
@@ -4358,11 +4326,11 @@
     "hsId": "32860966160",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-15"
   },
   {
     "id": 44,
@@ -4389,12 +4357,11 @@
     "address": "Whistler, BC",
     "hsId": "18459755848",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -4422,11 +4389,11 @@
     "hsId": "26441460280",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-11-08"
   },
   {
     "id": 44,
@@ -4453,12 +4420,11 @@
     "address": "1603 Hawthorne St, Victoria, BC, V8N 2M3",
     "hsId": "17519441515",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -4485,12 +4451,11 @@
     "address": "St. John'S, NL",
     "hsId": "22295479863",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -4517,12 +4482,11 @@
     "address": "Orlando, FL",
     "hsId": "31198676617",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-24"
   },
   {
     "id": 44,
@@ -4549,12 +4513,11 @@
     "address": "7124 West Hefner Road, Oklahoma City, OK, 73162",
     "hsId": "21507806557",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-29"
   },
   {
     "id": 44,
@@ -4582,11 +4545,11 @@
     "hsId": "21534593818",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-11-11"
   },
   {
     "id": 44,
@@ -4675,12 +4638,11 @@
     "address": "3800 Horizon Boulevard, Salem, OR, 19053",
     "hsId": "4462711240",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -4707,11 +4669,11 @@
     "address": "Middletown, OH",
     "hsId": "40240771985",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-09-29"
   },
   {
     "id": 44,
@@ -4741,7 +4703,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-04-13"
   },
   {
     "id": 44,
@@ -4768,12 +4731,11 @@
     "address": "8415 Leeds Manor Road, Warrenton, VA, 20186",
     "hsId": "18263307299",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -4800,11 +4762,11 @@
     "address": "Ashburn, LOUISIANA",
     "hsId": "35036156174",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-02-27"
   },
   {
     "id": 44,
@@ -4863,11 +4825,11 @@
     "hsId": "25292436324",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2024-12-05"
   },
   {
     "id": 44,
@@ -4895,11 +4857,11 @@
     "hsId": "15685542922",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-05-11"
   },
   {
     "id": 44,
@@ -4926,12 +4888,11 @@
     "address": "Mississauga, ON",
     "hsId": "26934282094",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-08-25"
   },
   {
     "id": 44,
@@ -4959,11 +4920,11 @@
     "hsId": "10574122928",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-01-21"
   },
   {
     "id": 44,
@@ -4994,7 +4955,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2021-11-23"
   },
   {
     "id": 44,
@@ -5022,11 +4984,11 @@
     "hsId": "7730894939",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-01-27"
   },
   {
     "id": 44,
@@ -5054,11 +5016,11 @@
     "hsId": "7226192769",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-11-05"
   },
   {
     "id": 44,
@@ -5086,11 +5048,11 @@
     "hsId": "20267451455",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-04-27"
   },
   {
     "id": 44,
@@ -5117,12 +5079,11 @@
     "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "hsId": "4676333282",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-24"
   },
   {
     "id": 44,
@@ -5149,11 +5110,11 @@
     "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "hsId": "48255946556",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-31"
   },
   {
     "id": 44,
@@ -5183,7 +5144,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-05-11"
   },
   {
     "id": 44,
@@ -5211,11 +5173,11 @@
     "hsId": "31786930539",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-01"
   },
   {
     "id": 44,
@@ -5243,11 +5205,11 @@
     "hsId": "16806702623",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-11-15"
   },
   {
     "id": 44,
@@ -5305,11 +5267,11 @@
     "address": "347 Waterloo-Geneva Road, Waterloo, NY, 13165",
     "hsId": "54965253735",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-05-28"
   },
   {
     "id": 44,
@@ -5337,11 +5299,11 @@
     "hsId": "18940314242",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-02-01"
   },
   {
     "id": 44,
@@ -5368,11 +5330,11 @@
     "address": "Calgary, AB",
     "hsId": "51224417620",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-02-13"
   },
   {
     "id": 44,
@@ -5399,12 +5361,11 @@
     "address": "472 -380 Theater Road ,, Seattle, CA, 96130",
     "hsId": "18409283227",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5431,12 +5392,11 @@
     "address": "454 Hayes St, Austin, TX, 75166",
     "hsId": "17549208074",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5464,11 +5424,11 @@
     "hsId": "25073861387",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-12-31"
   },
   {
     "id": 44,
@@ -5557,12 +5517,11 @@
     "address": "5666 Eagle Ridge Rd.,  Helena, MT  59602, Helena, MT",
     "hsId": "16251031084",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5589,12 +5548,11 @@
     "address": "Sharpsburg, GA",
     "hsId": "39461207972",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5621,12 +5579,11 @@
     "address": "Elgin, AZ",
     "hsId": "8060960576",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -5685,11 +5642,11 @@
     "hsId": "5615526763",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-05-21"
   },
   {
     "id": 44,
@@ -5716,12 +5673,11 @@
     "address": "Manchester, NH, 03801",
     "hsId": "8965380706",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -5748,11 +5704,11 @@
     "address": "Union City",
     "hsId": "44452041035",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-11"
   },
   {
     "id": 44,
@@ -5779,12 +5735,11 @@
     "address": "Bonnyville, AB",
     "hsId": "9592014478",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5811,11 +5766,11 @@
     "address": "339 East Lancaster Ave., New Orleans, PA, 19096",
     "hsId": "43153746214",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-11-24"
   },
   {
     "id": 44,
@@ -5845,7 +5800,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-03-24"
   },
   {
     "id": 44,
@@ -5872,12 +5828,11 @@
     "address": "19 Atlantic Avenue, Marblehead, MA, 01945",
     "hsId": "15411791360",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -5905,11 +5860,11 @@
     "hsId": "6680963954",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-08-09"
   },
   {
     "id": 44,
@@ -5936,12 +5891,11 @@
     "address": "Barrie, ON",
     "hsId": "7377002502",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-06-12"
   },
   {
     "id": 44,
@@ -5968,11 +5922,11 @@
     "address": "Martinez",
     "hsId": "45185648715",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-30"
   },
   {
     "id": 44,
@@ -5999,11 +5953,11 @@
     "address": "Matawan, NJ",
     "hsId": "35155401495",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-01"
   },
   {
     "id": 44,
@@ -6062,11 +6016,11 @@
     "hsId": "16613169028",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-08-15"
   },
   {
     "id": 44,
@@ -6094,11 +6048,11 @@
     "hsId": "5689889290",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-10-23"
   },
   {
     "id": 44,
@@ -6157,11 +6111,11 @@
     "hsId": "14903939978",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-03-04"
   },
   {
     "id": 44,
@@ -6189,11 +6143,11 @@
     "hsId": "17549208225",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-12-05"
   },
   {
     "id": 44,
@@ -6220,12 +6174,11 @@
     "address": "143 Main Street, Odessa, ON K0H 2H0, Odessa, ON, K0H 2H0",
     "hsId": "17289447278",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -6252,11 +6205,11 @@
     "address": "Windham, Nh Usa, NH",
     "hsId": "7032282019",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -6283,11 +6236,11 @@
     "address": "Southern Pines, NC",
     "hsId": "9087314998",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -6318,7 +6271,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2024-07-23"
   },
   {
     "id": 44,
@@ -6345,11 +6299,11 @@
     "address": "5338 Haven Oaks Place, Salt Lake City, VA",
     "hsId": "16439089060",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -6380,7 +6334,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2021-05-25"
   },
   {
     "id": 44,
@@ -6411,7 +6366,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2021-07-16"
   },
   {
     "id": 44,
@@ -6438,12 +6394,11 @@
     "address": "22026 West 66th Street, Shawnee, TX, 66226",
     "hsId": "7168725832",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-06-26"
   },
   {
     "id": 44,
@@ -6531,11 +6486,11 @@
     "address": "Barrie, ON",
     "hsId": "35039922445",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-23"
   },
   {
     "id": 55,
@@ -6592,11 +6547,11 @@
     "address": "9600 Islington Ave #2,, Brampton, ON, ON L4H 1X7",
     "hsId": "35042816063",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-30"
   },
   {
     "id": 44,
@@ -6623,12 +6578,11 @@
     "address": "131 Stone Avenue, Susanville, WA",
     "hsId": "19562151579",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -6656,11 +6610,11 @@
     "hsId": "9133809461",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-07-21"
   },
   {
     "id": 44,
@@ -6688,11 +6642,11 @@
     "hsId": "9725413287",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-10-18"
   },
   {
     "id": 44,
@@ -6782,11 +6736,11 @@
     "hsId": "6708769652",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-08-11"
   },
   {
     "id": 44,
@@ -6814,11 +6768,11 @@
     "hsId": "18474138270",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-04-04"
   },
   {
     "id": 44,
@@ -6845,11 +6799,11 @@
     "address": "Dresden, TN",
     "hsId": "44611616810",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-01"
   },
   {
     "id": 44,
@@ -6876,11 +6830,11 @@
     "address": "Orlando, CA",
     "hsId": "51621295923",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-02-25"
   },
   {
     "id": 44,
@@ -6907,11 +6861,11 @@
     "address": "Lexington, VA",
     "hsId": "45871201957",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-31"
   },
   {
     "id": 44,
@@ -6969,12 +6923,11 @@
     "address": "5778 South Oceana Drive, New Era, MI, 49446",
     "hsId": "30735787553",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-06-27"
   },
   {
     "id": 44,
@@ -7002,11 +6955,11 @@
     "hsId": "31779728468",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-04-11"
   },
   {
     "id": 44,
@@ -7064,12 +7017,11 @@
     "address": "1730 Kingwood Street, Florence, OR, 97439",
     "hsId": "21713626383",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7131,7 +7083,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-01-08"
   },
   {
     "id": 44,
@@ -7189,12 +7142,11 @@
     "address": "Hereford, AZ",
     "hsId": "9507654278",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7222,11 +7174,11 @@
     "hsId": "5874602392",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-11-04"
   },
   {
     "id": 44,
@@ -7253,12 +7205,11 @@
     "address": "3691 Lake Alfred Road, Winter Haven, FL, 33881",
     "hsId": "17059026094",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-11"
   },
   {
     "id": 44,
@@ -7285,12 +7236,11 @@
     "address": "3200 Southwest 27th Avenue, Ocala, FL, 34474",
     "hsId": "18195412843",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7378,12 +7328,11 @@
     "address": "2903 Audubon Circle, Sacramento, CA",
     "hsId": "15765400361",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -7410,12 +7359,11 @@
     "address": "781 Tiger Oak Drive, Pike Road, AL, 36064",
     "hsId": "21823628562",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7473,12 +7421,11 @@
     "address": "Innisfail, AB",
     "hsId": "18594875289",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-19"
   },
   {
     "id": 44,
@@ -7505,12 +7452,11 @@
     "address": "Custer, SD",
     "hsId": "18381597752",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -7568,11 +7514,11 @@
     "address": "14816 Maywood Drive, Brits, MN",
     "hsId": "36559586359",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-07-22"
   },
   {
     "id": 44,
@@ -7600,11 +7546,11 @@
     "hsId": "31415339040",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-03-31"
   },
   {
     "id": 44,
@@ -7631,12 +7577,11 @@
     "address": "1515 Avellino Brooke Court, Nampa, ID, 83686",
     "hsId": "19367980335",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7663,11 +7608,11 @@
     "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
     "hsId": "47812383091",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-13"
   },
   {
     "id": 44,
@@ -7694,12 +7639,11 @@
     "address": "920 Belmont Ave, Charlotte, NC, 28205",
     "hsId": "18552660810",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-17"
   },
   {
     "id": 44,
@@ -7726,11 +7670,11 @@
     "address": "Mooresville, NC",
     "hsId": "51722264460",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-01"
   },
   {
     "id": 44,
@@ -7757,12 +7701,11 @@
     "address": "212 College Hill Road, New York, NY",
     "hsId": "23627526481",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -7789,11 +7732,11 @@
     "address": "Red Deer, AB",
     "hsId": "39256495750",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-10-01"
   },
   {
     "id": 44,
@@ -7821,11 +7764,11 @@
     "hsId": "15515326847",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-04-27"
   },
   {
     "id": 44,
@@ -7884,11 +7827,11 @@
     "hsId": "10864661318",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-01-20"
   },
   {
     "id": 44,
@@ -7919,7 +7862,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2024-07-12"
   },
   {
     "id": 44,
@@ -7947,11 +7891,11 @@
     "hsId": "7918158169",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-08-22"
   },
   {
     "id": 44,
@@ -8040,11 +7984,11 @@
     "address": "1930 E Rosemeade Pkwy STE 100, Carrollton, TX, 75007",
     "hsId": "53957383715",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-22"
   },
   {
     "id": 44,
@@ -8103,11 +8047,11 @@
     "hsId": "31185025619",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-04-30"
   },
   {
     "id": 44,
@@ -8135,11 +8079,11 @@
     "hsId": "26944088923",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-01-17"
   },
   {
     "id": 44,
@@ -8167,11 +8111,11 @@
     "hsId": "34182980778",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-28"
   },
   {
     "id": 44,
@@ -8228,11 +8172,11 @@
     "address": "26 Hazelwood Drive, Braeside, ON",
     "hsId": "18278064160",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -8259,11 +8203,11 @@
     "address": "Goleta, CA, 93105",
     "hsId": "38547661680",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-08-29"
   },
   {
     "id": 44,
@@ -8291,11 +8235,11 @@
     "hsId": "3840183334",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-08-30"
   },
   {
     "id": 44,
@@ -8322,12 +8266,11 @@
     "address": "Sylva, NC",
     "hsId": "5777249198",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -8355,11 +8298,11 @@
     "hsId": "33049310774",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-05-19"
   },
   {
     "id": 44,
@@ -8386,12 +8329,11 @@
     "address": "3642 East Indian Trail, Beaverton, OR",
     "hsId": "21998242707",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -8418,11 +8360,11 @@
     "address": "1919 US-22, Cranford, NJ, 07076",
     "hsId": "48895782299",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-02-28"
   },
   {
     "id": 44,
@@ -8450,11 +8392,11 @@
     "hsId": "31604168512",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-01"
   },
   {
     "id": 44,
@@ -8606,11 +8548,11 @@
     "hsId": "15393348498",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-16"
   },
   {
     "id": 44,
@@ -8637,12 +8579,11 @@
     "address": "3700 Van Buren Blvd, Phelan, CA, 92503",
     "hsId": "6013580323",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-06-17"
   },
   {
     "id": 44,
@@ -8731,12 +8672,11 @@
     "address": "1535 Route 22Brewster New York 10509, New York, NY",
     "hsId": "6587260188",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-16"
   },
   {
     "id": 44,
@@ -8794,11 +8734,11 @@
     "address": "Madison",
     "hsId": "53720706347",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-15"
   },
   {
     "id": 44,
@@ -8857,11 +8797,11 @@
     "hsId": "18586466361",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-10-02"
   },
   {
     "id": 44,
@@ -8888,11 +8828,11 @@
     "address": "1940 Crossland Rd, Phelpston, Ontario, ON, L0L2K0",
     "hsId": "53528634422",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2026-04-02"
   },
   {
     "id": 44,
@@ -8920,19 +8860,19 @@
     "hsId": "31275323315",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-04-28"
   },
   {
     "id": 44,
     "name": "Summer's Animal Hospital",
     "city": "miami",
     "st": "FL",
-    "lat": 25.8249,
-    "lng": -80.18753,
+    "lat": 25.82619,
+    "lng": -80.18724,
     "ct": "general",
     "contact": "Dr. Summer Heyerly",
     "email": "drsummer.heyerly@gmail.com",
@@ -8951,11 +8891,11 @@
     "address": "1142 N Federal Hwy, Miami, FL, 33062",
     "hsId": "51722383511",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-04-07"
   },
   {
     "id": 44,
@@ -8982,12 +8922,11 @@
     "address": "165 North 100 East, Mount Pleasant, UT",
     "hsId": "22049095003",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -9014,12 +8953,11 @@
     "address": "35 Sunmills Drive Southeast, Calgary, AB, T2X 2W6",
     "hsId": "21264019558",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -9046,12 +8984,11 @@
     "address": "35 Sunmills Drive SE, Calgary, AB, T2X 2W6",
     "hsId": "18854281277",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -9082,7 +9019,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2023-09-08"
   },
   {
     "id": 44,
@@ -9110,11 +9048,11 @@
     "hsId": "29375687473",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-02-28"
   },
   {
     "id": 44,
@@ -9235,11 +9173,11 @@
     "hsId": "18884933454",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-11-30"
   },
   {
     "id": 44,
@@ -9297,11 +9235,11 @@
     "address": "6408 Sparkling Brook Drive, Raleigh, 27616, Raleigh, NC, 27609",
     "hsId": "17250419270",
     "signals": [
-      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-09-05"
   },
   {
     "id": 44,
@@ -9329,11 +9267,11 @@
     "hsId": "9905312268",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-07-03"
   },
   {
     "id": 44,
@@ -9360,12 +9298,11 @@
     "address": "Temecula, CA",
     "hsId": "9905312333",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -9393,11 +9330,11 @@
     "hsId": "7129625248",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2021-10-28"
   },
   {
     "id": 44,
@@ -9425,11 +9362,11 @@
     "hsId": "7987028892",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2022-03-04"
   },
   {
     "id": 44,
@@ -9456,12 +9393,11 @@
     "address": "444 N Broad St, Elizabeth, NJ, 07208",
     "hsId": "11587524422",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-08"
   },
   {
     "id": 44,
@@ -9488,12 +9424,11 @@
     "address": "220 South Woodland Boulevard, Deland, FL, 32724",
     "hsId": "18556740261",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -9521,11 +9456,11 @@
     "hsId": "7730844192",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-01-27"
   },
   {
     "id": 44,
@@ -9552,12 +9487,11 @@
     "address": "911 Paseo Estrella del Mar, Tijuana, BAJA CALIFORNIA, 22200",
     "hsId": "40201543437",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-26"
   },
   {
     "id": 44,
@@ -9584,12 +9518,11 @@
     "address": "765 Main St East, Revere, MA, 06108",
     "hsId": "21239474830",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -9616,11 +9549,11 @@
     "address": "Melbourne, FL",
     "hsId": "47412600085",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-01-20"
   },
   {
     "id": 44,
@@ -9648,19 +9581,19 @@
     "hsId": "23451532111",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-10-23"
   },
   {
     "id": 44,
     "name": "VetforPet Animal Hospital Hamden",
     "city": "revere",
     "st": "CT",
-    "lat": 41.21831,
-    "lng": -73.03177,
+    "lat": 41.4037,
+    "lng": -72.83179,
     "ct": "general",
     "contact": "Dr. Ahmad Ali",
     "email": "keenvet@gmail.com",
@@ -9679,11 +9612,11 @@
     "address": "Revere, CT",
     "hsId": "36019813548",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-11"
   },
   {
     "id": 44,
@@ -9710,12 +9643,11 @@
     "address": "51 Charles St W Kitchener ON N2G 1J6, Cambridge, ON",
     "hsId": "16072500133",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-05"
   },
   {
     "id": 44,
@@ -9746,7 +9678,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2021-09-14"
   },
   {
     "id": 44,
@@ -9773,12 +9706,11 @@
     "address": "Papillion, NE",
     "hsId": "20364473962",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -9867,11 +9799,11 @@
     "hsId": "18149527954",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-10-07"
   },
   {
     "id": 44,
@@ -9898,12 +9830,11 @@
     "address": "4195 Fishermans Lane, maiden NC 28650, Maiden, NC",
     "hsId": "17085818954",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2025-12-04"
   },
   {
     "id": 44,
@@ -9931,11 +9862,11 @@
     "hsId": "16850270627",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-09-08"
   },
   {
     "id": 44,
@@ -9963,11 +9894,11 @@
     "hsId": "29946506354",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-02-17"
   },
   {
     "id": 44,
@@ -9994,12 +9925,11 @@
     "address": "2411 Hamburg Turnpike, Wayne, NJ, 07470",
     "hsId": "17063951118",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-07-01"
   },
   {
     "id": 44,
@@ -10027,11 +9957,11 @@
     "hsId": "9846368804",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-10-20"
   },
   {
     "id": 44,
@@ -10088,11 +10018,11 @@
     "address": "711 N Fairfield Drive, Jacksonville, FL, 35206",
     "hsId": "48085884597",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-29"
   },
   {
     "id": 44,
@@ -10181,11 +10111,11 @@
     "address": "10177 Hwy 6, Collingwood, ON, N0H 2T0",
     "hsId": "52980701586",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-31"
   },
   {
     "id": 44,
@@ -10213,11 +10143,11 @@
     "hsId": "22085315494",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2024-09-26"
   },
   {
     "id": 44,
@@ -10245,11 +10175,11 @@
     "hsId": "21126277208",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2023-04-03"
   },
   {
     "id": 44,
@@ -10307,11 +10237,11 @@
     "hsId": "28948333668",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-03-07"
   },
   {
     "id": 44,
@@ -10339,11 +10269,11 @@
     "hsId": "16281456944",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-10-16"
   },
   {
     "id": 44,
@@ -10370,11 +10300,11 @@
     "address": "Rozet, WY",
     "hsId": "47547469833",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-22"
   },
   {
     "id": 44,
@@ -10405,7 +10335,8 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "mobile"
+    "format": "mobile",
+    "customerSince": "2023-07-12"
   },
   {
     "id": 44,
@@ -10555,11 +10486,11 @@
     "hsId": "9508622620",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-09-09"
   },
   {
     "id": 44,
@@ -10618,11 +10549,11 @@
     "hsId": "31627616182",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-28"
   },
   {
     "id": 44,
@@ -10712,11 +10643,11 @@
     "hsId": "31627616110",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-28"
   },
   {
     "id": 44,
@@ -10744,11 +10675,11 @@
     "hsId": "31605199262",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-05-28"
   },
   {
     "id": 44,
@@ -10775,11 +10706,11 @@
     "address": "Canton, KS",
     "hsId": "39404656951",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-30"
   },
   {
     "id": 44,
@@ -10806,11 +10737,11 @@
     "address": "Canton, CO",
     "hsId": "39314335317",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-09-24"
   },
   {
     "id": 44,
@@ -10838,11 +10769,11 @@
     "hsId": "9542639379",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2022-09-08"
   },
   {
     "id": 44,
@@ -10931,11 +10862,11 @@
     "address": "21552 Brookhurst Street, Mountain View, CA, 92646",
     "hsId": "43296506119",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-03-19"
   },
   {
     "id": 44,
@@ -11025,11 +10956,11 @@
     "hsId": "19026526071",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-02-12"
   },
   {
     "id": 44,
@@ -11119,11 +11050,11 @@
     "hsId": "19098008884",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-02-29"
   },
   {
     "id": 44,
@@ -11150,12 +11081,11 @@
     "address": "553 Lake Drive Road, Tyler, MN, 53534",
     "hsId": "28975844007",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2026-08-31"
   },
   {
     "id": 44,
@@ -11214,11 +11144,11 @@
     "hsId": "29511579824",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-04-03"
   },
   {
     "id": 44,
@@ -11338,12 +11268,11 @@
     "address": "Winter Haven, FL",
     "hsId": "28226693778",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2025-12-11"
   },
   {
     "id": 44,
@@ -11433,11 +11362,11 @@
     "hsId": "8407612433",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-08-25"
   },
   {
     "id": 44,
@@ -11465,11 +11394,11 @@
     "hsId": "15547087720",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-04-04"
   },
   {
     "id": 44,
@@ -11497,11 +11426,11 @@
     "hsId": "13343835247",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-04-13"
   },
   {
     "id": 44,
@@ -11591,11 +11520,11 @@
     "hsId": "17914637829",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-12-08"
   },
   {
     "id": 44,
@@ -11622,8 +11551,6 @@
     "address": "",
     "hsId": "34196723847",
     "signals": [
-      "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -11686,11 +11613,11 @@
     "hsId": "15921838363",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-06-22"
   },
   {
     "id": 44,
@@ -11718,11 +11645,11 @@
     "hsId": "15921907892",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-06-22"
   },
   {
     "id": 44,
@@ -11750,11 +11677,11 @@
     "hsId": "15920143685",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-06-22"
   },
   {
     "id": 44,
@@ -11813,11 +11740,11 @@
     "hsId": "15921838174",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-06-22"
   },
   {
     "id": 44,
@@ -11845,11 +11772,11 @@
     "hsId": "15921838204",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2023-06-22"
   },
   {
     "id": 44,
@@ -11887,8 +11814,8 @@
     "name": "[Vetama] Central Coast Veterinary Services",
     "city": "San Luis Obispo",
     "st": "CA",
-    "lat": 35.25219,
-    "lng": -120.67053,
+    "lat": 35.25256,
+    "lng": -120.66975,
     "ct": "general",
     "contact": "Adrienne Brabant",
     "email": "adriennebrabant@gmail.com",
@@ -11908,11 +11835,11 @@
     "hsId": "10825407819",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-07-09"
   },
   {
     "id": 44,
