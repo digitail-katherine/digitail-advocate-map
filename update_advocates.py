@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-Digitail Advocate Map — v4
+Digitail Advocate Map — Weekly Update Script
 
-Verification rules:
-  - Must have ≥1 affirmative signal (NOT just tenure)
-  - Must have email OR phone
-  - Must be in North America (geocode validated)
-  - Any recent negative signal = excluded
-  - Non-clinic records = excluded
+Verification: a clinic appears ONLY if it has ≥1 STRONG signal.
+Strong signals: referral network opt-in, external reviews, 5★ CSAT,
+  DSP processing, published testimonial, Slack/Fathom positive mention.
+Weak signals (tenure, positive notes): shown in popup but not sufficient alone.
+Negative signals (bad CSAT, negative HubSpot notes): hard exclusion.
 """
 
 import json, os, re, time
@@ -21,44 +20,52 @@ except ImportError:
     BS4 = False
 
 # ── Credentials ───────────────────────────────────────────────────────────────
-HS_TOKEN      = os.environ.get("HUBSPOT_TOKEN", "")
-IC_TOKEN      = os.environ.get("INTERCOM_TOKEN", "")
-SLACK_URL     = os.environ.get("SLACK_WEBHOOK", "")
-REDDIT_ID     = os.environ.get("REDDIT_CLIENT_ID", "")
-REDDIT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", "")
-GOOGLE_KEY    = os.environ.get("GOOGLE_API_KEY", "")
-GOOGLE_CSE_ID = os.environ.get("GOOGLE_CSE_ID", "")
-GOOGLE_PLACE  = os.environ.get("GOOGLE_PLACE_ID", "")
-FB_TOKEN      = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
+HS_TOKEN        = os.environ.get("HUBSPOT_TOKEN", "")
+IC_TOKEN        = os.environ.get("INTERCOM_TOKEN", "")
+SLACK_URL       = os.environ.get("SLACK_WEBHOOK", "")
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 FATHOM_API_KEY  = os.environ.get("FATHOM_API_KEY", "")
+REDDIT_ID       = os.environ.get("REDDIT_CLIENT_ID", "")
+REDDIT_SECRET   = os.environ.get("REDDIT_CLIENT_SECRET", "")
+GOOGLE_KEY      = os.environ.get("GOOGLE_API_KEY", "")
+GOOGLE_CSE_ID   = os.environ.get("GOOGLE_CSE_ID", "")
+GOOGLE_PLACE    = os.environ.get("GOOGLE_PLACE_ID", "")
+FB_TOKEN        = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
+DATA_FILE       = "advocates.json"
 
-# Slack channels to scan for customer signals (public channels only)
 SLACK_CHANNELS_TO_SCAN = [
-    "sales-general",
-    "cs-general",
-    "corporate-athletes",
-    "customer-success",
-    "churn-risk",
+    "sales-general", "cs-general", "corporate-athletes",
+    "customer-success", "churn-risk",
 ]
 
 # ── Signals ───────────────────────────────────────────────────────────────────
-# hs_long_tenure intentionally excluded — not a happiness signal
 SIGNAL_LABELS = {
-    "hs_testimonial":    "Case Study / Article Published",
-    "hs_dsp":            "DSP Payment Processing",
-    "hs_positive_note":  "Team Verified Happy",
-    "hs_long_tenure":    "Active Customer 12+ Months",
-    "intercom_csat":     "5★ Support Rating",
-    "capterra_positive": "Capterra Review",
-    "g2_positive":       "G2 Review",
-    "softwareadvice":    "Software Advice Review",
-    "getapp":            "GetApp Review",
-    "reddit_mention":    "Reddit Mention",
-    "google_review":     "Google Review",
-    "google_mention":    "Web Mention",
-    "facebook_review":   "Facebook Review",
-    "manual":            "Manually Verified",
+    "hs_referral_network": "In Digitail Referral Network",
+    "hs_testimonial":      "Case Study / Article Published",
+    "hs_dsp":              "DSP Payment Processing",
+    "hs_positive_note":    "Team Verified Happy",
+    "hs_long_tenure":      "Active Customer 12+ Months",
+    "intercom_csat":       "5★ Support Rating",
+    "capterra_positive":   "Capterra Review",
+    "g2_positive":         "G2 Review",
+    "softwareadvice":      "Software Advice Review",
+    "getapp":              "GetApp Review",
+    "reddit_mention":      "Reddit Mention",
+    "google_review":       "Google Review",
+    "google_mention":      "Web Mention",
+    "facebook_review":     "Facebook Review",
+    "slack_mention":       "Positive Slack Mention",
+    "fathom_call":         "Positive Customer Call (Fathom)",
+    "manual":              "Manually Verified",
+}
+
+# Strong = sufficient on their own to appear on the map
+STRONG_SIGNALS = {
+    "hs_referral_network", "hs_testimonial", "hs_dsp",
+    "intercom_csat", "capterra_positive", "g2_positive",
+    "softwareadvice", "getapp", "google_review", "google_mention",
+    "reddit_mention", "facebook_review", "slack_mention",
+    "fathom_call", "manual",
 }
 
 NEGATIVE_KW = [
@@ -71,23 +78,20 @@ POSITIVE_KW = [
     "good experience", "amazing", "fantastic", "worth it", "switched", "best",
 ]
 
-# ── Practice format detection ─────────────────────────────────────────────────
+# ── Practice format ───────────────────────────────────────────────────────────
 MOBILE_TERMS = [
     "mobile", "house call", "housecall", "traveling", "on wheels", "doorstep",
-    "home visit", "home vet", "at home", "at-home", "concierge", "on-site",
-    "onsite", "wagon", "roaming", "wandervet", "doggie motion",
-    "paws on the move", "fetch the vet", "rideau river", "clinic nomad",
-    "on the road", "road vet", "road trip", "rolling",
-    # NOTE: "road" alone intentionally excluded — matches street names like "Hefner Road Animal Hospital"
+    "home visit", "home vet", "at home", "at-home", "on-site", "onsite",
+    "wagon", "roaming", "wandervet", "doggie motion", "paws on the move",
+    "fetch the vet", "rideau river", "clinic nomad", "on the road",
+    "road vet", "rolling",
 ]
 TELE_TERMS = ["tele", "virtual", "online", "remote"]
 
 def infer_format(name: str) -> str:
     n = name.lower()
-    if any(t in n for t in TELE_TERMS):
-        return "telemedicine"
-    if any(t in n for t in MOBILE_TERMS):
-        return "mobile"
+    if any(t in n for t in TELE_TERMS):  return "telemedicine"
+    if any(t in n for t in MOBILE_TERMS): return "mobile"
     return "bnm"
 
 # ── Non-clinic exclusions ─────────────────────────────────────────────────────
@@ -111,44 +115,35 @@ CA_PROVINCES = set("AB BC MB NB NL NS NT NU ON PE QC SK YT".split())
 
 def is_north_america(props: dict) -> bool:
     country = (props.get("country") or "").lower().strip()
-    state   = (props.get("state") or "").strip().upper()
-    if country in NA_COUNTRIES:
-        return True
-    if not country and (state in US_STATES or state in CA_PROVINCES):
-        return True
+    state   = (props.get("state")   or "").strip().upper()
+    if country in NA_COUNTRIES: return True
+    if not country and (state in US_STATES or state in CA_PROVINCES): return True
     return False
 
 def in_na_bounds(lat: float, lng: float) -> bool:
-    """Validate geocoded coordinate is actually in North America."""
     return 14.5 <= lat <= 72.0 and -170.0 <= lng <= -50.0
 
-def is_negative(props: dict) -> bool:
+def coord_matches_country(lat: float, lng: float, country: str) -> bool:
+    cl = (country or "").lower()
+    if cl in {"canada", "ca"}:   return lat > 41.5 and lng < -52.0
+    if cl in {"mexico", "mx"}:   return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
+    return True
+
+def is_negative_props(props: dict) -> bool:
     notes = (props.get("internal_comments") or "").lower()
     return any(k in notes for k in NEGATIVE_KW)
 
 def is_excluded_non_clinic(props: dict) -> bool:
     name   = (props.get("name")   or "").lower()
     domain = (props.get("domain") or "").lower()
-    return any(f in name for f in EXCLUDE_NAME_FRAGMENTS) or \
-           any(d in domain for d in EXCLUDE_DOMAINS)
+    return (any(f in name for f in EXCLUDE_NAME_FRAGMENTS) or
+            any(d in domain for d in EXCLUDE_DOMAINS))
 
-def has_contact_info(props: dict, rec: dict) -> bool:
-    """Must have at least an email or phone number."""
-    email = (props.get("contact_email") or rec.get("email") or "").strip()
-    phone = (props.get("phone")         or rec.get("phone") or "").strip()
-    return bool(email) or bool(phone)
-
-def address_is_geocodable(addr: str) -> bool:
-    """Need at least 2 meaningful parts to geocode reliably (avoid state-only strings)."""
-    parts = [p.strip() for p in addr.split(",") if p.strip() and len(p.strip()) > 2]
-    return len(parts) >= 2
-
-# ── HubSpot ───────────────────────────────────────────────────────────────────
+# ── HubSpot helpers ───────────────────────────────────────────────────────────
 HS_PROPS = [
-    "name", "address", "address2", "city", "state", "zip", "country",
+    "name", "address", "city", "state", "zip", "country",
     "contact_email", "phone", "current_pims", "domain", "createdate",
     "media_testimonials_dsp", "internal_comments",
-    "hs_current_customer", "champion_contact",
 ]
 
 def hs_h():
@@ -157,14 +152,13 @@ def hs_h():
 def hs_signals(props: dict) -> list:
     sigs  = []
     media = (props.get("media_testimonials_dsp") or "").lower()
-    notes = (props.get("internal_comments") or "").lower()
+    notes = (props.get("internal_comments")      or "").lower()
     if any(k in media for k in ["article", "video", "testimonial"]):
         sigs.append("hs_testimonial")
     if any(k in media for k in ["dsp", "6 figure", "6-figure"]):
         sigs.append("hs_dsp")
     if any(k in notes for k in POSITIVE_KW) and not any(k in notes for k in NEGATIVE_KW):
         sigs.append("hs_positive_note")
-    # Tenure — valid signal, displayed transparently so reps know the basis
     try:
         created = props.get("createdate", "")
         if created:
@@ -175,576 +169,475 @@ def hs_signals(props: dict) -> list:
         pass
     return list(set(sigs))
 
-def build_address(props: dict, company_name: str = "") -> str:
-    """
-    Build a clean geocodable address string.
-    Falls back to city+state+zip if the address field is garbled
-    (contains the company name, a PO Box, or is abnormally long).
-    """
-    raw   = (props.get("address")  or "").strip()
-    city  = (props.get("city")     or "").strip().title()
-    state = (props.get("state")    or "").strip().upper()
-    zip_  = (props.get("zip")      or "").strip()
+def build_address_display(props: dict) -> str:
+    """Clean display address for popup — avoids garbled HubSpot address fields."""
+    raw  = (props.get("address") or "").strip()
+    city = (props.get("city")    or "").strip().title()
+    st   = (props.get("state")   or "").strip().upper()
+    zip_ = (props.get("zip")     or "").strip()
+    raw_clean = (raw and len(raw) < 80
+                 and "po box" not in raw.lower()
+                 and "p.o. box" not in raw.lower())
+    parts = [raw, city, st, zip_] if raw_clean else [city, st, zip_]
+    return ", ".join(p for p in parts if p)
 
-    addr_is_clean = bool(
-        raw
-        and len(raw) < 80
-        and "po box" not in raw.lower()
-        and "p.o. box" not in raw.lower()
-        and not (company_name and company_name[:8].lower() in raw.lower())
-    )
+def build_geocode_query(props: dict, contact: dict = None) -> str:
+    """ZIP-first geocode query. Contact location takes priority over company."""
+    def norm(c):
+        return {"us":"United States","usa":"United States","ca":"Canada",
+                "canada":"Canada","mx":"Mexico","mexico":"Mexico"}.get(
+                (c or "").lower().strip(), c or "United States")
+    co_zip  = (props.get("zip")     or "").strip()
+    co_city = (props.get("city")    or "").strip().title()
+    co_st   = (props.get("state")   or "").strip().upper()
+    co_ctry = norm(props.get("country", ""))
+    ct      = contact or {}
+    ct_zip  = (ct.get("zip")   or "").strip()
+    ct_city = (ct.get("city")  or "").strip().title()
+    ct_st   = (ct.get("state") or "").strip().upper()
+    ct_ctry = norm(ct.get("country", "")) if ct else co_ctry
+    state   = ct_st   or co_st
+    country = ct_ctry or co_ctry
+    if ct_zip  and state: return f"{ct_zip}, {state}, {country}"
+    if co_zip  and state: return f"{co_zip}, {state}, {country}"
+    if ct_city and state: return f"{ct_city}, {state}, {country}"
+    if co_city and state: return f"{co_city}, {state}, {country}"
+    if state:             return f"{state}, {country}"
+    return ""
 
-    if addr_is_clean:
-        parts = [p for p in [raw, city, state, zip_] if p]
-    else:
-        # Garbled — use city + state + zip only for cleaner geocoding
-        parts = [p for p in [city, state, zip_] if p]
-
-    return ", ".join(parts)
-
-def hs_address_with_fallback(hs_id: str, props: dict) -> str:
-    addr = build_address(props)
-    if addr and len(addr) > 8:
-        return addr
+def geocode_google(query: str):
+    if not GOOGLE_KEY or not query: return None, None
     try:
-        r = requests.get(
-            f"https://api.hubapi.com/crm/v3/objects/companies/{hs_id}/associations/contacts",
-            headers=hs_h(), timeout=10,
-        )
+        r = requests.get("https://maps.googleapis.com/maps/api/geocode/json",
+            params={"address": query, "key": GOOGLE_KEY}, timeout=10)
         if r.status_code == 200:
-            for c in r.json().get("results", [])[:3]:
-                cr = requests.get(
-                    f"https://api.hubapi.com/crm/v3/objects/contacts/{c['id']}",
-                    params={"properties": "address,city,state,zip,country"},
-                    headers=hs_h(), timeout=8,
-                )
-                if cr.status_code == 200:
-                    caddr = build_address(cr.json().get("properties", {}))
-                    if caddr and len(caddr) > 8:
-                        return caddr
-    except Exception:
-        pass
-    return addr
+            res = r.json().get("results", [])
+            if res:
+                loc = res[0]["geometry"]["location"]
+                return round(loc["lat"], 5), round(loc["lng"], 5)
+    except Exception as e:
+        print(f"  Google geocode failed '{query}': {e}")
+    return None, None
 
-def hs_get_closedwon_company_ids() -> set:
-    company_ids = set()
-    for filter_obj in [
-        {"propertyName": "hs_is_closed_won", "operator": "EQ", "value": "true"},
-        {"propertyName": "dealstage",         "operator": "EQ", "value": "closedwon"},
-    ]:
-        after = None
-        while True:
-            payload = {"filterGroups": [{"filters": [filter_obj]}], "properties": ["dealname"], "limit": 200}
-            if after:
-                payload["after"] = after
-            r = requests.post("https://api.hubapi.com/crm/v3/objects/deals/search",
-                              json=payload, headers=hs_h(), timeout=15)
-            if r.status_code != 200:
-                break
-            data     = r.json()
-            deal_ids = [d["id"] for d in data.get("results", [])]
-            if deal_ids:
-                for i in range(0, len(deal_ids), 100):
-                    chunk = deal_ids[i:i+100]
-                    ar = requests.post(
-                        "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
-                        json={"inputs": [{"id": did} for did in chunk]},
-                        headers=hs_h(), timeout=15,
-                    )
-                    if ar.status_code == 200:
-                        for item in ar.json().get("results", []):
-                            for assoc in item.get("to", []):
-                                company_ids.add(str(assoc.get("toObjectId", "")))
-                    time.sleep(0.1)
-            after = data.get("paging", {}).get("next", {}).get("after")
-            if not after:
-                break
-        if company_ids:
-            break
-    print(f"  HubSpot closed-won: {len(company_ids)} associated companies")
-    return company_ids
-
-def hs_get_customers() -> list:
-    closed_won_ids = hs_get_closedwon_company_ids()
-    results_by_id  = {}
-    for filt in [
-        {"propertyName": "lifecyclestage",     "operator": "EQ", "value": "customer"},
-        {"propertyName": "hs_current_customer","operator": "EQ", "value": "true"},
-    ]:
-        after, batch = None, {}
-        while True:
-            payload = {"filterGroups": [{"filters": [filt]}], "properties": HS_PROPS, "limit": 100}
-            if after:
-                payload["after"] = after
-            r = requests.post("https://api.hubapi.com/crm/v3/objects/companies/search",
-                              json=payload, headers=hs_h(), timeout=15)
-            if r.status_code != 200:
-                print(f"  HubSpot filter error: {r.status_code}")
-                break
-            data = r.json()
-            for c in data.get("results", []):
-                batch[c["id"]] = c
-            after = data.get("paging", {}).get("next", {}).get("after")
-            if not after:
-                break
-        if batch:
-            results_by_id.update(batch)
-            print(f"  HubSpot filter '{filt['propertyName']}': {len(batch)} companies")
-            break
-        else:
-            print(f"  HubSpot filter '{filt['propertyName']}': 0, trying next…")
-
-    new_ids = closed_won_ids - set(results_by_id.keys())
-    print(f"  HubSpot: {len(results_by_id)} customers + {len(new_ids)} closed-won-only")
-    for i in range(0, len(list(new_ids)), 100):
-        chunk = list(new_ids)[i:i+100]
-        r = requests.post(
-            "https://api.hubapi.com/crm/v3/objects/companies/batch/read",
-            json={"inputs": [{"id": cid} for cid in chunk], "properties": HS_PROPS},
-            headers=hs_h(), timeout=15,
-        )
+def geocode_nominatim(query: str):
+    if not query: return None, None
+    time.sleep(1.2)
+    try:
+        r = requests.get("https://nominatim.openstreetmap.org/search",
+            params={"format": "json", "q": query, "limit": 1},
+            headers={"User-Agent": "DigitailAdvocateMap/4.0"}, timeout=10)
         if r.status_code == 200:
-            for c in r.json().get("results", []):
-                results_by_id[c["id"]] = c
-        time.sleep(0.15)
-    all_cos = list(results_by_id.values())
-    print(f"  HubSpot total: {len(all_cos)} before filters")
-    return all_cos
+            d = r.json()
+            if d: return round(float(d[0]["lat"]), 5), round(float(d[0]["lon"]), 5)
+    except Exception as e:
+        print(f"  Nominatim failed '{query}': {e}")
+    return None, None
 
-# ── Geocoding ─────────────────────────────────────────────────────────────────
-def coord_matches_country(lat: float, lng: float, country: str) -> bool:
-    """
-    Check if coordinates are plausible for the company's country.
-    Catches cases like Canadian company geocoded to Kansas.
-    """
-    cl = (country or "").lower()
-    if cl in {"canada", "ca"}:
-        # All inhabited Canadian territory: lat > 41.5, lng < -52
-        return lat > 41.5 and lng < -52.0
-    if cl in {"mexico", "mx"}:
-        return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
-    return True  # US and unknown — rely on NA bounds check only
+def geocode(props: dict, contact: dict = None):
+    """Geocode using ZIP-first strategy. Validates NA bounds + country match."""
+    query = build_geocode_query(props, contact)
+    if not query: return None, None
+    lat, lng = geocode_google(query) if GOOGLE_KEY else geocode_nominatim(query)
+    if lat:
+        country = (props.get("country") or "").strip()
+        if in_na_bounds(lat, lng) and coord_matches_country(lat, lng, country):
+            return lat, lng
+        print(f"  Geocode rejected: {query} → {lat},{lng}")
+    return None, None
 
+# ── HubSpot data pulls ────────────────────────────────────────────────────────
 def hs_fetch_referral_network() -> dict:
-    """
-    Pull all contacts with reference_program_optin = true.
-    Returns dict: lowercased company name → contact properties.
-    These are explicitly verified happy customers — gold standard signal.
-    """
-    if not HS_TOKEN:
-        return {}
-    results = {}
-    after   = None
+    """Pull contacts with reference_program_optin=true. Gold standard signal."""
+    if not HS_TOKEN: return {}
+    results, after = {}, None
     while True:
         payload = {
-            "filterGroups": [{"filters": [
-                {"propertyName": "reference_program_optin", "operator": "EQ", "value": "true"}
-            ]}],
+            "filterGroups": [{"filters": [{"propertyName": "reference_program_optin",
+                                           "operator": "EQ", "value": "true"}]}],
             "properties": ["firstname","lastname","email","phone","company",
-                           "jobtitle","city","state","zip","country",
-                           "reference_type","total_references","last_reference_date"],
+                           "jobtitle","city","state","zip","country"],
             "limit": 100,
         }
-        if after:
-            payload["after"] = after
-        r = requests.post(
-            "https://api.hubapi.com/crm/v3/objects/contacts/search",
-            json=payload, headers=hs_h(), timeout=15,
-        )
+        if after: payload["after"] = after
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                          json=payload, headers=hs_h(), timeout=15)
         if r.status_code != 200:
-            print(f"  Referral network fetch error: {r.status_code}")
-            break
+            print(f"  Referral network error: {r.status_code}"); break
         data = r.json()
         for contact in data.get("results", []):
-            props      = contact.get("properties", {})
-            company_nm = (props.get("company") or "").strip()
-            if company_nm:
-                key = company_nm.lower()
-                if key not in results:
-                    results[key] = {
-                        "contact_props": props,
-                        "contact_id":    contact["id"],
-                    }
+            p  = contact.get("properties", {})
+            co = (p.get("company") or "").strip()
+            if co and co.lower() not in results:
+                results[co.lower()] = {"contact_props": p, "contact_id": contact["id"]}
         after = data.get("paging", {}).get("next", {}).get("after")
-        if not after:
-            break
-    print(f"  Referral network: {len(results)} opted-in contacts across {len(results)} companies")
+        if not after: break
+    print(f"  Referral network: {len(results)} opted-in companies")
     return results
-    """
-    Fetch contacts associated with a specific deal.
-    Returns list of contact property dicts sorted by: Owner > CEO/DVM > Manager > other.
-    """
+
+def hs_get_deal_contacts(deal_id: str) -> list:
+    """Get contacts associated with a deal, sorted by seniority."""
     try:
         r = requests.get(
             f"https://api.hubapi.com/crm/v3/objects/deals/{deal_id}/associations/contacts",
-            headers=hs_h(), timeout=10,
-        )
-        if r.status_code != 200:
-            return []
-        contact_ids = [c["id"] for c in r.json().get("results", [])]
-        if not contact_ids:
-            return []
-        # Batch fetch contact details
-        cr = requests.post(
-            "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
-            json={
-                "inputs": [{"id": cid} for cid in contact_ids[:5]],
-                "properties": ["firstname","lastname","email","phone","jobtitle",
-                               "city","state","zip","country"],
-            },
-            headers=hs_h(), timeout=10,
-        )
-        if cr.status_code != 200:
-            return []
-        contacts = [c.get("properties",{}) for c in cr.json().get("results",[])]
-        # Sort: prefer DVM/Owner/CEO roles first
+            headers=hs_h(), timeout=10)
+        if r.status_code != 200: return []
+        ids = [c["id"] for c in r.json().get("results", [])]
+        if not ids: return []
+        cr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
+            json={"inputs": [{"id": i} for i in ids[:5]],
+                  "properties": ["firstname","lastname","email","phone","jobtitle",
+                                 "city","state","zip","country"]},
+            headers=hs_h(), timeout=10)
+        if cr.status_code != 200: return []
+        contacts = [c.get("properties", {}) for c in cr.json().get("results", [])]
         def rank(c):
             jt = (c.get("jobtitle") or "").lower()
-            if any(k in jt for k in ["owner","dvm","veterinarian","doctor","ceo","medical director"]):
-                return 0
-            if any(k in jt for k in ["manager","director","admin","practice"]):
-                return 1
+            if any(k in jt for k in ["owner","dvm","veterinarian","doctor","ceo"]): return 0
+            if any(k in jt for k in ["manager","director","admin","practice"]):     return 1
             return 2
         return sorted(contacts, key=rank)
     except Exception as e:
-        print(f"  Contact fetch failed for deal {deal_id}: {e}")
-        return []
-
-def hs_get_company_deals(hs_id: str) -> list:
-    """Get closed-won deal IDs for a company."""
-    try:
-        r = requests.get(
-            f"https://api.hubapi.com/crm/v3/objects/companies/{hs_id}/associations/deals",
-            headers=hs_h(), timeout=10,
-        )
-        if r.status_code != 200:
-            return []
-        return [d["id"] for d in r.json().get("results", [])]
-    except Exception:
+        print(f"  Deal contact fetch failed {deal_id}: {e}")
         return []
 
 def best_contact_from_deals(hs_id: str) -> dict:
-    """
-    Find the best contact from the company's closed-won deals.
-    Returns a merged dict with the most useful fields from that contact.
-    """
-    deal_ids = hs_get_company_deals(hs_id)
-    for deal_id in deal_ids[:3]:  # Check up to 3 deals
-        contacts = hs_get_deal_contacts(deal_id)
-        if contacts:
-            best = contacts[0]  # Already sorted by role priority
-            return best
+    """Best contact from the company's associated deals."""
+    try:
+        r = requests.get(
+            f"https://api.hubapi.com/crm/v3/objects/companies/{hs_id}/associations/deals",
+            headers=hs_h(), timeout=10)
+        if r.status_code != 200: return {}
+        for deal in r.json().get("results", [])[:3]:
+            contacts = hs_get_deal_contacts(deal["id"])
+            if contacts: return contacts[0]
+    except Exception:
+        pass
     return {}
 
-def build_geocode_query(props: dict, contact: dict = None) -> str:
-    """
-    ZIP-first geocoding query. Uses contact location data preferentially
-    since company city/state fields are often dirty in HubSpot.
+def hs_get_closedwon_company_ids() -> set:
+    ids = set()
+    for filt in [{"propertyName": "hs_is_closed_won", "operator": "EQ", "value": "true"},
+                 {"propertyName": "dealstage",         "operator": "EQ", "value": "closedwon"}]:
+        after = None
+        while True:
+            payload = {"filterGroups": [{"filters": [filt]}],
+                       "properties": ["dealname"], "limit": 200}
+            if after: payload["after"] = after
+            r = requests.post("https://api.hubapi.com/crm/v3/objects/deals/search",
+                              json=payload, headers=hs_h(), timeout=15)
+            if r.status_code != 200: break
+            data     = r.json()
+            deal_ids = [d["id"] for d in data.get("results", [])]
+            for i in range(0, len(deal_ids), 100):
+                ar = requests.post(
+                    "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
+                    json={"inputs": [{"id": did} for did in deal_ids[i:i+100]]},
+                    headers=hs_h(), timeout=15)
+                if ar.status_code == 200:
+                    for item in ar.json().get("results", []):
+                        for assoc in item.get("to", []):
+                            ids.add(str(assoc.get("toObjectId", "")))
+                time.sleep(0.1)
+            after = data.get("paging", {}).get("next", {}).get("after")
+            if not after: break
+        if ids: break
+    print(f"  HubSpot closed-won: {len(ids)} companies")
+    return ids
 
-    Priority:
-      1. Contact ZIP + state + country
-      2. Company ZIP + state + country
-      3. Contact city + state + country
-      4. Company city + state + country
-      5. State + country only
-    """
-    # Normalise country
-    def norm_country(c):
-        return {"us":"United States","usa":"United States","ca":"Canada",
-                "canada":"Canada","mx":"Mexico","mexico":"Mexico"}.get(
-                (c or "").lower().strip(), (c or "United States"))
-
-    co_zip     = (props.get("zip")     or "").strip()
-    co_city    = (props.get("city")    or "").strip().title()
-    co_state   = (props.get("state")   or "").strip().upper()
-    co_country = norm_country(props.get("country",""))
-
-    ct_zip     = (contact.get("zip")     or "") .strip() if contact else ""
-    ct_city    = (contact.get("city")    or "").strip().title() if contact else ""
-    ct_state   = (contact.get("state")  or "").strip().upper() if contact else ""
-    ct_country = norm_country(contact.get("country","")) if contact else co_country
-
-    # Use whichever state/country combo looks most reliable
-    # Contact state takes priority (less likely to be "dallas, TX" for an OK clinic)
-    state   = ct_state   or co_state
-    country = ct_country or co_country
-
-    if ct_zip and state:
-        return f"{ct_zip}, {state}, {country}"
-    if co_zip and state:
-        return f"{co_zip}, {state}, {country}"
-    if ct_city and state:
-        return f"{ct_city}, {state}, {country}"
-    if co_city and state:
-        return f"{co_city}, {state}, {country}"
-    if state:
-        return f"{state}, {country}"
-    return ""
-
-def geocode_google(query: str) -> tuple:
-    """Use Google Geocoding API — smarter than Nominatim for dirty data."""
-    if not GOOGLE_KEY or not query:
-        return None, None
-    try:
-        r = requests.get(
-            "https://maps.googleapis.com/maps/api/geocode/json",
-            params={"address": query, "key": GOOGLE_KEY},
-            timeout=10,
-        )
+def hs_get_customers() -> list:
+    closed_won = hs_get_closedwon_company_ids()
+    by_id      = {}
+    for filt in [{"propertyName": "lifecyclestage",      "operator": "EQ", "value": "customer"},
+                 {"propertyName": "hs_current_customer", "operator": "EQ", "value": "true"}]:
+        after, batch = None, {}
+        while True:
+            payload = {"filterGroups": [{"filters": [filt]}],
+                       "properties": HS_PROPS, "limit": 100}
+            if after: payload["after"] = after
+            r = requests.post("https://api.hubapi.com/crm/v3/objects/companies/search",
+                              json=payload, headers=hs_h(), timeout=15)
+            if r.status_code != 200: break
+            data = r.json()
+            for c in data.get("results", []): batch[c["id"]] = c
+            after = data.get("paging", {}).get("next", {}).get("after")
+            if not after: break
+        if batch:
+            by_id.update(batch)
+            print(f"  HubSpot filter '{filt['propertyName']}': {len(batch)} companies")
+            break
+        print(f"  HubSpot filter '{filt['propertyName']}': 0, trying next…")
+    new_ids = closed_won - set(by_id.keys())
+    print(f"  HubSpot: {len(by_id)} customers + {len(new_ids)} closed-won-only")
+    for i in range(0, len(list(new_ids)), 100):
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/companies/batch/read",
+            json={"inputs": [{"id": cid} for cid in list(new_ids)[i:i+100]],
+                  "properties": HS_PROPS},
+            headers=hs_h(), timeout=15)
         if r.status_code == 200:
-            results = r.json().get("results", [])
-            if results:
-                loc = results[0]["geometry"]["location"]
-                return round(loc["lat"], 5), round(loc["lng"], 5)
-    except Exception as e:
-        print(f"  Google geocode failed for '{query}': {e}")
-    return None, None
-
-def geocode_nominatim(query: str, country: str = "") -> tuple:
-    """Nominatim fallback — used when no Google key available."""
-    if not query:
-        return None, None
-    time.sleep(1.2)
-    try:
-        r = requests.get(
-            "https://nominatim.openstreetmap.org/search",
-            params={"format": "json", "q": query, "limit": 1},
-            headers={"User-Agent": "DigitailAdvocateMap/4.0 (internal-sales-tool)"},
-            timeout=10,
-        )
-        if r.status_code == 200:
-            d = r.json()
-            if d:
-                return round(float(d[0]["lat"]), 5), round(float(d[0]["lon"]), 5)
-    except Exception as e:
-        print(f"  Nominatim failed for '{query}': {e}")
-    return None, None
-
-def geocode(address: str, country: str = "", props: dict = None) -> tuple:
-    """
-    Main geocode entry point.
-    Uses ZIP-first query strategy + Google API if available.
-    Validates result is within North America bounds.
-    """
-    # Build clean ZIP-first query from props if available
-    if props:
-        query = build_geocode_query(props)
-    else:
-        query = address or ""
-
-    if not query:
-        return None, None
-
-    # Try Google first (smarter, handles dirty city names)
-    if GOOGLE_KEY:
-        lat, lng = geocode_google(query)
-    else:
-        time.sleep(1.2)  # Nominatim rate limit
-        lat, lng = geocode_nominatim(query, country)
-
-    if lat and in_na_bounds(lat, lng):
-        country_field = (props.get("country","") if props else country)
-        if coord_matches_country(lat, lng, country_field):
-            return lat, lng
-        else:
-            print(f"  Geocode coord/country mismatch: {query} → {lat},{lng} (country: {country_field})")
-    elif lat:
-        print(f"  Geocode rejected (outside NA): {query} → {lat},{lng}")
-
-    return None, None
+            for c in r.json().get("results", []): by_id[c["id"]] = c
+        time.sleep(0.15)
+    all_cos = list(by_id.values())
+    print(f"  HubSpot total: {len(all_cos)} before filters")
+    return all_cos
 
 # ── Intercom ──────────────────────────────────────────────────────────────────
-def _ic_company_name(contact_id: str, headers: dict) -> str:
+def _ic_name(contact_id: str, headers: dict) -> str:
     try:
-        cr = requests.get(f"https://api.intercom.io/contacts/{contact_id}", headers=headers, timeout=8)
+        cr = requests.get(f"https://api.intercom.io/contacts/{contact_id}",
+                          headers=headers, timeout=8)
         if cr.status_code == 200:
-            cdata = cr.json()
-            cos   = cdata.get("companies", {}).get("data", [])
-            return cos[0].get("name", "") if cos else (cdata.get("name", "") or "")
+            d   = cr.json()
+            cos = d.get("companies", {}).get("data", [])
+            return cos[0].get("name", "") if cos else (d.get("name", "") or "")
     except Exception:
         pass
     return ""
 
 def _ic_extract(convo: dict, headers: dict, results: dict):
-    robj   = convo.get("conversation_rating") or {}
-    remark = (robj.get("remark") or "").strip()
+    robj     = convo.get("conversation_rating") or {}
+    remark   = (robj.get("remark") or "").strip()
     contacts = convo.get("contacts", {}).get("contacts", [])
-    name = _ic_company_name(contacts[0]["id"], headers) if contacts else ""
+    name     = _ic_name(contacts[0]["id"], headers) if contacts else ""
     if name:
         key = name.lower().strip()
         if key not in results:
             results[key] = {"signal": "intercom_csat",
-                            "quote":  remark[:300] if remark else None, "company": name}
+                            "quote":  remark[:300] if remark else None}
 
 def fetch_intercom_csat() -> dict:
-    if not IC_TOKEN:
-        return {}
-    headers = {"Authorization": f"Bearer {IC_TOKEN}", "Accept": "application/json", "Intercom-Version": "2.10"}
+    if not IC_TOKEN: return {}
+    hdrs = {"Authorization": f"Bearer {IC_TOKEN}", "Accept": "application/json",
+            "Intercom-Version": "2.10"}
     results = {}
-    for field, value in [("conversation_rating.rating", "amazing"), ("rating", "amazing")]:
+    for field, val in [("conversation_rating.rating","amazing"), ("rating","amazing")]:
         try:
-            r = requests.post(
-                "https://api.intercom.io/conversations/search",
-                json={"query": {"operator": "AND", "value": [{"field": field, "operator": "=", "value": value}]},
-                      "pagination": {"per_page": 150}},
-                headers=headers, timeout=15,
-            )
+            r = requests.post("https://api.intercom.io/conversations/search",
+                json={"query":{"operator":"AND","value":[{"field":field,"operator":"=","value":val}]},
+                      "pagination":{"per_page":150}},
+                headers=hdrs, timeout=30)
             if r.status_code == 200:
                 convos = r.json().get("conversations", [])
                 if convos:
-                    for c in convos:
-                        _ic_extract(c, headers, results)
+                    for c in convos: _ic_extract(c, hdrs, results)
                     print(f"  Intercom CSAT: {len(results)} records")
                     return results
         except Exception as e:
             print(f"  Intercom search failed: {e}")
     try:
-        r = requests.get(
-            "https://api.intercom.io/conversations",
-            params={"per_page": 150, "order": "desc", "display_as": "plaintext"},
-            headers=headers, timeout=15,
-        )
+        r = requests.get("https://api.intercom.io/conversations",
+            params={"per_page":150,"order":"desc","display_as":"plaintext"},
+            headers=hdrs, timeout=30)
         if r.status_code == 200:
             for c in r.json().get("conversations", []):
                 robj = c.get("conversation_rating") or {}
-                val  = str(robj.get("value", "") or robj.get("rating", ""))
-                if val in ["5", "amazing", "great"]:
-                    _ic_extract(c, headers, results)
+                if str(robj.get("value","") or robj.get("rating","")) in ["5","amazing","great"]:
+                    _ic_extract(c, hdrs, results)
     except Exception as e:
         print(f"  Intercom fallback failed: {e}")
     print(f"  Intercom (fallback): {len(results)} CSAT records")
     return results
 
 def fetch_intercom_negative() -> set:
-    if not IC_TOKEN:
-        return set()
-    headers = {"Authorization": f"Bearer {IC_TOKEN}", "Accept": "application/json", "Intercom-Version": "2.10"}
+    if not IC_TOKEN: return set()
+    hdrs = {"Authorization": f"Bearer {IC_TOKEN}", "Accept": "application/json",
+            "Intercom-Version": "2.10"}
     bad = set()
-    for field, value in [("conversation_rating.rating","terrible"),("conversation_rating.rating","bad"),
-                         ("rating","terrible"),("rating","bad")]:
+    for field, val in [("conversation_rating.rating","terrible"),
+                       ("conversation_rating.rating","bad"),
+                       ("rating","terrible"), ("rating","bad")]:
         try:
-            r = requests.post(
-                "https://api.intercom.io/conversations/search",
-                json={"query": {"operator":"AND","value":[{"field":field,"operator":"=","value":value}]},
-                      "pagination": {"per_page": 100}},
-                headers=headers, timeout=15,
-            )
+            r = requests.post("https://api.intercom.io/conversations/search",
+                json={"query":{"operator":"AND","value":[{"field":field,"operator":"=","value":val}]},
+                      "pagination":{"per_page":100}},
+                headers=hdrs, timeout=30)
             if r.status_code == 200:
                 convos = r.json().get("conversations", [])
                 if convos:
                     tmp = {}
-                    for c in convos:
-                        _ic_extract(c, headers, tmp)
+                    for c in convos: _ic_extract(c, hdrs, tmp)
                     bad.update(tmp.keys())
                     break
         except Exception:
             continue
-    if bad:
-        print(f"  Intercom negative: {len(bad)} companies flagged")
+    if bad: print(f"  Intercom negative: {len(bad)} companies flagged")
     return bad
 
-# ── Review scrapers ───────────────────────────────────────────────────────────
-def _scrape_reviews(url, signal_key, card_sels, rating_sels, body_sels, reviewer_sels, min_rating=4.0):
-    if not BS4:
-        return []
-    results = []
+# ── Slack channel scanning ────────────────────────────────────────────────────
+def fetch_slack_signals() -> tuple:
+    """Returns (positive_dict, negative_set) from scanning public channels."""
+    if not SLACK_BOT_TOKEN:
+        print("  Slack: no token, skipping")
+        return {}, set()
+    hdrs     = {"Authorization": f"Bearer {SLACK_BOT_TOKEN}"}
+    positive, negative = {}, set()
+    cutoff   = int((datetime.now(timezone.utc) - timedelta(days=30)).timestamp())
     try:
-        r = requests.get(url, headers={"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36","Accept-Language":"en-US,en;q=0.9"}, timeout=15)
+        r        = requests.get("https://slack.com/api/conversations.list",
+                    params={"types":"public_channel","limit":200,"exclude_archived":"true"},
+                    headers=hdrs, timeout=10)
+        channels = {c["name"]: c["id"] for c in r.json().get("channels", [])}
+    except Exception as e:
+        print(f"  Slack channel list failed: {e}"); return {}, set()
+    scanned = 0
+    for ch_name in SLACK_CHANNELS_TO_SCAN:
+        ch_id = channels.get(ch_name)
+        if not ch_id: continue
+        try:
+            r = requests.get("https://slack.com/api/conversations.history",
+                params={"channel":ch_id,"oldest":cutoff,"limit":200},
+                headers=hdrs, timeout=15)
+            if not r.json().get("ok"): continue
+            for msg in r.json().get("messages", []):
+                text = msg.get("text", "")
+                if not text or len(text) < 15: continue
+                tl      = text.lower()
+                is_pos  = any(k in tl for k in POSITIVE_KW)
+                is_neg  = any(k in tl for k in NEGATIVE_KW)
+                scanned += 1
+                for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})*\b', text):
+                    if len(word) > 5 and word.lower() not in {"slack","digitail","tails","monday","friday"}:
+                        if is_pos and not is_neg:
+                            positive.setdefault(word.lower(), {"signal":"slack_mention","quote":text[:280],"channel":ch_name})
+                        elif is_neg and not is_pos:
+                            negative.add(word.lower())
+        except Exception as e:
+            print(f"  Slack #{ch_name} failed: {e}")
+    print(f"  Slack: {scanned} messages → {len(positive)} positive, {len(negative)} negative")
+    return positive, negative
+
+# ── Fathom call intelligence ──────────────────────────────────────────────────
+def fetch_fathom_signals() -> tuple:
+    """Returns (positive_dict, negative_set) from recent Fathom call summaries."""
+    if not FATHOM_API_KEY:
+        print("  Fathom: no API key, skipping")
+        return {}, set()
+    hdrs    = {"Authorization": f"Bearer {FATHOM_API_KEY}", "Content-Type": "application/json"}
+    cutoff  = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+    positive, negative = {}, set()
+    try:
+        r     = requests.get("https://api.fathom.ai/v1/calls",
+                             params={"limit":100,"after":cutoff}, headers=hdrs, timeout=15)
         if r.status_code != 200:
-            print(f"  {signal_key}: HTTP {r.status_code}")
-            return []
+            print(f"  Fathom: HTTP {r.status_code}"); return {}, set()
+        calls = r.json().get("data", r.json().get("calls", []))
+        print(f"  Fathom: {len(calls)} calls retrieved")
+        for call in calls:
+            call_id   = call.get("id","")
+            title     = (call.get("title") or call.get("name") or "").strip()
+            summary   = (call.get("summary") or call.get("description") or "").strip()
+            attendees = call.get("attendees", [])
+            if not summary and call_id:
+                try:
+                    sr = requests.get(f"https://api.fathom.ai/v1/calls/{call_id}",
+                                      headers=hdrs, timeout=10)
+                    if sr.status_code == 200:
+                        summary = (sr.json().get("summary") or "").strip()
+                except Exception:
+                    pass
+            combined = f"{title} {summary}".lower()
+            if not combined.strip(): continue
+            is_pos = any(k in combined for k in POSITIVE_KW)
+            is_neg = any(k in combined for k in NEGATIVE_KW)
+            candidates = set()
+            for pat in [r'(?:with|re:|follow.?up|check.?in)\s+([A-Z][^\-–|:]+)',
+                        r'^([A-Z][a-zA-Z\s]{4,40})\s*[-–|:]']:
+                m = re.search(pat, title)
+                if m: candidates.add(m.group(1).strip().lower())
+            for att in attendees:
+                email  = (att.get("email") or "")
+                if "@" in email:
+                    domain = email.split("@")[1].split(".")[0]
+                    if len(domain) > 4 and domain not in {"gmail","yahoo","hotmail","outlook"}:
+                        candidates.add(domain.lower())
+            for cand in candidates:
+                if is_pos and not is_neg:
+                    positive.setdefault(cand, {"signal":"fathom_call",
+                        "quote": summary[:280] if summary else f"Positive call: {title}"})
+                elif is_neg and not is_pos:
+                    negative.add(cand)
+        print(f"  Fathom: {len(positive)} positive, {len(negative)} negative")
+    except Exception as e:
+        print(f"  Fathom failed: {e}")
+    return positive, negative
+
+# ── Review scrapers ───────────────────────────────────────────────────────────
+def _scrape(url, key, card_sels, rating_sels, body_sels, rev_sels, min_r=4.0):
+    if not BS4: return []
+    out = []
+    try:
+        r = requests.get(url, headers={"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36","Accept-Language":"en-US,en;q=0.9"}, timeout=15)
+        if r.status_code != 200: print(f"  {key}: HTTP {r.status_code}"); return []
         soup  = BeautifulSoup(r.text, "html.parser")
-        cards = []
-        for sel in card_sels:
-            cards = soup.select(sel)
-            if cards:
-                break
+        cards = next((soup.select(s) for s in card_sels if soup.select(s)), [])
         for card in cards:
             try:
                 rating = 0.0
-                for sel in rating_sels:
-                    el = card.select_one(sel)
+                for s in rating_sels:
+                    el = card.select_one(s)
                     if el:
                         nums = re.findall(r'(\d+\.?\d*)', el.get("aria-label","") or el.get_text())
-                        if nums:
-                            rating = float(nums[0])
-                            break
-                if rating and rating < min_rating:
-                    continue
-                text = ""
-                for sel in body_sels:
-                    el = card.select_one(sel)
-                    if el:
-                        text = el.get_text(" ", strip=True)[:400]
-                        break
-                if not text or len(text) < 20:
-                    continue
-                reviewer = ""
-                for sel in reviewer_sels:
-                    el = card.select_one(sel)
-                    if el:
-                        reviewer = el.get_text(strip=True)
-                        break
-                results.append({"source":signal_key,"reviewer":reviewer,"text":text,"rating":rating,"signal":signal_key})
+                        if nums: rating = float(nums[0]); break
+                if rating and rating < min_r: continue
+                text = next((card.select_one(s).get_text(" ", strip=True)[:400]
+                             for s in body_sels if card.select_one(s)), "")
+                if not text or len(text) < 20: continue
+                reviewer = next((card.select_one(s).get_text(strip=True)
+                                 for s in rev_sels if card.select_one(s)), "")
+                out.append({"source":key,"reviewer":reviewer,"text":text,"rating":rating,"signal":key})
             except Exception:
                 continue
-        print(f"  {signal_key}: {len(results)} reviews")
+        print(f"  {key}: {len(out)} reviews")
     except Exception as e:
-        print(f"  {signal_key} failed: {e}")
-    return results
+        print(f"  {key} failed: {e}")
+    return out
 
 def scrape_capterra():
-    return _scrape_reviews("https://www.capterra.com/p/167764/Digitail/","capterra_positive",
-        ["[data-testid='review-card']",".review-card","[class*='ReviewCard']","article[class*='review']"],
+    return _scrape("https://www.capterra.com/p/167764/Digitail/","capterra_positive",
+        ["[data-testid='review-card']",".review-card","[class*='ReviewCard']"],
         ["[aria-label*='star']","[aria-label*='out of']","[class*='rating']"],
-        ["p","[class*='body']","[class*='Body']","[class*='review-text']"],
-        ["[class*='reviewer']","[class*='author']","[class*='Reviewer']"])
+        ["p","[class*='body']","[class*='review-text']"],
+        ["[class*='reviewer']","[class*='author']"])
 
 def scrape_g2():
-    return _scrape_reviews("https://www.g2.com/products/digitail/reviews","g2_positive",
+    return _scrape("https://www.g2.com/products/digitail/reviews","g2_positive",
         ["[itemprop='review']","[class*='Paper__StyledPaper']","article"],
         ["[itemprop='ratingValue']","[class*='stars']","[aria-label*='star']"],
         ["[itemprop='reviewBody']","[class*='formatted-text']","p"],
         ["[itemprop='author']","[class*='reviewer']"])
 
 def scrape_software_advice():
-    return _scrape_reviews("https://www.softwareadvice.com/veterinary/digitail-profile/reviews/","softwareadvice",
+    return _scrape("https://www.softwareadvice.com/veterinary/digitail-profile/reviews/","softwareadvice",
         ["[class*='review-card']","[class*='ReviewCard']","article"],
         ["[class*='rating']","[aria-label*='star']"],
-        ["[class*='review-body']","[class*='ReviewBody']","p"],
-        ["[class*='reviewer']","[class*='author']"])
+        ["[class*='review-body']","p"],["[class*='reviewer']","[class*='author']"])
 
 def scrape_getapp():
-    return _scrape_reviews("https://www.getapp.com/veterinary-practice-management-software/a/digitail/reviews/","getapp",
-        ["[class*='review']","article","[data-test*='review']"],
-        ["[class*='rating']","[aria-label*='star']"],
-        ["[class*='body']","p"],
-        ["[class*='reviewer']","[class*='author']"])
+    return _scrape("https://www.getapp.com/veterinary-practice-management-software/a/digitail/reviews/","getapp",
+        ["[class*='review']","article"],["[class*='rating']","[aria-label*='star']"],
+        ["[class*='body']","p"],["[class*='reviewer']","[class*='author']"])
 
 def scrape_trustpilot():
-    return _scrape_reviews("https://www.trustpilot.com/review/digitail.io","capterra_positive",
+    return _scrape("https://www.trustpilot.com/review/digitail.io","capterra_positive",
         ["[data-service-review-card-paper]","[class*='reviewCard']","article"],
         ["[data-service-review-rating]","[class*='starRating']"],
-        ["[data-service-review-text-typography]","[class*='reviewContent']","p"],
+        ["[data-service-review-text-typography]","p"],
         ["[class*='consumerName']","[class*='reviewer']"])
 
 # ── Reddit ────────────────────────────────────────────────────────────────────
 def fetch_reddit_mentions() -> list:
     if not REDDIT_ID or not REDDIT_SECRET:
-        print("  Reddit: no credentials, skipping")
-        return []
+        print("  Reddit: no credentials, skipping"); return []
     results = []
     try:
         tok = requests.post("https://www.reddit.com/api/v1/access_token",
             auth=requests.auth.HTTPBasicAuth(REDDIT_ID, REDDIT_SECRET),
             data={"grant_type":"client_credentials"},
             headers={"User-Agent":"DigitailAdvocateMap/4.0"}, timeout=10).json().get("access_token","")
-        if not tok:
-            print("  Reddit: auth failed"); return []
+        if not tok: print("  Reddit: auth failed"); return []
         hdrs = {"Authorization":f"bearer {tok}","User-Agent":"DigitailAdvocateMap/4.0"}
-        for query in ["Digitail veterinary software","Digitail PIMS","Digitail vet"]:
+        for q in ["Digitail veterinary software","Digitail PIMS","Digitail vet"]:
             r = requests.get("https://oauth.reddit.com/search",
-                params={"q":query,"sort":"new","limit":50,"type":"link,comment"},
+                params={"q":q,"sort":"new","limit":50,"type":"link,comment"},
                 headers=hdrs, timeout=15)
             if r.status_code == 200:
                 for post in r.json().get("data",{}).get("children",[]):
@@ -752,8 +645,8 @@ def fetch_reddit_mentions() -> list:
                     text = d.get("selftext","") or d.get("body","") or d.get("title","")
                     tl   = text.lower()
                     if any(p in tl for p in POSITIVE_KW) and not any(n in tl for n in NEGATIVE_KW):
-                        results.append({"source":"reddit","text":text[:400],"author":d.get("author",""),
-                                        "url":f"https://reddit.com{d.get('permalink','')}","signal":"reddit_mention"})
+                        results.append({"source":"reddit","text":text[:400],
+                                        "author":d.get("author",""),"signal":"reddit_mention"})
             time.sleep(0.5)
         print(f"  Reddit: {len(results)} positive mentions")
     except Exception as e:
@@ -764,167 +657,111 @@ def fetch_reddit_mentions() -> list:
 def fetch_google_reviews() -> list:
     if not GOOGLE_KEY or not GOOGLE_PLACE:
         print("  Google Reviews: no credentials, skipping"); return []
-    results = []
     try:
         r = requests.get("https://maps.googleapis.com/maps/api/place/details/json",
-            params={"place_id":GOOGLE_PLACE,"fields":"reviews,name","key":GOOGLE_KEY,"reviews_sort":"newest"}, timeout=10)
+            params={"place_id":GOOGLE_PLACE,"fields":"reviews","key":GOOGLE_KEY,"reviews_sort":"newest"}, timeout=10)
         if r.status_code == 200:
-            for rev in r.json().get("result",{}).get("reviews",[]):
-                if rev.get("rating",0) >= 4 and rev.get("text",""):
-                    results.append({"source":"google","reviewer":rev.get("author_name",""),
-                                    "text":rev["text"][:400],"rating":rev["rating"],"signal":"google_review"})
-        print(f"  Google Reviews: {len(results)} reviews")
+            out = [{"source":"google","reviewer":rv.get("author_name",""),
+                    "text":rv["text"][:400],"rating":rv["rating"],"signal":"google_review"}
+                   for rv in r.json().get("result",{}).get("reviews",[])
+                   if rv.get("rating",0) >= 4 and rv.get("text","")]
+            print(f"  Google Reviews: {len(out)} reviews"); return out
     except Exception as e:
         print(f"  Google Reviews failed: {e}")
-    return results
+    return []
 
 def fetch_google_web_mentions() -> list:
     if not GOOGLE_KEY or not GOOGLE_CSE_ID:
         print("  Google CSE: no credentials, skipping"); return []
-    results = []
+    out = []
     try:
-        for query in ['"Digitail" veterinary review','"Digitail" PIMS "switched"','"Digitail" vet "recommend"']:
+        for q in ['"Digitail" veterinary review','"Digitail" PIMS switched','"Digitail" vet recommend']:
             r = requests.get("https://www.googleapis.com/customsearch/v1",
-                params={"q":query,"key":GOOGLE_KEY,"cx":GOOGLE_CSE_ID,"num":10}, timeout=10)
+                params={"q":q,"key":GOOGLE_KEY,"cx":GOOGLE_CSE_ID,"num":10}, timeout=10)
             if r.status_code == 200:
                 for item in r.json().get("items",[]):
-                    snippet = item.get("snippet","")
-                    sl = snippet.lower()
-                    if any(p in sl for p in POSITIVE_KW) and not any(n in sl for n in NEGATIVE_KW):
-                        results.append({"source":"google_web","text":snippet[:400],
-                                        "url":item.get("link",""),"signal":"google_mention"})
+                    s = item.get("snippet","")
+                    if any(p in s.lower() for p in POSITIVE_KW) and not any(n in s.lower() for n in NEGATIVE_KW):
+                        out.append({"source":"google_web","text":s[:400],"signal":"google_mention"})
             time.sleep(0.3)
-        print(f"  Google CSE: {len(results)} web mentions")
+        print(f"  Google CSE: {len(out)} mentions")
     except Exception as e:
         print(f"  Google CSE failed: {e}")
-    return results
+    return out
 
 def fetch_facebook_reviews() -> list:
-    if not FB_TOKEN:
-        print("  Facebook: no token, skipping"); return []
-    results = []
+    if not FB_TOKEN: print("  Facebook: no token, skipping"); return []
     try:
         r = requests.get("https://graph.facebook.com/v18.0/me/ratings",
-            params={"access_token":FB_TOKEN,"fields":"reviewer{name},rating,review_text,created_time","limit":50}, timeout=10)
+            params={"access_token":FB_TOKEN,"fields":"reviewer{name},rating,review_text","limit":50}, timeout=10)
         if r.status_code == 200:
-            for rev in r.json().get("data",[]):
-                if rev.get("rating",0) >= 4 and rev.get("review_text",""):
-                    results.append({"source":"facebook","reviewer":rev.get("reviewer",{}).get("name",""),
-                                    "text":rev["review_text"][:400],"rating":rev["rating"],"signal":"facebook_review"})
-        print(f"  Facebook: {len(results)} reviews")
+            out = [{"source":"facebook","reviewer":rv.get("reviewer",{}).get("name",""),
+                    "text":rv["review_text"][:400],"signal":"facebook_review"}
+                   for rv in r.json().get("data",[]) if rv.get("rating",0) >= 4 and rv.get("review_text","")]
+            print(f"  Facebook: {len(out)} reviews"); return out
     except Exception as e:
         print(f"  Facebook failed: {e}")
-    return results
-
-# ── Manual review → HubSpot matches ──────────────────────────────────────────
-# Capterra only gives first name + initial, so automatic matching can't work.
-# These are manually confirmed. Key = reviewer name as it appears in advocates.json
-# Value = HubSpot company ID to attach the signal and quote to.
-MANUAL_REVIEW_MATCHES = {
-    # Confirmed by team
-    "christopher m., ceo":  "21507806557",  # Christopher Martin → Hefner Road Animal Hospital
-    "heidi t.":             "18856205671",  # Heidi Traylor → Covina Animal Hospital
-    "heather w.":           "6250277934",   # Heather Neidt → Embrace Animal Hospital
-    "donna r.":             "5649619997",   # Donna Robinson → Cimarron Canyon Mobile Vet
-    "anne s.":              "13566081857",  # Dr. Anna George → Cruisin' Vet, Happy Pet (AZ)
-    "emily p.":             "30735787553",  # → Oceana Veterinary Clinic (MI)
-    "tienne g.":            "4462711240",   # → Hoffman Veterinary Clinic (IntraVet → Digitail)
-    # Still unconfirmed — add below when identified:
-    # "alicia b.":          "HUBSPOT_ID",
-    # "kaitlynn s.":        "HUBSPOT_ID",
-}
-# Keys = lowercase fragments to search for in review text
-# Values = fragments to match against HubSpot current_pims field
-PIMS_MATCH = {
-    "avimark":      ["avimark"],
-    "cornerstone":  ["cornerstone"],
-    "impromed":     ["impromed"],
-    "intravet":     ["intravet"],
-    "ezyvet":       ["ezyvet", "ezy vet"],
-    "dvmax":        ["dvmax"],
-    "pulse":        ["covetrus pulse", "pulse"],
-    "advantage":    ["advantage"],
-    "neo":          ["neo vet", "neovet"],
-    "rhapsody":     ["rhapsody"],
-    "hippomanager":  ["hippo", "hipposoft"],
-    "v-tech":       ["v-tech", "vtech platinum"],
-    "logivel":      ["logivel"],
-}
+    return []
 
 # ── Review → HubSpot matching ─────────────────────────────────────────────────
+PIMS_MATCH = {
+    "avimark":["avimark"],"cornerstone":["cornerstone"],"impromed":["impromed"],
+    "intravet":["intravet"],"ezyvet":["ezyvet","ezy vet"],"dvmax":["dvmax"],
+    "pulse":["covetrus pulse","pulse"],"advantage":["advantage"],
+    "neo":["neo vet","neovet"],"rhapsody":["rhapsody"],
+    "hippomanager":["hippo","hipposoft"],"v-tech":["v-tech","vtech platinum"],
+}
+
+MANUAL_REVIEW_MATCHES = {
+    "christopher m., ceo": "21507806557",  # Hefner Road Animal Hospital
+    "heidi t.":            "18856205671",  # Covina Animal Hospital
+    "heather w.":          "6250277934",   # Embrace Animal Hospital
+    "donna r.":            "5649619997",   # Cimarron Canyon Mobile Vet
+    "anne s.":             "13566081857",  # Cruisin' Vet, Happy Pet
+    "emily p.":            "30735787553",  # Oceana Veterinary Clinic
+    "tienne g.":           "4462711240",   # Hoffman Veterinary Clinic
+    # "alicia b.":         "HUBSPOT_ID",
+    # "kaitlynn s.":       "HUBSPOT_ID",
+}
+
+def names_match(a: str, b: str) -> bool:
+    a, b = a.lower().strip(), b.lower().strip()
+    if not a or not b: return False
+    if a in b or b in a: return True
+    wa = {w for w in re.split(r'\W+', a) if len(w) >= 4}
+    wb = {w for w in re.split(r'\W+', b) if len(w) >= 4}
+    return len(wa & wb) >= 2
 
 def build_review_matches(all_external: list, hs_customers: list) -> dict:
-    """
-    For each external review/mention, find the best-matching HubSpot company
-    using a multi-signal scoring approach:
-      +10  reviewer name matches company name
-      +8   company name appears in review text
-      +6   PIMS mentioned in review matches HubSpot current_pims
-      +4   city mentioned in review matches company city
-      +2   state match
-
-    Only links with score ≥ 8 are accepted to avoid false positives.
-    Returns dict: hs_id → list of matched external records.
-    """
-    matches = {}
-    unmatched = 0
-
+    matches, unmatched = {}, 0
     for ext in all_external:
-        text     = (ext.get("text")     or "").lower()
+        text     = (ext.get("text") or "").lower()
         reviewer = (ext.get("reviewer") or ext.get("author") or "").lower()
-        pims_in_review = ext.get("pims", "")  # may be set for Capterra records
-
+        pims_txt = ext.get("pims", "")
         best_id, best_score = None, 0
-
         for customer in hs_customers:
-            props   = customer.get("properties", {})
-            hs_id   = str(customer["id"])
-            hs_name = (props.get("name")         or "").lower().strip()
-            hs_city = (props.get("city")         or "").lower().strip()
-            hs_st   = (props.get("state")        or "").lower().strip()
-            hs_pims = (props.get("current_pims") or "").lower().strip()
-            score   = 0
-
-            # Name match
-            if reviewer and names_match(hs_name, reviewer): score += 10
-            if hs_name  and hs_name in text:                score += 8
-            if reviewer and len(reviewer) > 4 and reviewer in hs_name: score += 8
-
-            # PIMS match — both from review text and from pre-known pims field
-            combined_pims_text = text + " " + pims_in_review.lower()
-            for pims_key, aliases in PIMS_MATCH.items():
-                if pims_key in hs_pims:
-                    if any(a in combined_pims_text for a in aliases):
-                        score += 6
-                        break
-
-            # Location match
-            if hs_city and len(hs_city) > 3 and hs_city in text: score += 4
-            if hs_st   and len(hs_st) > 1   and hs_st   in text: score += 2
-
-            if score > best_score:
-                best_score = score
-                best_id    = hs_id
-
+            p      = customer.get("properties", {})
+            hs_id  = str(customer["id"])
+            name   = (p.get("name")         or "").lower()
+            city   = (p.get("city")         or "").lower()
+            st     = (p.get("state")        or "").lower()
+            pims   = (p.get("current_pims") or "").lower()
+            score  = 0
+            if reviewer and names_match(name, reviewer): score += 10
+            if name and name in text:                    score += 8
+            if reviewer and len(reviewer) > 4 and reviewer in name: score += 8
+            for pk, aliases in PIMS_MATCH.items():
+                if pk in pims and any(a in text + " " + pims_txt.lower() for a in aliases):
+                    score += 6; break
+            if city and len(city) > 3 and city in text: score += 4
+            if st   and len(st)   > 1 and st   in text: score += 2
+            if score > best_score: best_score = score; best_id = hs_id
         if best_id and best_score >= 8:
             matches.setdefault(best_id, []).append(ext)
         else:
             unmatched += 1
-
-    matched = sum(len(v) for v in matches.values())
-    print(f"  Review matching: {matched} reviews linked to HubSpot companies, {unmatched} unmatched")
+    print(f"  Reviews matched: {sum(len(v) for v in matches.values())}, unmatched: {unmatched}")
     return matches
-
-
-def names_match(a: str, b: str) -> bool:
-    a, b = a.lower().strip(), b.lower().strip()
-    if not a or not b:
-        return False
-    if a in b or b in a:
-        return True
-    wa = {w for w in re.split(r'\W+', a) if len(w) >= 4}
-    wb = {w for w in re.split(r'\W+', b) if len(w) >= 4}
-    return len(wa & wb) >= 2
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
@@ -934,199 +771,175 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # Force-clear all existing coordinates so everything re-geocodes cleanly
-    # This is a one-time repair — future runs only re-geocode changed records
-    coords_cleared = 0
+    # One-time: clear all coordinates for clean re-geocode
     for rec in existing:
-        if rec.get("lat") or rec.get("lng"):
-            rec["lat"], rec["lng"] = None, None
-            coords_cleared += 1
-    if coords_cleared:
-        print(f"  Force-cleared {coords_cleared} stale coordinates — full re-geocode this run\n")
+        rec["lat"], rec["lng"] = None, None
 
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
     original = json.dumps(existing, sort_keys=True)
-    print(f"Existing advocates: {len(existing)}\n")
+    print(f"Existing: {len(existing)} advocates\n")
 
-    # ── Gather signals ─────────────────────────────────────────────────────────
+    # ── Signals from all sources ──────────────────────────────────────────────
     print("── Intercom ───────────────────────────────────────────────")
-    ic_sigs     = fetch_intercom_csat()
-    ic_negative = fetch_intercom_negative()
+    ic_sigs      = fetch_intercom_csat()
+    ic_negative  = fetch_intercom_negative()
 
-    print("\n── Slack channel scanning ─────────────────────────────────")
-    slack_positive, slack_negative = fetch_slack_signals()
+    print("\n── Slack ──────────────────────────────────────────────────")
+    slack_pos, slack_neg = fetch_slack_signals()
 
-    print("\n── Fathom call intelligence ────────────────────────────────")
-    fathom_positive, fathom_negative = fetch_fathom_signals()
+    print("\n── Fathom ─────────────────────────────────────────────────")
+    fathom_pos, fathom_neg = fetch_fathom_signals()
 
-    # Merge all negative flags
-    all_negative_flags = ic_negative | slack_negative | fathom_negative
+    all_negative = ic_negative | slack_neg | fathom_neg
 
     print("\n── Review sites ───────────────────────────────────────────")
-    all_reviews = (scrape_capterra() + scrape_g2() +
-                   scrape_software_advice() + scrape_getapp() + scrape_trustpilot())
-
-    # Enrich review records with known pims data from existing Capterra entries
-    pims_by_reviewer = {
-        a["contact"].lower(): a.get("pims","")
-        for a in existing
-        if a.get("src","") == "Capterra" and a.get("contact") and a.get("pims")
-    }
-    for rev in all_reviews:
-        reviewer = (rev.get("reviewer") or "").lower()
-        if reviewer in pims_by_reviewer:
-            rev["pims"] = pims_by_reviewer[reviewer]
+    all_reviews  = (scrape_capterra() + scrape_g2() + scrape_software_advice()
+                    + scrape_getapp() + scrape_trustpilot())
 
     print("\n── Reddit ─────────────────────────────────────────────────")
-    reddit_mentions = fetch_reddit_mentions()
+    reddit = fetch_reddit_mentions()
 
     print("\n── Google ─────────────────────────────────────────────────")
-    google_reviews  = fetch_google_reviews()
-    google_mentions = fetch_google_web_mentions()
+    g_reviews  = fetch_google_reviews()
+    g_mentions = fetch_google_web_mentions()
 
     print("\n── Facebook ───────────────────────────────────────────────")
-    fb_reviews = fetch_facebook_reviews()
+    fb = fetch_facebook_reviews()
 
-    all_external = all_reviews + reddit_mentions + google_reviews + google_mentions + fb_reviews
+    all_external = all_reviews + reddit + g_reviews + g_mentions + fb
 
     print("\n── HubSpot referral network ───────────────────────────────")
-    referral_network = hs_fetch_referral_network()
+    referral_net = hs_fetch_referral_network()
 
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
 
-    # Pre-build review → company match index (scoring engine)
     print("\n── Matching reviews to HubSpot companies ──────────────────")
     review_matches = build_review_matches(all_external, hs_customers)
-
-    # Apply manual matches — override or supplement scoring engine results
     for ext in all_external:
-        reviewer_key = (ext.get("reviewer") or ext.get("contact") or "").lower().strip()
-        # Try both full reviewer string and last-name-initial variants
-        for key, hs_id in MANUAL_REVIEW_MATCHES.items():
-            if key in reviewer_key or reviewer_key in key or names_match(reviewer_key, key):
-                review_matches.setdefault(hs_id, [])
-                if ext not in review_matches[hs_id]:
-                    review_matches[hs_id].append(ext)
-                    print(f"  Manual match: '{reviewer_key}' → HubSpot {hs_id}")
+        rkey = (ext.get("reviewer") or ext.get("contact") or "").lower().strip()
+        for mkey, hs_id in MANUAL_REVIEW_MATCHES.items():
+            if mkey in rkey or rkey in mkey or names_match(rkey, mkey):
+                if ext not in review_matches.get(hs_id, []):
+                    review_matches.setdefault(hs_id, []).append(ext)
+                    print(f"  Manual match: '{rkey}' → {hs_id}")
 
-    # ── Process each company ───────────────────────────────────────────────────
-    new_advocates = []
-    added, updated = [], []
-    excluded_no_signal, excluded_no_contact, excluded_bad = 0, 0, 0
-    next_id = max((a.get("id", 0) for a in existing), default=53) + 1
+    # ── Process each HubSpot company ─────────────────────────────────────────
+    new_advocates   = []
+    added, updated  = [], []
+    excl_signal, excl_bad = 0, 0
+    next_id = max((a.get("id", 0) for a in existing), default=100) + 1
 
     for customer in hs_customers:
         hs_id = str(customer["id"])
         props = customer.get("properties", {})
         name  = (props.get("name") or "").strip()
-        if not name:
-            continue
+        if not name: continue
 
         # Hard exclusions
-        if is_excluded_non_clinic(props):
-            continue
-        if not is_north_america(props):
-            continue
-        if is_negative(props):
-            excluded_bad += 1
-            continue
+        if is_excluded_non_clinic(props): continue
+        if not is_north_america(props):   continue
+        if is_negative_props(props):      excl_bad += 1; continue
         name_lc = name.lower().strip()
-        if name_lc in ic_negative or any(names_match(name, bad) for bad in ic_negative):
-            excluded_bad += 1
-            print(f"  ✗ Bad CSAT: {name}")
+        if name_lc in all_negative or any(names_match(name, b) for b in all_negative):
+            excl_bad += 1
+            print(f"  ✗ Negative signal: {name}")
             continue
 
-        # Collect positive signals
+        # Collect signals
         signals = hs_signals(props)
+
+        for rn_key, rn_val in referral_net.items():
+            if names_match(name, rn_key):
+                signals.append("hs_referral_network")
+                break
+
         for ic_key in ic_sigs:
             if names_match(name, ic_key):
-                signals.append("intercom_csat")
-                break
-        matched_quotes = []
-        for ext in all_external:
-            reviewer = ext.get("reviewer","") or ext.get("author","") or ""
-            if names_match(name, reviewer) or names_match(name, ext.get("text","")):
-                signals.append(ext["signal"])
-                if ext.get("text"):
-                    matched_quotes.append(ext["text"])
-        signals = [s for s in set(signals) if s]
+                signals.append("intercom_csat"); break
 
-        # Must have at least 1 signal
-        if not signals:
-            excluded_no_signal += 1
+        for s_key in slack_pos:
+            if names_match(name, s_key):
+                signals.append("slack_mention"); break
+
+        for f_key in fathom_pos:
+            if names_match(name, f_key):
+                signals.append("fathom_call"); break
+
+        matched_quotes = []
+        for ext in review_matches.get(hs_id, []):
+            signals.append(ext["signal"])
+            if ext.get("text"): matched_quotes.append(ext["text"])
+        # Also direct name matching
+        for ext in all_external:
+            rev = ext.get("reviewer","") or ext.get("author","") or ""
+            if names_match(name, rev) and ext not in review_matches.get(hs_id,[]):
+                signals.append(ext["signal"])
+                if ext.get("text"): matched_quotes.append(ext["text"])
+
+        signals = list(set(signals))
+
+        # Gate: must have at least one STRONG signal
+        if not any(s in STRONG_SIGNALS for s in signals):
+            excl_signal += 1
             continue
+
+        # Find or create record
+        rec = by_hs_id.get(hs_id)
         if not rec:
             for k, v in by_name.items():
                 if names_match(name, k):
-                    rec = dict(v)
-                    break
-
+                    rec = dict(v); break
         is_new = rec is None
         if is_new:
-            rec = {"id":next_id,"name":name,"ct":"general","src":"HubSpot",
-                   "verify":False,"approx":False,"quote":None,"metrics":None,
-                   "pm":None,"aiAdopter":None,"lat":None,"lng":None,
-                   "features":None,"dgtId":None}
+            rec = {"id": next_id, "name": name, "ct": "general", "src": "HubSpot",
+                   "verify": False, "approx": False, "quote": None, "metrics": None,
+                   "pm": None, "aiAdopter": None, "lat": None, "lng": None,
+                   "features": None, "dgtId": None}
             next_id += 1
         else:
             rec = dict(rec)
 
-        # Refresh from HubSpot
-        rec["hsId"] = hs_id
-        rec["name"] = name
+        # Update from HubSpot + deal contact
+        rec["hsId"]   = hs_id
+        rec["name"]   = name
         rec["format"] = infer_format(name)
-        for src, dest in [("city","city"),("state","st"),("contact_email","email"),
-                          ("phone","phone"),("current_pims","pims")]:
+
+        deal_contact = best_contact_from_deals(hs_id)
+        if deal_contact:
+            if deal_contact.get("email"): rec["email"] = deal_contact["email"]
+            if deal_contact.get("phone"): rec["phone"] = deal_contact["phone"]
+            dc_fn = deal_contact.get("firstname","")
+            dc_ln = deal_contact.get("lastname","")
+            dc_jt = (deal_contact.get("jobtitle") or "").lower()
+            if dc_fn or dc_ln:
+                full = f"{dc_fn} {dc_ln}".strip()
+                rec["contact"] = f"Dr. {full}" if any(k in dc_jt for k in ["dvm","veterinarian","doctor"]) else full
+        else:
+            for src, dest in [("contact_email","email"),("phone","phone")]:
+                v = (props.get(src) or "").strip()
+                if v: rec[dest] = v
+
+        for src, dest in [("city","city"),("state","st"),("current_pims","pims")]:
             v = (props.get(src) or "").strip()
-            if v:
-                rec[dest] = v
+            if v: rec[dest] = v
 
-        # Require contact info — flag but don't exclude
-        if not has_contact_info(props, rec):
-            excluded_no_contact += 1
-            # Still include — just won't have email/phone in popup
+        rec["address"] = build_address_display(props)
 
-        # Address + geocode with NA bounds validation
-        new_addr = hs_address_with_fallback(hs_id, props)
-        country  = (props.get("country") or "").strip()
-        addr_changed = new_addr and new_addr != rec.get("address","")
-        if addr_changed:
-            rec["address"] = new_addr
-        if (addr_changed or not rec.get("lat")) and new_addr:
-            lat, lng = geocode(new_addr, country)
-            if lat:
-                rec["lat"], rec["lng"] = lat, lng
-                rec["approx"] = False
-            else:
-                # Invalid geocode — clear any bad existing coords
-                if rec.get("lat") and not in_na_bounds(rec["lat"], rec.get("lng",0)):
-                    rec["lat"], rec["lng"] = None, None
+        # Geocode
+        lat, lng = geocode(props, deal_contact or None)
+        if lat:
+            rec["lat"], rec["lng"] = lat, lng
+            rec["approx"] = False
 
-        # Validate existing coordinates against known country
-        if rec.get("lat") and rec.get("lng"):
-            country_field = (props.get("country") or "").strip()
-            if not in_na_bounds(rec["lat"], rec["lng"]) or \
-               not coord_matches_country(rec["lat"], rec["lng"], country_field):
-                print(f"  Clearing bad coords for {name}: {rec['lat']},{rec['lng']} (country: {country_field})")
-                rec["lat"], rec["lng"] = None, None
-                # Force re-geocode with country context
-                if new_addr:
-                    lat, lng = geocode(new_addr, country_field)
-                    if lat:
-                        rec["lat"], rec["lng"] = lat, lng
-                        rec["approx"] = False
-
-        if "manual" in rec.get("signals", []):
-            signals.append("manual")
+        if "manual" in rec.get("signals", []): signals.append("manual")
         rec["signals"]  = sorted(set(signals))
         rec["verified"] = True
 
         for ic_key, ic_val in ic_sigs.items():
             if names_match(name, ic_key) and ic_val.get("quote"):
-                rec["quote"] = ic_val["quote"]
-                break
+                rec["quote"] = ic_val["quote"]; break
         if not rec.get("quote") and matched_quotes:
             rec["quote"] = matched_quotes[0]
 
@@ -1137,21 +950,18 @@ def main():
             updated.append(name)
         new_advocates.append(rec)
 
-    # Preserve non-HubSpot records (Capterra-only, Usage Report, manual)
+    # Preserve non-HubSpot records (Capterra, Usage Report, manual)
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
     for old in existing:
         already = (str(old.get("hsId","")) in hs_ids_in or old["name"].lower() in names_in)
-        if not already and (old.get("signals") or old.get("src","") in ("Capterra","Usage Report","Intercom CSAT")):
-            if old.get("lat") and not in_na_bounds(old["lat"], old.get("lng",0)):
-                old = dict(old)
-                old["lat"], old["lng"] = None, None
+        if not already and (old.get("signals") or old.get("src","") in
+                            ("Capterra","Usage Report","Intercom CSAT")):
             new_advocates.append(old)
 
     new_advocates.sort(key=lambda a: a.get("name",""))
 
-    print(f"\nExcluded: {excluded_no_signal} (no signal), "
-          f"{excluded_no_contact} (no contact info), {excluded_bad} (negative signal)")
+    print(f"\nExcluded: {excl_signal} (no strong signal), {excl_bad} (negative signal)")
 
     new_json = json.dumps(new_advocates, sort_keys=True)
     if new_json != original:
@@ -1166,14 +976,10 @@ def main():
         pinned = sum(1 for a in new_advocates if a.get("lat"))
         lines  = ["*🐾 Digitail Advocate Map — Weekly Refresh*",
                   f"Verified: *{len(new_advocates)}* | Pinned: *{pinned}*"]
-        if added:
-            lines.append(f"✅ *{len(added)} new:* " + ", ".join(added[:6]))
-        if updated:
-            lines.append(f"📝 Updated: " + ", ".join(updated[:6]) +
-                         (f" +{len(updated)-6} more" if len(updated) > 6 else ""))
-        lines.append(f"🚫 Excluded: {excluded_no_signal} no signal · {excluded_no_contact} no contact · {excluded_bad} negative")
-        if not added and not updated:
-            lines.append("No data changes this week ✓")
+        if added:   lines.append(f"✅ *{len(added)} new:* " + ", ".join(added[:6]))
+        if updated: lines.append(f"📝 Updated: " + ", ".join(updated[:6]) + (f" +{len(updated)-6} more" if len(updated) > 6 else ""))
+        lines.append(f"🚫 Excluded: {excl_signal} no signal · {excl_bad} negative")
+        if not added and not updated: lines.append("No changes this week ✓")
         lines.append(f"_Run: {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC_")
         requests.post(SLACK_URL, json={"text": "\n".join(lines)}, timeout=10)
 
