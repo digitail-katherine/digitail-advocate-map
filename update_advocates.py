@@ -42,7 +42,10 @@ GOOGLE_CSE_ID   = os.environ.get("GOOGLE_CSE_ID", "")
 GOOGLE_PLACE    = os.environ.get("GOOGLE_PLACE_ID", "")
 FB_TOKEN        = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
 DATA_FILE        = "advocates.json"
-REFERRAL_LIST_ID = "59320738"  # HubSpot list: /contacts/4912130/objects/0-1/views/59320738/list
+# Note: referral network is fetched by contact property search, not list ID.
+# The HubSpot list view at /contacts/4912130/objects/0-1/views/59320738/list
+# is for human reference only — the property "reference_program_optin = true"
+# is the authoritative source used by the script.
 
 SLACK_CHANNELS_TO_SCAN = [
     "sales-general", "cs-general", "corporate-athletes",
@@ -74,7 +77,7 @@ CONTEXT_ONLY_SIGNALS = {
 }
 
 SIGNAL_LABELS = {
-    "hs_referral_network": "In Digitail Referral Network",
+    "hs_referral_network": "Part of Reference Program",
     "hs_testimonial":      "Case Study / Article on File",
     "hs_dsp":              "DSP Payment Processing",
     "hs_positive_note":    "Positive Team Note",
@@ -262,43 +265,61 @@ def geocode(props: dict, contact: dict = None):
         print(f"  Geocode rejected: {query} → {lat},{lng}")
     return None, None
 
-# ── HubSpot referral network — fetched by exact list ID ──────────────────────
+# ── HubSpot referral network — search contacts by property ───────────────────
 def hs_fetch_referral_network() -> tuple:
     """
-    Fetches the referral network directly from HubSpot list ID (REFERRAL_LIST_ID).
+    Fetches contacts where reference_program_optin = true using the standard
+    contacts search API (no crm.lists.read scope required).
+
     Returns (name_map, company_ids_set):
-      company_ids_set — exact HubSpot company object IDs; used first, no name guessing
-      name_map        — contact "company" text field fallback for contacts not linked
-                        to a company record in HubSpot
+      company_ids_set — exact HubSpot company object IDs resolved via associations;
+                        matched first, zero name guessing
+      name_map        — contact "company" text field fallback for contacts that
+                        have no linked company record in HubSpot
     """
     if not HS_TOKEN: return {}, set()
 
-    # Step 1: pull every contact ID from the list
-    contact_ids, after = [], None
+    # Step 1: search contacts where Reference Program Opt-In = Yes
+    all_contacts, after = [], None
     while True:
-        params = {"limit": 100}
-        if after: params["after"] = after
-        r = requests.get(
-            f"https://api.hubapi.com/crm/v3/lists/{REFERRAL_LIST_ID}/memberships",
-            params=params, headers=hs_h(), timeout=15)
+        payload = {
+            "filterGroups": [{"filters": [{
+                "propertyName": "reference_program_optin",
+                "operator":     "EQ",
+                "value":        "true",
+            }]}],
+            "properties": ["firstname","lastname","email","phone",
+                           "company","jobtitle","city","state","zip","country"],
+            "limit": 100,
+        }
+        if after: payload["after"] = after
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                          json=payload, headers=hs_h(), timeout=15)
         if r.status_code != 200:
-            print(f"  Referral list error: {r.status_code} — {r.text[:300]}")
+            print(f"  Referral network search error: {r.status_code} — {r.text[:200]}")
             break
         data = r.json()
-        contact_ids.extend([str(m["recordId"]) for m in data.get("results", [])])
+        all_contacts.extend(data.get("results", []))
         after = data.get("paging", {}).get("next", {}).get("after")
         if not after: break
 
-    print(f"  Referral network list: {len(contact_ids)} contacts")
-    if not contact_ids: return {}, set()
+    print(f"  Referral network: {len(all_contacts)} opted-in contacts found")
+    if not all_contacts: return {}, set()
 
+    contact_ids = [c["id"] for c in all_contacts]
     company_ids = set()
     name_map    = {}
 
+    # Build name_map directly from search results (no second API call needed)
+    for contact in all_contacts:
+        p  = contact.get("properties", {})
+        co = (p.get("company") or "").strip()
+        if co:
+            name_map[co.lower()] = {"contact_props": p, "contact_id": contact["id"]}
+
+    # Step 2: resolve each contact → associated company object ID (exact, no name guessing)
     for i in range(0, len(contact_ids), 100):
         batch = contact_ids[i:i+100]
-
-        # Step 2a: resolve contact → company object IDs (exact, no name guessing)
         ar = requests.post(
             "https://api.hubapi.com/crm/v4/associations/contacts/companies/batch/read",
             json={"inputs": [{"id": cid} for cid in batch]},
@@ -308,29 +329,10 @@ def hs_fetch_referral_network() -> tuple:
                 for assoc in item.get("to", []):
                     cid = str(assoc.get("toObjectId", ""))
                     if cid: company_ids.add(cid)
-
-        # Step 2b: fetch contact "company" text field as name-match fallback
-        # (covers contacts that exist in the list but have no linked company record)
-        cr = requests.post(
-            "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
-            json={"inputs": [{"id": cid} for cid in batch],
-                  "properties": ["firstname","lastname","company","email",
-                                 "phone","city","state","zip","country","jobtitle"]},
-            headers=hs_h(), timeout=15)
-        if cr.status_code == 200:
-            for contact in cr.json().get("results", []):
-                p  = contact.get("properties", {})
-                co = (p.get("company") or "").strip()
-                if co:
-                    name_map[co.lower()] = {
-                        "contact_props": p,
-                        "contact_id":    contact["id"],
-                    }
-
         time.sleep(0.1)
 
     print(f"  Referral network: {len(company_ids)} exact company ID matches "
-          f"+ {len(name_map)} by name fallback")
+          f"+ {len(name_map)} name fallbacks")
     return name_map, company_ids
 
 # ── HubSpot deal helpers ──────────────────────────────────────────────────────
@@ -1086,12 +1088,19 @@ def main():
         new_advocates.append(rec)
 
     # ── Preserve non-HubSpot records (manual and public review sources only) ──
+    # Strip hs_referral_network from any preserved record — it cannot be
+    # revalidated here (no HubSpot lookup), so stale signals must be removed.
+    # If that was the only strong signal the record is correctly excluded.
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
     for old in existing:
         already = (str(old.get("hsId","")) in hs_ids_in or old["name"].lower() in names_in)
         if not already:
-            old_strong = [s for s in old.get("signals",[]) if s in STRONG_SIGNALS]
+            # Remove referral signal — can only be verified via live HubSpot lookup
+            cleaned_signals = [s for s in old.get("signals",[]) if s != "hs_referral_network"]
+            old = dict(old)
+            old["signals"] = cleaned_signals
+            old_strong = [s for s in cleaned_signals if s in STRONG_SIGNALS]
             if old_strong or old.get("src","") in ("manual","Capterra","Intercom CSAT"):
                 new_advocates.append(old)
 
