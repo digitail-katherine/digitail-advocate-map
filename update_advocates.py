@@ -42,10 +42,26 @@ GOOGLE_CSE_ID   = os.environ.get("GOOGLE_CSE_ID", "")
 GOOGLE_PLACE    = os.environ.get("GOOGLE_PLACE_ID", "")
 FB_TOKEN        = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
 DATA_FILE        = "advocates.json"
+HS_ACCOUNT_ID    = "4912130"   # HubSpot portal ID — used to build direct record links
 # Note: referral network is fetched by contact property search, not list ID.
 # The HubSpot list view at /contacts/4912130/objects/0-1/views/59320738/list
 # is for human reference only — the property "reference_program_optin = true"
 # is the authoritative source used by the script.
+
+# Static public URLs for review platform signals — no per-record lookup needed
+SIGNAL_STATIC_URLS = {
+    "capterra_positive": "https://www.capterra.com/p/167764/Digitail/#reviews",
+    "g2_positive":       "https://www.g2.com/products/digitail/reviews",
+    "softwareadvice":    "https://www.softwareadvice.com/veterinary/digitail-profile/reviews/",
+    "getapp":            "https://www.getapp.com/veterinary-practice-management-software/a/digitail/reviews/",
+}
+
+# Onboarding pipeline exclusion — clinics with an ACTIVE onboarding deal that
+# has NOT yet reached the CS stage are excluded from the map (still being set up).
+# The script auto-detects these by name; update if your HubSpot pipeline is named
+# differently: HubSpot → Settings → Pipelines → Deals
+ONBOARDING_PIPELINE_KEYWORD = "onboard"   # case-insensitive substring match on pipeline label
+ONBOARDING_CS_STAGE_KEYWORD  = "cs"       # case-insensitive substring match on stage label
 
 SLACK_CHANNELS_TO_SCAN = [
     "sales-general", "cs-general", "corporate-athletes",
@@ -335,6 +351,84 @@ def hs_fetch_referral_network() -> tuple:
           f"+ {len(name_map)} name fallbacks")
     return name_map, company_ids
 
+# ── HubSpot Onboarding pipeline exclusion ────────────────────────────────────
+def hs_fetch_onboarding_pipeline_config() -> tuple:
+    """
+    Auto-detects the Onboarding pipeline and its CS stage from HubSpot.
+    Returns (pipeline_id, cs_stage_id) — both None if not found.
+    Uses ONBOARDING_PIPELINE_KEYWORD and ONBOARDING_CS_STAGE_KEYWORD for matching.
+    """
+    if not HS_TOKEN: return None, None
+    try:
+        r = requests.get("https://api.hubapi.com/crm/v3/pipelines/deals",
+                         headers=hs_h(), timeout=15)
+        if r.status_code != 200:
+            print(f"  Pipeline fetch error: {r.status_code}"); return None, None
+        for pipeline in r.json().get("results", []):
+            label = (pipeline.get("label") or "").lower()
+            if ONBOARDING_PIPELINE_KEYWORD.lower() not in label:
+                continue
+            pipeline_id  = pipeline["id"]
+            cs_stage_id  = None
+            stage_labels = []
+            for stage in pipeline.get("stages", []):
+                slabel = (stage.get("label") or "").lower()
+                stage_labels.append(stage.get("label",""))
+                if ONBOARDING_CS_STAGE_KEYWORD.lower() in slabel:
+                    cs_stage_id = stage["id"]
+                    break
+            print(f"  Onboarding pipeline: '{pipeline.get('label')}' (ID: {pipeline_id})")
+            print(f"  Stages: {stage_labels}")
+            if cs_stage_id:
+                print(f"  CS stage matched: '{cs_stage_id}'")
+            else:
+                print(f"  ⚠ No CS stage matched — update ONBOARDING_CS_STAGE_KEYWORD")
+            return pipeline_id, cs_stage_id
+    except Exception as e:
+        print(f"  Onboarding pipeline config failed: {e}")
+    print("  ⚠ Onboarding pipeline not found — update ONBOARDING_PIPELINE_KEYWORD")
+    return None, None
+
+def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> set:
+    """
+    Returns HubSpot company IDs with an ACTIVE onboarding deal that has NOT
+    yet reached the CS stage. These companies are still being set up and should
+    not appear as references on the map.
+    """
+    if not pipeline_id: return set()
+    exclude_ids = set()
+    filters = [{"propertyName": "pipeline", "operator": "EQ", "value": pipeline_id}]
+    # Exclude deals in the CS stage (those are ready)
+    if cs_stage_id:
+        filters.append({"propertyName": "dealstage", "operator": "NEQ", "value": cs_stage_id})
+    # Only active deals (not closed)
+    filters.append({"propertyName": "hs_is_closed", "operator": "EQ", "value": "false"})
+    after = None
+    while True:
+        payload = {"filterGroups": [{"filters": filters}],
+                   "properties": ["dealname","dealstage","pipeline"], "limit": 200}
+        if after: payload["after"] = after
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/deals/search",
+                          json=payload, headers=hs_h(), timeout=15)
+        if r.status_code != 200: break
+        data     = r.json()
+        deal_ids = [d["id"] for d in data.get("results", [])]
+        for i in range(0, len(deal_ids), 100):
+            ar = requests.post(
+                "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
+                json={"inputs": [{"id": did} for did in deal_ids[i:i+100]]},
+                headers=hs_h(), timeout=15)
+            if ar.status_code == 200:
+                for item in ar.json().get("results", []):
+                    for assoc in item.get("to", []):
+                        cid = str(assoc.get("toObjectId", ""))
+                        if cid: exclude_ids.add(cid)
+            time.sleep(0.1)
+        after = data.get("paging", {}).get("next", {}).get("after")
+        if not after: break
+    print(f"  Active onboarding (pre-CS): {len(exclude_ids)} companies excluded")
+    return exclude_ids
+
 # ── HubSpot deal helpers ──────────────────────────────────────────────────────
 def hs_get_deal_contacts(deal_id: str) -> list:
     try:
@@ -528,10 +622,14 @@ def _ic_extract(convo: dict, headers: dict, results: dict):
     contacts = convo.get("contacts",{}).get("contacts",[])
     name     = _ic_name(contacts[0]["id"], headers) if contacts else ""
     if name:
-        key = name.lower().strip()
+        key     = name.lower().strip()
+        conv_id = convo.get("id","")
+        # Direct link to conversation in Intercom inbox
+        conv_url = f"https://app.intercom.com/a/inbox/conversations/{conv_id}" if conv_id else None
         if key not in results:
             results[key] = {"signal":"intercom_csat",
-                            "quote": remark[:300] if remark else None}
+                            "quote": remark[:300] if remark else None,
+                            "url":   conv_url}
 
 def fetch_intercom_csat() -> dict:
     if not IC_TOKEN: return {}
@@ -597,6 +695,16 @@ def fetch_slack_signals() -> tuple:
     hdrs     = {"Authorization":f"Bearer {SLACK_BOT_TOKEN}"}
     positive, negative = {}, set()
     cutoff   = int((datetime.now(timezone.utc) - timedelta(days=30)).timestamp())
+
+    # Get workspace URL once for constructing message permalinks
+    workspace_url = "https://digitail.slack.com"
+    try:
+        tr = requests.get("https://slack.com/api/auth.test", headers=hdrs, timeout=10)
+        if tr.ok:
+            workspace_url = tr.json().get("url", workspace_url).rstrip("/")
+    except Exception:
+        pass
+
     try:
         r        = requests.get("https://slack.com/api/conversations.list",
                     params={"types":"public_channel","limit":200,"exclude_archived":"true"},
@@ -620,6 +728,10 @@ def fetch_slack_signals() -> tuple:
                 is_pos  = any(k in tl for k in POSITIVE_KW)
                 is_neg  = any(k in tl for k in NEGATIVE_KW)
                 scanned += 1
+                # Construct direct Slack message permalink from channel ID + timestamp
+                ts       = msg.get("ts","")
+                ts_nodot = ts.replace(".", "")
+                permalink = f"{workspace_url}/archives/{ch_id}/p{ts_nodot}" if ts_nodot else None
                 # Require 2+ capitalised words to avoid single-word false matches
                 for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
                     if len(word) > 10 and word.lower() not in {
@@ -627,8 +739,12 @@ def fetch_slack_signals() -> tuple:
                         "north america","good morning","great work","well done",
                     }:
                         if is_pos and not is_neg:
-                            positive.setdefault(word.lower(),
-                                {"signal":"slack_mention","quote":text[:280],"channel":ch_name})
+                            positive.setdefault(word.lower(), {
+                                "signal":    "slack_mention",
+                                "quote":     text[:280],
+                                "channel":   ch_name,
+                                "permalink": permalink,
+                            })
                         elif is_neg and not is_pos:
                             negative.add(word.lower())
         except Exception as e:
@@ -691,8 +807,14 @@ def fetch_fathom_signals() -> tuple:
                         candidates.add(domain.lower())
             for cand in candidates:
                 if is_pos and not is_neg:
-                    positive.setdefault(cand,{"signal":"fathom_call",
-                        "quote":summary[:280] if summary else f"Positive CS call: {title}"})
+                    # Fathom call URL — try share_url first, fall back to constructed URL
+                    call_url = (call.get("share_url") or call.get("url") or
+                                (f"https://app.fathom.video/call/{call_id}" if call_id else None))
+                    positive.setdefault(cand, {
+                        "signal": "fathom_call",
+                        "quote":  summary[:280] if summary else f"Positive CS call: {title}",
+                        "url":    call_url,
+                    })
                 elif is_neg and not is_pos:
                     negative.add(cand)
         print(f"  Fathom: {len(calls)-cs_filtered} CS calls processed, "
@@ -921,6 +1043,10 @@ def main():
     print("\n── HubSpot referral network ───────────────────────────────")
     referral_net, referral_ids = hs_fetch_referral_network()
 
+    print("\n── HubSpot Onboarding pipeline ────────────────────────────")
+    ob_pipeline_id, ob_cs_stage_id = hs_fetch_onboarding_pipeline_config()
+    onboarding_exclude = hs_get_active_onboarding_company_ids(ob_pipeline_id, ob_cs_stage_id)
+
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
 
@@ -954,34 +1080,59 @@ def main():
             print(f"  ✗ Negative: {name}")
             continue
 
-        # ── Collect strong signals ────────────────────────────────────────────
+        # Exclude companies still in active onboarding (haven't reached CS stage yet)
+        if hs_id in onboarding_exclude:
+            excl_bad += 1
+            print(f"  ✗ Still onboarding: {name}")
+            continue
+
+        # ── Collect strong signals + their source URLs ────────────────────────
         strong_signals = []
+        signal_urls    = {}   # signal → direct link to the source that verified it
 
         # Referral network: company ID match first (exact), name fallback second
         if hs_id in referral_ids:
             strong_signals.append("hs_referral_network")
+            signal_urls["hs_referral_network"] = (
+                f"https://app.hubspot.com/contacts/{HS_ACCOUNT_ID}/company/{hs_id}"
+            )
         elif any(names_match(name, rn_key) for rn_key in referral_net):
             strong_signals.append("hs_referral_network")
+            signal_urls["hs_referral_network"] = (
+                f"https://app.hubspot.com/contacts/{HS_ACCOUNT_ID}/company/{hs_id}"
+            )
 
         for ic_key in ic_sigs:
             if names_match(name, ic_key):
-                strong_signals.append("intercom_csat"); break
+                strong_signals.append("intercom_csat")
+                if ic_sigs[ic_key].get("url"):
+                    signal_urls["intercom_csat"] = ic_sigs[ic_key]["url"]
+                break
 
         # Slack: require 2+ words of 5+ chars to overlap
         for s_key in slack_pos:
             s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5}
             n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
             if len(s_words) >= 2 and len(s_words & n_words) >= 2:
-                strong_signals.append("slack_mention"); break
+                strong_signals.append("slack_mention")
+                if slack_pos[s_key].get("permalink"):
+                    signal_urls["slack_mention"] = slack_pos[s_key]["permalink"]
+                break
 
         for f_key in fathom_pos:
             if names_match(name, f_key):
-                strong_signals.append("fathom_call"); break
+                strong_signals.append("fathom_call")
+                if fathom_pos[f_key].get("url"):
+                    signal_urls["fathom_call"] = fathom_pos[f_key]["url"]
+                break
 
         matched_quotes = []
         for ext in review_matches.get(hs_id,[]):
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
+            # Static review site URLs — link to Digitail's listing page on that platform
+            if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
+                signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
 
         # External review fallback: require substantial multi-word overlap
         for ext in all_external:
@@ -992,6 +1143,8 @@ def main():
             if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
                 strong_signals.append(ext["signal"])
                 if ext.get("text"): matched_quotes.append(ext["text"])
+                if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
+                    signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
 
         # Gate: must have at least one verified strong signal
         if not strong_signals:
@@ -1012,7 +1165,7 @@ def main():
             rec = {"id":next_id,"name":name,"ct":"general","src":"HubSpot",
                    "verify":False,"approx":False,"quote":None,"metrics":None,
                    "pm":None,"aiAdopter":None,"lat":None,"lng":None,
-                   "dgtId":None,"dvms":None,"customerSince":None}
+                   "dgtId":None,"dvms":None,"customerSince":None,"signalUrls":{}}
             next_id += 1
         else:
             rec = dict(rec)
@@ -1071,9 +1224,10 @@ def main():
         if lat: rec["lat"], rec["lng"] = lat, lng; rec["approx"] = False
 
         if "manual" in rec.get("signals",[]): strong_signals.append("manual")
-        all_sigs       = sorted(set(strong_signals + context_signals))
-        rec["signals"] = all_sigs
+        all_sigs        = sorted(set(strong_signals + context_signals))
+        rec["signals"]  = all_sigs
         rec["verified"] = True
+        rec["signalUrls"] = signal_urls  # signal → source URL for hyperlinks in popup
 
         for ic_key, ic_val in ic_sigs.items():
             if names_match(name, ic_key) and ic_val.get("quote"):
