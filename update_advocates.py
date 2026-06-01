@@ -969,6 +969,7 @@ def main():
         rec["hsId"]   = hs_id
         rec["name"]   = name
         rec["format"] = infer_format(name)
+        rec["metrics"] = None  # Never inherit metrics from old records — HubSpot records don't have usage metrics
 
         deal_contact = best_contact_from_deals(hs_id)
         if deal_contact:
