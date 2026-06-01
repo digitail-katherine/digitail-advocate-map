@@ -30,7 +30,17 @@ GOOGLE_KEY    = os.environ.get("GOOGLE_API_KEY", "")
 GOOGLE_CSE_ID = os.environ.get("GOOGLE_CSE_ID", "")
 GOOGLE_PLACE  = os.environ.get("GOOGLE_PLACE_ID", "")
 FB_TOKEN      = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
-DATA_FILE     = "advocates.json"
+SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
+FATHOM_API_KEY  = os.environ.get("FATHOM_API_KEY", "")
+
+# Slack channels to scan for customer signals (public channels only)
+SLACK_CHANNELS_TO_SCAN = [
+    "sales-general",
+    "cs-general",
+    "corporate-athletes",
+    "customer-success",
+    "churn-risk",
+]
 
 # ── Signals ───────────────────────────────────────────────────────────────────
 # hs_long_tenure intentionally excluded — not a happiness signal
@@ -315,7 +325,51 @@ def coord_matches_country(lat: float, lng: float, country: str) -> bool:
         return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
     return True  # US and unknown — rely on NA bounds check only
 
-def hs_get_deal_contacts(deal_id: str) -> list:
+def hs_fetch_referral_network() -> dict:
+    """
+    Pull all contacts with reference_program_optin = true.
+    Returns dict: lowercased company name → contact properties.
+    These are explicitly verified happy customers — gold standard signal.
+    """
+    if not HS_TOKEN:
+        return {}
+    results = {}
+    after   = None
+    while True:
+        payload = {
+            "filterGroups": [{"filters": [
+                {"propertyName": "reference_program_optin", "operator": "EQ", "value": "true"}
+            ]}],
+            "properties": ["firstname","lastname","email","phone","company",
+                           "jobtitle","city","state","zip","country",
+                           "reference_type","total_references","last_reference_date"],
+            "limit": 100,
+        }
+        if after:
+            payload["after"] = after
+        r = requests.post(
+            "https://api.hubapi.com/crm/v3/objects/contacts/search",
+            json=payload, headers=hs_h(), timeout=15,
+        )
+        if r.status_code != 200:
+            print(f"  Referral network fetch error: {r.status_code}")
+            break
+        data = r.json()
+        for contact in data.get("results", []):
+            props      = contact.get("properties", {})
+            company_nm = (props.get("company") or "").strip()
+            if company_nm:
+                key = company_nm.lower()
+                if key not in results:
+                    results[key] = {
+                        "contact_props": props,
+                        "contact_id":    contact["id"],
+                    }
+        after = data.get("paging", {}).get("next", {}).get("after")
+        if not after:
+            break
+    print(f"  Referral network: {len(results)} opted-in contacts across {len(results)} companies")
+    return results
     """
     Fetch contacts associated with a specific deal.
     Returns list of contact property dicts sorted by: Owner > CEO/DVM > Manager > other.
@@ -900,6 +954,15 @@ def main():
     ic_sigs     = fetch_intercom_csat()
     ic_negative = fetch_intercom_negative()
 
+    print("\n── Slack channel scanning ─────────────────────────────────")
+    slack_positive, slack_negative = fetch_slack_signals()
+
+    print("\n── Fathom call intelligence ────────────────────────────────")
+    fathom_positive, fathom_negative = fetch_fathom_signals()
+
+    # Merge all negative flags
+    all_negative_flags = ic_negative | slack_negative | fathom_negative
+
     print("\n── Review sites ───────────────────────────────────────────")
     all_reviews = (scrape_capterra() + scrape_g2() +
                    scrape_software_advice() + scrape_getapp() + scrape_trustpilot())
@@ -926,6 +989,9 @@ def main():
     fb_reviews = fetch_facebook_reviews()
 
     all_external = all_reviews + reddit_mentions + google_reviews + google_mentions + fb_reviews
+
+    print("\n── HubSpot referral network ───────────────────────────────")
+    referral_network = hs_fetch_referral_network()
 
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
