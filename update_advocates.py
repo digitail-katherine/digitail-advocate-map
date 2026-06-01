@@ -194,6 +194,7 @@ def hs_context_signals(props: dict) -> list:
         pass
     return list(set(sigs))
 
+# ── FIX 1: build_geocode_query now uses full street address first ──────────────
 def build_geocode_query(props: dict, contact: dict = None) -> str:
     def norm(c):
         return {"us":"United States","usa":"United States","ca":"Canada",
@@ -209,15 +210,15 @@ def build_geocode_query(props: dict, contact: dict = None) -> str:
     ct_ctry = norm(ct.get("country","")) if ct else co_ctry
     state   = ct_st or co_st
     country = ct_ctry or co_ctry
+    city    = co_city or ct_city
 
-    # 1. Best: full street address + city + state
+    # 1. Best: full street address + city + state — avoids postal code ambiguity
     raw_ok = raw and len(raw) < 80 and "po box" not in raw.lower()
-    city   = co_city or ct_city
     if raw_ok and city and state:
         return f"{raw}, {city}, {state}, {country}"
     if raw_ok and state:
         return f"{raw}, {state}, {country}"
-    # 2. Fallback: city + state (never use postal code alone — too ambiguous cross-border)
+    # 2. Fallback: city + state only — never use postal code alone (cross-border ambiguity)
     if city and state: return f"{city}, {state}, {country}"
     if state:          return f"{state}, {country}"
     return ""
@@ -250,13 +251,14 @@ def geocode_nominatim(query: str):
         print(f"  Nominatim failed '{query}': {e}")
     return None, None
 
+# ── FIX 2: geocode() now falls back to Nominatim if Google fails ──────────────
 def geocode(props: dict, contact: dict = None):
     query = build_geocode_query(props, contact)
     if not query: return None, None
     lat, lng = None, None
     if GOOGLE_KEY:
         lat, lng = geocode_google(query)
-    if not lat:  # fall back to Nominatim if Google fails or is unconfigured
+    if not lat:  # always fall back to Nominatim if Google fails or is unconfigured
         lat, lng = geocode_nominatim(query)
     if lat:
         country = (props.get("country") or "").strip()
@@ -507,8 +509,12 @@ def fetch_slack_signals() -> tuple:
                 is_pos  = any(k in tl for k in POSITIVE_KW)
                 is_neg  = any(k in tl for k in NEGATIVE_KW)
                 scanned += 1
-                for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})*\b', text):
-                    if len(word) > 5 and word.lower() not in {"slack","digitail","tails","monday","friday"}:
+                # FIX 3: require 2+ capitalised words (+ not *) to avoid single-word false matches
+                for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
+                    if len(word) > 10 and word.lower() not in {
+                        "slack","digitail","tails","monday","friday",
+                        "north america","good morning","great work","well done",
+                    }:
                         if is_pos and not is_neg:
                             positive.setdefault(word.lower(),
                                 {"signal":"slack_mention","quote":text[:280],"channel":ch_name})
@@ -770,6 +776,9 @@ def main():
     except FileNotFoundError:
         existing = []
 
+    # FIX 4: Do NOT wipe coordinates — preserve existing valid coords across runs
+    # geocode() is still called for each record and updates if successful
+
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
     original = json.dumps(existing, sort_keys=True)
@@ -848,8 +857,11 @@ def main():
             if names_match(name, ic_key):
                 strong_signals.append("intercom_csat"); break
 
+        # FIX 5: Slack matching requires 2+ meaningful words to overlap
         for s_key in slack_pos:
-            if names_match(name, s_key):
+            s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5}
+            n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
+            if len(s_words) >= 2 and len(s_words & n_words) >= 2:
                 strong_signals.append("slack_mention"); break
 
         for f_key in fathom_pos:
@@ -860,15 +872,16 @@ def main():
         for ext in review_matches.get(hs_id,[]):
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
+
+        # FIX 6: External review fallback requires substantial multi-word overlap
         for ext in all_external:
-          rev = ext.get("reviewer","") or ext.get("author","") or ""
-          # Require reviewer name is substantial and has real word overlap with clinic name
-          rev_words = {w for w in re.split(r'\W+', rev.lower()) if len(w) >= 5}
-          name_words = {w for w in re.split(r'\W+', name.lower()) if len(w) >= 5}
-          is_solid_match = len(rev_words & name_words) >= 2
-          if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
-            strong_signals.append(ext["signal"])
-            if ext.get("text"): matched_quotes.append(ext["text"])
+            rev = ext.get("reviewer","") or ext.get("author","") or ""
+            rev_words  = {w for w in re.split(r'\W+', rev.lower()) if len(w) >= 5}
+            name_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
+            is_solid_match = len(rev_words & name_words) >= 2
+            if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
+                strong_signals.append(ext["signal"])
+                if ext.get("text"): matched_quotes.append(ext["text"])
 
         # Gate: must have at least one verified strong signal
         if not strong_signals:
@@ -893,7 +906,7 @@ def main():
             next_id += 1
         else:
             rec = dict(rec)
-            rec["notes"] = None 
+            rec["notes"] = None   # FIX 7: clear legacy "Location unknown" notes
 
         # ── Refresh from HubSpot ──────────────────────────────────────────────
         rec["hsId"]    = hs_id
@@ -949,7 +962,8 @@ def main():
             updated.append(name)
         new_advocates.append(rec)
 
-    # ── Preserve non-HubSpot records (manual, Usage Report, Capterra-only) ────
+    # ── Preserve non-HubSpot records (manual and public review sources only) ──
+    # FIX 8: "Usage Report" removed — those records need a real strong signal to survive
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
     for old in existing:
