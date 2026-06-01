@@ -10,8 +10,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 43.55406,
-    "lng": -70.35262,
+    "lat": 43.56788,
+    "lng": -70.38119,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2025-11-25",
@@ -30,7 +30,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 57,
@@ -1303,7 +1304,8 @@
       "hs_long_tenure",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
