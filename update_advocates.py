@@ -63,6 +63,11 @@ SIGNAL_STATIC_URLS = {
 ONBOARDING_PIPELINE_KEYWORD = "onboard"   # case-insensitive substring match on pipeline label
 ONBOARDING_CS_STAGE_KEYWORD  = "cs"       # case-insensitive substring match on stage label
 
+# Sales pipeline — customerSince date is sourced ONLY from closed-won deals here.
+# CS, upsell, and expansion pipeline deals are intentionally excluded.
+# Update if your pipeline label doesn't contain "sales".
+SALES_PIPELINE_KEYWORD = "sales"
+
 SLACK_CHANNELS_TO_SCAN = [
     "sales-general", "cs-general", "corporate-athletes",
     "customer-success", "churn-risk",
@@ -429,6 +434,94 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
     print(f"  Active onboarding (pre-CS): {len(exclude_ids)} companies excluded")
     return exclude_ids
 
+# ── Sales pipeline — customer-since date source ───────────────────────────────
+def hs_fetch_sales_pipeline_id() -> str:
+    """
+    Auto-detects the Sales pipeline ID from HubSpot by matching SALES_PIPELINE_KEYWORD
+    against pipeline labels. Returns the pipeline ID string, or None if not found.
+    """
+    if not HS_TOKEN: return None
+    try:
+        r = requests.get("https://api.hubapi.com/crm/v3/pipelines/deals",
+                         headers=hs_h(), timeout=15)
+        if r.status_code != 200:
+            print(f"  Sales pipeline fetch error: {r.status_code}"); return None
+        for pipeline in r.json().get("results", []):
+            label = (pipeline.get("label") or "").lower()
+            if SALES_PIPELINE_KEYWORD.lower() in label:
+                print(f"  Sales pipeline: '{pipeline.get('label')}' (ID: {pipeline['id']})")
+                return pipeline["id"]
+    except Exception as e:
+        print(f"  Sales pipeline fetch failed: {e}")
+    print(f"  ⚠ Sales pipeline not found — update SALES_PIPELINE_KEYWORD "
+          f"(current value: '{SALES_PIPELINE_KEYWORD}')")
+    return None
+
+def hs_build_sales_closedate_map(sales_pipeline_id: str) -> dict:
+    """
+    Pre-fetches ALL closed-won deals in the Sales pipeline and maps each company
+    to the EARLIEST sales close date (i.e. when they first became a customer).
+
+    CS, upsell, and expansion deals are excluded by filtering on pipeline ID.
+    Returns {company_hs_id: 'YYYY-MM-DD'}.
+    """
+    if not sales_pipeline_id: return {}
+    company_closedate = {}
+    after = None
+    while True:
+        payload = {
+            "filterGroups": [{"filters": [
+                {"propertyName": "pipeline",       "operator": "EQ", "value": sales_pipeline_id},
+                {"propertyName": "hs_is_closed_won","operator": "EQ", "value": "true"},
+            ]}],
+            "properties": ["dealname", "closedate"],
+            "limit": 200,
+        }
+        if after: payload["after"] = after
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/deals/search",
+                          json=payload, headers=hs_h(), timeout=15)
+        if r.status_code != 200:
+            print(f"  Sales closedate map error: {r.status_code}"); break
+        data    = r.json()
+        results = data.get("results", [])
+
+        # Build deal_id → closedate for this batch
+        deal_closedate = {}
+        for d in results:
+            cd = (d.get("properties", {}).get("closedate") or "").strip()
+            if cd:
+                try:
+                    dt = datetime.fromisoformat(cd.replace("Z", "+00:00"))
+                    deal_closedate[d["id"]] = dt.strftime("%Y-%m-%d")
+                except Exception:
+                    pass
+
+        # Resolve deals → company IDs
+        deal_ids = list(deal_closedate.keys())
+        for i in range(0, len(deal_ids), 100):
+            ar = requests.post(
+                "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
+                json={"inputs": [{"id": did} for did in deal_ids[i:i+100]]},
+                headers=hs_h(), timeout=15)
+            if ar.status_code == 200:
+                for item in ar.json().get("results", []):
+                    deal_id   = str(item.get("from", {}).get("id", ""))
+                    closedate = deal_closedate.get(deal_id)
+                    if not closedate: continue
+                    for assoc in item.get("to", []):
+                        cid = str(assoc.get("toObjectId", ""))
+                        if cid:
+                            # Keep the EARLIEST date — first time they ever became a customer
+                            if cid not in company_closedate or closedate < company_closedate[cid]:
+                                company_closedate[cid] = closedate
+            time.sleep(0.1)
+
+        after = data.get("paging", {}).get("next", {}).get("after")
+        if not after: break
+
+    print(f"  Sales closedate map: {len(company_closedate)} companies with a sales close date")
+    return company_closedate
+
 # ── HubSpot deal helpers ──────────────────────────────────────────────────────
 def hs_get_deal_contacts(deal_id: str) -> list:
     try:
@@ -459,10 +552,12 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
     """
     Returns (best_contact_dict, deal_props_dict) for the company.
     deal_props_dict may contain:
-      'dvms'        — number of DVMs from closed-won deal
-      'closedate'   — ISO date string of when the deal closed (the real customer-since date)
-    Makes one company→deals lookup then reuses those deal IDs for both
-    contact and deal property fetches to avoid duplicate API calls.
+      'dvms' — number of DVMs from the most recent closed-won deal
+
+    NOTE: closedate is intentionally NOT returned here. customerSince is sourced
+    exclusively from hs_build_sales_closedate_map() (Sales pipeline only) to avoid
+    CS expansion or upsell deal dates polluting the customer-since value.
+    closedate is still in HS_DEAL_PROPS so candidates can be sorted by recency.
     """
     try:
         r = requests.get(
@@ -502,26 +597,15 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
             candidates.sort(key=_sort_key, reverse=True)
 
             for p in candidates:
-                # DVM count
+                # DVM count only — closedate is now sourced from the Sales pipeline
+                # pre-fetch map (hs_build_sales_closedate_map) to avoid CS/upsell dates
                 dvms = (p.get("number_of_dvms") or "").strip()
                 if dvms and dvms not in ("0", "0.0"):
                     try:
                         deal_props["dvms"] = str(int(float(dvms)))
                     except ValueError:
                         deal_props["dvms"] = dvms
-
-                # Close date — the real "customer since" date
-                closedate_raw = (p.get("closedate") or "").strip()
-                if closedate_raw and not deal_props.get("closedate"):
-                    try:
-                        # HubSpot returns ISO 8601 e.g. "2023-03-15T00:00:00.000Z"
-                        dt = datetime.fromisoformat(closedate_raw.replace("Z", "+00:00"))
-                        deal_props["closedate"] = dt.strftime("%Y-%m-%d")
-                    except Exception:
-                        pass
-
-                if deal_props.get("dvms") and deal_props.get("closedate"):
-                    break  # have everything we need
+                    break  # take from the most recent won deal and stop
 
         # Fetch best contact from the same set of deals
         best_contact = {}
@@ -1047,6 +1131,10 @@ def main():
     ob_pipeline_id, ob_cs_stage_id = hs_fetch_onboarding_pipeline_config()
     onboarding_exclude = hs_get_active_onboarding_company_ids(ob_pipeline_id, ob_cs_stage_id)
 
+    print("\n── HubSpot Sales pipeline (customer-since dates) ──────────")
+    sales_pipeline_id  = hs_fetch_sales_pipeline_id()
+    sales_closedate_map = hs_build_sales_closedate_map(sales_pipeline_id)
+
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
 
@@ -1183,12 +1271,13 @@ def main():
         if deal_props.get("dvms"):
             rec["dvms"] = deal_props["dvms"]
 
-        # Store customer-since date from deal close date (the real tenure source)
-        # and compute hs_long_tenure correctly — NOT from CRM createdate
-        if deal_props.get("closedate"):
-            rec["customerSince"] = deal_props["closedate"]
+        # Customer since — Sales pipeline closed-won deals ONLY.
+        # CS expansion, upsell, and any other pipeline dates are explicitly excluded.
+        sales_closedate = sales_closedate_map.get(hs_id)
+        if sales_closedate:
+            rec["customerSince"] = sales_closedate
             try:
-                since_dt = datetime.fromisoformat(deal_props["closedate"] + "T00:00:00+00:00")
+                since_dt = datetime.fromisoformat(sales_closedate + "T00:00:00+00:00")
                 if (datetime.now(timezone.utc) - since_dt).days > 365:
                     context_signals.append("hs_long_tenure")
             except Exception:
