@@ -8,8 +8,6 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F0F4F8;color:#1E293B}
-
-/* ── Auth gate ── */
 #authWall{position:fixed;inset:0;background:linear-gradient(135deg,#0A5F7A,#0B7D9E);display:flex;align-items:center;justify-content:center;z-index:9999}
 #authBox{background:#fff;border-radius:16px;padding:36px 40px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
 .auth-logo{font-size:36px;margin-bottom:12px}
@@ -105,6 +103,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <input type="text" id="si" placeholder="Search clinic, city, contact…">
   </div>
 </div>
+
 <div id="layout" style="display:none">
   <div id="sb">
     <div class="sc"><div class="sn" id="vc">…</div><div class="sl">advocates visible</div><div class="ss" id="vs"></div></div>
@@ -125,60 +124,92 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div id="lhd"><h2>Advocate List</h2><span id="lct">…</span><span class="ln">· Click row to fly to pin · click header to sort</span></div>
       <div id="ls"><table id="tbl">
         <thead><tr>
-          <th onclick="srt('name')">Clinic ↕</th><th onclick="srt('loc')">Location ↕</th>
-          <th>Address</th><th onclick="srt('ct')">Type ↕</th><th onclick="srt('contact')">Contact ↕</th>
-          <th>Email</th><th>Features</th><th onclick="srt('pims')">PIMS From ↕</th>
-          <th onclick="srt('src')">Source ↕</th><th>Flags</th>
+          <th onclick="srt('name')">Clinic ↕</th>
+          <th onclick="srt('loc')">Location ↕</th>
+          <th>Address</th>
+          <th onclick="srt('ct')">Type ↕</th>
+          <th onclick="srt('contact')">Contact ↕</th>
+          <th>Email</th>
+          <th onclick="srt('dvms')">DVMs ↕</th>
+          <th>Features</th>
+          <th onclick="srt('pims')">PIMS From ↕</th>
+          <th onclick="srt('src')">Source ↕</th>
+          <th>Flags</th>
         </tr></thead>
         <tbody id="tb"></tbody>
       </table></div>
     </div>
   </div>
 </div>
+
 <script>
-// ── Auth gate ─────────────────────────────────────────────────────────────────
+// ── Auth ──────────────────────────────────────────────────────────────────────
 function checkAuth(){
-  const email = document.getElementById('authEmail').value.trim().toLowerCase();
-  const err   = document.getElementById('authErr');
+  const email=document.getElementById('authEmail').value.trim().toLowerCase();
+  const err=document.getElementById('authErr');
   if(!email){err.textContent='Please enter your email.';return;}
   if(!email.endsWith('@digitail.io')){
     err.textContent='Access restricted to @digitail.io email addresses.';
     document.getElementById('authEmail').style.borderColor='#EF4444';
     return;
   }
-  sessionStorage.setItem('dgt_auth', email);
+  sessionStorage.setItem('dgt_auth',email);
   showMap();
 }
-
 function showMap(){
   document.getElementById('authWall').style.display='none';
   document.getElementById('hdr').style.display='flex';
   document.getElementById('layout').style.display='flex';
   map.invalidateSize();
 }
-
 if(sessionStorage.getItem('dgt_auth')){
-  document.addEventListener('DOMContentLoaded', showMap);
+  document.addEventListener('DOMContentLoaded',showMap);
 }
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  const inp = document.getElementById('authEmail');
-  if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter') checkAuth(); });
+document.addEventListener('DOMContentLoaded',()=>{
+  const inp=document.getElementById('authEmail');
+  if(inp) inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkAuth();});
 });
 
+// ── Constants ─────────────────────────────────────────────────────────────────
 const CT={
-  general:    {l:'General practice / mixed animal', c:'#10B981'},
-  smallAnimal:{l:'Small animal / companion animal',  c:'#3B82F6'},
-  emergency:  {l:'Emergency & specialty',            c:'#F59E0B'},
-  equine:     {l:'Equine / large animal',            c:'#8B5CF6'},
-  corporate:  {l:'Corporate group / multi-location', c:'#EF4444'}
+  general:    {l:'General practice / mixed animal',c:'#10B981'},
+  smallAnimal:{l:'Small animal / companion animal', c:'#3B82F6'},
+  emergency:  {l:'Emergency & specialty',           c:'#F59E0B'},
+  equine:     {l:'Equine / large animal',           c:'#8B5CF6'},
+  corporate:  {l:'Corporate group / multi-location',c:'#EF4444'}
 };
 const FMT={
-  bnm:         {l:'🏥 Brick & Mortar', c:'#0369A1'},
-  mobile:      {l:'🚐 Mobile / House Call', c:'#7C3AED'},
-  telemedicine:{l:'💻 Telemedicine', c:'#0891B2'},
+  bnm:         {l:'🏥 Brick & Mortar',   c:'#0369A1'},
+  mobile:      {l:'🚐 Mobile / House Call',c:'#7C3AED'},
+  telemedicine:{l:'💻 Telemedicine',      c:'#0891B2'},
+};
+// Mirrors Python STRONG_SIGNALS — only these show as "Advocate because" reason
+const STRONG=new Set([
+  'hs_referral_network','intercom_csat','capterra_positive','g2_positive',
+  'softwareadvice','getapp','google_review','facebook_review',
+  'fathom_call','slack_mention','manual'
+]);
+const SIGNAL_LABELS={
+  hs_referral_network:'🤝 In Digitail Referral Network',
+  intercom_csat:      '⭐ 5★ Intercom Support Rating',
+  capterra_positive:  '🌟 Capterra Review',
+  g2_positive:        '🌟 G2 Review',
+  softwareadvice:     '🌟 Software Advice Review',
+  getapp:             '🌟 GetApp Review',
+  google_review:      '⭐ Google Review',
+  facebook_review:    '👍 Facebook Review',
+  fathom_call:        '📞 Positive CS Call (Fathom)',
+  slack_mention:      '💬 Positive Team Mention',
+  manual:             '✅ Manually Verified',
+  hs_testimonial:     '📰 Case Study / Article on File',
+  hs_dsp:             '💳 DSP Payment Processing',
+  hs_positive_note:   '👍 Positive Team Note',
+  hs_long_tenure:     '📅 Active Customer 12+ Months',
+  google_mention:     '🔍 Web Mention',
+  reddit_mention:     '💬 Reddit Mention',
 };
 
+// ── State ─────────────────────────────────────────────────────────────────────
 let D=[],selT,selFmt,pimsV,selP,srcV,selS,q='',sc='name',sa=true,ml=[];
 
 // ── Map ───────────────────────────────────────────────────────────────────────
@@ -191,15 +222,14 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
 function boot(data){
   document.getElementById('loadMsg')?.remove();
   D=data;
-  selT   = new Set(Object.keys(CT));
-  selFmt = new Set(Object.keys(FMT));
-  pimsV  = [...new Set(D.flatMap(a=>a.pims?a.pims.split(',').map(p=>p.trim()):[]))].filter(Boolean).sort();
-  selP   = new Set(pimsV);
-  srcV   = [...new Set(D.map(sg))].sort();
-  selS   = new Set(srcV);
-  buildF(); render();
+  selT   =new Set(Object.keys(CT));
+  selFmt =new Set(Object.keys(FMT));
+  pimsV  =[...new Set(D.flatMap(a=>a.pims?a.pims.split(',').map(p=>p.trim()):[]))].filter(Boolean).sort();
+  selP   =new Set(pimsV);
+  srcV   =[...new Set(D.map(sg))].sort();
+  selS   =new Set(srcV);
+  buildF();render();
 }
-
 fetch('advocates.json')
   .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
   .then(boot)
@@ -221,36 +251,36 @@ function haversine(la1,lo1,la2,lo2){
   return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
 
-// ── Nearest finder ────────────────────────────────────────────────────────────
+// ── Find nearest ─────────────────────────────────────────────────────────────
 async function findNearest(){
   const input=document.getElementById('nfInput').value.trim();
-  if(!input) return;
+  if(!input)return;
   const statusEl=document.getElementById('nfStatus');
   const resultsEl=document.getElementById('nfResults');
-  resultsEl.style.display='none'; resultsEl.innerHTML='';
+  resultsEl.style.display='none';resultsEl.innerHTML='';
   statusEl.textContent='🔍 Geocoding…';
   try{
-    const geoRes  = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input)}&limit=1`,{headers:{'Accept-Language':'en'}});
-    const geoData = await geoRes.json();
+    const geoRes=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input)}&limit=1`,{headers:{'Accept-Language':'en'}});
+    const geoData=await geoRes.json();
     if(!geoData.length){statusEl.textContent='Address not found — try a different format.';return;}
-    const searchLat = parseFloat(geoData[0].lat);
-    const searchLng = parseFloat(geoData[0].lon);
-    const placeName = geoData[0].display_name;
-    if(isNaN(searchLat)||isNaN(searchLng)){statusEl.textContent='Could not get coordinates — try a more specific address.';return;}
-    const ranked = D
+    const searchLat=parseFloat(geoData[0].lat);
+    const searchLng=parseFloat(geoData[0].lon);
+    const placeName=geoData[0].display_name;
+    if(isNaN(searchLat)||isNaN(searchLng)){statusEl.textContent='Could not get coordinates.';return;}
+    const ranked=D
       .filter(adv=>adv.lat&&adv.lng)
-      .map(adv=>({adv, miles: haversine(searchLat, searchLng, adv.lat, adv.lng)}))
-      .sort((x,y)=>x.miles - y.miles);
+      .map(adv=>({adv,miles:haversine(searchLat,searchLng,adv.lat,adv.lng)}))
+      .sort((x,y)=>x.miles-y.miles);
     statusEl.textContent='Nearest to: '+placeName.split(',').slice(0,3).join(',');
     resultsEl.style.display='flex';
-    ranked.slice(0,5).forEach(({adv, miles}, idx)=>{
+    ranked.slice(0,5).forEach(({adv,miles},idx)=>{
       const div=document.createElement('div');
       div.className='nfr';
       div.innerHTML=`<span class="nfr-rank">#${idx+1}</span><div class="nfr-body"><div class="nfr-name" title="${adv.name}">${adv.name}</div><div class="nfr-dist">${adv.city||''}${adv.st?', '+adv.st:''} · <b>${Math.round(miles)} mi</b>${adv.contact?' · '+adv.contact:''}</div></div>`;
       div.onclick=()=>fly(adv.hsId||adv.id);
       resultsEl.appendChild(div);
     });
-    if(window._nfM) map.removeLayer(window._nfM);
+    if(window._nfM)map.removeLayer(window._nfM);
     window._nfM=L.circleMarker([searchLat,searchLng],{radius:8,color:'#F59E0B',fillColor:'#FEF3C7',fillOpacity:1,weight:2}).addTo(map).bindPopup(`<b>Search location</b><br>${input}`).openPopup();
     map.setView([searchLat,searchLng],7,{animate:true});
   }catch(err){
@@ -290,126 +320,147 @@ function sAll(v){selS=v?new Set(srcV):new Set();document.querySelectorAll('[data
 
 function filt(){
   return D.filter(a=>{
-    if(!selT.has(a.ct)) return false;
-    const fmt=a.format||'bnm'; if(!selFmt.has(fmt)) return false;
+    if(!selT.has(a.ct))return false;
+    const fmt=a.format||'bnm';if(!selFmt.has(fmt))return false;
     if(a.pims){const ps=a.pims.split(',').map(p=>p.trim());if(!ps.some(p=>selP.has(p)))return false;}
-    if(!selS.has(sg(a))) return false;
+    if(!selS.has(sg(a)))return false;
     if(q){const s=q.toLowerCase();if(!([a.name,a.city,a.st,a.contact,a.pm,a.address].some(f=>(f||'').toLowerCase().includes(s))))return false;}
     return true;
   });
 }
 
-// ── Icons & popups ────────────────────────────────────────────────────────────
+// ── Icons ─────────────────────────────────────────────────────────────────────
 function mkIcon(ct,verify){
   const c=CT[ct]?.c||'#999';
-  const inner=verify?`<text x="14" y="20" text-anchor="middle" fill="white" font-size="12" font-weight="900">!</text>`:`<circle cx="14" cy="14" r="5" fill="white" opacity=".85"/>`;
-  return L.divIcon({html:`<svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.5C7.6 1.5 2.5 6.6 2.5 13C2.5 22.2 14 34.5 14 34.5S25.5 22.2 25.5 13C25.5 6.6 20.4 1.5 14 1.5Z" fill="${c}" stroke="rgba(0,0,0,.15)" stroke-width="1"/>${inner}</svg>`,className:'',iconSize:[28,36],iconAnchor:[14,36],popupAnchor:[0,-38]});
+  const inner=verify
+    ?`<text x="14" y="20" text-anchor="middle" fill="white" font-size="12" font-weight="900">!</text>`
+    :`<circle cx="14" cy="14" r="5" fill="white" opacity=".85"/>`;
+  return L.divIcon({
+    html:`<svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.5C7.6 1.5 2.5 6.6 2.5 13C2.5 22.2 14 34.5 14 34.5S25.5 22.2 25.5 13C25.5 6.6 20.4 1.5 14 1.5Z" fill="${c}" stroke="rgba(0,0,0,.15)" stroke-width="1"/>${inner}</svg>`,
+    className:'',iconSize:[28,36],iconAnchor:[14,36],popupAnchor:[0,-38]
+  });
 }
 
+// ── Popup ─────────────────────────────────────────────────────────────────────
 function mkPop(a){
-  const loc=[a.city,a.st].filter(Boolean).join(', '),tl=CT[a.ct]?.l||a.ct;
+  const loc=[a.city,a.st].filter(Boolean).join(', ');
+  const tl=CT[a.ct]?.l||a.ct;
+  const fmtLabel=FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
   const ai=a.aiAdopter?`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-left:6px">🤖 ${a.aiAdopter}</span>`:'';
-  const row=(l,v,st='')=>v?`<div class="pr"><span class="plb">${l}</span><span class="pv"${st?` style="${st}"`:''}>${v}</span></div>`:'';
-  let b=row('Contact',a.contact)+row('PM/LVT',a.pm)+row('Address',a.address);
-  b+=a.email?`<div class="pr"><span class="plb">Email</span><span class="pv"><a href="mailto:${a.email}">${a.email}</a></span></div>`:'';
-  b+=row('Phone',a.phone);
-  b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
-  b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
-  b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
 
-  // ── FIX: "Advocate because" section — strong signals only, actually rendered ─
-  const SIGNAL_LABELS={
-    hs_referral_network:'🤝 In Digitail Referral Network',
-    intercom_csat:      '⭐ 5★ Intercom Support Rating',
-    capterra_positive:  '🌟 Capterra Review',
-    g2_positive:        '🌟 G2 Review',
-    softwareadvice:     '🌟 Software Advice Review',
-    getapp:             '🌟 GetApp Review',
-    google_review:      '⭐ Google Review',
-    facebook_review:    '👍 Facebook Review',
-    fathom_call:        '📞 Positive CS Call (Fathom)',
-    slack_mention:      '💬 Positive Team Mention',
-    manual:             '✅ Manually Verified',
-    // context-only — shown below the advocate reason, lower emphasis
-    hs_testimonial:     '📰 Case Study / Article on File',
-    hs_dsp:             '💳 DSP Payment Processing',
-    hs_positive_note:   '👍 Positive Team Note',
-    hs_long_tenure:     '📅 Active Customer 12+ Months',
-    google_mention:     '🔍 Web Mention',
-    reddit_mention:     '💬 Reddit Mention',
-  };
+  // "Advocate because" — strong signals lead, context signals shown below divider
+  const allSigs   =(a.signals||[]);
+  const strongSigs=allSigs.filter(s=>STRONG.has(s));
+  const ctxSigs   =allSigs.filter(s=>!STRONG.has(s));
 
-  // Only strong signals qualify as "the reason" — mirrors Python STRONG_SIGNALS
-  const STRONG = new Set([
-    'hs_referral_network','intercom_csat','capterra_positive','g2_positive',
-    'softwareadvice','getapp','google_review','facebook_review',
-    'fathom_call','slack_mention','manual'
-  ]);
-
-  const allSigs    = (a.signals||[]);
-  const strongSigs = allSigs.filter(s => STRONG.has(s));
-  const ctxSigs    = allSigs.filter(s => !STRONG.has(s));
-  const fmtLabel   = FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
-
-  // "Advocate because" block — green, leads the popup body
-  const sigSection = strongSigs.length
-    ? `<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
+  const sigSection=strongSigs.length
+    ?`<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
         <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Advocate because</div>
         <div style="display:flex;flex-direction:column;gap:4px">
           ${strongSigs.map(s=>`<span style="font-size:12px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
         </div>
         ${ctxSigs.length?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid #BBF7D0;font-size:10px;color:#4B7A54">${ctxSigs.map(s=>SIGNAL_LABELS[s]||s).join(' · ')}</div>`:''}
       </div>`
-    : `<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">⚠️ No verified signal on file — do not use as reference</div>`;
+    :`<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">⚠️ No verified signal on file — do not use as reference</div>`;
 
-  // ── sigSection NOW INCLUDED in the returned HTML ──────────────────────────
-  return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div style="display:flex;gap:5px;margin-top:5px"><div class="pty">${tl}</div><div class="pty">${fmtLabel}</div></div></div>
+  const row=(l,v,st='')=>v?`<div class="pr"><span class="plb">${l}</span><span class="pv"${st?` style="${st}"`:''}>${v}</span></div>`:'';
+
+  let b='';
+  b+=row('Contact',a.contact);
+  b+=row('PM/LVT',a.pm);
+  b+=row('Address',a.address);
+  b+=a.email?`<div class="pr"><span class="plb">Email</span><span class="pv"><a href="mailto:${a.email}">${a.email}</a></span></div>`:'';
+  b+=row('Phone',a.phone);
+  // DVMs — shown with a subtle badge so it stands out for deal sizing context
+  b+=a.dvms?`<div class="pr"><span class="plb">DVMs</span><span class="pv"><span style="background:#EFF6FF;color:#1D4ED8;font-weight:700;padding:1px 7px;border-radius:6px;font-size:11px">${a.dvms} DVM${a.dvms==='1'?'':'s'}</span></span></div>`:'';
+  b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
+  b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
+  b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
+
+  return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px"><div class="pty">${tl}</div><div class="pty">${fmtLabel}</div></div></div>
 <div class="pb">${sigSection}${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
 }
 
-// ── Render ────────────────────────────────────────────────────────────────────
+// ── Render map ────────────────────────────────────────────────────────────────
 function rMap(f){
   ml.forEach(m=>map.removeLayer(m));ml=[];
   f.filter(a=>a.lat&&a.lng).forEach(a=>{
     const loc=[a.city,a.st].filter(Boolean).join(', ');
-    const uid = String(a.hsId || a.id);
+    const uid=String(a.hsId||a.id);
     const m=L.marker([a.lat,a.lng],{icon:mkIcon(a.ct,a.verify)});
-    m.bindTooltip(`<strong>${a.name}</strong>${loc?'<br>'+loc:''}${a.contact?'<br><span style="color:#64748B;font-size:11px">'+a.contact+'</span>':''}`,{direction:'top',offset:[0,-38]});
+    // Tooltip shows name, location, contact, and DVM count at a glance
+    const dvmTip=a.dvms?` · <b>${a.dvms} DVM${a.dvms==='1'?'':'s'}</b>`:'';
+    m.bindTooltip(
+      `<strong>${a.name}</strong>${loc?'<br>'+loc:''}${dvmTip}${a.contact?'<br><span style="color:#64748B;font-size:11px">'+a.contact+'</span>':''}`,
+      {direction:'top',offset:[0,-38]}
+    );
     m.bindPopup(mkPop(a),{maxWidth:315});
     m.addTo(map);
-    m._uid=uid;  // FIX: consistent uid stored as string
+    m._uid=uid;
     ml.push(m);
   });
 }
 
+// ── Render list ───────────────────────────────────────────────────────────────
 function rList(f){
   const s=[...f].sort((a,b)=>{
-    const v={name:[a.name,b.name],loc:[a.st||'',b.st||''],ct:[a.ct,b.ct],contact:[a.contact||'',b.contact||''],pims:[a.pims||'',b.pims||''],src:[sg(a),sg(b)]};
-    const[va,vb]=v[sc]||[a.name,b.name];return sa?va.localeCompare(vb):vb.localeCompare(va);
+    const v={
+      name:   [a.name,b.name],
+      loc:    [a.st||'',b.st||''],
+      ct:     [a.ct,b.ct],
+      contact:[a.contact||'',b.contact||''],
+      pims:   [a.pims||'',b.pims||''],
+      src:    [sg(a),sg(b)],
+      dvms:   [parseInt(a.dvms||'0',10),parseInt(b.dvms||'0',10)],
+    };
+    const[va,vb]=v[sc]||[a.name,b.name];
+    // Numeric sort for DVMs column
+    if(sc==='dvms') return sa?va-vb:vb-va;
+    return sa?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));
   });
+
   document.getElementById('tb').innerHTML=s.map(a=>{
-    const loc=a.city?`${a.city}${a.st?', '+a.st:''}`:'',c=CT[a.ct]?.c||'#999',ts=(CT[a.ct]?.l||a.ct).split(' ')[0];
+    const loc=a.city?`${a.city}${a.st?', '+a.st:''}`:'';
+    const c=CT[a.ct]?.c||'#999';
+    const ts=(CT[a.ct]?.l||a.ct).split(' ')[0];
     let flags='';
-    if(a.verify)flags+=`<span class="bg" style="background:#FEF3C7;color:#92400E;margin-right:2px">⚠️Verify</span>`;
-    if(a.aiAdopter)flags+=`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-right:2px">🤖</span>`;
-    if(!a.lat)flags+=`<span class="bg" style="background:#F1F5F9;color:#94A3B8">No pin</span>`;
-    const uid = String(a.hsId || a.id);
-    return `<tr onclick="fly('${uid}')"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
+    if(a.verify) flags+=`<span class="bg" style="background:#FEF3C7;color:#92400E;margin-right:2px">⚠️Verify</span>`;
+    if(a.aiAdopter) flags+=`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-right:2px">🤖</span>`;
+    if(!a.lat) flags+=`<span class="bg" style="background:#F1F5F9;color:#94A3B8">No pin</span>`;
+    const uid=String(a.hsId||a.id);
+    // DVMs cell — blue badge when present, dash when not
+    const dvmsCell=a.dvms
+      ?`<span style="background:#EFF6FF;color:#1D4ED8;font-weight:700;padding:1px 6px;border-radius:5px;font-size:10px">${a.dvms}</span>`
+      :`<span class="tnl">—</span>`;
+    return `<tr onclick="fly('${uid}')">
+      <td><div class="tn" title="${a.name}">${a.name}</div></td>
+      <td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td>
+      <td class="tl" title="${a.address||''}">${a.address||'—'}</td>
+      <td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td>
+      <td class="tl">${a.contact||'—'}</td>
+      <td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td>
+      <td style="text-align:center">${dvmsCell}</td>
+      <td class="tl" title="${a.features||''}">${a.features||'—'}</td>
+      <td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td>
+      <td class="tl">${sg(a)}</td>
+      <td>${flags||'—'}</td>
+    </tr>`;
   }).join('');
 }
 
-// ── FIX: fly() now correctly matches by hsId or id, and finds the right marker ─
+// ── fly — click list row → open popup on map ──────────────────────────────────
 function fly(uid){
-  uid = String(uid);
-  const a = D.find(x => String(x.hsId || x.id) === uid);
-  if(a && a.lat && a.lng){
-    map.setView([a.lat, a.lng], 13, {animate:true});
-    const m = ml.find(x => x._uid === uid);
-    if(m) setTimeout(()=>m.openPopup(), 350);
+  uid=String(uid);
+  const a=D.find(x=>String(x.hsId||x.id)===uid);
+  if(a&&a.lat&&a.lng){
+    map.setView([a.lat,a.lng],13,{animate:true});
+    const m=ml.find(x=>x._uid===uid);
+    if(m)setTimeout(()=>m.openPopup(),350);
   }
 }
 
 function srt(col){sc===col?sa=!sa:(sc=col,sa=true);rList(filt());}
+
 function render(){
   const f=filt(),wc=f.filter(a=>a.lat&&a.lng).length;
   rMap(f);rList(f);
@@ -417,6 +468,7 @@ function render(){
   document.getElementById('vs').textContent=wc+' pinned on map';
   document.getElementById('lct').textContent=f.length;
 }
+
 document.getElementById('si').addEventListener('input',e=>{q=e.target.value.trim();render();});
 </script>
 </body>
