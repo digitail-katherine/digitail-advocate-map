@@ -315,37 +315,105 @@ def coord_matches_country(lat: float, lng: float, country: str) -> bool:
         return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
     return True  # US and unknown — rely on NA bounds check only
 
-def geocode(address: str, country: str = ""):
-    if not address_is_geocodable(address):
-        return None, None
-    # Add country context to improve accuracy
-    full_addr = address
-    cl = (country or "").lower()
-    if cl in {"united states", "us", "usa"} and "united states" not in address.lower():
-        full_addr = f"{address}, United States"
-    elif cl in {"canada", "ca"} and "canada" not in address.lower():
-        full_addr = f"{address}, Canada"
-    elif cl in {"mexico", "mx"} and "mexico" not in address.lower():
-        full_addr = f"{address}, Mexico"
+def build_geocode_query(props: dict) -> str:
+    """
+    Build the most reliable geocode query using ZIP-first hierarchy.
+    ZIP codes are authoritative — they override wrong city names.
+    Never uses the raw address line (too dirty in HubSpot).
+    
+    Priority:
+      1. ZIP + state + country
+      2. City + state + country  
+      3. State + country only
+    """
+    zip_   = (props.get("zip")     or "").strip()
+    city   = (props.get("city")    or "").strip().title()
+    state  = (props.get("state")   or "").strip().upper()
+    country= (props.get("country") or "").strip()
 
+    # Normalise country to full name for better geocoding
+    country_map = {"us":"United States","usa":"United States","ca":"Canada",
+                   "canada":"Canada","mx":"Mexico","mexico":"Mexico"}
+    country_norm = country_map.get(country.lower(), country) or "United States"
+
+    if zip_ and state:
+        return f"{zip_}, {state}, {country_norm}"
+    elif city and state:
+        return f"{city}, {state}, {country_norm}"
+    elif state:
+        return f"{state}, {country_norm}"
+    return ""
+
+def geocode_google(query: str) -> tuple:
+    """Use Google Geocoding API — smarter than Nominatim for dirty data."""
+    if not GOOGLE_KEY or not query:
+        return None, None
+    try:
+        r = requests.get(
+            "https://maps.googleapis.com/maps/api/geocode/json",
+            params={"address": query, "key": GOOGLE_KEY},
+            timeout=10,
+        )
+        if r.status_code == 200:
+            results = r.json().get("results", [])
+            if results:
+                loc = results[0]["geometry"]["location"]
+                return round(loc["lat"], 5), round(loc["lng"], 5)
+    except Exception as e:
+        print(f"  Google geocode failed for '{query}': {e}")
+    return None, None
+
+def geocode_nominatim(query: str, country: str = "") -> tuple:
+    """Nominatim fallback — used when no Google key available."""
+    if not query:
+        return None, None
     time.sleep(1.2)
     try:
         r = requests.get(
             "https://nominatim.openstreetmap.org/search",
-            params={"format": "json", "q": full_addr, "limit": 1},
+            params={"format": "json", "q": query, "limit": 1},
             headers={"User-Agent": "DigitailAdvocateMap/4.0 (internal-sales-tool)"},
             timeout=10,
         )
         if r.status_code == 200:
             d = r.json()
             if d:
-                lat, lng = round(float(d[0]["lat"]), 5), round(float(d[0]["lon"]), 5)
-                if in_na_bounds(lat, lng):
-                    return lat, lng
-                else:
-                    print(f"  Geocode rejected (outside NA bounds): {address} → {lat},{lng}")
+                return round(float(d[0]["lat"]), 5), round(float(d[0]["lon"]), 5)
     except Exception as e:
-        print(f"  Geocode failed for '{address}': {e}")
+        print(f"  Nominatim failed for '{query}': {e}")
+    return None, None
+
+def geocode(address: str, country: str = "", props: dict = None) -> tuple:
+    """
+    Main geocode entry point.
+    Uses ZIP-first query strategy + Google API if available.
+    Validates result is within North America bounds.
+    """
+    # Build clean ZIP-first query from props if available
+    if props:
+        query = build_geocode_query(props)
+    else:
+        query = address or ""
+
+    if not query:
+        return None, None
+
+    # Try Google first (smarter, handles dirty city names)
+    if GOOGLE_KEY:
+        lat, lng = geocode_google(query)
+    else:
+        time.sleep(1.2)  # Nominatim rate limit
+        lat, lng = geocode_nominatim(query, country)
+
+    if lat and in_na_bounds(lat, lng):
+        country_field = (props.get("country","") if props else country)
+        if coord_matches_country(lat, lng, country_field):
+            return lat, lng
+        else:
+            print(f"  Geocode coord/country mismatch: {query} → {lat},{lng} (country: {country_field})")
+    elif lat:
+        print(f"  Geocode rejected (outside NA): {query} → {lat},{lng}")
+
     return None, None
 
 # ── Intercom ──────────────────────────────────────────────────────────────────
@@ -928,13 +996,12 @@ def main():
             updated.append(name)
         new_advocates.append(rec)
 
-    # Preserve non-HubSpot records
+    # Preserve non-HubSpot records (Capterra-only, Usage Report, manual)
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
     for old in existing:
         already = (str(old.get("hsId","")) in hs_ids_in or old["name"].lower() in names_in)
         if not already and (old.get("signals") or old.get("src","") in ("Capterra","Usage Report","Intercom CSAT")):
-            # Still validate coords for preserved records
             if old.get("lat") and not in_na_bounds(old["lat"], old.get("lng",0)):
                 old = dict(old)
                 old["lat"], old["lng"] = None, None
