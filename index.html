@@ -154,15 +154,13 @@ function showMap(){
   document.getElementById('authWall').style.display='none';
   document.getElementById('hdr').style.display='flex';
   document.getElementById('layout').style.display='flex';
-  map.invalidateSize(); // re-render map tiles now that container is visible
+  map.invalidateSize();
 }
 
-// Check if already authenticated this session
 if(sessionStorage.getItem('dgt_auth')){
   document.addEventListener('DOMContentLoaded', showMap);
 }
 
-// Allow Enter key on email input
 document.addEventListener('DOMContentLoaded', ()=>{
   const inp = document.getElementById('authEmail');
   if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter') checkAuth(); });
@@ -181,7 +179,6 @@ const FMT={
   telemedicine:{l:'💻 Telemedicine', c:'#0891B2'},
 };
 
-// ── Runtime state (populated after JSON loads) ────────────────────────────────
 let D=[],selT,selFmt,pimsV,selP,srcV,selS,q='',sc='name',sa=true,ml=[];
 
 // ── Map ───────────────────────────────────────────────────────────────────────
@@ -308,6 +305,7 @@ function mkIcon(ct,verify){
   const inner=verify?`<text x="14" y="20" text-anchor="middle" fill="white" font-size="12" font-weight="900">!</text>`:`<circle cx="14" cy="14" r="5" fill="white" opacity=".85"/>`;
   return L.divIcon({html:`<svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.5C7.6 1.5 2.5 6.6 2.5 13C2.5 22.2 14 34.5 14 34.5S25.5 22.2 25.5 13C25.5 6.6 20.4 1.5 14 1.5Z" fill="${c}" stroke="rgba(0,0,0,.15)" stroke-width="1"/>${inner}</svg>`,className:'',iconSize:[28,36],iconAnchor:[14,36],popupAnchor:[0,-38]});
 }
+
 function mkPop(a){
   const loc=[a.city,a.st].filter(Boolean).join(', '),tl=CT[a.ct]?.l||a.ct;
   const ai=a.aiAdopter?`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-left:6px">🤖 ${a.aiAdopter}</span>`:'';
@@ -318,38 +316,55 @@ function mkPop(a){
   b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
-  // Why section — leads the popup body
+
+  // ── FIX: "Advocate because" section — strong signals only, actually rendered ─
   const SIGNAL_LABELS={
     hs_referral_network:'🤝 In Digitail Referral Network',
-    hs_testimonial:     '📰 Case Study / Article Published',
-    hs_dsp:             '💳 DSP Payment Processing',
-    hs_positive_note:   '👍 Team Verified Happy',
-    hs_long_tenure:     '📅 Active Customer 12+ Months',
-    intercom_csat:      '⭐ 5★ Support Rating',
+    intercom_csat:      '⭐ 5★ Intercom Support Rating',
     capterra_positive:  '🌟 Capterra Review',
     g2_positive:        '🌟 G2 Review',
     softwareadvice:     '🌟 Software Advice Review',
     getapp:             '🌟 GetApp Review',
-    reddit_mention:     '💬 Reddit Mention',
     google_review:      '⭐ Google Review',
-    google_mention:     '🔍 Web Mention',
     facebook_review:    '👍 Facebook Review',
-    slack_mention:      '💬 Positive Slack Mention',
-    fathom_call:        '📞 Positive Customer Call',
+    fathom_call:        '📞 Positive CS Call (Fathom)',
+    slack_mention:      '💬 Positive Team Mention',
     manual:             '✅ Manually Verified',
+    // context-only — shown below the advocate reason, lower emphasis
+    hs_testimonial:     '📰 Case Study / Article on File',
+    hs_dsp:             '💳 DSP Payment Processing',
+    hs_positive_note:   '👍 Positive Team Note',
+    hs_long_tenure:     '📅 Active Customer 12+ Months',
+    google_mention:     '🔍 Web Mention',
+    reddit_mention:     '💬 Reddit Mention',
   };
-  const sigs=(a.signals||[]);
-  const fmtLabel=FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
-  const sigSection=sigs.length
-    ?`<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
-        <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Why this clinic is on the map</div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          ${sigs.map(s=>`<span style="font-size:12px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
+
+  // Only strong signals qualify as "the reason" — mirrors Python STRONG_SIGNALS
+  const STRONG = new Set([
+    'hs_referral_network','intercom_csat','capterra_positive','g2_positive',
+    'softwareadvice','getapp','google_review','facebook_review',
+    'fathom_call','slack_mention','manual'
+  ]);
+
+  const allSigs    = (a.signals||[]);
+  const strongSigs = allSigs.filter(s => STRONG.has(s));
+  const ctxSigs    = allSigs.filter(s => !STRONG.has(s));
+  const fmtLabel   = FMT[a.format||'bnm']?.l||'🏥 Brick & Mortar';
+
+  // "Advocate because" block — green, leads the popup body
+  const sigSection = strongSigs.length
+    ? `<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
+        <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Advocate because</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          ${strongSigs.map(s=>`<span style="font-size:12px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
         </div>
+        ${ctxSigs.length?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid #BBF7D0;font-size:10px;color:#4B7A54">${ctxSigs.map(s=>SIGNAL_LABELS[s]||s).join(' · ')}</div>`:''}
       </div>`
-    :`<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">⚠️ No verified signal on file — do not use as reference</div>`;
+    : `<div style="margin:0 0 10px 0;padding:8px 10px;background:#FEF9C3;border-left:4px solid #CA8A04;border-radius:0 7px 7px 0;font-size:11px;color:#854D0E;font-weight:600">⚠️ No verified signal on file — do not use as reference</div>`;
+
+  // ── sigSection NOW INCLUDED in the returned HTML ──────────────────────────
   return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div style="display:flex;gap:5px;margin-top:5px"><div class="pty">${tl}</div><div class="pty">${fmtLabel}</div></div></div>
-<div class="pb">${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.notes?`<div class="pmx" style="background:#F0FFF4;color:#166534">ℹ️ ${a.notes}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
+<div class="pb">${sigSection}${b}${a.quote?`<div class="pq">"${a.quote}"</div>`:''}${a.metrics?`<div class="pmx">📊 ${a.metrics}</div>`:''}${a.verify?`<div class="pwn">⚠️ Verify with team before outreach</div>`:''}</div>`;
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
@@ -357,13 +372,16 @@ function rMap(f){
   ml.forEach(m=>map.removeLayer(m));ml=[];
   f.filter(a=>a.lat&&a.lng).forEach(a=>{
     const loc=[a.city,a.st].filter(Boolean).join(', ');
-    const uid = a.hsId || a.id;
+    const uid = String(a.hsId || a.id);
     const m=L.marker([a.lat,a.lng],{icon:mkIcon(a.ct,a.verify)});
     m.bindTooltip(`<strong>${a.name}</strong>${loc?'<br>'+loc:''}${a.contact?'<br><span style="color:#64748B;font-size:11px">'+a.contact+'</span>':''}`,{direction:'top',offset:[0,-38]});
     m.bindPopup(mkPop(a),{maxWidth:315});
-    m.addTo(map);m._uid=uid;ml.push(m);
+    m.addTo(map);
+    m._uid=uid;  // FIX: consistent uid stored as string
+    ml.push(m);
   });
 }
+
 function rList(f){
   const s=[...f].sort((a,b)=>{
     const v={name:[a.name,b.name],loc:[a.st||'',b.st||''],ct:[a.ct,b.ct],contact:[a.contact||'',b.contact||''],pims:[a.pims||'',b.pims||''],src:[sg(a),sg(b)]};
@@ -375,10 +393,12 @@ function rList(f){
     if(a.verify)flags+=`<span class="bg" style="background:#FEF3C7;color:#92400E;margin-right:2px">⚠️Verify</span>`;
     if(a.aiAdopter)flags+=`<span class="bg" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;margin-right:2px">🤖</span>`;
     if(!a.lat)flags+=`<span class="bg" style="background:#F1F5F9;color:#94A3B8">No pin</span>`;
-    const uid = a.hsId || a.id;
+    const uid = String(a.hsId || a.id);
     return `<tr onclick="fly('${uid}')"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
   }).join('');
 }
+
+// ── FIX: fly() now correctly matches by hsId or id, and finds the right marker ─
 function fly(uid){
   uid = String(uid);
   const a = D.find(x => String(x.hsId || x.id) === uid);
@@ -388,6 +408,7 @@ function fly(uid){
     if(m) setTimeout(()=>m.openPopup(), 350);
   }
 }
+
 function srt(col){sc===col?sa=!sa:(sc=col,sa=true);rList(filt());}
 function render(){
   const f=filt(),wc=f.filter(a=>a.lat&&a.lng).length;
