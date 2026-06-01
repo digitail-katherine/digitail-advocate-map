@@ -248,7 +248,11 @@ def geocode_nominatim(query: str):
 def geocode(props: dict, contact: dict = None):
     query = build_geocode_query(props, contact)
     if not query: return None, None
-    lat, lng = geocode_google(query) if GOOGLE_KEY else geocode_nominatim(query)
+    lat, lng = None, None
+    if GOOGLE_KEY:
+        lat, lng = geocode_google(query)
+    if not lat:  # fall back to Nominatim if Google fails or is unconfigured
+        lat, lng = geocode_nominatim(query)
     if lat:
         country = (props.get("country") or "").strip()
         if in_na_bounds(lat, lng) and coord_matches_country(lat, lng, country):
@@ -761,10 +765,6 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # Clear all coordinates for fresh re-geocode
-    for rec in existing:
-        rec["lat"], rec["lng"] = None, None
-
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
     original = json.dumps(existing, sort_keys=True)
@@ -856,10 +856,14 @@ def main():
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
         for ext in all_external:
-            rev = ext.get("reviewer","") or ext.get("author","") or ""
-            if names_match(name, rev) and ext not in review_matches.get(hs_id,[]):
-                strong_signals.append(ext["signal"])
-                if ext.get("text"): matched_quotes.append(ext["text"])
+          rev = ext.get("reviewer","") or ext.get("author","") or ""
+          # Require reviewer name is substantial and has real word overlap with clinic name
+          rev_words = {w for w in re.split(r'\W+', rev.lower()) if len(w) >= 5}
+          name_words = {w for w in re.split(r'\W+', name.lower()) if len(w) >= 5}
+          is_solid_match = len(rev_words & name_words) >= 2
+          if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
+            strong_signals.append(ext["signal"])
+            if ext.get("text"): matched_quotes.append(ext["text"])
 
         # Gate: must have at least one verified strong signal
         if not strong_signals:
@@ -946,7 +950,7 @@ def main():
         already = (str(old.get("hsId","")) in hs_ids_in or old["name"].lower() in names_in)
         if not already:
             old_strong = [s for s in old.get("signals",[]) if s in STRONG_SIGNALS]
-            if old_strong or old.get("src","") in ("manual","Capterra","Usage Report","Intercom CSAT"):
+            if old_strong or old.get("src","") in ("manual","Capterra","Intercom CSAT"):
                 new_advocates.append(old)
 
     new_advocates.sort(key=lambda a: a.get("name",""))
