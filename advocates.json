@@ -34,8 +34,8 @@
     "name": "A Central North Animal Hospital",
     "city": "chicago",
     "st": "IL",
-    "lat": 42.06644,
-    "lng": -87.93431,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Pardeep Gill",
     "email": "psgill@att.net",
@@ -54,7 +54,8 @@
     "address": "418 West Northwest Highway, Chicago, IL, 60056",
     "hsId": "39417757533",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -124,8 +125,8 @@
     "name": "ASPCA - Carson Community Veterinary Clinic",
     "city": "Gardena",
     "st": "CA",
-    "lat": 44.28992,
-    "lng": -70.0405,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Ferguson",
     "email": "jim.ferguson@aspca.org",
@@ -144,7 +145,8 @@
     "address": "16300 S Figueroa St, Gardena, CA, 90248",
     "hsId": "55356742306",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -214,8 +216,8 @@
     "name": "Abide Veterinary Clinic",
     "city": "detroit",
     "st": "MI",
-    "lat": 42.33155,
-    "lng": -83.04664,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Meghan Kermeen",
     "email": "meghan.kermeen@gmail.com",
@@ -234,7 +236,8 @@
     "address": "Detroit, MI",
     "hsId": "53879738510",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -274,8 +277,8 @@
     "name": "Adamson Veterinary Services",
     "city": "conneaut",
     "st": "OH",
-    "lat": 40.89867,
-    "lng": -80.87098,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Anne Mathey",
     "email": "annemathey.avs@gmail.com",
@@ -295,7 +298,8 @@
     "hsId": "9360397880",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -425,8 +429,8 @@
     "name": "Aiko Animal Clinic",
     "city": "arlington",
     "st": "TX",
-    "lat": 32.73558,
-    "lng": -97.10712,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sydney Libby",
     "email": "aikoanimalclinic@gmail.com",
@@ -515,8 +519,8 @@
     "name": "All Pets Veterinary Services",
     "city": "Port St Lucie",
     "st": "FL",
-    "lat": 27.29393,
-    "lng": -80.35033,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dayne Ferrera",
     "email": "ferreradvm@gmail.com",
@@ -536,7 +540,8 @@
     "hsId": "9536659994",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -546,8 +551,8 @@
     "name": "All Springs Veterinary Hospital (Live Oak)",
     "city": "Live Oak",
     "st": "FL",
-    "lat": 30.29619,
-    "lng": -82.98429,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Barker None",
     "email": "asvh@windstream.net",
@@ -576,8 +581,8 @@
     "name": "All Springs Veterinary Hospital (Wellborn)",
     "city": "Wellborn",
     "st": "FL",
-    "lat": 30.2308,
-    "lng": -82.8013,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Barker None",
     "email": "asvh@windstream.net",
@@ -628,7 +633,8 @@
     "hsId": "26268986949",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -698,8 +704,8 @@
     "name": "Americana Animal Hospital",
     "city": "Greensboro",
     "st": "NC",
-    "lat": 36.07264,
-    "lng": -79.79198,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Carla Wood",
     "email": "woodanimalclinic@gmail.com",
@@ -719,7 +725,8 @@
     "hsId": "5961168491",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -729,8 +736,8 @@
     "name": "Amherstburg Animal Clinic",
     "city": "Amherstburg",
     "st": "ON",
-    "lat": 45.42795,
-    "lng": -75.69587,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Rom None",
     "email": "info@crfmeditech.ca",
@@ -760,8 +767,8 @@
     "name": "AnRus Veterinary Clinic Inc",
     "city": "new athens",
     "st": "IL",
-    "lat": 38.32644,
-    "lng": -89.87705,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Angie Kinzinger",
     "email": "angieck13@gmail.com",
@@ -780,7 +787,8 @@
     "address": "New Athens, IL",
     "hsId": "37821142843",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -850,8 +858,8 @@
     "name": "Animal Clinic of Fort Atkinson",
     "city": "janesville",
     "st": "WI",
-    "lat": 42.68298,
-    "lng": -89.02268,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Maile Aalto",
     "email": "animalclinicfa@gmail.com",
@@ -1001,8 +1009,8 @@
     "name": "Animal Hospital of Lake Villa",
     "city": "grayslake",
     "st": "IL",
-    "lat": 42.42386,
-    "lng": -88.06207,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "David Vincent",
     "email": "execdirector@lakevillavet.com",
@@ -1022,7 +1030,8 @@
     "hsId": "20621661768",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1032,8 +1041,8 @@
     "name": "Animal Hospital of Orleans",
     "city": "new bedford",
     "st": "MA",
-    "lat": 41.63622,
-    "lng": -70.93421,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Taylor Kirby-Madden",
     "email": "tkirbymadden@hotmail.com",
@@ -1053,7 +1062,8 @@
     "hsId": "30515436122",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1063,8 +1073,8 @@
     "name": "Animal Hospital of Westover Hills [Happy Paws]",
     "city": "san antonio",
     "st": "TX",
-    "lat": 40.73723,
-    "lng": -73.86248,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jose Pla",
     "email": "jplagomez@happypawsvp.com",
@@ -1084,7 +1094,8 @@
     "hsId": "31417881226",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1187,9 +1198,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Elise Powell",
     "email": "drelisedvm@gmail.com",
-    "phone": "+117345292429",
+    "phone": "443332-8838",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -1197,14 +1208,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Ashburn, VA",
     "hsId": "22695614085",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -1214,8 +1226,8 @@
     "name": "Apache Trail Veterinary Services",
     "city": "phoenix",
     "st": "AZ",
-    "lat": 33.44844,
-    "lng": -112.07414,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Vinod Sontineni",
     "email": "drskumar@gmail.com",
@@ -1235,7 +1247,8 @@
     "hsId": "18457985941",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1275,8 +1288,8 @@
     "name": "Arches Animal Hospital",
     "city": "fort mill",
     "st": "SC",
-    "lat": 35.01207,
-    "lng": -80.91444,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Adam Berman",
     "email": "bermandvm@gmail.com",
@@ -1295,7 +1308,8 @@
     "address": "240 Main Street, Fort Mill, SC, 29715",
     "hsId": "41882760884",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1326,7 +1340,8 @@
     "hsId": "28902053703",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1456,8 +1471,8 @@
     "name": "Ash Mountain Mobile Veterinary Services",
     "city": "denver",
     "st": "OH",
-    "lat": 39.73924,
-    "lng": -104.98486,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Ash Wells",
     "email": "drash@ashmountainvet.com",
@@ -1476,7 +1491,8 @@
     "address": "Denver",
     "hsId": "47352695073",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -1636,8 +1652,8 @@
     "name": "Audrain Veterinary Clinic",
     "city": "mexico",
     "st": "MO",
-    "lat": 39.17308,
-    "lng": -91.88853,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Adam Neale",
     "email": "aneale22@gmail.com",
@@ -1657,7 +1673,8 @@
     "hsId": "17696420240",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1757,8 +1774,8 @@
     "name": "Baldwin & Crosstown Animal Clinic",
     "city": "Corpus Christi",
     "st": "TX",
-    "lat": 27.76353,
-    "lng": -97.40332,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Autumn Moody",
     "email": "moodyautumn@hotmail.com",
@@ -1788,8 +1805,8 @@
     "name": "Bark Avenue Veterinary Services",
     "city": "clifton",
     "st": "NJ",
-    "lat": 41.04016,
-    "lng": -74.63101,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Crimson Primicias",
     "email": "crimprim54@gmail.com",
@@ -1809,7 +1826,8 @@
     "hsId": "47389370245",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1849,8 +1867,8 @@
     "name": "Barker Veterinary Services",
     "city": "dallas",
     "st": "TX",
-    "lat": 32.77627,
-    "lng": -96.79686,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Barker",
     "email": "barkerbvs@gmail.com",
@@ -1870,7 +1888,8 @@
     "hsId": "29670981382",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -1970,8 +1989,8 @@
     "name": "Beckett & Associates Veterinary Services, LLC",
     "city": "glastonbury",
     "st": "CT",
-    "lat": 41.70731,
-    "lng": -72.56872,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Caitlin McIntosh Greenhouse",
     "email": "caitlin.mcintosh@beckettvet.net",
@@ -1991,7 +2010,8 @@
     "hsId": "16400854901",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2026,8 +2046,8 @@
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
     "st": "TX",
-    "lat": 28.42191,
-    "lng": -97.7614,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Rachel Hensch",
     "email": "beevet@att.net",
@@ -2047,7 +2067,8 @@
     "hsId": "23841559449",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2087,8 +2108,8 @@
     "name": "Beltline Animal Hospital",
     "city": "frederick",
     "st": "MD",
-    "lat": 39.43845,
-    "lng": -77.42339,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Courtney North",
     "email": "courtnorthvmd@gmail.com",
@@ -2108,7 +2129,8 @@
     "hsId": "6572012080",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2178,8 +2200,8 @@
     "name": "Billiar Animal Hospital",
     "city": "dunnellon",
     "st": "FL",
-    "lat": 29.04914,
-    "lng": -82.46093,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Suzanne Billiar",
     "email": "sbilliar@aol.com",
@@ -2199,7 +2221,8 @@
     "hsId": "33429211144",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2209,8 +2232,8 @@
     "name": "Blue Cross Veterinary Clinic",
     "city": "aberdeen",
     "st": "WA",
-    "lat": 46.97537,
-    "lng": -123.81572,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Michael Bergey",
     "email": "bcvet2@gmail.com",
@@ -2230,7 +2253,8 @@
     "hsId": "18984544864",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2240,8 +2264,8 @@
     "name": "Blue Stone (formerly Blue Ridge) Animal Hospital",
     "city": "Bedford",
     "st": "VA",
-    "lat": 37.32682,
-    "lng": -79.52067,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Mindy Plymale",
     "email": "ladybosssolutions@gmail.com",
@@ -2261,7 +2285,8 @@
     "hsId": "15393725713",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2271,8 +2296,8 @@
     "name": "Bluewater Bay Animal Hospital",
     "city": "niceville",
     "st": "VA",
-    "lat": 30.48986,
-    "lng": -86.43146,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jason Harris",
     "email": "wakeboardlegend@gmail.com",
@@ -2292,7 +2317,8 @@
     "hsId": "7743340151",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2302,8 +2328,8 @@
     "name": "Boomer Veterinary Hospital - OK",
     "city": "Norman",
     "st": "OK",
-    "lat": 35.22257,
-    "lng": -97.43948,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Karla Denton",
     "email": "karladentondvm@yahoo.com",
@@ -2363,8 +2389,8 @@
     "name": "Botzman Mobile Veterinary Services",
     "city": "Kill Devil Hills",
     "st": "NC",
-    "lat": 36.02114,
-    "lng": -75.68475,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Logan Botzman",
     "email": "botzmanvet@gmail.com",
@@ -2384,7 +2410,8 @@
     "hsId": "18847238228",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -2424,8 +2451,8 @@
     "name": "Bridgeview Animal Hospital",
     "city": "Niagara Falls",
     "st": "ON",
-    "lat": 43.10656,
-    "lng": -79.0639,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. paul saini",
     "email": "bridgeviewanimalhospital@hotmail.com",
@@ -2445,7 +2472,8 @@
     "hsId": "25538304854",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2485,8 +2513,8 @@
     "name": "Brighton Animal Clinic",
     "city": "virginia beach",
     "st": "VA",
-    "lat": 47.52326,
-    "lng": -92.53657,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Hannah Delk",
     "email": "hannah@baclexington.com",
@@ -2515,8 +2543,8 @@
     "name": "Bronx County Animal Hospital",
     "city": "syosset",
     "st": "NY",
-    "lat": 40.84276,
-    "lng": -73.85801,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sean Soliman",
     "email": "soliman171@gmail.com",
@@ -2536,7 +2564,8 @@
     "hsId": "6120353182",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2546,8 +2575,8 @@
     "name": "Brookside Animal Hospital",
     "city": "hamilton",
     "st": "OH",
-    "lat": 39.40969,
-    "lng": -84.60597,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kristy Schulte",
     "email": "brooksideanimalhospital96@gmail.com",
@@ -2567,7 +2596,8 @@
     "hsId": "9669604379",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2577,8 +2607,8 @@
     "name": "Brown Animal Hospital",
     "city": "Lake City",
     "st": "SC",
-    "lat": 33.86084,
-    "lng": -79.75639,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Trey Parker",
     "email": "trey.parker@brownanimalhosp.com",
@@ -2598,7 +2628,8 @@
     "hsId": "22529828900",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2608,8 +2639,8 @@
     "name": "Brown Veterinary Hospital - 25th Street",
     "city": "sullivan",
     "st": "IN",
-    "lat": 39.47231,
-    "lng": -87.33963,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Beth Brown",
     "email": "bbrowndvm@msn.com",
@@ -2639,8 +2670,8 @@
     "name": "Brown Veterinary Hospital - 7th Street",
     "city": "Terre Haute",
     "st": "IN",
-    "lat": 39.47231,
-    "lng": -87.33963,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Beth Brown",
     "email": "bbrowndvm@msn.com",
@@ -2666,12 +2697,41 @@
     "format": "bnm"
   },
   {
+    "id": 57,
+    "name": "Bucks County Community College",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "features": null,
+    "dgtId": null,
+    "hsId": "53335009053",
+    "format": "bnm",
+    "email": "taylor.werner@bucks.edu",
+    "phone": "2152587767",
+    "contact": "Taylor Werner",
+    "city": "Perkasie",
+    "st": "PA",
+    "pims": "None - New Practice Start Up",
+    "address": "275 Swamp Road, Perkasie, PA, 18944",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Bush Animal Clinic",
     "city": "Bend",
     "st": "-",
-    "lat": 44.04205,
-    "lng": -121.31882,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Brett Thomas",
     "email": "bthomasdvm@gmail.com",
@@ -2730,8 +2790,8 @@
     "name": "CUYAMACA ANIMAL HOSPITAL",
     "city": "Santee",
     "st": "CA",
-    "lat": 32.85183,
-    "lng": -116.98787,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Michael Witschke",
     "email": "mwitschke@cuyamacavs.com",
@@ -2751,7 +2811,8 @@
     "hsId": "18246679058",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2842,7 +2903,8 @@
     "hsId": "9827402347",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -2852,8 +2914,8 @@
     "name": "Canal Veterinary Hospital",
     "city": "ripon",
     "st": "CA",
-    "lat": 37.49033,
-    "lng": -120.83444,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Heather Deleon",
     "email": "cvhturlock@gmail.com",
@@ -2913,8 +2975,8 @@
     "name": "Cantrell Animal Clinic",
     "city": "bauxite",
     "st": "AR",
-    "lat": 34.76711,
-    "lng": -92.37707,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Colleen McCarthy",
     "email": "c.mccarthy2012@icloud.com",
@@ -3228,8 +3290,8 @@
     "name": "Caring Hearts Animal Clinic",
     "city": "monument",
     "st": "CO",
-    "lat": 39.09166,
-    "lng": -104.87276,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Corrina Hamann",
     "email": "corrinahamann@gmail.com",
@@ -3259,8 +3321,8 @@
     "name": "Carnesville Animal Hospital",
     "city": "Carnesville",
     "st": "GA",
-    "lat": 34.3669,
-    "lng": -83.29989,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Vanesa Farmer",
     "email": "vanesafarmerdvm@gmail.com",
@@ -3280,7 +3342,8 @@
     "hsId": "16779974991",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3290,8 +3353,8 @@
     "name": "Carnesville Animal Hospital",
     "city": "Carnesville",
     "st": "GA",
-    "lat": 34.3693,
-    "lng": -83.30074,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "info@carnesvilleanimalhospital.com",
@@ -3310,7 +3373,8 @@
     "address": "28 Nekita Beasley Street, Carnesville, GA, 30521",
     "hsId": "45876360728",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3410,8 +3474,8 @@
     "name": "CatsOnly Veterinary Services - HQ",
     "city": "Denver",
     "st": "CO",
-    "lat": 29.13869,
-    "lng": -80.99683,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jason Epstein",
     "email": "jason@catsonly.vet",
@@ -3430,7 +3494,8 @@
     "address": "Denver, CO",
     "hsId": "37393102404",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3440,8 +3505,8 @@
     "name": "Cedar Valley Veterinary Center",
     "city": "cedar falls",
     "st": "IA",
-    "lat": 42.53618,
-    "lng": -92.44776,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Clif Paulsen",
     "email": "clifpaulsen@gmail.com",
@@ -3500,8 +3565,8 @@
     "name": "Cedarview Animal Hospital",
     "city": "nepean",
     "st": "ON",
-    "lat": 45.26037,
-    "lng": -75.76837,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "bbrowndvm@msn.com",
@@ -3521,7 +3586,8 @@
     "hsId": "17871283218",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3531,8 +3597,8 @@
     "name": "Central Kentucky Veterinary Center",
     "city": "Georgetown",
     "st": "KY",
-    "lat": 38.22462,
-    "lng": -84.54765,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Amy Marcum",
     "email": "ckvcmanager@gmail.com",
@@ -3552,7 +3618,8 @@
     "hsId": "26534596890",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3617,8 +3684,8 @@
     "name": "Central Veterinary Services",
     "city": "oak bluff",
     "st": "MB",
-    "lat": 49.76169,
-    "lng": -97.32847,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Courtney Hudson",
     "email": "courtneyhudson@centralvet.ca",
@@ -3637,7 +3704,8 @@
     "address": "Oak Bluff, MB",
     "hsId": "36289352548",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3647,8 +3715,8 @@
     "name": "Central Veterinary Services - Second Location",
     "city": "winnipeg",
     "st": "MB",
-    "lat": 49.76169,
-    "lng": -97.32847,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Shai Wood",
     "email": "shaiwood@centralvet.ca",
@@ -3667,7 +3735,8 @@
     "address": "Winnipeg, MB",
     "hsId": "38789491206",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3677,8 +3746,8 @@
     "name": "Chandler Small Animal Clinic [Happy Paws]",
     "city": "Chandler",
     "st": "AZ",
-    "lat": 40.71273,
-    "lng": -74.00602,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jose Pla",
     "email": "jplagomez@happypawsvp.com",
@@ -3738,8 +3807,8 @@
     "name": "Chatham Veterinary Clinic",
     "city": "Chicago",
     "st": "IL",
-    "lat": 41.73724,
-    "lng": -87.60104,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Simuel Hampton",
     "email": "guardianmobilevet@gmail.com",
@@ -3758,7 +3827,8 @@
     "address": "8200 S King Dr., Chicago, IL, 60619",
     "hsId": "53465540791",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -3768,8 +3838,8 @@
     "name": "Cherished Companions Animal Clinic",
     "city": "Palmyra",
     "st": "MI",
-    "lat": 41.85823,
-    "lng": -83.94613,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dawn Marcus",
     "email": "g8rvet@hotmail.com",
@@ -3828,8 +3898,8 @@
     "name": "Circle B Veterinary Hospital",
     "city": "Katy",
     "st": "TX",
-    "lat": 29.74984,
-    "lng": -95.8124,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. David Buelna",
     "email": "drbuelna@circleb.vet",
@@ -3859,8 +3929,8 @@
     "name": "City Park Animal Clinic",
     "city": "Fort Collins",
     "st": "CO",
-    "lat": 40.58335,
-    "lng": -105.10903,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Frank Frucci",
     "email": "cityparkanimalcl@gmail.com",
@@ -3981,8 +4051,8 @@
     "name": "Clairfields Mobile Veterinary Clinic",
     "city": "guelph",
     "st": "ON",
-    "lat": 43.54605,
-    "lng": -80.24933,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Nasreldin Mohamed",
     "email": "clairfieldsvet@gmail.com",
@@ -4002,7 +4072,8 @@
     "hsId": "6212657066",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -4012,8 +4083,8 @@
     "name": "Clearbrook Animal Hospital",
     "city": "Abbotsford",
     "st": "BC",
-    "lat": 49.05062,
-    "lng": -122.33406,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Vishesh Jalan",
     "email": "clearbrookanimalhospital@gmail.com",
@@ -4033,7 +4104,8 @@
     "hsId": "15063386946",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4043,8 +4115,8 @@
     "name": "Clifton Hollow Animal Hospital",
     "city": "poulsbo",
     "st": "TN",
-    "lat": 47.74611,
-    "lng": -122.6465,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Joshua Kinder",
     "email": "info@cliftonhollowanimalhospital.com",
@@ -4064,7 +4136,8 @@
     "hsId": "6582056610",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4344,8 +4417,8 @@
     "name": "Coastal Animal Clinic - HQ",
     "city": "largo",
     "st": "FL",
-    "lat": 43.32243,
-    "lng": -74.9786,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jacqlyn Diana",
     "email": "jacijp@aol.com",
@@ -4375,8 +4448,8 @@
     "name": "Coastal Home Veterinary Services",
     "city": "brunswick",
     "st": "GA",
-    "lat": 31.14995,
-    "lng": -81.49149,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "rainingforest@icloud.com",
@@ -4396,7 +4469,8 @@
     "hsId": "6560638218",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -4436,8 +4510,8 @@
     "name": "Coheal Veterinary Services",
     "city": "issaquah",
     "st": "WA",
-    "lat": 47.61157,
-    "lng": -122.14324,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Marta Nobrega",
     "email": "drmarta@cohealvet.com",
@@ -4457,7 +4531,8 @@
     "hsId": "6642878532",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4497,8 +4572,8 @@
     "name": "Colonial Animal Hospital [Jose Pla]",
     "city": "matawan",
     "st": "NJ",
-    "lat": 40.30467,
-    "lng": -74.18187,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jenny Vokral",
     "email": "drvokral@colonialanimalhospitalnj.com",
@@ -4518,7 +4593,8 @@
     "hsId": "18365294220",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4561,9 +4637,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Zaneta Rocha",
     "email": "comfortpawsmobilevet@gmail.com",
-    "phone": "+17134817605",
+    "phone": "+1 805 871 6568",
     "features": "Tails",
     "dgtId": null,
     "pims": "Digitail",
@@ -4571,14 +4647,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "7815 Barstow St., Los Angeles, CA",
     "hsId": "18125212573",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -4618,8 +4695,8 @@
     "name": "Comforts of Home Veterinary Services",
     "city": "madison",
     "st": "WI",
-    "lat": 44.109,
-    "lng": -87.71348,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sean Pike",
     "email": "comfortsofhomevet@gmail.com",
@@ -4639,7 +4716,8 @@
     "hsId": "19699077925",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -4676,6 +4754,36 @@
   },
   {
     "id": 44,
+    "name": "Community Vet Clinic",
+    "city": "sacramento",
+    "st": "CA",
+    "lat": null,
+    "lng": null,
+    "ct": "general",
+    "contact": "Dr. Jasmine Barisione",
+    "email": "drb@eastbaycvc.com",
+    "phone": "+1 573-581-4679",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "AVImark",
+    "notes": "Location unknown",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Sacramento, CA",
+    "hsId": "49572524696",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "bnm"
+  },
+  {
+    "id": 44,
     "name": "Community Veterinary Clinic",
     "city": "milwaukee",
     "st": "WI",
@@ -4700,7 +4808,8 @@
     "hsId": "20345650002",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4710,8 +4819,8 @@
     "name": "Companion Care Veterinary Hospital, Inc.",
     "city": "San Diego 92128",
     "st": "CA",
-    "lat": 32.71742,
-    "lng": -117.16277,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "John Woods",
     "email": "ccvhjwoods@aol.com",
@@ -4891,8 +5000,8 @@
     "name": "Cottonwood Creek Veterinary Services",
     "city": "New York",
     "st": "NY",
-    "lat": 42.51508,
-    "lng": -74.04541,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Rebecca Kryzak",
     "email": "rjkryzak@yahoo.com",
@@ -4912,7 +5021,8 @@
     "hsId": "5630622122",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4952,8 +5062,8 @@
     "name": "Country Critter Veterinary Services LLC",
     "city": "ashburn",
     "st": "VA",
-    "lat": 39.02978,
-    "lng": -77.47441,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kylie Stinar",
     "email": "kyliestinardvm@gmail.com",
@@ -4973,7 +5083,8 @@
     "hsId": "22551388016",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -4983,8 +5094,8 @@
     "name": "Country Garden Veterinary Clinic",
     "city": "jackson",
     "st": "MS",
-    "lat": 40.6455,
-    "lng": -75.50306,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Brigette Dagenais",
     "email": "brie.dagenais@gmail.com",
@@ -5003,7 +5114,8 @@
     "address": "2310 Brooklyn Rd, Jackson, MS, 49203",
     "hsId": "54175680770",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5013,8 +5125,8 @@
     "name": "Covina Animal Hospital",
     "city": "Covina",
     "st": "CA",
-    "lat": 34.0829,
-    "lng": -117.88789,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jake Waas",
     "email": "jake@covinaanimalhospital.com",
@@ -5034,7 +5146,8 @@
     "hsId": "18856205671",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5047,9 +5160,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Dr. Kelly S. Jordan",
     "email": "drj@creaturecomforts.vet",
-    "phone": "+1 201-567-7878",
+    "phone": "+1 402 840 3455",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -5057,14 +5170,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Lincoln, NE",
     "hsId": "7139207843",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -5074,8 +5188,8 @@
     "name": "Crescent Street Veterinary Hospital",
     "city": "new york",
     "st": "NY",
-    "lat": 40.74834,
-    "lng": -73.93925,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Alida  Sanabria",
     "email": "twofriendsvet@gmail.com",
@@ -5104,8 +5218,8 @@
     "name": "Critter Care Veterinary Hospital",
     "city": "coatesville",
     "st": "PA",
-    "lat": 39.99696,
-    "lng": -75.75963,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ryan Kelleher",
     "email": "rkelleher5@gmail.com",
@@ -5135,8 +5249,8 @@
     "name": "Crossroads Mobile Veterinary Clinic",
     "city": "Fletcher",
     "st": "NC",
-    "lat": 35.43987,
-    "lng": -82.48278,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Matthew Pisani",
     "email": "mkpvet@yahoo.com",
@@ -5155,7 +5269,8 @@
     "address": "82 White Fox Dr, Fletcher, NC, 28732",
     "hsId": "50095106694",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -5225,8 +5340,8 @@
     "name": "Davie Veterinary Clinic",
     "city": "Davie",
     "st": "FL",
-    "lat": 26.06705,
-    "lng": -80.22548,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Suzanne Venter",
     "email": "72suzanne@gmail.com",
@@ -5246,7 +5361,8 @@
     "hsId": "5721780295",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5256,8 +5372,8 @@
     "name": "Dawson Veterinary Clinic",
     "city": "pittsburgh",
     "st": "MN",
-    "lat": 30.39442,
-    "lng": -97.75184,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jocelyn Davis",
     "email": "jocelyn@yourvetpartner.com",
@@ -5276,7 +5392,8 @@
     "address": "Pittsburgh, MN",
     "hsId": "35907322186",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5316,8 +5433,8 @@
     "name": "Derby City’s Crossroads Animal Hospital",
     "city": "Louisville",
     "st": "KY",
-    "lat": 38.25424,
-    "lng": -85.75941,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Cathy White",
     "email": "catwhelan@hotmail.com",
@@ -5337,7 +5454,8 @@
     "hsId": "6104206592",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5353,8 +5471,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 33.7273,
-    "lng": -112.17005,
+    "lat": null,
+    "lng": null,
     "features": null,
     "dgtId": null,
     "hsId": "53948599582",
@@ -5379,9 +5497,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "dana@digitail.io",
-    "phone": "+1 888-280-2221",
+    "contact": "Taylor Smith",
+    "email": "taylor.smith@digitail.io",
+    "phone": "+1 (365) 360 2332",
     "features": "Tails",
     "dgtId": null,
     "pims": "None",
@@ -5389,14 +5507,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Flesherton, IAȘI COUNTY",
     "hsId": "23808898944",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5466,8 +5585,8 @@
     "name": "Dogwood Animal Clinic",
     "city": "hollywood",
     "st": "SC",
-    "lat": 32.73434,
-    "lng": -80.24177,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Cortney Bryant",
     "email": "cortneb94@gmail.com",
@@ -5680,8 +5799,8 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "jredusdvmllc@gmail.com",
+    "contact": "Dr. Brian Taylor",
+    "email": "taylor1075@gmail.com",
     "phone": "+1 604-435-0222",
     "features": "Tails",
     "dgtId": null,
@@ -5690,14 +5809,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "9450 Buffalo Road, Manatee, FL",
     "hsId": "16819392551",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -5737,8 +5857,8 @@
     "name": "Dr. Lex Holistic Mobile Veterinary Services",
     "city": "Salt Spring Island",
     "st": "BC",
-    "lat": 48.82967,
-    "lng": -123.51516,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Oleksiy Bardyeyev",
     "email": "obardyeyev@hotmail.com",
@@ -5758,7 +5878,8 @@
     "hsId": "7361844277",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -5978,8 +6099,8 @@
     "name": "Dry Creek Veterinary Center",
     "city": "roseville",
     "st": "CA",
-    "lat": 38.75309,
-    "lng": -121.30763,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Rajdeep Lehil",
     "email": "rajdeeplehil@gmail.com",
@@ -6009,8 +6130,8 @@
     "name": "Dundee Veterinary Clinic",
     "city": "Dundee",
     "st": "NY",
-    "lat": 41.33048,
-    "lng": -74.18663,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Leslie Karkheck",
     "email": "leslie.karkheck@dundeevets.com",
@@ -6030,7 +6151,8 @@
     "hsId": "22597818803",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6070,8 +6192,8 @@
     "name": "Eagleswood Veterinary Hospital",
     "city": "New Jersey",
     "st": "NJ",
-    "lat": 39.21278,
-    "lng": -74.9248,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Brandon Denning",
     "email": "denningsvet@gmail.com",
@@ -6101,8 +6223,8 @@
     "name": "East Poplarville Veterinary Clinic, P.A.",
     "city": "dallas",
     "st": "MS",
-    "lat": 30.80057,
-    "lng": -89.54979,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Gale Harris",
     "email": "epvc10@gmail.com",
@@ -6122,7 +6244,8 @@
     "hsId": "6993393508",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6132,8 +6255,8 @@
     "name": "East Tennessee Veterinary Dental Services",
     "city": "knoxville",
     "st": "TN",
-    "lat": 35.96039,
-    "lng": -83.92103,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Stephanie Patterson",
     "email": "stepgmc@hotmail.com",
@@ -6153,7 +6276,8 @@
     "hsId": "33489942576",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6283,8 +6407,8 @@
     "name": "Ella Veterinary Clinic",
     "city": "houston",
     "st": "TX",
-    "lat": 29.75894,
-    "lng": -95.3677,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Bong Kim",
     "email": "bkimdvm@gmail.com",
@@ -6303,7 +6427,8 @@
     "address": "Houston, TX",
     "hsId": "53253245197",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6313,8 +6438,8 @@
     "name": "Embrace Animal Hospital",
     "city": "monroe",
     "st": "CT",
-    "lat": 41.54454,
-    "lng": -73.209,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Catherine Atwood",
     "email": "xenadoo1@aol.com",
@@ -6334,7 +6459,8 @@
     "hsId": "6250277934",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6404,8 +6530,8 @@
     "name": "Etowah Animal Hospital",
     "city": "rome",
     "st": "GA",
-    "lat": 34.24409,
-    "lng": -85.16692,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Abby White",
     "email": "abbyw0587@yahoo.com",
@@ -6425,7 +6551,8 @@
     "hsId": "31198692876",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6435,8 +6562,8 @@
     "name": "Evergreen Animal Hospital",
     "city": "portland",
     "st": "WA",
-    "lat": 45.68284,
-    "lng": -122.65923,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Allison Maxey",
     "email": "drmaxey@eahvancouver.com",
@@ -6455,7 +6582,8 @@
     "address": "1710 78th Street, Portland, WA, 98665",
     "hsId": "47215092311",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6525,8 +6653,8 @@
     "name": "Fairview Animal Hospital",
     "city": "arden",
     "st": "NC",
-    "lat": 35.52803,
-    "lng": -82.39868,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sarah Hess",
     "email": "sarah@fairviewveterinary.com",
@@ -6546,7 +6674,8 @@
     "hsId": "25294276532",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6706,8 +6835,8 @@
     "name": "Fantastic Beasts Veterinary Services",
     "city": "parksville",
     "st": "BC",
-    "lat": 49.28751,
-    "lng": -123.11964,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Riopelle",
     "email": "jriopelle@fbvs.ca",
@@ -6727,7 +6856,8 @@
     "hsId": "15439885826",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6767,8 +6897,8 @@
     "name": "Farmland Veterinary Services",
     "city": "decatur",
     "st": "AR",
-    "lat": 36.33591,
-    "lng": -94.46077,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Becky Hancock",
     "email": "bhancock@hancockvet.com",
@@ -6788,7 +6918,8 @@
     "hsId": "14883398018",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -6798,8 +6929,8 @@
     "name": "Fen Vet - HQ",
     "city": "airdrie",
     "st": "AB",
-    "lat": 51.25985,
-    "lng": -114.00382,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Cody Creelman",
     "email": "cody@fenvet.com",
@@ -6859,8 +6990,8 @@
     "name": "Fetch The Vet Mobile Veterinary Services",
     "city": "Merritt",
     "st": "MI",
-    "lat": 44.32974,
-    "lng": -84.94476,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Angie Burkett",
     "email": "a.mariecarlson@gmail.com",
@@ -6880,7 +7011,8 @@
     "hsId": "8310196141",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -6890,8 +7022,8 @@
     "name": "Fidelis Animal Hospital",
     "city": "Georgetown County",
     "st": "SC",
-    "lat": 33.43922,
-    "lng": -79.3343,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Katie Roe-Jarisch",
     "email": "katiedogdoc@gmail.com",
@@ -6911,7 +7043,8 @@
     "hsId": "9905312155",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7002,7 +7135,8 @@
     "hsId": "7985005617",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7012,8 +7146,8 @@
     "name": "Five Forks Animal Clinic",
     "city": "williamsburg",
     "st": "VA",
-    "lat": 37.259,
-    "lng": -76.70714,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Moyer",
     "email": "drmoyer@fiveforksanimalclinic.org",
@@ -7133,8 +7267,8 @@
     "name": "Florence Mobile Veterinary Clinic",
     "city": "mesa",
     "st": "AZ",
-    "lat": 33.4151,
-    "lng": -111.83146,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Omar Montes",
     "email": "frvsaz@gmail.com",
@@ -7153,7 +7287,8 @@
     "address": "Mesa, AZ",
     "hsId": "53724340101",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -7163,8 +7298,8 @@
     "name": "Floyd Veterinary Services",
     "city": "memphis",
     "st": "TN",
-    "lat": 35.14602,
-    "lng": -90.05176,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Abbey Floyd",
     "email": "floydvetservices@gmail.com",
@@ -7184,7 +7319,8 @@
     "hsId": "22535886605",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7224,8 +7360,8 @@
     "name": "Four Labs Veterinary Services",
     "city": "Stonewall",
     "st": "LA",
-    "lat": 32.28183,
-    "lng": -93.82407,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Virginia Wiman",
     "email": "wimandvm@gmail.com",
@@ -7245,7 +7381,8 @@
     "hsId": "8974574877",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7340,8 +7477,8 @@
     "name": "Frankfort Animal Clinic, PSC.",
     "city": "frankfort",
     "st": "KY",
-    "lat": 38.20091,
-    "lng": -84.87328,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Caitlin Beaven",
     "email": "caitlin.m.korte@gmail.com",
@@ -7371,8 +7508,8 @@
     "name": "Frontier Veterinary Clinic",
     "city": "clio",
     "st": "MI",
-    "lat": 42.95504,
-    "lng": -83.81468,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Weber",
     "email": "frontier_requests@yahoo.com",
@@ -7392,7 +7529,8 @@
     "hsId": "27492848514",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7432,8 +7570,8 @@
     "name": "Furwell Veterinary Hospital",
     "city": "greenville",
     "st": "SC",
-    "lat": 34.90163,
-    "lng": -82.2556,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Tyler Simpson",
     "email": "dr.tyler@furwellvet.com",
@@ -7493,8 +7631,8 @@
     "name": "GK Veterinary Services",
     "city": "ajax",
     "st": "ON",
-    "lat": 43.85053,
-    "lng": -79.02088,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Giselle Kalnins",
     "email": "gkvetserv@gmail.com",
@@ -7513,7 +7651,8 @@
     "address": "Ajax, ON",
     "hsId": "43460552288",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7523,8 +7662,8 @@
     "name": "GUADALUPE VALLEY VETERINARY CLINIC",
     "city": "boerne",
     "st": "TX",
-    "lat": 29.50299,
-    "lng": -97.45787,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Hannah Fox",
     "email": "gvvc2004@yahoo.com",
@@ -7544,7 +7683,8 @@
     "hsId": "6995682162",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7584,8 +7724,8 @@
     "name": "Garibaldi Veterinary Hospital",
     "city": "squamish",
     "st": "FL",
-    "lat": 49.69807,
-    "lng": -123.15586,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Janice Agar",
     "email": "janice.agar@gmail.com",
@@ -7644,8 +7784,8 @@
     "name": "Gentle Touch Veterinary Hospital",
     "city": "fayetteville",
     "st": "NC",
-    "lat": 36.11323,
-    "lng": -80.08221,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Rebecca Jackson",
     "email": "nccatvet411@gmail.com",
@@ -7705,8 +7845,8 @@
     "name": "Gladwin Veterinary Clinic",
     "city": "abbotsford",
     "st": "BC",
-    "lat": 49.05212,
-    "lng": -122.32948,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Vijender Singh",
     "email": "drvsyadav@gmail.com",
@@ -7726,7 +7866,8 @@
     "hsId": "31888799560",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7736,8 +7877,8 @@
     "name": "Golden Animal Hospital",
     "city": "toronto",
     "st": "AL",
-    "lat": 32.33034,
-    "lng": -86.11777,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Cheston Tyson",
     "email": "gah.cheston@gmail.com",
@@ -7756,7 +7897,8 @@
     "address": "9570 Vaughn Road, Toronto, AL, 36064",
     "hsId": "50566776690",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7796,8 +7938,8 @@
     "name": "Goldenrod Veterinary Hospital",
     "city": "orlando",
     "st": "FL",
-    "lat": 28.54212,
-    "lng": -81.37905,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Eli Layman",
     "email": "elayman_dvm@yahoo.com",
@@ -7887,8 +8029,8 @@
     "name": "Green Path Mobile Veterinary Services",
     "city": "durham",
     "st": "OH",
-    "lat": 35.99665,
-    "lng": -78.90181,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Micah Doyle",
     "email": "micah.doyle.dvm@gmail.com",
@@ -7907,7 +8049,8 @@
     "address": "Durham",
     "hsId": "53213541430",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -7917,8 +8060,8 @@
     "name": "Greenville Animal Hospital",
     "city": "Greenville",
     "st": "MI",
-    "lat": 43.17753,
-    "lng": -85.2528,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Mary Kinser",
     "email": "dr.kinser@greenvilleanimal.com",
@@ -7938,7 +8081,8 @@
     "hsId": "33079053415",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -7954,8 +8098,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 28.07899,
-    "lng": -82.44352,
+    "lat": null,
+    "lng": null,
     "features": null,
     "dgtId": null,
     "hsId": "38890732189",
@@ -8037,8 +8181,8 @@
     "name": "Gulf Winds Animal Hospital",
     "city": "panama city beach",
     "st": "FL",
-    "lat": 30.2387,
-    "lng": -85.91135,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jacob Knox",
     "email": "drjacobknox14@gmail.com",
@@ -8058,7 +8202,8 @@
     "hsId": "27113026191",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8068,8 +8213,8 @@
     "name": "Hallett Veterinary Hospital",
     "city": "neosho",
     "st": "WI",
-    "lat": 43.10726,
-    "lng": -88.48135,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Cyndi Valerio",
     "email": "cyndivaleriocvpm@hallettvet.com",
@@ -8119,7 +8264,8 @@
     "hsId": "34115282324",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8129,8 +8275,8 @@
     "name": "Hanging Rock Animal Hospital",
     "city": "ashburn",
     "st": "VA",
-    "lat": 37.34076,
-    "lng": -79.9486,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Trisha Deaton",
     "email": "hrockanimal@yahoo.com",
@@ -8150,7 +8296,8 @@
     "hsId": "8343721005",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8217,11 +8364,41 @@
   },
   {
     "id": 44,
+    "name": "Happy Tails - Brookly, NY",
+    "city": "brooklyn",
+    "st": "NY",
+    "lat": null,
+    "lng": null,
+    "ct": "general",
+    "contact": "Elise Abraham",
+    "email": "abrahamelise64@gmail.com",
+    "phone": "9082170610",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None - New Practice Start Up",
+    "notes": "Location unknown",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Brooklyn, NY",
+    "hsId": "45122623309",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "bnm"
+  },
+  {
+    "id": 44,
     "name": "Happy Tails Veterinary Clinic",
     "city": "west palm beach",
     "st": "FL",
-    "lat": 26.71536,
-    "lng": -80.05329,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jesse Skinner",
     "email": "jskinn1212@gmail.com",
@@ -8241,7 +8418,8 @@
     "hsId": "26460351661",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8281,8 +8459,8 @@
     "name": "Harmony Animal Hospital",
     "city": "springfield",
     "st": "VA",
-    "lat": 38.80511,
-    "lng": -77.04702,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Casandra Fowler",
     "email": "drfowler@harmonyvetva.com",
@@ -8302,7 +8480,8 @@
     "hsId": "34211116113",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8312,8 +8491,8 @@
     "name": "Harmony Hill Animal Hospital",
     "city": "Kearney",
     "st": "MO",
-    "lat": 39.35493,
-    "lng": -94.37024,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Aaron Barnes",
     "email": "aaron@harmonyhillvet.com",
@@ -8333,7 +8512,8 @@
     "hsId": "32860966160",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8364,7 +8544,8 @@
     "hsId": "18459755848",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8395,7 +8576,8 @@
     "hsId": "26441460280",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8426,7 +8608,8 @@
     "hsId": "17519441515",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8436,8 +8619,8 @@
     "name": "Hazelwood Mobile Veterinary Services",
     "city": "st. john's",
     "st": "NL",
-    "lat": 47.56468,
-    "lng": -52.7067,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Andrew Flynn",
     "email": "andrew@hazelwoodvet.ca",
@@ -8457,7 +8640,8 @@
     "hsId": "22295479863",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -8527,8 +8711,8 @@
     "name": "Healing Paws Veterinary Services",
     "city": "orlando",
     "st": "FL",
-    "lat": 30.19331,
-    "lng": -85.6764,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Emily Stanfill",
     "email": "healingpawsveterinaryservices@gmail.com",
@@ -8548,7 +8732,8 @@
     "hsId": "31198676617",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8678,8 +8863,8 @@
     "name": "Hefner Road Animal Hospital",
     "city": "Oklahoma City",
     "st": "OK",
-    "lat": 35.58115,
-    "lng": -97.6424,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Rebecca Martin",
     "email": "drmartin@hefnerroadanimalhospital.com",
@@ -8699,7 +8884,8 @@
     "hsId": "21507806557",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8730,7 +8916,8 @@
     "hsId": "21534593818",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8770,8 +8957,8 @@
     "name": "Highland Road pet Hospital",
     "city": "kitchener",
     "st": "ON",
-    "lat": 43.44089,
-    "lng": -80.50589,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Shashi Tagra",
     "email": "info@highlandroadpethospital.com",
@@ -8831,8 +9018,8 @@
     "name": "Highlands Ranch Animal Clinic",
     "city": "englewood",
     "st": "CO",
-    "lat": 39.55004,
-    "lng": -105.00344,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kimberly Anders",
     "email": "hrac@hranimalclinic.com",
@@ -8892,8 +9079,8 @@
     "name": "Hoffman Veterinary Clinic",
     "city": "salem",
     "st": "OR",
-    "lat": 45.49854,
-    "lng": -122.87365,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jay Welch",
     "email": "jaywelch41@gmail.com",
@@ -8913,7 +9100,8 @@
     "hsId": "4462711240",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -8983,8 +9171,8 @@
     "name": "Homegrown Mobile Veterinary Services",
     "city": "middletown",
     "st": "OH",
-    "lat": 39.51664,
-    "lng": -84.40417,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Amanda Struening",
     "email": "aestruening@gmail.com",
@@ -9003,7 +9191,38 @@
     "address": "Middletown, OH",
     "hsId": "40240771985",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "mobile"
+  },
+  {
+    "id": 44,
+    "name": "Homestead Mobile Veterinary Service",
+    "city": "bend",
+    "st": "VA",
+    "lat": null,
+    "lng": null,
+    "ct": "general",
+    "contact": "Brooke Warner",
+    "email": "brookewarnerdvm@icloud.com",
+    "phone": "4583294684",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None",
+    "notes": "Location unknown",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Bend",
+    "hsId": "53764733706",
+    "signals": [
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -9013,8 +9232,8 @@
     "name": "Hometown Pets Mobile Veterinary Clinic",
     "city": "Warrenton",
     "st": "VA",
-    "lat": 35.67666,
-    "lng": -97.54973,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Grams",
     "email": "hometownpetsvet@gmail.com",
@@ -9034,7 +9253,8 @@
     "hsId": "18263307299",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -9044,8 +9264,8 @@
     "name": "Hometown Vet Animal Hospital",
     "city": "ashburn",
     "st": "Louisiana",
-    "lat": 29.66577,
-    "lng": -95.29171,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Holly Bethea",
     "email": "lambhd@yahoo.com",
@@ -9064,7 +9284,8 @@
     "address": "Ashburn, LOUISIANA",
     "hsId": "35036156174",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9134,8 +9355,8 @@
     "name": "Homeward Bound Animal Clinic",
     "city": "Rochester",
     "st": "MN",
-    "lat": 44.02344,
-    "lng": -92.46302,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Natalie Lucca",
     "email": "nluccadvm@gmail.com",
@@ -9225,8 +9446,8 @@
     "name": "Horizon Veterinary Services, PLLC (DBA Horizon Mobile Veterinary Care)",
     "city": "Miami",
     "st": "NC",
-    "lat": 30.1136,
-    "lng": -94.64167,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Shequenta Wray",
     "email": "horizondvmservices@gmail.com",
@@ -9246,7 +9467,8 @@
     "hsId": "25292436324",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -9406,8 +9628,8 @@
     "name": "Huckleberry Veterinary Services",
     "city": "port angeles",
     "st": "WA",
-    "lat": 48.11051,
-    "lng": -123.41528,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Suzy Zustiak",
     "email": "suzyzustiak@gmail.com",
@@ -9427,7 +9649,8 @@
     "hsId": "15685542922",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9608,7 +9831,8 @@
     "hsId": "26934282094",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -9648,8 +9872,8 @@
     "name": "Integrative Veterinary Services",
     "city": "Crosby",
     "st": "TX",
-    "lat": 30.05017,
-    "lng": -95.22545,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lala Alvarez",
     "email": "staff@integrativepets.com",
@@ -9669,7 +9893,8 @@
     "hsId": "10574122928",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9742,9 +9967,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Renee Weldy",
     "email": "weldyr1985@my.uwstout.edu",
-    "phone": "614-935-7021",
+    "phone": "6146197989",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - paper files",
@@ -9752,14 +9977,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "951 Mulberry Drive, Columbus, Ohio 43235, Columbus, OH",
     "hsId": "7056907643",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -9799,8 +10025,8 @@
     "name": "Jasper Veterinary Clinic",
     "city": "Valemount",
     "st": "AB",
-    "lat": 52.85105,
-    "lng": -118.07983,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Janet Jones",
     "email": "jaspervetclinic@telus.net",
@@ -9820,7 +10046,8 @@
     "hsId": "7730894939",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9860,8 +10087,8 @@
     "name": "Kachemak Bay Animal Hospital",
     "city": "Homer",
     "st": "CA",
-    "lat": 59.65897,
-    "lng": -151.47645,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kachemak Bay Animal Hospital",
     "email": "kbayvet@gmail.com",
@@ -9881,7 +10108,8 @@
     "hsId": "7226192769",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9891,8 +10119,8 @@
     "name": "Kahu Animal Hospital",
     "city": "Yorkville, Toronto",
     "st": "ON",
-    "lat": 43.65348,
-    "lng": -79.38393,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Mark Dilworth",
     "email": "markdilworth@kahuvets.com",
@@ -9912,7 +10140,8 @@
     "hsId": "20267451455",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9952,8 +10181,8 @@
     "name": "Kennedy Veterinary Services - GP",
     "city": "walla walla",
     "st": "OR",
-    "lat": 46.0592,
-    "lng": -118.3636,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kelli Kidd",
     "email": "kkidd@kennedyvet.com",
@@ -9973,7 +10202,8 @@
     "hsId": "4676333282",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -9983,8 +10213,8 @@
     "name": "Kennedy Veterinary Services - Urgent Care",
     "city": "walla walla",
     "st": "OR",
-    "lat": 46.0592,
-    "lng": -118.3636,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kelli Kidd",
     "email": "kkidd@kennedyvet.com",
@@ -10003,10 +10233,41 @@
     "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "hsId": "48255946556",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
+  },
+  {
+    "id": 44,
+    "name": "Keyes Mobile Veterinary Care, PLLC",
+    "city": "brockton",
+    "st": "MA",
+    "lat": null,
+    "lng": null,
+    "ct": "general",
+    "contact": "Sarah Keyes",
+    "email": "sekeyes1@gmail.com",
+    "phone": "5083457158",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None - New Practice Start Up",
+    "notes": "Location unknown",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Brockton, MA",
+    "hsId": "54511316635",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "mobile"
   },
   {
     "id": 44,
@@ -10043,8 +10304,8 @@
     "name": "Kings Court Veterinary Services",
     "city": "williamstown",
     "st": "NJ",
-    "lat": 39.68869,
-    "lng": -74.98692,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Erin Briggs",
     "email": "erbrigrh85@gmail.com",
@@ -10064,7 +10325,8 @@
     "hsId": "31786930539",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10074,8 +10336,8 @@
     "name": "Kingsway Veterinary Clinic - BC",
     "city": "Vancouver",
     "st": "BC",
-    "lat": 49.23574,
-    "lng": -123.0391,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Zoran Radnic",
     "email": "zradnic@telus.net",
@@ -10095,7 +10357,8 @@
     "hsId": "16806702623",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10165,8 +10428,8 @@
     "name": "Lake Anna Veterinary Hospital",
     "city": "Mineral",
     "st": "GA",
-    "lat": 39.23509,
-    "lng": -77.05595,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Daniel Slovis",
     "email": "dslovis@lakeannaveterinaryhospital.com",
@@ -10256,8 +10519,8 @@
     "name": "Lakeshore Animal Hospital",
     "city": "waterloo",
     "st": "NY",
-    "lat": 42.90783,
-    "lng": -76.8767,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Robert Thompson",
     "email": "lakeshoreanimalhospital11@gmail.com",
@@ -10276,7 +10539,8 @@
     "address": "347 Waterloo-Geneva Road, Waterloo, NY, 13165",
     "hsId": "54965253735",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10286,8 +10550,8 @@
     "name": "Lakeview Animal Hospital",
     "city": "houston",
     "st": "TX",
-    "lat": 29.75894,
-    "lng": -95.3677,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Venkata Boppana",
     "email": "dboppana@gmail.com",
@@ -10307,7 +10571,8 @@
     "hsId": "18940314242",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10317,8 +10582,8 @@
     "name": "Lakeview Veterinary Clinic - Alberta, Canada",
     "city": "calgary",
     "st": "AB",
-    "lat": 51.04561,
-    "lng": -114.05754,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Fayyhad babiker",
     "email": "fayyhad@gmail.com",
@@ -10337,7 +10602,8 @@
     "address": "Calgary, AB",
     "hsId": "51224417620",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10347,8 +10613,8 @@
     "name": "Lassen Veterinary Services",
     "city": "seattle",
     "st": "CA",
-    "lat": 38.8951,
-    "lng": -77.03638,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Annette Anderson",
     "email": "lassenvetmanagement@gmail.com",
@@ -10368,7 +10634,8 @@
     "hsId": "18409283227",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10378,8 +10645,8 @@
     "name": "Lavon Veterinary Services, PLLC",
     "city": "austin",
     "st": "TX",
-    "lat": 33.01186,
-    "lng": -96.45817,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Coalson Lacey",
     "email": "coalsonlacey@hotmail.com",
@@ -10399,7 +10666,8 @@
     "hsId": "17549208074",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10409,8 +10677,8 @@
     "name": "LazyPaw Animal Hospital",
     "city": "frisco",
     "st": "TX",
-    "lat": 29.98578,
-    "lng": -97.13415,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Brent Bilhartz",
     "email": "brent@lazypawvet.com",
@@ -10430,7 +10698,8 @@
     "hsId": "25073861387",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10440,8 +10709,8 @@
     "name": "Lefebvre Veterinary Medical Center",
     "city": "Monroe",
     "st": "LA",
-    "lat": 32.52328,
-    "lng": -92.10655,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Beth Hendricks",
     "email": "beth@lvmcmonroe.net",
@@ -10531,8 +10800,8 @@
     "name": "Lewiston Animal Clinic",
     "city": "san jose",
     "st": "CA",
-    "lat": 40.69053,
-    "lng": -122.80005,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Neal Weiner",
     "email": "nkwjaibaba@netscape.net",
@@ -10592,8 +10861,8 @@
     "name": "Lighthouse Veterinary Services",
     "city": "helena",
     "st": "MT",
-    "lat": 46.59274,
-    "lng": -112.03628,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Nancy Mayer",
     "email": "nancymayer406@msn.com",
@@ -10613,7 +10882,8 @@
     "hsId": "16251031084",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10623,8 +10893,8 @@
     "name": "Line Creek Animal Hospital",
     "city": "Sharpsburg",
     "st": "GA",
-    "lat": 33.39776,
-    "lng": -84.66889,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Britton Hammett-McCurry",
     "email": "linecreekanimalhospital@gmail.com",
@@ -10644,7 +10914,8 @@
     "hsId": "39461207972",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10654,8 +10925,8 @@
     "name": "Lion and Lamb Veterinary Services",
     "city": "Elgin",
     "st": "AZ",
-    "lat": 31.65926,
-    "lng": -110.64161,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jessica Rubin",
     "email": "lionandlambvet@gmail.com",
@@ -10675,7 +10946,8 @@
     "hsId": "8060960576",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10715,8 +10987,8 @@
     "name": "Locust Fork Animal Clinic",
     "city": "pinson",
     "st": "AL",
-    "lat": 33.68899,
-    "lng": -86.68332,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Melissa Graves",
     "email": "office@locustforkanimalclinic.com",
@@ -10806,8 +11078,8 @@
     "name": "Louisa Veterinary Clinic",
     "city": "Columbus Junction",
     "st": "IA",
-    "lat": 41.26706,
-    "lng": -91.37211,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Michael Todd",
     "email": "mdtodd50@gmail.com",
@@ -10827,7 +11099,8 @@
     "hsId": "5615526763",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10837,8 +11110,8 @@
     "name": "Lovewell Veterinary Services",
     "city": "manchester",
     "st": "NH",
-    "lat": 43.07191,
-    "lng": -70.7804,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Nicole Giusto",
     "email": "giustodvm@gmail.com",
@@ -10858,7 +11131,8 @@
     "hsId": "8965380706",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10898,8 +11172,8 @@
     "name": "Madara's Veterinary Services",
     "city": "union city",
     "st": "OH",
-    "lat": 40.77955,
-    "lng": -74.02375,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Devon Madara",
     "email": "info@madarasveterinaryservices.com",
@@ -10918,7 +11192,8 @@
     "address": "Union City",
     "hsId": "44452041035",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10928,8 +11203,8 @@
     "name": "Magnolia Veterinary Services",
     "city": "Bonnyville",
     "st": "AB",
-    "lat": 54.26792,
-    "lng": -110.74152,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Danielle Gervais",
     "email": "daniellegervais38@gmail.com",
@@ -10949,7 +11224,8 @@
     "hsId": "9592014478",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -10959,8 +11235,8 @@
     "name": "Main Line Feline Veterinary Clinic",
     "city": "new orleans",
     "st": "PA",
-    "lat": 34.05369,
-    "lng": -118.24277,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lisa Goin",
     "email": "drgoin@mainlinefelinevetclinic.com",
@@ -10979,10 +11255,41 @@
     "address": "339 East Lancaster Ave., New Orleans, PA, 19096",
     "hsId": "43153746214",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
+  },
+  {
+    "id": 44,
+    "name": "Main Line Mobile Veterinary",
+    "city": "spring city",
+    "st": "PA",
+    "lat": null,
+    "lng": null,
+    "ct": "general",
+    "contact": "Jessica Bickel",
+    "email": "info@mainlinemobilevet.com",
+    "phone": "6103319317",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "NaVetor",
+    "notes": "Location unknown",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Spring City, PA",
+    "hsId": "53020430135",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "mobile"
   },
   {
     "id": 44,
@@ -11049,8 +11356,8 @@
     "name": "Marblehead Animal Hospital",
     "city": "marblehead",
     "st": "MA",
-    "lat": 42.49912,
-    "lng": -70.86077,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Suzanne Maher",
     "email": "drsuzanne.maher@verizon.net",
@@ -11070,7 +11377,8 @@
     "hsId": "15411791360",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11080,8 +11388,8 @@
     "name": "Marsh Run Veterinary Services",
     "city": "weyers cave",
     "st": "VA",
-    "lat": 38.22999,
-    "lng": -78.37761,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Alison Powell",
     "email": "apowell.vet@gmail.com",
@@ -11101,7 +11409,8 @@
     "hsId": "6680963954",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11111,8 +11420,8 @@
     "name": "Martin's Mobile Veterinary Services",
     "city": "Barrie",
     "st": "ON",
-    "lat": 44.38932,
-    "lng": -79.69013,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jay Martin",
     "email": "jmartindvm@yahoo.com",
@@ -11132,7 +11441,8 @@
     "hsId": "7377002502",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11142,8 +11452,8 @@
     "name": "Martinez Animal Hospital",
     "city": "Martinez",
     "st": "AB",
-    "lat": 38.01389,
-    "lng": -122.13387,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Erin Enke",
     "email": "dr_eenke@mtzanimal.com",
@@ -11162,7 +11472,8 @@
     "address": "Martinez",
     "hsId": "45185648715",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11202,8 +11513,8 @@
     "name": "Matawan Animal Hospital [Jose Pla]",
     "city": "Matawan",
     "st": "NJ",
-    "lat": 42.88642,
-    "lng": -78.87815,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jose Pla",
     "email": "jplagomez@happypawsvp.com",
@@ -11222,7 +11533,8 @@
     "address": "Matawan, NJ",
     "hsId": "35155401495",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11262,8 +11574,8 @@
     "name": "McQueen Veterinary Hospital",
     "city": "new orleans",
     "st": "LA",
-    "lat": 29.95614,
-    "lng": -90.07339,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kelsey Hanson",
     "email": "kehanson8@gmail.com",
@@ -11293,8 +11605,8 @@
     "name": "Meadow Run Veterinary Services",
     "city": "bridgeton",
     "st": "NJ",
-    "lat": 39.42697,
-    "lng": -75.23416,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Yasmin Mahmood",
     "email": "meadowrunvet@gmail.com",
@@ -11314,7 +11626,8 @@
     "hsId": "16613169028",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11414,8 +11727,8 @@
     "name": "Meridian Veterinary Services",
     "city": "washington",
     "st": "DC",
-    "lat": 38.89392,
-    "lng": -77.04265,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Leanne Lipton",
     "email": "info@meridianpet.com",
@@ -11435,7 +11748,8 @@
     "hsId": "5689889290",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11505,8 +11819,8 @@
     "name": "Middlesex Veterinary Hospital & House Calls Veterinary Service",
     "city": "Valencia",
     "st": "PA",
-    "lat": 40.68017,
-    "lng": -79.95092,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Claire Catt",
     "email": "cacattcatt@gmail.com",
@@ -11536,8 +11850,8 @@
     "name": "Middletown Animal Hospital",
     "city": "Middletown",
     "st": "OH",
-    "lat": 39.44482,
-    "lng": -84.37368,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Crista Plummer",
     "email": "biz@mah.vet",
@@ -11557,7 +11871,8 @@
     "hsId": "14903939978",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11567,8 +11882,8 @@
     "name": "Mildmay Veterinary Clinic",
     "city": "mildmay",
     "st": "ON",
-    "lat": 44.03944,
-    "lng": -81.11592,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sherri Christie",
     "email": "schristie@wightman.ca",
@@ -11588,7 +11903,8 @@
     "hsId": "17549208225",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11598,8 +11914,8 @@
     "name": "Millcreek Veterinary Clinic",
     "city": "odessa",
     "st": "ON",
-    "lat": 44.2682,
-    "lng": -76.74401,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Becky Kent",
     "email": "mcvc@millcreekvetclinic.ca",
@@ -11619,7 +11935,8 @@
     "hsId": "17289447278",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11662,9 +11979,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "darryn.remillard@gmail.com",
-    "phone": "8175945471",
+    "contact": "Darryn Remillard",
+    "email": "drdarryn@mobilecat.vet",
+    "phone": "508-561-7628",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -11672,14 +11989,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Windham, Nh Usa, NH",
     "hsId": "7032282019",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11692,9 +12010,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Dr. Karla Andrews Roberts",
     "email": "karladvm@hotmail.com",
-    "phone": "6785357762",
+    "phone": "9106039821",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -11702,14 +12020,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Southern Pines, NC",
     "hsId": "9087314998",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11722,9 +12041,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Dr. Chamisa Herrera",
     "email": "drchamisa@gmail.com",
-    "phone": "+1 541-902-2013",
+    "phone": "5738232011",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -11732,14 +12051,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
-    "address": "Bellingham, WASHINGTON",
+    "address": "Usa, WA",
     "hsId": "22124229722",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11752,9 +12072,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Stacie Moseley",
     "email": "info@mobileveterinaryoptions.com",
-    "phone": "8606590848",
+    "phone": "8012003607",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -11762,14 +12082,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "5338 Haven Oaks Place, Salt Lake City, VA",
     "hsId": "16439089060",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11782,9 +12103,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "hgddvet2@gmail.com",
-    "phone": "+1 805-544-5227",
+    "contact": "Kate Vruwink",
+    "email": "mobileveterinarypracticewi@gmail.com",
+    "phone": "715-451-3390",
     "features": "Tails",
     "dgtId": null,
     "pims": "ClientTrax",
@@ -11792,14 +12113,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "5790 County Road F, Ashburn, VA, 54495",
     "hsId": "5817833112",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11812,7 +12134,7 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Dr. Betsy Arthur",
     "email": "drarthur@mobilevetsurgery.net",
     "phone": "+1 707-778-7521",
     "features": "Tails",
@@ -11822,14 +12144,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "9710 Traville Gateway Drive, Frederick, MD, 20850",
     "hsId": "5070632387",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -11869,8 +12192,8 @@
     "name": "Monticello Animal Hospital",
     "city": "Shawnee",
     "st": "TX",
-    "lat": 39.02502,
-    "lng": -94.84641,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Crista Wallis",
     "email": "cristawallis@att.net",
@@ -11890,7 +12213,8 @@
     "hsId": "7168725832",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -11900,8 +12224,8 @@
     "name": "Mountain View Veterinary Hospital - WY [Galaxy]",
     "city": "moncton",
     "st": "NB",
-    "lat": 43.29032,
-    "lng": -81.50269,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Ivan Zak",
     "email": "ivanzak@galaxyvets.com",
@@ -11931,8 +12255,8 @@
     "name": "Muller Veterinary Hospital",
     "city": "sacramento",
     "st": "CA",
-    "lat": 37.92696,
-    "lng": -122.06012,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Julia Stephens",
     "email": "justjs63@gmail.com",
@@ -11961,8 +12285,8 @@
     "name": "Murray Mobile Veterinary Services",
     "city": "barrie",
     "st": "ON",
-    "lat": 44.38932,
-    "lng": -79.69013,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Carolyn Murray",
     "email": "carolynmurray@zing-net.ca",
@@ -11981,7 +12305,8 @@
     "address": "Barrie, ON",
     "hsId": "35039922445",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -12117,8 +12442,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 29.95614,
-    "lng": -90.07339,
+    "lat": null,
+    "lng": null,
     "features": null,
     "dgtId": null,
     "hsId": "53021397290",
@@ -12160,7 +12485,8 @@
     "address": "9600 Islington Ave #2,, Brampton, ON, ON L4H 1X7",
     "hsId": "35042816063",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12260,8 +12586,8 @@
     "name": "Nelson Veterinary Services",
     "city": "Susanville",
     "st": "WA",
-    "lat": 40.4138,
-    "lng": -120.64249,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Annette Anderson",
     "email": "lassenvet@gmail.com",
@@ -12281,7 +12607,8 @@
     "hsId": "19562151579",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12291,8 +12618,8 @@
     "name": "Nevotti Veterinary Services, PLLC",
     "city": "missouri city",
     "st": "TX",
-    "lat": 29.52926,
-    "lng": -95.54218,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Becky Nevotti",
     "email": "bnevotti@gmail.com",
@@ -12312,7 +12639,8 @@
     "hsId": "9133809461",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12322,8 +12650,8 @@
     "name": "New Earth Veterinary Services",
     "city": "Parksville",
     "st": "BC",
-    "lat": 49.16599,
-    "lng": -122.80026,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jeff Grognet",
     "email": "jgrognet@shaw.ca",
@@ -12343,7 +12671,8 @@
     "hsId": "9725413287",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12413,8 +12742,8 @@
     "name": "Newtown Veterinary Hospital",
     "city": "Newtown",
     "st": "CT",
-    "lat": 40.2468,
-    "lng": -74.93881,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Tim Ireland",
     "email": "dr.ireland@newtownvet.net",
@@ -12474,8 +12803,8 @@
     "name": "North Deering Veterinary Hospital",
     "city": "boston",
     "st": "MA",
-    "lat": 42.81354,
-    "lng": -70.85761,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Michelle Hudson",
     "email": "manager@northdeeringvet.com",
@@ -12505,8 +12834,8 @@
     "name": "North Star Veterinary Services",
     "city": "weyers cave",
     "st": "VA",
-    "lat": 38.72333,
-    "lng": -77.53657,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Julie Brown",
     "email": "thenorthstarvet@gmail.com",
@@ -12526,7 +12855,8 @@
     "hsId": "6708769652",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12536,8 +12866,8 @@
     "name": "Northern Lights Integrative Veterinary Services",
     "city": "fargo",
     "st": "ND",
-    "lat": 46.83847,
-    "lng": -97.15339,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lacey Carlson",
     "email": "laceycarlson.vet@gmail.com",
@@ -12557,7 +12887,8 @@
     "hsId": "18474138270",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12597,8 +12928,8 @@
     "name": "Northwest Tennessee Veterinary Services",
     "city": "dresden",
     "st": "TN",
-    "lat": 36.30372,
-    "lng": -88.68828,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jona Payne",
     "email": "ntvsoffice5@gmail.com",
@@ -12617,7 +12948,8 @@
     "address": "Dresden, TN",
     "hsId": "44611616810",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12627,8 +12959,8 @@
     "name": "Oakley Veterinary Services",
     "city": "orlando",
     "st": "CA",
-    "lat": 28.54212,
-    "lng": -81.37905,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kerry Stone",
     "email": "dr.klstone@gmail.com",
@@ -12647,7 +12979,8 @@
     "address": "Orlando, CA",
     "hsId": "51621295923",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12657,8 +12990,8 @@
     "name": "Oakridge Veterinary Services",
     "city": "lexington",
     "st": "VA",
-    "lat": 37.78402,
-    "lng": -79.44282,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Katherine Clevenger",
     "email": "oakridgevs@gmail.com",
@@ -12677,7 +13010,8 @@
     "address": "Lexington, VA",
     "hsId": "45871201957",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12687,8 +13021,8 @@
     "name": "Ocean Boulevard Veterinary Hospital",
     "city": "Coos Bay",
     "st": "OR",
-    "lat": 47.24632,
-    "lng": -122.43609,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Wendy Labrousse",
     "email": "drl@oceanvet.com",
@@ -12718,8 +13052,8 @@
     "name": "Oceana Veterinary Clinic",
     "city": "New Era",
     "st": "MI",
-    "lat": 43.54895,
-    "lng": -86.40415,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Amber Shoberg",
     "email": "marisolshoberg@gmail.com",
@@ -12739,7 +13073,8 @@
     "hsId": "30735787553",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12749,8 +13084,8 @@
     "name": "Oceanside Animal Hospital",
     "city": "bass harbor",
     "st": "ME",
-    "lat": 44.56701,
-    "lng": -68.43256,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Tamara Bustard",
     "email": "tamarabustard@gmail.com",
@@ -12770,7 +13105,8 @@
     "hsId": "31779728468",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -12780,8 +13116,8 @@
     "name": "Old Ridge Veterinary Hospital",
     "city": "glen mills",
     "st": "NJ",
-    "lat": 39.85668,
-    "lng": -75.6265,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. William Tancredi",
     "email": "doc@oldridgevet.com",
@@ -12811,8 +13147,8 @@
     "name": "Osburn Veterinary Clinic",
     "city": "florence",
     "st": "OR",
-    "lat": 43.99417,
-    "lng": -124.10315,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Beth James",
     "email": "bethjames@florenceveterinary.com",
@@ -12832,7 +13168,8 @@
     "hsId": "21713626383",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -13022,8 +13359,8 @@
     "name": "PRAIRIE WINDS VETERINARY CENTER",
     "city": "fargo",
     "st": "ND",
-    "lat": 46.7956,
-    "lng": -96.84166,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Alicia Wisnewski",
     "email": "awiz@live.com",
@@ -13056,9 +13393,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "admin@balancedpetnw.com",
-    "phone": "+1 403 909 7484",
+    "contact": "Dr. Julianne Constantine",
+    "email": "julianneconstantine@gmail.com",
+    "phone": "+13023836771",
     "features": "Tails",
     "dgtId": null,
     "pims": "None",
@@ -13066,14 +13403,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Bear, DE",
     "hsId": "9280226594",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -13113,8 +13451,8 @@
     "name": "Palm Bluff Veterinary Hospital",
     "city": "Clovis",
     "st": "CA",
-    "lat": 36.83415,
-    "lng": -119.65794,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kyle Kirkland",
     "email": "kyle@kirkland.org",
@@ -13174,8 +13512,8 @@
     "name": "Parker Veterinary Services",
     "city": "hereford",
     "st": "AZ",
-    "lat": 31.4111,
-    "lng": -110.19623,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lance Parker",
     "email": "lancedvmparker@gmail.com",
@@ -13195,7 +13533,8 @@
     "hsId": "9507654278",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -13226,7 +13565,8 @@
     "hsId": "5874602392",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -13296,8 +13636,8 @@
     "name": "Paw Haven Animal Hospital",
     "city": "Winter Haven",
     "st": "FL",
-    "lat": 28.0478,
-    "lng": -81.72249,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Cynthia Orange",
     "email": "drorange@pawhavenvet.com",
@@ -13317,7 +13657,8 @@
     "hsId": "17059026094",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -13327,8 +13668,8 @@
     "name": "Paw Prints Veterinary Clinic - FL",
     "city": "ocala",
     "st": "FL",
-    "lat": 29.1497,
-    "lng": -82.19096,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jeni Revell",
     "email": "drrevell@pawprintsveterinary.com",
@@ -13348,7 +13689,8 @@
     "hsId": "18195412843",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -13358,8 +13700,8 @@
     "name": "Paw Prints Veterinary Hospital",
     "city": "hillsborough",
     "st": "NJ",
-    "lat": 40.50523,
-    "lng": -74.67329,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Christine Spodnick",
     "email": "chrissycow@hotmail.com",
@@ -13988,8 +14330,8 @@
     "name": "Pets & Hearts Animal Clinic (formerly Chien Inc)",
     "city": "Davie",
     "st": "FL",
-    "lat": 26.06287,
-    "lng": -80.2331,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Maria Dominguez",
     "email": "mariacadominguez@gmail.com",
@@ -14019,8 +14361,8 @@
     "name": "Pets Request Mobile Veterinary Services",
     "city": "Sacramento",
     "st": "CA",
-    "lat": 38.58106,
-    "lng": -121.49389,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Alissa Burnett",
     "email": "vet@petsrequest.com",
@@ -14040,7 +14382,8 @@
     "hsId": "15765400361",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -14050,8 +14393,8 @@
     "name": "Pike Road Mobile Veterinary Services",
     "city": "Pike Road",
     "st": "AL",
-    "lat": 44.72755,
-    "lng": -73.11764,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Marlaina Nelson",
     "email": "marlainajohnson@yahoo.com",
@@ -14071,7 +14414,8 @@
     "hsId": "21823628562",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -14081,8 +14425,8 @@
     "name": "Pine Mountain Veterinary",
     "city": "marietta",
     "st": "GA",
-    "lat": 34.00211,
-    "lng": -84.64398,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Diane Dunn",
     "email": "info@pinemountainvet.net",
@@ -14142,8 +14486,8 @@
     "name": "Poplar Grove Veterinary Services",
     "city": "innisfail",
     "st": "AB",
-    "lat": 52.02747,
-    "lng": -113.95024,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Stacey Homer",
     "email": "pgvets@telus.net",
@@ -14163,7 +14507,8 @@
     "hsId": "18594875289",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14173,8 +14518,8 @@
     "name": "Prairie Winds Veterinary Clinic.",
     "city": "custer",
     "st": "SD",
-    "lat": 43.67265,
-    "lng": -103.51016,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jessica Matlock",
     "email": "prairiewindsveterinaryclinic@gmail.com",
@@ -14194,7 +14539,8 @@
     "hsId": "18381597752",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14204,8 +14550,8 @@
     "name": "Presidential Veterinary Center",
     "city": "hollywood",
     "st": "FL",
-    "lat": 26.02324,
-    "lng": -80.18689,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Luniak Gomez",
     "email": "fvetscorp@gmail.com",
@@ -14255,7 +14601,8 @@
     "address": "14816 Maywood Drive, Brits, MN",
     "hsId": "36559586359",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -14325,8 +14672,8 @@
     "name": "Prince George's Animal Hospital",
     "city": "cary",
     "st": "NC",
-    "lat": 38.27284,
-    "lng": -89.31207,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Sunil Kakarla",
     "email": "sunil.vetdoc@gmail.com",
@@ -14346,7 +14693,8 @@
     "hsId": "31415339040",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14386,8 +14734,8 @@
     "name": "Progressive Veterinary Services LLC (Rising Sun Veterinary Services)",
     "city": "Nampa",
     "st": "ID",
-    "lat": 43.55991,
-    "lng": -116.59403,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Merik Metos",
     "email": "mmetosdvm@gmail.com",
@@ -14407,7 +14755,8 @@
     "hsId": "19367980335",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14477,8 +14826,8 @@
     "name": "Pure Balance Holistic Veterinary Services",
     "city": "Phoenix",
     "st": "AZ",
-    "lat": 33.7273,
-    "lng": -112.17005,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kerri Thiel",
     "email": "purebalancevet@gmail.com",
@@ -14497,7 +14846,8 @@
     "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
     "hsId": "47812383091",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14507,8 +14857,8 @@
     "name": "Queen City Animal Hospital",
     "city": "Charlotte",
     "st": "NC",
-    "lat": 35.2226,
-    "lng": -80.789,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "April Splawn",
     "email": "april@queencityah.com",
@@ -14528,7 +14878,8 @@
     "hsId": "18552660810",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14568,8 +14919,8 @@
     "name": "Race City Animal Hospital",
     "city": "mooresville",
     "st": "NC",
-    "lat": 35.57655,
-    "lng": -80.88578,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Michael Heinen",
     "email": "lisarcah@gmail.com",
@@ -14588,7 +14939,8 @@
     "address": "Mooresville, NC",
     "hsId": "51722264460",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14718,8 +15070,8 @@
     "name": "Raven Rock Large Animal Hospital",
     "city": "new york",
     "st": "NY",
-    "lat": 40.71273,
-    "lng": -74.00602,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Rebecca Rifkin",
     "email": "rrifkin@ethergate.org",
@@ -14739,7 +15091,8 @@
     "hsId": "23627526481",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14749,8 +15102,8 @@
     "name": "Red Deer Veterinary Clinic",
     "city": "red deer",
     "st": "AB",
-    "lat": 52.26906,
-    "lng": -113.81415,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Rick Graber",
     "email": "rgraber@telus.net",
@@ -14769,7 +15122,8 @@
     "address": "Red Deer, AB",
     "hsId": "39256495750",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14800,7 +15154,8 @@
     "hsId": "15515326847",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14840,8 +15195,8 @@
     "name": "Rehm Animal Clinic",
     "city": "mobile",
     "st": "AL",
-    "lat": 30.64742,
-    "lng": -88.23094,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Caroline Rehm",
     "email": "carolinerehm@gmail.com",
@@ -14901,8 +15256,8 @@
     "name": "Richards Veterinary Services LLC",
     "city": "pulaski",
     "st": "TN",
-    "lat": 35.92521,
-    "lng": -86.86894,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Nicole Richards",
     "email": "sconedvm@gmail.com",
@@ -14922,7 +15277,8 @@
     "hsId": "10864661318",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -14935,9 +15291,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "themobilevet01@gmail.com",
-    "phone": "639-998-2489",
+    "contact": "Marissa Kelso",
+    "email": "marissakelso@hotmail.com",
+    "phone": "6399982489",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -14945,14 +15301,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Kars, QC",
     "hsId": "7202308891",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -14992,8 +15349,8 @@
     "name": "River Oaks Animal Hospital, Myrtle Beach",
     "city": "Myrtle beach",
     "st": "SC",
-    "lat": 32.78904,
-    "lng": -92.95766,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Heather Duncan",
     "email": "drheather@riveroakspets.com",
@@ -15013,7 +15370,8 @@
     "hsId": "7918158169",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15116,9 +15474,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "jacijp@aol.com",
-    "phone": "+1 410-465-4350",
+    "contact": "Robert Hicks",
+    "email": "robert.hicks@awshc.org",
+    "phone": "301-775-7660",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -15126,14 +15484,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "8556 Davis Road, Columbia, MD, 21045",
     "hsId": "9435308169",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15143,8 +15502,8 @@
     "name": "Rogue River Veterinary Hospital",
     "city": "ashburn",
     "st": "VA",
-    "lat": 42.4311,
-    "lng": -123.26097,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ron Dickey DVM",
     "email": "rrvh111@gmail.com",
@@ -15174,8 +15533,8 @@
     "name": "Rosemeade Veterinary Clinic",
     "city": "carrollton",
     "st": "TX",
-    "lat": 33.00621,
-    "lng": -96.89815,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Tori Wallace",
     "email": "rosemeadeveterinaryclinic@gmail.com",
@@ -15194,7 +15553,8 @@
     "address": "1930 E Rosemeade Pkwy STE 100, Carrollton, TX, 75007",
     "hsId": "53957383715",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15324,8 +15684,8 @@
     "name": "SODO Veterinary Hospital - HQ",
     "city": "orlando",
     "st": "FL",
-    "lat": 28.50433,
-    "lng": -81.36575,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "fernando@sodovet.com Patino",
     "email": "fernando@sodovet.com",
@@ -15505,8 +15865,8 @@
     "name": "Sakura Holistic Veterinary Services",
     "city": "seattle",
     "st": "WA",
-    "lat": 47.24632,
-    "lng": -122.43609,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Miwa Kanbe",
     "email": "drkanbe@hotmail.co.jp",
@@ -15526,7 +15886,8 @@
     "hsId": "31185025619",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15536,8 +15897,8 @@
     "name": "Sale Creek Veterinary Services",
     "city": "harrogate",
     "st": "TN",
-    "lat": 35.38404,
-    "lng": -85.09522,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kathy Thigpin",
     "email": "yourgoatdoc@salecreek.vet",
@@ -15557,7 +15918,8 @@
     "hsId": "26944088923",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15567,8 +15929,8 @@
     "name": "Salem Park Veterinary Clinic",
     "city": "salem",
     "st": "OR",
-    "lat": 44.93916,
-    "lng": -123.03312,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kathleen Hanifen",
     "email": "vet@salemparkvet.comcastbiz.net",
@@ -15588,7 +15950,8 @@
     "hsId": "34182980778",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15628,8 +15991,8 @@
     "name": "Saluda Veterinary Hospital",
     "city": "spartanburg",
     "st": "FL",
-    "lat": 34.9498,
-    "lng": -81.93202,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Monica Peterson",
     "email": "saludavetordering@gmail.com",
@@ -15661,9 +16024,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Janice Glofcheski",
     "email": "dr.janiceglof@gmail.com",
-    "phone": "+1 855-723-6287",
+    "phone": "6138673079",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -15671,14 +16034,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "26 Hazelwood Drive, Braeside, ON",
     "hsId": "18278064160",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -15688,8 +16052,8 @@
     "name": "Santa Barbara Veterinary Integrative Services",
     "city": "goleta",
     "st": "CA",
-    "lat": 34.44261,
-    "lng": -119.73208,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Hillary Conant",
     "email": "drconant.sbvis@gmail.com",
@@ -15708,7 +16072,8 @@
     "address": "Goleta, CA, 93105",
     "hsId": "38547661680",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15748,8 +16113,8 @@
     "name": "Sault Animal Hospital",
     "city": "sault ste. marie",
     "st": "MI",
-    "lat": 46.47333,
-    "lng": -84.32936,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Nicholas Hughey",
     "email": "nick.hughey@saultanimalhospital.com",
@@ -15769,7 +16134,8 @@
     "hsId": "3840183334",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15779,8 +16145,8 @@
     "name": "Saving Grace Animal Hospital",
     "city": "sylva",
     "st": "NC",
-    "lat": 35.37373,
-    "lng": -83.22592,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Daniel Moore",
     "email": "dpmoore3@ncsu.edu",
@@ -15800,7 +16166,8 @@
     "hsId": "5777249198",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15810,8 +16177,8 @@
     "name": "Saving Grace Mobile Veterinary Services",
     "city": "los angeles",
     "st": "CA",
-    "lat": 34.05369,
-    "lng": -118.24277,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Grace Kertechian",
     "email": "savinggraceveterinaryservices@gmail.com",
@@ -15831,7 +16198,8 @@
     "hsId": "33049310774",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -15871,8 +16239,8 @@
     "name": "Schultz Veterinary Services",
     "city": "beaverton",
     "st": "OR",
-    "lat": 45.48717,
-    "lng": -122.80378,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Rhet Schultz",
     "email": "rgcsschultz@gmail.com",
@@ -15892,7 +16260,8 @@
     "hsId": "21998242707",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -15902,8 +16271,8 @@
     "name": "Scotch Plains Animal Hospital",
     "city": "cranford",
     "st": "NJ",
-    "lat": 40.63175,
-    "lng": -74.35966,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Wendy Lim",
     "email": "spah07076@gmail.com",
@@ -15922,7 +16291,8 @@
     "address": "1919 US-22, Cranford, NJ, 07076",
     "hsId": "48895782299",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16022,8 +16392,8 @@
     "name": "Shallowford Animal Hospital",
     "city": "atlanta",
     "st": "GA",
-    "lat": 34.03519,
-    "lng": -84.5049,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Satish Rao",
     "email": "satishraovet@yahoo.com",
@@ -16043,7 +16413,8 @@
     "hsId": "31604168512",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16083,8 +16454,8 @@
     "name": "Sharon Center Veterinary Hospital",
     "city": "Medina",
     "st": "OH",
-    "lat": 41.10008,
-    "lng": -81.93825,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "christy.essary@sharoncentervethospital.com",
@@ -16165,7 +16536,8 @@
     "hsId": "18836197240",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16239,9 +16611,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Melissa Smith",
     "email": "melissasmithrvt@gmail.com",
-    "phone": "+17057968580",
+    "phone": "9024565125",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -16249,14 +16621,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Alliston, ON",
     "hsId": "16357648721",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -16266,8 +16639,8 @@
     "name": "Simmons Veterinary Clinic",
     "city": "decatur",
     "st": "GA",
-    "lat": 33.77262,
-    "lng": -84.29142,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Sharif Jones",
     "email": "drchris@simmons.vet",
@@ -16287,7 +16660,8 @@
     "hsId": "15393348498",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16327,8 +16701,8 @@
     "name": "SoCal Animal Hospital",
     "city": "Phelan",
     "st": "CA",
-    "lat": 33.87951,
-    "lng": -117.44006,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Elizabeth Garcia",
     "email": "lizjgarcia1981@icloud.com",
@@ -16348,7 +16722,8 @@
     "hsId": "6013580323",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16388,8 +16763,8 @@
     "name": "South County Veterinary Hospital",
     "city": "fresno",
     "st": "CA",
-    "lat": 36.57078,
-    "lng": -119.61208,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kyle Humphrey",
     "email": "kyle.humphrey@pm.me",
@@ -16419,8 +16794,8 @@
     "name": "South County Veterinary Hospital",
     "city": "fresno",
     "st": "CA",
-    "lat": 36.57364,
-    "lng": -119.61977,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Kyle Humphrey",
     "email": "kyle@soco.vet",
@@ -16450,8 +16825,8 @@
     "name": "Southeast Animal Hospital",
     "city": "new york",
     "st": "NY",
-    "lat": 41.41308,
-    "lng": -73.59632,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Justin Nowowiejski",
     "email": "jxnowowiejski@gmail.com",
@@ -16471,7 +16846,8 @@
     "hsId": "6587260188",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16481,8 +16857,8 @@
     "name": "Southern Trail Animal Clinic",
     "city": "anderson",
     "st": "SC",
-    "lat": 34.52583,
-    "lng": -82.65296,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Mike Eaves",
     "email": "meaves89@gmail.com",
@@ -16512,8 +16888,8 @@
     "name": "Spartan Animal Hospital",
     "city": "madison",
     "st": "AB",
-    "lat": 43.07469,
-    "lng": -89.38417,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Fallon Ready",
     "email": "fallon@spartananimalhospital.com",
@@ -16532,7 +16908,8 @@
     "address": "Madison",
     "hsId": "53720706347",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16605,9 +16982,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "emilygweston@gmail.com",
-    "phone": "(340) 778-1650",
+    "contact": "Shea Cox",
+    "email": "dr.shea@spot.vet",
+    "phone": "9514140229",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -16615,14 +16992,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Temecula, CA",
     "hsId": "18171932086",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16632,8 +17010,8 @@
     "name": "Springs Veterinary Services",
     "city": "trenton",
     "st": "GA",
-    "lat": 33.75447,
-    "lng": -84.38982,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Cassandra Fleming",
     "email": "springsveterinaryservices@gmail.com",
@@ -16653,7 +17031,8 @@
     "hsId": "18586466361",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16663,8 +17042,8 @@
     "name": "Springwater Mobile Veterinary Services",
     "city": "Phelpston, Ontario",
     "st": "ON",
-    "lat": 44.52173,
-    "lng": -79.82495,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lisa Fitch",
     "email": "springwatermobilevet@gmail.com",
@@ -16683,7 +17062,8 @@
     "address": "1940 Crossland Rd, Phelpston, Ontario, ON, L0L2K0",
     "hsId": "53528634422",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -16723,8 +17103,8 @@
     "name": "Strickland Veterinary Clinic [Happy Paws]",
     "city": "Tucson",
     "st": "AZ",
-    "lat": 32.23199,
-    "lng": -110.92286,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Molander None",
     "email": "hmolander@happypawsvp.com",
@@ -16744,7 +17124,8 @@
     "hsId": "31275323315",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16754,8 +17135,8 @@
     "name": "Summer's Animal Hospital",
     "city": "miami",
     "st": "FL",
-    "lat": 26.23839,
-    "lng": -80.09781,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Summer Heyerly",
     "email": "drsummer.heyerly@gmail.com",
@@ -16774,7 +17155,8 @@
     "address": "1142 N Federal Hwy, Miami, FL, 33062",
     "hsId": "51722383511",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16784,8 +17166,8 @@
     "name": "Summit Veterinary Clinic",
     "city": "mount pleasant",
     "st": "UT",
-    "lat": 39.54691,
-    "lng": -111.45547,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Brittney Fisher",
     "email": "summitveterinary@gmail.com",
@@ -16805,7 +17187,8 @@
     "hsId": "22049095003",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16815,8 +17198,8 @@
     "name": "Sundance Animal Hospital (New Location: Calgary Vet Wellness & Training Centre)",
     "city": "Calgary",
     "st": "AB",
-    "lat": 50.90625,
-    "lng": -114.0483,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Richards",
     "email": "jerichards@icloud.com",
@@ -16836,7 +17219,8 @@
     "hsId": "21264019558",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16846,8 +17230,8 @@
     "name": "Sundance Animal Hospital - AB, Canada",
     "city": "calgary",
     "st": "AB",
-    "lat": 50.90625,
-    "lng": -114.0483,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Richards",
     "email": "jerichards@icloud.com",
@@ -16867,7 +17251,8 @@
     "hsId": "18854281277",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -16911,7 +17296,7 @@
     "lng": null,
     "ct": "general",
     "contact": null,
-    "email": "thomas.ea4@gmail.com",
+    "email": "mitchthomas9613@gmail.com",
     "phone": "918-282-5633",
     "features": "Tails",
     "dgtId": null,
@@ -16920,14 +17305,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Broken Arrrow, OK",
     "hsId": "17182671618",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -17078,7 +17464,8 @@
     "hsId": "29375687473",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -17178,8 +17565,8 @@
     "name": "The Falls Animal Clinic",
     "city": "palmetto bay",
     "st": "FL",
-    "lat": 25.6064,
-    "lng": -80.34926,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Doly Baquero",
     "email": "thefallsanimalclinic@gmail.com",
@@ -17359,8 +17746,8 @@
     "name": "The Old Road Veterinary Center",
     "city": "palmdale",
     "st": "CA",
-    "lat": 34.40586,
-    "lng": -118.58626,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Sandeep Cheema",
     "email": "theoldroadvet@gmail.com",
@@ -17570,8 +17957,8 @@
     "name": "Thurman Veterinary Center",
     "city": "provo",
     "st": "UT",
-    "lat": 37.57389,
-    "lng": -113.72183,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jillian Shipley",
     "email": "jshipley@thurmanvetcenter.com",
@@ -17631,8 +18018,8 @@
     "name": "Topanga Veterinary Clinic",
     "city": "los angeles",
     "st": "CA",
-    "lat": 34.05369,
-    "lng": -118.24277,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Viktoriia Gurmani",
     "email": "viktoriiabozhimova@gmail.com",
@@ -17652,7 +18039,8 @@
     "hsId": "18884933454",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -17662,8 +18050,8 @@
     "name": "Total Bond Veterinary Hospital",
     "city": "knoxville",
     "st": "NC",
-    "lat": 34.91619,
-    "lng": -80.59716,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Peter Rowan",
     "email": "peter.rowan@totalbondvets.com",
@@ -17696,9 +18084,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Tierra Hawley",
     "email": "tqmobilevet@gmail.com",
-    "phone": "918-282-5633",
+    "phone": "9199390949",
     "features": "Tails",
     "dgtId": null,
     "pims": "Daysmart",
@@ -17706,14 +18094,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "6408 Sparkling Brook Drive, Raleigh, 27616, Raleigh, NC, 27609",
     "hsId": "17250419270",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -17753,8 +18142,8 @@
     "name": "Trail Breaker Veterinary Services",
     "city": "seattle",
     "st": "AK",
-    "lat": 60.06749,
-    "lng": -139.18922,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Emily Iacobucci",
     "email": "trailbreakervet@gmail.com",
@@ -17774,7 +18163,8 @@
     "hsId": "9905312268",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -17874,8 +18264,8 @@
     "name": "Tranquil Tails Veterinary Services",
     "city": "Temecula",
     "st": "CA",
-    "lat": 33.49464,
-    "lng": -117.14737,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dayle Conner",
     "email": "tranquiltailsvet@gmail.com",
@@ -17895,7 +18285,8 @@
     "hsId": "9905312333",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -17935,8 +18326,8 @@
     "name": "Triple V Veterinary Services",
     "city": "Aguilar",
     "st": "CO",
-    "lat": 37.40279,
-    "lng": -104.65332,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Miranda Andress",
     "email": "triplevvet@gmail.com",
@@ -17956,7 +18347,8 @@
     "hsId": "7129625248",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -17966,8 +18358,8 @@
     "name": "True Friend Mobile Veterinary Services",
     "city": "Franklin",
     "st": "TN",
-    "lat": 35.92521,
-    "lng": -86.86894,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Allison Peeler",
     "email": "drpeeler@truefriendvet.com",
@@ -17987,7 +18379,8 @@
     "hsId": "7987028892",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -18147,8 +18540,8 @@
     "name": "VIP Animal Hospital",
     "city": "Elizabeth",
     "st": "NJ",
-    "lat": 40.67279,
-    "lng": -74.22252,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Amy Silverman",
     "email": "drtonyvip@gmail.com",
@@ -18168,7 +18561,8 @@
     "hsId": "11587524422",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18178,8 +18572,8 @@
     "name": "VOLUSIA VETERINARY SERVICES",
     "city": "deland",
     "st": "FL",
-    "lat": 29.03355,
-    "lng": -81.28181,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ashley Schairer",
     "email": "vet@volusiavetservices.com",
@@ -18199,7 +18593,8 @@
     "hsId": "18556740261",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18239,8 +18634,8 @@
     "name": "Valemount Veterinary Clinic",
     "city": "Valemount",
     "st": "BC",
-    "lat": 52.878,
-    "lng": -119.28813,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": null,
     "email": "reception.jvc@telus.net",
@@ -18260,7 +18655,8 @@
     "hsId": "7730844192",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18420,8 +18816,8 @@
     "name": "Vet Playas Veterinary Clinic",
     "city": "tijuana",
     "st": "Baja California",
-    "lat": 32.52942,
-    "lng": -116.94624,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ronald Richards",
     "email": "ron@ffpnow.com",
@@ -18441,7 +18837,8 @@
     "hsId": "40201543437",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18571,8 +18968,8 @@
     "name": "VetForPet Animal Hospital",
     "city": "revere",
     "st": "MA",
-    "lat": 42.05539,
-    "lng": -72.55414,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ahmad Ali",
     "email": "hashim.ali1738@gmail.com",
@@ -18592,7 +18989,8 @@
     "hsId": "21239474830",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18632,8 +19030,8 @@
     "name": "VetNest Animal Hospital",
     "city": "melbourne",
     "st": "FL",
-    "lat": 28.0785,
-    "lng": -80.60779,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lissette Marie Lopez Santiago",
     "email": "drlopezsantiago@outlook.com",
@@ -18652,7 +19050,8 @@
     "address": "Melbourne, FL",
     "hsId": "47412600085",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18872,8 +19271,8 @@
     "name": "Veterinary Way Animal Hospital",
     "city": "Albany",
     "st": "GA",
-    "lat": 33.81749,
-    "lng": -84.89701,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Sonny Odom",
     "email": "veterinarywayah@gmail.com",
@@ -18893,7 +19292,8 @@
     "hsId": "23451532111",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18903,8 +19303,8 @@
     "name": "VetforPet Animal Hospital Hamden",
     "city": "revere",
     "st": "CT",
-    "lat": 41.76791,
-    "lng": -72.64451,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Ahmad Ali",
     "email": "keenvet@gmail.com",
@@ -18923,7 +19323,8 @@
     "address": "Revere, CT",
     "hsId": "36019813548",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -18933,8 +19334,8 @@
     "name": "Vetgo Mobile Veterinary Services",
     "city": "cambridge",
     "st": "ON",
-    "lat": 43.36005,
-    "lng": -80.3123,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kash Kuruppu",
     "email": "kash@myvetgo.com",
@@ -18954,7 +19355,8 @@
     "hsId": "16072500133",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -19117,8 +19519,8 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "rouskie2000@yahoo.com",
+    "contact": "Cynthia Vasquez",
+    "email": "cynthiavasquez.dvm@gmail.com",
     "phone": "3609306120",
     "features": "Tails",
     "dgtId": null,
@@ -19127,14 +19529,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Orlando, FL",
     "hsId": "6595125640",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -19144,8 +19547,8 @@
     "name": "Village Vet: House Call Veterinary Services",
     "city": "papillion",
     "st": "NE",
-    "lat": 44.9773,
-    "lng": -93.26547,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Wayne Robison",
     "email": "wayne.villagevet@gmail.com",
@@ -19165,7 +19568,8 @@
     "hsId": "20364473962",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -19385,8 +19789,8 @@
     "name": "Walker Veterinary Hospital - Puerto Rico",
     "city": "Trujillo Alto",
     "st": "PR",
-    "lat": 18.36099,
-    "lng": -66.00345,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jenniffer Walker",
     "email": "walkerdjenniffer@icloud.com",
@@ -19416,8 +19820,8 @@
     "name": "Walnut Grove Animal Clinic",
     "city": "surrey",
     "st": "BC",
-    "lat": 49.16283,
-    "lng": -122.63862,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Garg Rattan",
     "email": "gargrattan@gmail.com",
@@ -19446,8 +19850,8 @@
     "name": "Walton Way Veterinary Clinic",
     "city": "Augusta",
     "st": "GA",
-    "lat": 33.47603,
-    "lng": -82.01073,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jennifer DVM",
     "email": "wwvcpc@gmail.com",
@@ -19467,7 +19871,8 @@
     "hsId": "18149527954",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19477,8 +19882,8 @@
     "name": "WanderVet Mobile Veterinary Services",
     "city": "maiden",
     "st": "NC",
-    "lat": 35.5766,
-    "lng": -81.21392,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jamie Laity",
     "email": "wandervetnc@gmail.com",
@@ -19498,7 +19903,8 @@
     "hsId": "17085818954",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -19508,8 +19914,8 @@
     "name": "Wareham Animal Hospital",
     "city": "wareham",
     "st": "MA",
-    "lat": 41.76958,
-    "lng": -70.73219,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Alberto Fernandez",
     "email": "main@warehamanimalhospital.com",
@@ -19529,7 +19935,8 @@
     "hsId": "16850270627",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19539,8 +19946,8 @@
     "name": "Washburn Veterinary Clinic",
     "city": "ashburn",
     "st": "VA",
-    "lat": 39.02978,
-    "lng": -77.47441,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Becky Washburn",
     "email": "beckywashburnbrown@yahoo.com",
@@ -19560,7 +19967,8 @@
     "hsId": "29946506354",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19630,8 +20038,8 @@
     "name": "Wayne Animal Hospital [Jose Pla]",
     "city": "wayne",
     "st": "NJ",
-    "lat": 40.73723,
-    "lng": -73.86248,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jose Pla",
     "email": "jplagomez@happypawsvp.com",
@@ -19651,7 +20059,8 @@
     "hsId": "17063951118",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19721,8 +20130,8 @@
     "name": "West Plains Veterinary Clinic",
     "city": "West Plains",
     "st": "MO",
-    "lat": 36.72817,
-    "lng": -91.85258,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Amy Wigger",
     "email": "geoffgreen4515@outlook.com",
@@ -19742,7 +20151,8 @@
     "hsId": "9846368804",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19752,8 +20162,8 @@
     "name": "West Roseville Veterinary Hospital",
     "city": "roseville",
     "st": "CA",
-    "lat": 38.75309,
-    "lng": -121.30763,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer White",
     "email": "drwhite.wrvh@gmail.com",
@@ -19812,8 +20222,8 @@
     "name": "Westside Animal Hospital",
     "city": "jacksonville",
     "st": "FL",
-    "lat": 28.86218,
-    "lng": -81.52038,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. James Zettler",
     "email": "westsideanimalhospital211@outlook.com",
@@ -19832,7 +20242,8 @@
     "address": "711 N Fairfield Drive, Jacksonville, FL, 35206",
     "hsId": "48085884597",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -19842,8 +20253,8 @@
     "name": "White Lake Animal Clinic",
     "city": "Montague",
     "st": "MI",
-    "lat": 43.54895,
-    "lng": -86.40415,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Annalisa Horton",
     "email": "horton@oceanavetclinic.com",
@@ -19933,8 +20344,8 @@
     "name": "Whitney Veterinary Hospital",
     "city": "chicago",
     "st": "IL",
-    "lat": 40.70914,
-    "lng": -89.63522,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jill Brecklin",
     "email": "jillbrecklin@yahoo.com",
@@ -19964,8 +20375,8 @@
     "name": "Wiarton Animal Hospital",
     "city": "collingwood",
     "st": "ON",
-    "lat": 44.7606,
-    "lng": -81.13033,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Stephanie Vamplew",
     "email": "svamplewdvm@gmail.com",
@@ -19984,7 +20395,8 @@
     "address": "10177 Hwy 6, Collingwood, ON, N0H 2T0",
     "hsId": "52980701586",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -20024,8 +20436,8 @@
     "name": "Wild Magnolia Mobile Veterinary Services",
     "city": "Kingfort",
     "st": "TN",
-    "lat": 36.52522,
-    "lng": -82.50542,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Danielle White",
     "email": "wildmagmobilevet@gmail.com",
@@ -20045,7 +20457,8 @@
     "hsId": "22085315494",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -20055,8 +20468,8 @@
     "name": "Wild Things Mobile Veterinary Clinic",
     "city": "Atlanta",
     "st": "GA",
-    "lat": 33.75447,
-    "lng": -84.38982,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Leslie Griffin",
     "email": "wildthingsvet@gmail.com",
@@ -20076,7 +20489,8 @@
     "hsId": "21126277208",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -20086,8 +20500,8 @@
     "name": "Wild Wonders Veterinary Hospital",
     "city": "vancouver",
     "st": "WA",
-    "lat": 45.6307,
-    "lng": -122.67446,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Tana Wellner",
     "email": "t_wellner47@hotmail.com",
@@ -20116,8 +20530,8 @@
     "name": "Willoughby Animal Hospital",
     "city": "langley",
     "st": "BC",
-    "lat": 49.15839,
-    "lng": -122.66674,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Shamsher Ghatorha",
     "email": "willoughbyvet2013@gmail.com",
@@ -20137,7 +20551,8 @@
     "hsId": "28948333668",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -20147,8 +20562,8 @@
     "name": "Wilmot Veterinary Clinic",
     "city": "Kitchener",
     "st": "ON",
-    "lat": 43.38356,
-    "lng": -80.52077,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Robert Lofsky",
     "email": "wilmotveterinaryclinic@gmail.com",
@@ -20168,7 +20583,8 @@
     "hsId": "16281456944",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -20208,8 +20624,8 @@
     "name": "Woehl Veterinary Services LLC",
     "city": "rozet",
     "st": "WY",
-    "lat": 44.2781,
-    "lng": -105.20516,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "DJ Woehl-Tschida",
     "email": "woehlvetservices@gmail.com",
@@ -20228,7 +20644,8 @@
     "address": "Rozet, WY",
     "hsId": "47547469833",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -20241,7 +20658,7 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Dr. Andrea Spevakow",
     "email": "spevakow@gmail.com",
     "phone": "7788219210",
     "features": "Tails",
@@ -20251,14 +20668,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "809 Hubbard Rd, Kelowna, BCV1W 1N5Canada, Kelowna, BC",
     "hsId": "16389828102",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -20268,8 +20686,8 @@
     "name": "Woodland Springs Veterinary Hospital",
     "city": "north charleston",
     "st": "TX",
-    "lat": 32.92938,
-    "lng": -97.2878,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Ken Slough",
     "email": "kenslough@wsvh.net",
@@ -20298,8 +20716,8 @@
     "name": "Woodruff Vet Services",
     "city": "evansburg",
     "st": "AB",
-    "lat": 53.52682,
-    "lng": -113.52449,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Lynn Yake",
     "email": "lynnyake@telus.net",
@@ -20332,8 +20750,8 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "tappan@dragonflyvet.com",
+    "contact": "Douglas Cifranick",
+    "email": "dcifranick@gmail.com",
     "phone": "+1 518-383-5697",
     "features": "Tails",
     "dgtId": null,
@@ -20342,14 +20760,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "2831 West Royal Oaks Drive, Beaufort, FL, 29902",
     "hsId": "5399294054",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "mobile"
@@ -20359,8 +20778,8 @@
     "name": "Wycliff Animal Clinic",
     "city": "olathe",
     "st": "KS",
-    "lat": 38.95587,
-    "lng": -94.68564,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. George R. McCallum",
     "email": "grm.27wac@gmail.com",
@@ -20389,8 +20808,8 @@
     "name": "York Veterinary Services",
     "city": "lancaster",
     "st": "SC",
-    "lat": 35.00937,
-    "lng": -81.19322,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Amanda Owens",
     "email": "eliemily01@gmail.com",
@@ -20410,7 +20829,8 @@
     "hsId": "9508622620",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21353,9 +21773,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
+    "contact": "Colton Dirksen",
     "email": "colton@aprilvets.com",
-    "phone": "7036699311",
+    "phone": "1.437.999.5515",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -21363,14 +21783,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "New Scotland, Halifax, NS",
     "hsId": "20230225757",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21500,8 +21921,8 @@
     "name": "[AscendVets] Auburndale Veterinary Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 28.03947,
-    "lng": -81.9498,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Nash",
     "email": "jim@ascendvets.com",
@@ -21521,7 +21942,8 @@
     "hsId": "31627616182",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21531,8 +21953,8 @@
     "name": "[AscendVets] Lakeland Animal Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 28.03947,
-    "lng": -81.9498,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Nash",
     "email": "jim@ascendvets.com",
@@ -21562,8 +21984,8 @@
     "name": "[AscendVets] Main Street Veterinary Center",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 28.03947,
-    "lng": -81.9498,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Nash",
     "email": "jim@ascendvets.com",
@@ -21583,7 +22005,8 @@
     "hsId": "31627616154",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21593,8 +22016,8 @@
     "name": "[AscendVets] Parkway Veterinary Emergency Clinic",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 28.03947,
-    "lng": -81.9498,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Nash",
     "email": "jim@ascendvets.com",
@@ -21614,7 +22037,8 @@
     "hsId": "31627616110",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21624,8 +22048,8 @@
     "name": "[AscendVets] Plant City Animal Hospital",
     "city": "Lakeland",
     "st": "FL",
-    "lat": 28.03947,
-    "lng": -81.9498,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jim Nash",
     "email": "jim@ascendvets.com",
@@ -21645,7 +22069,8 @@
     "hsId": "31605199262",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21835,8 +22260,8 @@
     "name": "[CatsOnly Veterinary Services] Location 1/5",
     "city": "canton",
     "st": "KS",
-    "lat": 29.13869,
-    "lng": -80.99683,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jason Epstein",
     "email": "jason@catsonly.vet",
@@ -21855,7 +22280,8 @@
     "address": "Canton, KS",
     "hsId": "39404656951",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21865,8 +22291,8 @@
     "name": "[CatsOnly Veterinary Services] Location 2/5",
     "city": "canton",
     "st": "CO",
-    "lat": 29.13869,
-    "lng": -80.99683,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jason Epstein",
     "email": "jason@catsonly.vet",
@@ -21885,7 +22311,8 @@
     "address": "Canton, CO",
     "hsId": "39314335317",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21895,8 +22322,8 @@
     "name": "[Coastal Animal Clinic] Animal Hospital of Tampa Bay",
     "city": "Tampa",
     "st": "FL",
-    "lat": 26.07067,
-    "lng": -97.72835,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Jacqlyn Diana",
     "email": "jacijp@aol.com",
@@ -21916,7 +22343,8 @@
     "hsId": "9542639379",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -21926,8 +22354,8 @@
     "name": "[Coastal Animal Clinic] Largo",
     "city": "Largo",
     "st": "FL",
-    "lat": 27.96199,
-    "lng": -82.50827,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Brooke Certa",
     "email": "brooke.certa@coastalvets.com",
@@ -21957,8 +22385,8 @@
     "name": "[Coastal Animal Clinic] Tampa",
     "city": "Tampa",
     "st": "FL",
-    "lat": 27.96199,
-    "lng": -82.50827,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Brooke Certa",
     "email": "brooke.certa@coastalvets.com",
@@ -21988,8 +22416,8 @@
     "name": "[Companion Pet Partners] Hamilton Animal Hospital",
     "city": "mountain view",
     "st": "CA",
-    "lat": 33.66872,
-    "lng": -117.96786,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Heather Bown",
     "email": "heather.bown@companionpet.com",
@@ -22008,7 +22436,8 @@
     "address": "21552 Brookhurst Street, Mountain View, CA, 92646",
     "hsId": "43296506119",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -22258,8 +22687,8 @@
     "name": "[Encore] Pet Care Veterinary Hospital",
     "city": "virginia beach",
     "st": "VA",
-    "lat": 36.84127,
-    "lng": -76.15415,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jennifer Strattman",
     "email": "jennifer.strattman@petcarevb.com",
@@ -22289,8 +22718,8 @@
     "name": "[Fen Vet] Airdrie",
     "city": "airdrie",
     "st": "AB",
-    "lat": 51.28597,
-    "lng": -114.01062,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Cody Creelman",
     "email": "cody@fenvet.com",
@@ -22410,8 +22839,8 @@
     "name": "[Gheorghe Rotaru] HEARTLAND VETERINARY CLINIC",
     "city": "Airdrie",
     "st": "AB",
-    "lat": 51.26913,
-    "lng": -114.00573,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Gheorghe Rotaru",
     "email": "gmrotaru@me.com",
@@ -22431,7 +22860,8 @@
     "hsId": "19026526071",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -22444,9 +22874,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "hanovervethosp@whvc.ca",
-    "phone": "+1 403-912-8882",
+    "contact": "Gheorghe Rotaru",
+    "email": "gmrotaru@me.com",
+    "phone": "+14039689673",
     "features": "Tails",
     "dgtId": null,
     "pims": "Impromed Infinity",
@@ -22454,14 +22884,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Airdrie, AB",
     "hsId": "19098214412",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -22492,7 +22923,8 @@
     "hsId": "18459480230",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -22502,8 +22934,8 @@
     "name": "[Hanover and Walkerton] Walkerton-Hanover Veterinary Clinic - ON, Canada",
     "city": "Walkerton",
     "st": "ON",
-    "lat": 44.15207,
-    "lng": -81.02796,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Brandice Raschle",
     "email": "braschle@whvc.ca",
@@ -22523,7 +22955,8 @@
     "hsId": "19098008884",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -22533,8 +22966,8 @@
     "name": "[Heritage Vet] Edgerton Veterinary Clinic",
     "city": "tyler",
     "st": "MN",
-    "lat": 47.65297,
-    "lng": -93.77487,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Dr. Ashley Tarasar",
     "email": "dr.tarasar@heritage.vet",
@@ -22564,8 +22997,8 @@
     "name": "[Heritage Vet] Muleshoe Animal Clinic",
     "city": "dallas",
     "st": "TX",
-    "lat": 36.99628,
-    "lng": -101.89576,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Melissa Detweiler",
     "email": "dr.detweiler@heritage.vet",
@@ -22595,8 +23028,8 @@
     "name": "[Heritage Vet] St. Anna Veterinary Clinic",
     "city": "fond du lac",
     "st": "WI",
-    "lat": 43.85253,
-    "lng": -88.00841,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Beth Doll",
     "email": "dr.doll@heritage.vet",
@@ -23139,9 +23572,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "sarah.h@galaxyvets.com",
-    "phone": "+1 613-386-7500",
+    "contact": "Dr. Ivan Zak",
+    "email": "ivanzak@galaxyvets.com",
+    "phone": "+1 519 400 4258",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -23149,14 +23582,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Moncton, NS",
     "hsId": "17293789071",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23169,9 +23603,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "sarah.h@galaxyvets.com",
-    "phone": "7036699311",
+    "contact": "Dr. Ivan Zak",
+    "email": "ivanzak@galaxyvets.com",
+    "phone": "+1 519 400 4258",
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
@@ -23179,14 +23613,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Charlottetown, PE",
     "hsId": "19739357339",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23199,9 +23634,9 @@
     "lat": null,
     "lng": null,
     "ct": "general",
-    "contact": null,
-    "email": "sarah.h@galaxyvets.com",
-    "phone": "+17134817605",
+    "contact": "Dr. Ivan Zak",
+    "email": "ivanzak@galaxyvets.com",
+    "phone": "+1 519 400 4258",
     "features": "Tails",
     "dgtId": null,
     "pims": "Advantage",
@@ -23209,14 +23644,15 @@
     "verify": false,
     "approx": false,
     "quote": null,
-    "metrics": "3,486 Records · 205 Tails events",
+    "metrics": null,
     "pm": null,
     "aiAdopter": null,
     "src": "Usage Report",
     "address": "Halifax, NS",
     "hsId": "18079034692",
     "signals": [
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23226,8 +23662,8 @@
     "name": "[Paw Haven] Animal Hospital Lakeland",
     "city": "Winter Haven",
     "st": "FL",
-    "lat": 28.0478,
-    "lng": -81.72249,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Cynthia Orange",
     "email": "drorange@pawhavenvet.com",
@@ -23247,7 +23683,8 @@
     "hsId": "28226693778",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23317,8 +23754,8 @@
     "name": "[Rarebreed] Malvern Veterinary Hospital",
     "city": "Malvern",
     "st": "PA",
-    "lat": 40.14503,
-    "lng": -74.9789,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Joe Hyduke",
     "email": "hydukejoe@gmail.com",
@@ -23348,8 +23785,8 @@
     "name": "[Rarebreed] Mill Brook Animal Clinic - MA",
     "city": "belmont",
     "st": "MA",
-    "lat": 42.42103,
-    "lng": -71.17233,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dr. Kristian Sørbo",
     "email": "drksorbo@gmail.com",
@@ -23379,8 +23816,8 @@
     "name": "[Rarebreed] Saugerties Animal Hospital",
     "city": "saugerties",
     "st": "NY",
-    "lat": 42.07602,
-    "lng": -73.98353,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Janet Cosh",
     "email": "jcosh@saugertiesah.com",
@@ -23400,7 +23837,8 @@
     "hsId": "8407612433",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23680,8 +24118,8 @@
     "name": "[VPP] Northside Veterinary Clinic",
     "city": "brooklyn",
     "st": "NY",
-    "lat": 40.7129,
-    "lng": -73.96215,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Pam Harris",
     "email": "pharris@northsideveterinaryclinic.com",
@@ -23701,7 +24139,8 @@
     "hsId": "15547087720",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23711,8 +24150,8 @@
     "name": "[VPP] Overpeck Creek Animal Hospital",
     "city": "Bogota",
     "st": "NJ",
-    "lat": 40.10074,
-    "lng": -75.3777,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Rob Hubbard",
     "email": "rhubbard@vetpartners.com",
@@ -23732,7 +24171,8 @@
     "hsId": "13343835247",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23742,8 +24182,8 @@
     "name": "[VPP] Paumanok Veterinary Hospital, P.C.",
     "city": "medford",
     "st": "NY",
-    "lat": 40.76862,
-    "lng": -73.00181,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "David Hensen",
     "email": "drdave@paumanokvethospital.com",
@@ -23773,8 +24213,8 @@
     "name": "[VPP] Tenafly Veterinary Center",
     "city": "Tenafly",
     "st": "NJ",
-    "lat": 40.92161,
-    "lng": -73.96447,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Jessica Kaine",
     "email": "reception@njvet.com",
@@ -23804,8 +24244,8 @@
     "name": "[VPP] Toro Park Animal Hospital -CA",
     "city": "carmel valley",
     "st": "CA",
-    "lat": 36.61135,
-    "lng": -121.68082,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Brad Webb",
     "email": "brad@toroparkvet.com",
@@ -23825,7 +24265,8 @@
     "hsId": "17914637829",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23856,7 +24297,8 @@
     "hsId": "34196723847",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23926,8 +24368,8 @@
     "name": "[VU] Animal Wellness Clinic of Troy",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -23957,8 +24399,8 @@
     "name": "[VU] Bell Veterinary Clinic (Metamora) (BVCM)",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -23978,7 +24420,8 @@
     "hsId": "15921838363",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -23988,8 +24431,8 @@
     "name": "[VU] Bell Veterinary Clinic (Oxford) (BVCO)",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -24009,7 +24452,8 @@
     "hsId": "15921907892",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -24049,8 +24493,8 @@
     "name": "[VU] Long Lake Animal Hospital",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -24070,7 +24514,8 @@
     "hsId": "15920143685",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -24080,8 +24525,8 @@
     "name": "[VU] Macomb Center Veterinary Hospital",
     "city": "port huron",
     "st": "MI",
-    "lat": 42.66315,
-    "lng": -82.89709,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Sheri Grace",
     "email": "sgrace@macombvetcenter.com",
@@ -24111,8 +24556,8 @@
     "name": "[VU] Miller Animal Hospital (MAH)",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -24132,7 +24577,8 @@
     "hsId": "15921838174",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -24142,8 +24588,8 @@
     "name": "[VU] Nucci Veterinary Clinic",
     "city": "clinton township",
     "st": "OR",
-    "lat": 42.58698,
-    "lng": -82.92,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Andrzej Kupraszewicz",
     "email": "andrzejkupraszewicz@veterinaryunited.com",
@@ -24163,7 +24609,8 @@
     "hsId": "15921838204",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -24173,8 +24620,8 @@
     "name": "[VU] Thomson Animal Clinic",
     "city": "Saint Claire Shores",
     "st": "MI",
-    "lat": 42.46456,
-    "lng": -82.90349,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Dana Meske",
     "email": "dmeske@veterinaryunited.com",
@@ -24594,8 +25041,8 @@
     "name": "[Vetama] Central Coast Veterinary Services",
     "city": "San Luis Obispo",
     "st": "CA",
-    "lat": 35.2582,
-    "lng": -120.65392,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Adrienne Brabant",
     "email": "adriennebrabant@gmail.com",
@@ -24615,7 +25062,8 @@
     "hsId": "10825407819",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
     "verified": true,
     "format": "bnm"
@@ -25405,8 +25853,8 @@
     "name": "[WVP] The Veterinary Hospital",
     "city": "eugene",
     "st": "OR",
-    "lat": 43.51282,
-    "lng": -76.25094,
+    "lat": null,
+    "lng": null,
     "ct": "general",
     "contact": "Bryan Wogrin",
     "email": "bwogrin@westernvetpartners.com",
