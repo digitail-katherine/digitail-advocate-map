@@ -3,7 +3,7 @@
 Digitail Advocate Map — Weekly Update Script
 
 A clinic appears ONLY if it has at least one STRONG signal:
-  - Opted into HubSpot referral network
+  - Opted into HubSpot referral network (fetched by exact list ID)
   - Left a public review (Capterra, G2, Google, etc.)
   - Gave a 5★ Intercom CSAT rating
   - Positive CS call in Fathom
@@ -41,7 +41,8 @@ GOOGLE_KEY      = os.environ.get("GOOGLE_API_KEY", "")
 GOOGLE_CSE_ID   = os.environ.get("GOOGLE_CSE_ID", "")
 GOOGLE_PLACE    = os.environ.get("GOOGLE_PLACE_ID", "")
 FB_TOKEN        = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
-DATA_FILE       = "advocates.json"
+DATA_FILE        = "advocates.json"
+REFERRAL_LIST_ID = "59320738"  # HubSpot list: /contacts/4912130/objects/0-1/views/59320738/list
 
 SLACK_CHANNELS_TO_SCAN = [
     "sales-general", "cs-general", "corporate-athletes",
@@ -49,30 +50,27 @@ SLACK_CHANNELS_TO_SCAN = [
 ]
 
 # ── Signal definitions ────────────────────────────────────────────────────────
-# STRONG = qualifies a clinic to appear on the map on its own
-# Must represent an explicit, verifiable positive action by the customer or team
 STRONG_SIGNALS = {
-    "hs_referral_network",  # Opted into referral program in HubSpot
-    "intercom_csat",        # Gave a 5★ Intercom support rating
-    "capterra_positive",    # Wrote a public Capterra review
-    "g2_positive",          # Wrote a public G2 review
-    "softwareadvice",       # Wrote a public Software Advice review
-    "getapp",               # Wrote a public GetApp review
-    "google_review",        # Wrote a Google review
-    "facebook_review",      # Wrote a Facebook review
-    "fathom_call",          # CS team noted a positive customer call
-    "slack_mention",        # Team mentioned positively in Slack
-    "manual",               # Manually verified by Digitail team
+    "hs_referral_network",
+    "intercom_csat",
+    "capterra_positive",
+    "g2_positive",
+    "softwareadvice",
+    "getapp",
+    "google_review",
+    "facebook_review",
+    "fathom_call",
+    "slack_mention",
+    "manual",
 }
 
-# CONTEXT_ONLY = shown in popup as background info, never qualifies alone
 CONTEXT_ONLY_SIGNALS = {
-    "hs_testimonial",   # media field too inconsistent to gate on
-    "hs_dsp",           # Payment feature usage ≠ happiness
-    "hs_long_tenure",   # Not leaving ≠ happiness
-    "hs_positive_note", # HubSpot notes too loose
-    "google_mention",   # Web mentions too broad
-    "reddit_mention",   # Reddit too unreliable
+    "hs_testimonial",
+    "hs_dsp",
+    "hs_long_tenure",
+    "hs_positive_note",
+    "google_mention",
+    "reddit_mention",
 }
 
 SIGNAL_LABELS = {
@@ -170,6 +168,12 @@ HS_PROPS = [
     "media_testimonials_dsp", "internal_comments",
 ]
 
+# Deal properties fetched for each closed-won deal.
+# If your "number of DVMs" property has a different internal name in HubSpot,
+# update "number_of_dvms" below to match. Find it at:
+# HubSpot → Settings → Properties → Deals → search "dvm"
+HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate"]
+
 def hs_h():
     return {"Authorization": f"Bearer {HS_TOKEN}", "Content-Type": "application/json"}
 
@@ -194,7 +198,7 @@ def hs_context_signals(props: dict) -> list:
         pass
     return list(set(sigs))
 
-# ── FIX 1: build_geocode_query now uses full street address first ──────────────
+# ── Geocoding ─────────────────────────────────────────────────────────────────
 def build_geocode_query(props: dict, contact: dict = None) -> str:
     def norm(c):
         return {"us":"United States","usa":"United States","ca":"Canada",
@@ -212,13 +216,11 @@ def build_geocode_query(props: dict, contact: dict = None) -> str:
     country = ct_ctry or co_ctry
     city    = co_city or ct_city
 
-    # 1. Best: full street address + city + state — avoids postal code ambiguity
     raw_ok = raw and len(raw) < 80 and "po box" not in raw.lower()
     if raw_ok and city and state:
         return f"{raw}, {city}, {state}, {country}"
     if raw_ok and state:
         return f"{raw}, {state}, {country}"
-    # 2. Fallback: city + state only — never use postal code alone (cross-border ambiguity)
     if city and state: return f"{city}, {state}, {country}"
     if state:          return f"{state}, {country}"
     return ""
@@ -251,14 +253,13 @@ def geocode_nominatim(query: str):
         print(f"  Nominatim failed '{query}': {e}")
     return None, None
 
-# ── FIX 2: geocode() now falls back to Nominatim if Google fails ──────────────
 def geocode(props: dict, contact: dict = None):
     query = build_geocode_query(props, contact)
     if not query: return None, None
     lat, lng = None, None
     if GOOGLE_KEY:
         lat, lng = geocode_google(query)
-    if not lat:  # always fall back to Nominatim if Google fails or is unconfigured
+    if not lat:
         lat, lng = geocode_nominatim(query)
     if lat:
         country = (props.get("country") or "").strip()
@@ -267,33 +268,78 @@ def geocode(props: dict, contact: dict = None):
         print(f"  Geocode rejected: {query} → {lat},{lng}")
     return None, None
 
-def hs_fetch_referral_network() -> dict:
-    if not HS_TOKEN: return {}
-    results, after = {}, None
-    while True:
-        payload = {
-            "filterGroups": [{"filters": [{"propertyName":"reference_program_optin",
-                                           "operator":"EQ","value":"true"}]}],
-            "properties": ["firstname","lastname","email","phone","company",
-                           "jobtitle","city","state","zip","country"],
-            "limit": 100,
-        }
-        if after: payload["after"] = after
-        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                          json=payload, headers=hs_h(), timeout=15)
-        if r.status_code != 200:
-            print(f"  Referral network error: {r.status_code}"); break
-        data = r.json()
-        for contact in data.get("results",[]):
-            p  = contact.get("properties",{})
-            co = (p.get("company") or "").strip()
-            if co and co.lower() not in results:
-                results[co.lower()] = {"contact_props":p,"contact_id":contact["id"]}
-        after = data.get("paging",{}).get("next",{}).get("after")
-        if not after: break
-    print(f"  Referral network: {len(results)} opted-in companies")
-    return results
+# ── HubSpot referral network — fetched by exact list ID ──────────────────────
+def hs_fetch_referral_network() -> tuple:
+    """
+    Fetches the referral network directly from HubSpot list ID (REFERRAL_LIST_ID).
+    Returns (name_map, company_ids_set):
+      company_ids_set — exact HubSpot company object IDs; used first, no name guessing
+      name_map        — contact "company" text field fallback for contacts not linked
+                        to a company record in HubSpot
+    """
+    if not HS_TOKEN: return {}, set()
 
+    # Step 1: pull every contact ID from the list
+    contact_ids, after = [], None
+    while True:
+        params = {"limit": 100}
+        if after: params["after"] = after
+        r = requests.get(
+            f"https://api.hubapi.com/crm/v3/lists/{REFERRAL_LIST_ID}/memberships",
+            params=params, headers=hs_h(), timeout=15)
+        if r.status_code != 200:
+            print(f"  Referral list error: {r.status_code} — {r.text[:300]}")
+            break
+        data = r.json()
+        contact_ids.extend([str(m["recordId"]) for m in data.get("results", [])])
+        after = data.get("paging", {}).get("next", {}).get("after")
+        if not after: break
+
+    print(f"  Referral network list: {len(contact_ids)} contacts")
+    if not contact_ids: return {}, set()
+
+    company_ids = set()
+    name_map    = {}
+
+    for i in range(0, len(contact_ids), 100):
+        batch = contact_ids[i:i+100]
+
+        # Step 2a: resolve contact → company object IDs (exact, no name guessing)
+        ar = requests.post(
+            "https://api.hubapi.com/crm/v4/associations/contacts/companies/batch/read",
+            json={"inputs": [{"id": cid} for cid in batch]},
+            headers=hs_h(), timeout=15)
+        if ar.status_code == 200:
+            for item in ar.json().get("results", []):
+                for assoc in item.get("to", []):
+                    cid = str(assoc.get("toObjectId", ""))
+                    if cid: company_ids.add(cid)
+
+        # Step 2b: fetch contact "company" text field as name-match fallback
+        # (covers contacts that exist in the list but have no linked company record)
+        cr = requests.post(
+            "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
+            json={"inputs": [{"id": cid} for cid in batch],
+                  "properties": ["firstname","lastname","company","email",
+                                 "phone","city","state","zip","country","jobtitle"]},
+            headers=hs_h(), timeout=15)
+        if cr.status_code == 200:
+            for contact in cr.json().get("results", []):
+                p  = contact.get("properties", {})
+                co = (p.get("company") or "").strip()
+                if co:
+                    name_map[co.lower()] = {
+                        "contact_props": p,
+                        "contact_id":    contact["id"],
+                    }
+
+        time.sleep(0.1)
+
+    print(f"  Referral network: {len(company_ids)} exact company ID matches "
+          f"+ {len(name_map)} by name fallback")
+    return name_map, company_ids
+
+# ── HubSpot deal helpers ──────────────────────────────────────────────────────
 def hs_get_deal_contacts(deal_id: str) -> list:
     try:
         r = requests.get(
@@ -319,18 +365,66 @@ def hs_get_deal_contacts(deal_id: str) -> list:
         print(f"  Deal contact fetch failed {deal_id}: {e}")
         return []
 
-def best_contact_from_deals(hs_id: str) -> dict:
+def best_contact_and_deal_props(hs_id: str) -> tuple:
+    """
+    Returns (best_contact_dict, deal_props_dict) for the company.
+    deal_props_dict may contain 'dvms' (number of DVMs from closed-won deal).
+    Makes one company→deals lookup then reuses those deal IDs for both
+    contact and deal property fetches to avoid duplicate API calls.
+    """
     try:
         r = requests.get(
             f"https://api.hubapi.com/crm/v3/objects/companies/{hs_id}/associations/deals",
             headers=hs_h(), timeout=10)
-        if r.status_code != 200: return {}
-        for deal in r.json().get("results",[])[:3]:
-            contacts = hs_get_deal_contacts(deal["id"])
-            if contacts: return contacts[0]
-    except Exception:
-        pass
-    return {}
+        if r.status_code != 200: return {}, {}
+
+        deals = r.json().get("results", [])[:5]
+        if not deals: return {}, {}
+
+        deal_ids = [d["id"] for d in deals]
+
+        # Fetch deal properties to get DVM count
+        # If "number_of_dvms" doesn't match your HubSpot property name,
+        # check: HubSpot → Settings → Properties → Deals → search "dvm"
+        deal_props = {}
+        dr = requests.post(
+            "https://api.hubapi.com/crm/v3/objects/deals/batch/read",
+            json={"inputs":    [{"id": did} for did in deal_ids],
+                  "properties": HS_DEAL_PROPS},
+            headers=hs_h(), timeout=10)
+        if dr.status_code == 200:
+            # Prefer the closed-won deal with the most recent close date
+            won_deals = []
+            for deal in dr.json().get("results", []):
+                p = deal.get("properties", {})
+                if (p.get("hs_is_closed_won") == "true" or
+                        p.get("dealstage") == "closedwon"):
+                    won_deals.append(p)
+            # Fall back to all deals if none are explicitly marked closed-won
+            candidates = won_deals or [d.get("properties",{})
+                                       for d in dr.json().get("results",[])]
+            for p in candidates:
+                dvms = (p.get("number_of_dvms") or "").strip()
+                if dvms and dvms not in ("0", "0.0"):
+                    try:
+                        deal_props["dvms"] = str(int(float(dvms)))
+                    except ValueError:
+                        deal_props["dvms"] = dvms
+                    break
+
+        # Fetch best contact from the same set of deals
+        best_contact = {}
+        for deal_id in deal_ids:
+            contacts = hs_get_deal_contacts(deal_id)
+            if contacts:
+                best_contact = contacts[0]
+                break
+
+        return best_contact, deal_props
+
+    except Exception as e:
+        print(f"  Deal props fetch failed {hs_id}: {e}")
+        return {}, {}
 
 def hs_get_closedwon_company_ids() -> set:
     ids = set()
@@ -509,7 +603,7 @@ def fetch_slack_signals() -> tuple:
                 is_pos  = any(k in tl for k in POSITIVE_KW)
                 is_neg  = any(k in tl for k in NEGATIVE_KW)
                 scanned += 1
-                # FIX 3: require 2+ capitalised words (+ not *) to avoid single-word false matches
+                # Require 2+ capitalised words to avoid single-word false matches
                 for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
                     if len(word) > 10 and word.lower() not in {
                         "slack","digitail","tails","monday","friday",
@@ -776,9 +870,6 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # FIX 4: Do NOT wipe coordinates — preserve existing valid coords across runs
-    # geocode() is still called for each record and updates if successful
-
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
     original = json.dumps(existing, sort_keys=True)
@@ -811,7 +902,7 @@ def main():
     all_external = all_reviews + g_reviews + g_mentions + fb
 
     print("\n── HubSpot referral network ───────────────────────────────")
-    referral_net = hs_fetch_referral_network()
+    referral_net, referral_ids = hs_fetch_referral_network()
 
     print("\n── HubSpot customers ──────────────────────────────────────")
     hs_customers = hs_get_customers()
@@ -849,15 +940,17 @@ def main():
         # ── Collect strong signals ────────────────────────────────────────────
         strong_signals = []
 
-        for rn_key in referral_net:
-            if names_match(name, rn_key):
-                strong_signals.append("hs_referral_network"); break
+        # Referral network: company ID match first (exact), name fallback second
+        if hs_id in referral_ids:
+            strong_signals.append("hs_referral_network")
+        elif any(names_match(name, rn_key) for rn_key in referral_net):
+            strong_signals.append("hs_referral_network")
 
         for ic_key in ic_sigs:
             if names_match(name, ic_key):
                 strong_signals.append("intercom_csat"); break
 
-        # FIX 5: Slack matching requires 2+ meaningful words to overlap
+        # Slack: require 2+ words of 5+ chars to overlap
         for s_key in slack_pos:
             s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5}
             n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
@@ -873,7 +966,7 @@ def main():
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
 
-        # FIX 6: External review fallback requires substantial multi-word overlap
+        # External review fallback: require substantial multi-word overlap
         for ext in all_external:
             rev = ext.get("reviewer","") or ext.get("author","") or ""
             rev_words  = {w for w in re.split(r'\W+', rev.lower()) if len(w) >= 5}
@@ -888,7 +981,7 @@ def main():
             excl_signal += 1
             continue
 
-        # ── Collect context signals (for popup display only) ──────────────────
+        # ── Collect context signals (popup only) ──────────────────────────────
         context_signals = hs_context_signals(props)
 
         # ── Find or create record ─────────────────────────────────────────────
@@ -902,19 +995,24 @@ def main():
             rec = {"id":next_id,"name":name,"ct":"general","src":"HubSpot",
                    "verify":False,"approx":False,"quote":None,"metrics":None,
                    "pm":None,"aiAdopter":None,"lat":None,"lng":None,
-                   "features":None,"dgtId":None}
+                   "features":None,"dgtId":None,"dvms":None}
             next_id += 1
         else:
             rec = dict(rec)
-            rec["notes"] = None   # FIX 7: clear legacy "Location unknown" notes
+            rec["notes"] = None  # clear legacy "Location unknown" notes
 
-        # ── Refresh from HubSpot ──────────────────────────────────────────────
+        # ── Refresh from HubSpot + deal properties ────────────────────────────
         rec["hsId"]    = hs_id
         rec["name"]    = name
         rec["format"]  = infer_format(name)
-        rec["metrics"] = None  # Never inherit usage metrics for HubSpot records
+        rec["metrics"] = None
 
-        deal_contact = best_contact_from_deals(hs_id)
+        deal_contact, deal_props = best_contact_and_deal_props(hs_id)
+
+        # Store DVM count from deal
+        if deal_props.get("dvms"):
+            rec["dvms"] = deal_props["dvms"]
+
         if deal_contact:
             if deal_contact.get("email"): rec["email"] = deal_contact["email"]
             if deal_contact.get("phone"): rec["phone"] = deal_contact["phone"]
@@ -944,7 +1042,6 @@ def main():
         lat, lng = geocode(props, deal_contact or None)
         if lat: rec["lat"], rec["lng"] = lat, lng; rec["approx"] = False
 
-        # Combine: strong signals + context signals (deduped)
         if "manual" in rec.get("signals",[]): strong_signals.append("manual")
         all_sigs       = sorted(set(strong_signals + context_signals))
         rec["signals"] = all_sigs
@@ -963,7 +1060,6 @@ def main():
         new_advocates.append(rec)
 
     # ── Preserve non-HubSpot records (manual and public review sources only) ──
-    # FIX 8: "Usage Report" removed — those records need a real strong signal to survive
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
     for old in existing:
