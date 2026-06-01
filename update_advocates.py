@@ -199,22 +199,27 @@ def build_geocode_query(props: dict, contact: dict = None) -> str:
         return {"us":"United States","usa":"United States","ca":"Canada",
                 "canada":"Canada","mx":"Mexico","mexico":"Mexico"}.get(
                 (c or "").lower().strip(), c or "United States")
-    co_zip  = (props.get("zip")   or "").strip()
-    co_city = (props.get("city")  or "").strip().title()
-    co_st   = (props.get("state") or "").strip().upper()
+    raw     = (props.get("address") or "").strip()
+    co_city = (props.get("city")    or "").strip().title()
+    co_st   = (props.get("state")   or "").strip().upper()
     co_ctry = norm(props.get("country",""))
     ct      = contact or {}
-    ct_zip  = (ct.get("zip")   or "").strip()
     ct_city = (ct.get("city")  or "").strip().title()
     ct_st   = (ct.get("state") or "").strip().upper()
     ct_ctry = norm(ct.get("country","")) if ct else co_ctry
-    state   = ct_st   or co_st
+    state   = ct_st or co_st
     country = ct_ctry or co_ctry
-    if ct_zip  and state: return f"{ct_zip}, {state}, {country}"
-    if co_zip  and state: return f"{co_zip}, {state}, {country}"
-    if ct_city and state: return f"{ct_city}, {state}, {country}"
-    if co_city and state: return f"{co_city}, {state}, {country}"
-    if state:             return f"{state}, {country}"
+
+    # 1. Best: full street address + city + state
+    raw_ok = raw and len(raw) < 80 and "po box" not in raw.lower()
+    city   = co_city or ct_city
+    if raw_ok and city and state:
+        return f"{raw}, {city}, {state}, {country}"
+    if raw_ok and state:
+        return f"{raw}, {state}, {country}"
+    # 2. Fallback: city + state (never use postal code alone — too ambiguous cross-border)
+    if city and state: return f"{city}, {state}, {country}"
+    if state:          return f"{state}, {country}"
     return ""
 
 def geocode_google(query: str):
@@ -888,6 +893,7 @@ def main():
             next_id += 1
         else:
             rec = dict(rec)
+            rec["notes"] = None 
 
         # ── Refresh from HubSpot ──────────────────────────────────────────────
         rec["hsId"]    = hs_id
