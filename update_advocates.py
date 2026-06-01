@@ -164,7 +164,7 @@ def is_excluded_non_clinic(props: dict) -> bool:
 # ── HubSpot ───────────────────────────────────────────────────────────────────
 HS_PROPS = [
     "name", "address", "city", "state", "zip", "country",
-    "contact_email", "phone", "current_pims", "domain", "createdate",
+    "contact_email", "phone", "current_pims", "domain",
     "media_testimonials_dsp", "internal_comments",
 ]
 
@@ -178,7 +178,9 @@ def hs_h():
     return {"Authorization": f"Bearer {HS_TOKEN}", "Content-Type": "application/json"}
 
 def hs_context_signals(props: dict) -> list:
-    """Context-only signals — displayed in popup but never qualify a clinic."""
+    """Context-only signals — displayed in popup but never qualify a clinic.
+    NOTE: hs_long_tenure is no longer computed here. It is computed in the main
+    loop from the actual closed-won deal close date, not the CRM createdate."""
     sigs  = []
     media = (props.get("media_testimonials_dsp") or "").lower()
     notes = (props.get("internal_comments")      or "").lower()
@@ -188,14 +190,6 @@ def hs_context_signals(props: dict) -> list:
         sigs.append("hs_dsp")
     if any(k in notes for k in POSITIVE_KW) and not any(k in notes for k in NEGATIVE_KW):
         sigs.append("hs_positive_note")
-    try:
-        created = props.get("createdate","")
-        if created:
-            dt = datetime.fromisoformat(created.replace("Z","+00:00"))
-            if (datetime.now(timezone.utc) - dt).days > 365:
-                sigs.append("hs_long_tenure")
-    except Exception:
-        pass
     return list(set(sigs))
 
 # ── Geocoding ─────────────────────────────────────────────────────────────────
@@ -368,7 +362,9 @@ def hs_get_deal_contacts(deal_id: str) -> list:
 def best_contact_and_deal_props(hs_id: str) -> tuple:
     """
     Returns (best_contact_dict, deal_props_dict) for the company.
-    deal_props_dict may contain 'dvms' (number of DVMs from closed-won deal).
+    deal_props_dict may contain:
+      'dvms'        — number of DVMs from closed-won deal
+      'closedate'   — ISO date string of when the deal closed (the real customer-since date)
     Makes one company→deals lookup then reuses those deal IDs for both
     contact and deal property fetches to avoid duplicate API calls.
     """
@@ -383,9 +379,9 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
 
         deal_ids = [d["id"] for d in deals]
 
-        # Fetch deal properties to get DVM count
-        # If "number_of_dvms" doesn't match your HubSpot property name,
-        # check: HubSpot → Settings → Properties → Deals → search "dvm"
+        # Fetch deal properties — DVM count + close date
+        # If "number_of_dvms" doesn't match your HubSpot property name, check:
+        # HubSpot → Settings → Properties → Deals → search "dvm"
         deal_props = {}
         dr = requests.post(
             "https://api.hubapi.com/crm/v3/objects/deals/batch/read",
@@ -393,24 +389,43 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
                   "properties": HS_DEAL_PROPS},
             headers=hs_h(), timeout=10)
         if dr.status_code == 200:
-            # Prefer the closed-won deal with the most recent close date
+            all_results = dr.json().get("results", [])
+            # Prefer deals explicitly marked closed-won
             won_deals = []
-            for deal in dr.json().get("results", []):
+            for deal in all_results:
                 p = deal.get("properties", {})
                 if (p.get("hs_is_closed_won") == "true" or
                         p.get("dealstage") == "closedwon"):
                     won_deals.append(p)
-            # Fall back to all deals if none are explicitly marked closed-won
-            candidates = won_deals or [d.get("properties",{})
-                                       for d in dr.json().get("results",[])]
+            candidates = won_deals or [d.get("properties", {}) for d in all_results]
+
+            # Sort candidates by closedate descending — most recent win first
+            def _sort_key(p):
+                cd = p.get("closedate") or ""
+                return cd
+            candidates.sort(key=_sort_key, reverse=True)
+
             for p in candidates:
+                # DVM count
                 dvms = (p.get("number_of_dvms") or "").strip()
                 if dvms and dvms not in ("0", "0.0"):
                     try:
                         deal_props["dvms"] = str(int(float(dvms)))
                     except ValueError:
                         deal_props["dvms"] = dvms
-                    break
+
+                # Close date — the real "customer since" date
+                closedate_raw = (p.get("closedate") or "").strip()
+                if closedate_raw and not deal_props.get("closedate"):
+                    try:
+                        # HubSpot returns ISO 8601 e.g. "2023-03-15T00:00:00.000Z"
+                        dt = datetime.fromisoformat(closedate_raw.replace("Z", "+00:00"))
+                        deal_props["closedate"] = dt.strftime("%Y-%m-%d")
+                    except Exception:
+                        pass
+
+                if deal_props.get("dvms") and deal_props.get("closedate"):
+                    break  # have everything we need
 
         # Fetch best contact from the same set of deals
         best_contact = {}
@@ -995,7 +1010,7 @@ def main():
             rec = {"id":next_id,"name":name,"ct":"general","src":"HubSpot",
                    "verify":False,"approx":False,"quote":None,"metrics":None,
                    "pm":None,"aiAdopter":None,"lat":None,"lng":None,
-                   "features":None,"dgtId":None,"dvms":None}
+                   "dgtId":None,"dvms":None,"customerSince":None}
             next_id += 1
         else:
             rec = dict(rec)
@@ -1012,6 +1027,17 @@ def main():
         # Store DVM count from deal
         if deal_props.get("dvms"):
             rec["dvms"] = deal_props["dvms"]
+
+        # Store customer-since date from deal close date (the real tenure source)
+        # and compute hs_long_tenure correctly — NOT from CRM createdate
+        if deal_props.get("closedate"):
+            rec["customerSince"] = deal_props["closedate"]
+            try:
+                since_dt = datetime.fromisoformat(deal_props["closedate"] + "T00:00:00+00:00")
+                if (datetime.now(timezone.utc) - since_dt).days > 365:
+                    context_signals.append("hs_long_tenure")
+            except Exception:
+                pass
 
         if deal_contact:
             if deal_contact.get("email"): rec["email"] = deal_contact["email"]
