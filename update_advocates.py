@@ -25,6 +25,11 @@ IC_TOKEN        = os.environ.get("INTERCOM_TOKEN", "")
 SLACK_URL       = os.environ.get("SLACK_WEBHOOK", "")
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 FATHOM_API_KEY  = os.environ.get("FATHOM_API_KEY", "")
+FATHOM_CS_EMAILS = {
+    e.strip().lower()
+    for e in os.environ.get("FATHOM_CS_EMAILS", "").split(",")
+    if e.strip()
+}
 REDDIT_ID       = os.environ.get("REDDIT_CLIENT_ID", "")
 REDDIT_SECRET   = os.environ.get("REDDIT_CLIENT_SECRET", "")
 GOOGLE_KEY      = os.environ.get("GOOGLE_API_KEY", "")
@@ -59,13 +64,30 @@ SIGNAL_LABELS = {
     "manual":              "Manually Verified",
 }
 
-# Strong = sufficient on their own to appear on the map
+# Signals strong enough to qualify a clinic for the map ON THEIR OWN.
+# Must represent an explicit positive action by the customer or team.
+# Passive signals (tenure, DSP usage, generic notes) do NOT qualify.
 STRONG_SIGNALS = {
-    "hs_referral_network", "hs_testimonial", "hs_dsp",
-    "intercom_csat", "capterra_positive", "g2_positive",
-    "softwareadvice", "getapp", "google_review", "google_mention",
-    "reddit_mention", "facebook_review", "slack_mention",
-    "fathom_call", "manual",
+    "hs_referral_network",  # Opted in to referral program
+    "hs_testimonial",       # Featured in published article, video, or case study
+    "intercom_csat",        # Gave a 5★ support rating
+    "capterra_positive",    # Wrote a public Capterra review
+    "g2_positive",          # Wrote a public G2 review
+    "softwareadvice",       # Wrote a public Software Advice review
+    "getapp",               # Wrote a public GetApp review
+    "google_review",        # Wrote a Google review
+    "facebook_review",      # Wrote a Facebook review
+    "fathom_call",          # CS team noted positive call (Fathom)
+    "slack_mention",        # Team mentioned positively in Slack
+    "manual",               # Manually added by Digitail team
+}
+# These appear in the popup as context but cannot qualify a clinic alone
+CONTEXT_ONLY_SIGNALS = {
+    "hs_dsp",           # Uses DSP — usage metric, not happiness
+    "hs_long_tenure",   # Been a customer 12+ months — not happiness
+    "hs_positive_note", # Positive note in HubSpot — too loose
+    "google_mention",   # Web mention — too broad/unreliable
+    "reddit_mention",   # Reddit mention — too unreliable
 }
 
 NEGATIVE_KW = [
@@ -507,25 +529,55 @@ def fetch_slack_signals() -> tuple:
 
 # ── Fathom call intelligence ──────────────────────────────────────────────────
 def fetch_fathom_signals() -> tuple:
-    """Returns (positive_dict, negative_set) from recent Fathom call summaries."""
+    """
+    Pull recent Fathom call summaries from CS team members only.
+    Filters by FATHOM_CS_EMAILS — calls owned by anyone not on that list are skipped.
+    If FATHOM_CS_EMAILS is empty, falls back to any @digitail.io host.
+    Returns (positive_dict, negative_set).
+    """
     if not FATHOM_API_KEY:
         print("  Fathom: no API key, skipping")
         return {}, set()
-    hdrs    = {"Authorization": f"Bearer {FATHOM_API_KEY}", "Content-Type": "application/json"}
-    cutoff  = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+    hdrs   = {"Authorization": f"Bearer {FATHOM_API_KEY}", "Content-Type": "application/json"}
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
     positive, negative = {}, set()
     try:
-        r     = requests.get("https://api.fathom.ai/v1/calls",
-                             params={"limit":100,"after":cutoff}, headers=hdrs, timeout=15)
+        r = requests.get("https://api.fathom.ai/v1/calls",
+                         params={"limit": 100, "after": cutoff},
+                         headers=hdrs, timeout=15)
         if r.status_code != 200:
             print(f"  Fathom: HTTP {r.status_code}"); return {}, set()
         calls = r.json().get("data", r.json().get("calls", []))
-        print(f"  Fathom: {len(calls)} calls retrieved")
+        print(f"  Fathom: {len(calls)} total calls retrieved")
+
+        cs_filtered = 0
         for call in calls:
-            call_id   = call.get("id","")
-            title     = (call.get("title") or call.get("name") or "").strip()
-            summary   = (call.get("summary") or call.get("description") or "").strip()
-            attendees = call.get("attendees", [])
+            # ── CS team filter ────────────────────────────────────────────────
+            owner_email = ""
+            owner       = call.get("owner") or call.get("host") or call.get("user") or {}
+            if isinstance(owner, dict):
+                owner_email = (owner.get("email") or "").lower().strip()
+            elif isinstance(owner, str):
+                owner_email = owner.lower().strip()
+
+            if FATHOM_CS_EMAILS:
+                # Strict: skip if owner not in CS team list
+                if owner_email not in FATHOM_CS_EMAILS:
+                    cs_filtered += 1
+                    continue
+            else:
+                # Fallback: skip calls with no @digitail.io host at all
+                attendees   = call.get("attendees", [])
+                internal    = [a.get("email","") for a in attendees
+                               if "@digitail.io" in (a.get("email") or "")]
+                if not internal and "@digitail.io" not in owner_email:
+                    cs_filtered += 1
+                    continue
+
+            # ── Extract summary and classify ──────────────────────────────────
+            call_id = call.get("id", "")
+            title   = (call.get("title") or call.get("name") or "").strip()
+            summary = (call.get("summary") or call.get("description") or "").strip()
             if not summary and call_id:
                 try:
                     sr = requests.get(f"https://api.fathom.ai/v1/calls/{call_id}",
@@ -534,28 +586,38 @@ def fetch_fathom_signals() -> tuple:
                         summary = (sr.json().get("summary") or "").strip()
                 except Exception:
                     pass
+
             combined = f"{title} {summary}".lower()
             if not combined.strip(): continue
             is_pos = any(k in combined for k in POSITIVE_KW)
             is_neg = any(k in combined for k in NEGATIVE_KW)
+
+            # ── Extract company candidates ────────────────────────────────────
             candidates = set()
             for pat in [r'(?:with|re:|follow.?up|check.?in)\s+([A-Z][^\-–|:]+)',
                         r'^([A-Z][a-zA-Z\s]{4,40})\s*[-–|:]']:
                 m = re.search(pat, title)
                 if m: candidates.add(m.group(1).strip().lower())
-            for att in attendees:
-                email  = (att.get("email") or "")
-                if "@" in email:
+            for att in call.get("attendees", []):
+                email = (att.get("email") or "")
+                if "@" in email and "@digitail.io" not in email:
                     domain = email.split("@")[1].split(".")[0]
                     if len(domain) > 4 and domain not in {"gmail","yahoo","hotmail","outlook"}:
                         candidates.add(domain.lower())
+
             for cand in candidates:
                 if is_pos and not is_neg:
-                    positive.setdefault(cand, {"signal":"fathom_call",
-                        "quote": summary[:280] if summary else f"Positive call: {title}"})
+                    positive.setdefault(cand, {
+                        "signal":     "fathom_call",
+                        "quote":      summary[:280] if summary else f"Positive CS call: {title}",
+                        "call_owner": owner_email,
+                    })
                 elif is_neg and not is_pos:
                     negative.add(cand)
-        print(f"  Fathom: {len(positive)} positive, {len(negative)} negative")
+
+        print(f"  Fathom: {len(calls) - cs_filtered} CS calls processed "
+              f"({cs_filtered} skipped — not CS team), "
+              f"{len(positive)} positive, {len(negative)} negative signals")
     except Exception as e:
         print(f"  Fathom failed: {e}")
     return positive, negative
@@ -880,8 +942,10 @@ def main():
 
         signals = list(set(signals))
 
-        # Gate: must have at least one STRONG signal
-        if not any(s in STRONG_SIGNALS for s in signals):
+        # Hard gate: must have at least one EXPLICIT happiness signal.
+        # Tenure, DSP usage, and generic notes do NOT qualify alone.
+        qualifying = [s for s in signals if s in STRONG_SIGNALS]
+        if not qualifying:
             excl_signal += 1
             continue
 
