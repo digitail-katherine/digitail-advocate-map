@@ -315,33 +315,116 @@ def coord_matches_country(lat: float, lng: float, country: str) -> bool:
         return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
     return True  # US and unknown — rely on NA bounds check only
 
-def build_geocode_query(props: dict) -> str:
+def hs_get_deal_contacts(deal_id: str) -> list:
     """
-    Build the most reliable geocode query using ZIP-first hierarchy.
-    ZIP codes are authoritative — they override wrong city names.
-    Never uses the raw address line (too dirty in HubSpot).
-    
+    Fetch contacts associated with a specific deal.
+    Returns list of contact property dicts sorted by: Owner > CEO/DVM > Manager > other.
+    """
+    try:
+        r = requests.get(
+            f"https://api.hubapi.com/crm/v3/objects/deals/{deal_id}/associations/contacts",
+            headers=hs_h(), timeout=10,
+        )
+        if r.status_code != 200:
+            return []
+        contact_ids = [c["id"] for c in r.json().get("results", [])]
+        if not contact_ids:
+            return []
+        # Batch fetch contact details
+        cr = requests.post(
+            "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
+            json={
+                "inputs": [{"id": cid} for cid in contact_ids[:5]],
+                "properties": ["firstname","lastname","email","phone","jobtitle",
+                               "city","state","zip","country"],
+            },
+            headers=hs_h(), timeout=10,
+        )
+        if cr.status_code != 200:
+            return []
+        contacts = [c.get("properties",{}) for c in cr.json().get("results",[])]
+        # Sort: prefer DVM/Owner/CEO roles first
+        def rank(c):
+            jt = (c.get("jobtitle") or "").lower()
+            if any(k in jt for k in ["owner","dvm","veterinarian","doctor","ceo","medical director"]):
+                return 0
+            if any(k in jt for k in ["manager","director","admin","practice"]):
+                return 1
+            return 2
+        return sorted(contacts, key=rank)
+    except Exception as e:
+        print(f"  Contact fetch failed for deal {deal_id}: {e}")
+        return []
+
+def hs_get_company_deals(hs_id: str) -> list:
+    """Get closed-won deal IDs for a company."""
+    try:
+        r = requests.get(
+            f"https://api.hubapi.com/crm/v3/objects/companies/{hs_id}/associations/deals",
+            headers=hs_h(), timeout=10,
+        )
+        if r.status_code != 200:
+            return []
+        return [d["id"] for d in r.json().get("results", [])]
+    except Exception:
+        return []
+
+def best_contact_from_deals(hs_id: str) -> dict:
+    """
+    Find the best contact from the company's closed-won deals.
+    Returns a merged dict with the most useful fields from that contact.
+    """
+    deal_ids = hs_get_company_deals(hs_id)
+    for deal_id in deal_ids[:3]:  # Check up to 3 deals
+        contacts = hs_get_deal_contacts(deal_id)
+        if contacts:
+            best = contacts[0]  # Already sorted by role priority
+            return best
+    return {}
+
+def build_geocode_query(props: dict, contact: dict = None) -> str:
+    """
+    ZIP-first geocoding query. Uses contact location data preferentially
+    since company city/state fields are often dirty in HubSpot.
+
     Priority:
-      1. ZIP + state + country
-      2. City + state + country  
-      3. State + country only
+      1. Contact ZIP + state + country
+      2. Company ZIP + state + country
+      3. Contact city + state + country
+      4. Company city + state + country
+      5. State + country only
     """
-    zip_   = (props.get("zip")     or "").strip()
-    city   = (props.get("city")    or "").strip().title()
-    state  = (props.get("state")   or "").strip().upper()
-    country= (props.get("country") or "").strip()
+    # Normalise country
+    def norm_country(c):
+        return {"us":"United States","usa":"United States","ca":"Canada",
+                "canada":"Canada","mx":"Mexico","mexico":"Mexico"}.get(
+                (c or "").lower().strip(), (c or "United States"))
 
-    # Normalise country to full name for better geocoding
-    country_map = {"us":"United States","usa":"United States","ca":"Canada",
-                   "canada":"Canada","mx":"Mexico","mexico":"Mexico"}
-    country_norm = country_map.get(country.lower(), country) or "United States"
+    co_zip     = (props.get("zip")     or "").strip()
+    co_city    = (props.get("city")    or "").strip().title()
+    co_state   = (props.get("state")   or "").strip().upper()
+    co_country = norm_country(props.get("country",""))
 
-    if zip_ and state:
-        return f"{zip_}, {state}, {country_norm}"
-    elif city and state:
-        return f"{city}, {state}, {country_norm}"
-    elif state:
-        return f"{state}, {country_norm}"
+    ct_zip     = (contact.get("zip")     or "") .strip() if contact else ""
+    ct_city    = (contact.get("city")    or "").strip().title() if contact else ""
+    ct_state   = (contact.get("state")  or "").strip().upper() if contact else ""
+    ct_country = norm_country(contact.get("country","")) if contact else co_country
+
+    # Use whichever state/country combo looks most reliable
+    # Contact state takes priority (less likely to be "dallas, TX" for an OK clinic)
+    state   = ct_state   or co_state
+    country = ct_country or co_country
+
+    if ct_zip and state:
+        return f"{ct_zip}, {state}, {country}"
+    if co_zip and state:
+        return f"{co_zip}, {state}, {country}"
+    if ct_city and state:
+        return f"{ct_city}, {state}, {country}"
+    if co_city and state:
+        return f"{co_city}, {state}, {country}"
+    if state:
+        return f"{state}, {country}"
     return ""
 
 def geocode_google(query: str) -> tuple:
@@ -797,23 +880,15 @@ def main():
     except FileNotFoundError:
         existing = []
 
-    # Repair pass: clear coordinates that don't match the company's country
-    # This fixes stale bad geocodes from previous runs (e.g. Canadian clinic placed in Kansas)
-    repaired = 0
+    # Force-clear all existing coordinates so everything re-geocodes cleanly
+    # This is a one-time repair — future runs only re-geocode changed records
+    coords_cleared = 0
     for rec in existing:
-        lat = rec.get("lat")
-        lng = rec.get("lng")
-        if not lat or not lng:
-            continue
-        country = (rec.get("country") or "").lower()
-        # If HubSpot country isn't stored on the record, try to infer from state
-        st = (rec.get("st") or "").upper()
-        is_canadian = country in {"canada","ca"} or st in CA_PROVINCES
-        if is_canadian and not coord_matches_country(lat, lng, "canada"):
+        if rec.get("lat") or rec.get("lng"):
             rec["lat"], rec["lng"] = None, None
-            repaired += 1
-    if repaired:
-        print(f"  Cleared {repaired} stale non-Canadian coordinates for Canadian clinics")
+            coords_cleared += 1
+    if coords_cleared:
+        print(f"  Force-cleared {coords_cleared} stale coordinates — full re-geocode this run\n")
 
     by_hs_id = {str(a["hsId"]): a for a in existing if a.get("hsId")}
     by_name  = {a["name"].lower().strip(): a for a in existing}
