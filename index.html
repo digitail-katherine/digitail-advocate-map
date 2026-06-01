@@ -131,7 +131,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           <th onclick="srt('contact')">Contact ↕</th>
           <th>Email</th>
           <th onclick="srt('dvms')">DVMs ↕</th>
-          <th>Features</th>
+          <th onclick="srt('since')">Customer Since ↕</th>
           <th onclick="srt('pims')">PIMS From ↕</th>
           <th onclick="srt('src')">Source ↕</th>
           <th>Flags</th>
@@ -341,6 +341,30 @@ function mkIcon(ct,verify){
   });
 }
 
+// ── Tenure helper ─────────────────────────────────────────────────────────────
+// Returns a human-readable label like "3 yrs 2 mo" or "8 months"
+function tenureLabel(since){
+  if(!since) return null;
+  const d=new Date(since);
+  if(isNaN(d.getTime())) return null;
+  const now=new Date();
+  const totalDays=Math.floor((now-d)/86400000);
+  if(totalDays<1) return 'New customer';
+  const totalMonths=Math.floor(totalDays/30.44);
+  const years=Math.floor(totalMonths/12);
+  const remMonths=totalMonths%12;
+  if(years>=1) return `${years} yr${years>1?'s':''}${remMonths>0?' '+remMonths+' mo':''}`;
+  if(totalMonths>=1) return `${totalMonths} month${totalMonths>1?'s':''}`;
+  return `${totalDays} day${totalDays>1?'s':''}`;
+}
+// Returns "Jan 2023" style month label
+function sinceMonthLabel(since){
+  if(!since) return null;
+  const d=new Date(since+'T12:00:00');
+  if(isNaN(d.getTime())) return null;
+  return d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+}
+
 // ── Popup ─────────────────────────────────────────────────────────────────────
 function mkPop(a){
   const loc=[a.city,a.st].filter(Boolean).join(', ');
@@ -373,7 +397,10 @@ function mkPop(a){
   b+=row('Phone',a.phone);
   // DVMs — shown with a subtle badge so it stands out for deal sizing context
   b+=a.dvms?`<div class="pr"><span class="plb">DVMs</span><span class="pv"><span style="background:#EFF6FF;color:#1D4ED8;font-weight:700;padding:1px 7px;border-radius:6px;font-size:11px">${a.dvms} DVM${a.dvms==='1'?'':'s'}</span></span></div>`:'';
-  b+=a.features?`<div class="pr"><span class="plb">Features</span><span class="pv" style="white-space:normal;max-width:200px">${a.features}</span></div>`:'';
+  // Customer since — shows "Jan 2023 · 2 yrs 3 mo", replaces Features
+  const sinceStr=sinceMonthLabel(a.customerSince);
+  const tenureStr=tenureLabel(a.customerSince);
+  b+=sinceStr?`<div class="pr"><span class="plb">Customer</span><span class="pv">${sinceStr}<span style="color:#64748B;font-size:10px;margin-left:6px">${tenureStr}</span></span></div>`:'';
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
 
@@ -412,10 +439,11 @@ function rList(f){
       pims:   [a.pims||'',b.pims||''],
       src:    [sg(a),sg(b)],
       dvms:   [parseInt(a.dvms||'0',10),parseInt(b.dvms||'0',10)],
+      since:  [a.customerSince||'',b.customerSince||''],
     };
     const[va,vb]=v[sc]||[a.name,b.name];
-    // Numeric sort for DVMs column
-    if(sc==='dvms') return sa?va-vb:vb-va;
+    if(sc==='dvms') return sa?va-vb:vb-va;  // numeric
+    if(sc==='since') return sa?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));
     return sa?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));
   });
 
@@ -440,7 +468,7 @@ function rList(f){
       <td class="tl">${a.contact||'—'}</td>
       <td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td>
       <td style="text-align:center">${dvmsCell}</td>
-      <td class="tl" title="${a.features||''}">${a.features||'—'}</td>
+      <td class="tl">${(()=>{const s=sinceMonthLabel(a.customerSince),t=tenureLabel(a.customerSince);return s?s+'<span style="color:#94A3B8;font-size:9.5px;margin-left:4px">'+t+'</span>':'<span class="tnl">—</span>'})()}</td>
       <td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td>
       <td class="tl">${sg(a)}</td>
       <td>${flags||'—'}</td>
