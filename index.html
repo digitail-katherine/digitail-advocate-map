@@ -377,11 +377,23 @@ function mkPop(a){
   const strongSigs=allSigs.filter(s=>STRONG.has(s));
   const ctxSigs   =allSigs.filter(s=>!STRONG.has(s));
 
+  // signalUrls: record-level dict of signal → source URL (built by Python script)
+  const urls = a.signalUrls || {};
   const sigSection=strongSigs.length
     ?`<div style="margin:0 0 10px 0;padding:9px 11px;background:#F0FFF4;border-left:4px solid #16A34A;border-radius:0 7px 7px 0">
         <div style="font-size:9px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Advocate because</div>
         <div style="display:flex;flex-direction:column;gap:4px">
-          ${strongSigs.map(s=>`<span style="font-size:12px;color:#166534">${SIGNAL_LABELS[s]||s}</span>`).join('')}
+          ${strongSigs.map(s=>{
+            const label=SIGNAL_LABELS[s]||s;
+            const url=urls[s];
+            return url
+              ? `<a href="${url}" target="_blank" rel="noopener noreferrer"
+                   style="font-size:12px;color:#166534;text-decoration:none;display:flex;align-items:center;gap:4px"
+                   title="Open source">
+                   ${label}<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" style="flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                 </a>`
+              : `<span style="font-size:12px;color:#166534">${label}</span>`;
+          }).join('')}
         </div>
         ${ctxSigs.length?`<div style="margin-top:6px;padding-top:6px;border-top:1px solid #BBF7D0;font-size:10px;color:#4B7A54">${ctxSigs.map(s=>SIGNAL_LABELS[s]||s).join(' · ')}</div>`:''}
       </div>`
