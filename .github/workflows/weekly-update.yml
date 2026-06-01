@@ -25,9 +25,18 @@ jobs:
 
       - name: Run update script
         env:
-          HUBSPOT_TOKEN:  ${{ secrets.HUBSPOT_TOKEN }}
-          INTERCOM_TOKEN: ${{ secrets.INTERCOM_TOKEN }}
-          SLACK_WEBHOOK:  ${{ secrets.SLACK_WEBHOOK }}
+          HUBSPOT_TOKEN:     ${{ secrets.HUBSPOT_TOKEN }}
+          INTERCOM_TOKEN:    ${{ secrets.INTERCOM_TOKEN }}
+          SLACK_WEBHOOK:     ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_BOT_TOKEN:   ${{ secrets.SLACK_BOT_TOKEN }}
+          FATHOM_API_KEY:    ${{ secrets.FATHOM_API_KEY }}
+          FATHOM_CS_EMAILS:  ${{ secrets.FATHOM_CS_EMAILS }}
+          GOOGLE_API_KEY:    ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CSE_ID:     ${{ secrets.GOOGLE_CSE_ID }}
+          GOOGLE_PLACE_ID:   ${{ secrets.GOOGLE_PLACE_ID }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          REDDIT_CLIENT_ID:    ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: python update_advocates.py
 
       - name: Commit updated data if changed
