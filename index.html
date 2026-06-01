@@ -379,9 +379,14 @@ function rList(f){
     return `<tr onclick="fly('${uid}')"><td><div class="tn" title="${a.name}">${a.name}</div></td><td>${loc?`<span class="tl">${loc}</span>`:`<span class="tnl">Unknown</span>`}</td><td class="tl" title="${a.address||''}">${a.address||'—'}</td><td><span class="bg" style="background:${c}22;color:${c};border:1px solid ${c}55">${ts}</span></td><td class="tl">${a.contact||'—'}</td><td class="te">${a.email?`<a href="mailto:${a.email}" onclick="event.stopPropagation()">${a.email}</a>`:'—'}</td><td class="tl" title="${a.features||''}">${a.features||'—'}</td><td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td><td class="tl">${sg(a)}</td><td>${flags||'—'}</td></tr>`;
   }).join('');
 }
-function fly(id){
-  const a=D.find(x=>x.id===id);
-  if(a&&a.lat&&a.lng){map.setView([a.lat,a.lng],13,{animate:true});const m=ml.find(x=>x._aid===id);if(m)setTimeout(()=>m.openPopup(),350);}
+function fly(uid){
+  uid = String(uid);
+  const a = D.find(x => String(x.hsId || x.id) === uid);
+  if(a && a.lat && a.lng){
+    map.setView([a.lat, a.lng], 13, {animate:true});
+    const m = ml.find(x => x._uid === uid);
+    if(m) setTimeout(()=>m.openPopup(), 350);
+  }
 }
 function srt(col){sc===col?sa=!sa:(sc=col,sa=true);rList(filt());}
 function render(){
