@@ -68,10 +68,21 @@ ONBOARDING_CS_STAGE_KEYWORD  = "cs"       # case-insensitive substring match on 
 # Update if your pipeline label doesn't contain "sales".
 SALES_PIPELINE_KEYWORD = "sales"
 
-SLACK_CHANNELS_TO_SCAN = [
-    "sales-general", "cs-general", "corporate-athletes",
-    "customer-success", "churn-risk",
+# ── Slack channel scanning config ─────────────────────────────────────────────
+# The script scans ALL public channels the Slack bot is a member of.
+# Channels are sorted so high-priority ones are scanned first.
+#
+# NEGATIVE priority — scanned first; finding a match here removes an advocate:
+SLACK_NEGATIVE_PRIORITY = [
+    "churn", "escalat", "support", "cancel", "at-risk", "risk",
 ]
+# POSITIVE priority — scanned next; winning mentions land here:
+SLACK_POSITIVE_PRIORITY = [
+    "general", "shout", "win", "celebrat", "kudos", "success", "announcement",
+]
+# All other channels the bot is a member of are scanned last.
+# Lookback window in days — applies to all channels:
+SLACK_LOOKBACK_DAYS = 90
 
 # ── Signal definitions ────────────────────────────────────────────────────────
 STRONG_SIGNALS = {
@@ -778,7 +789,7 @@ def fetch_slack_signals() -> tuple:
         print("  Slack: no token, skipping"); return {}, set()
     hdrs     = {"Authorization":f"Bearer {SLACK_BOT_TOKEN}"}
     positive, negative = {}, set()
-    cutoff   = int((datetime.now(timezone.utc) - timedelta(days=30)).timestamp())
+    cutoff   = int((datetime.now(timezone.utc) - timedelta(days=SLACK_LOOKBACK_DAYS)).timestamp())
 
     # Get workspace URL once for constructing message permalinks
     workspace_url = "https://digitail.slack.com"
@@ -789,32 +800,68 @@ def fetch_slack_signals() -> tuple:
     except Exception:
         pass
 
-    try:
-        r        = requests.get("https://slack.com/api/conversations.list",
-                    params={"types":"public_channel","limit":200,"exclude_archived":"true"},
-                    headers=hdrs, timeout=10)
-        channels = {c["name"]:c["id"] for c in r.json().get("channels",[])}
-    except Exception as e:
-        print(f"  Slack channel list failed: {e}"); return {}, set()
+    # ── Discover ALL channels the bot is a member of ──────────────────────────
+    all_channels, cursor = [], None
+    while True:
+        try:
+            params = {"types":"public_channel","limit":200,
+                      "exclude_archived":"true"}
+            if cursor: params["cursor"] = cursor
+            r = requests.get("https://slack.com/api/conversations.list",
+                             params=params, headers=hdrs, timeout=15)
+            data = r.json()
+            if not data.get("ok"):
+                print(f"  Slack channel list error: {data.get('error','')}"); break
+            for ch in data.get("channels", []):
+                if ch.get("is_member"):   # only channels the bot can read
+                    all_channels.append({"name": ch["name"], "id": ch["id"]})
+            cursor = data.get("response_metadata", {}).get("next_cursor")
+            if not cursor: break
+        except Exception as e:
+            print(f"  Slack channel list failed: {e}"); break
+
+    # Sort: negative-priority first → positive-priority → everything else
+    # This ensures churn/escalation channels are evaluated before we decide
+    # whether a positive mention from another channel counts
+    def _ch_sort(ch):
+        n = ch["name"].lower()
+        if any(k in n for k in SLACK_NEGATIVE_PRIORITY): return 0
+        if any(k in n for k in SLACK_POSITIVE_PRIORITY): return 1
+        return 2
+    all_channels.sort(key=_ch_sort)
+
+    neg_channels = [c["name"] for c in all_channels if _ch_sort(c) == 0]
+    pos_channels = [c["name"] for c in all_channels if _ch_sort(c) == 1]
+    print(f"  Slack: {len(all_channels)} accessible channels "
+          f"({SLACK_LOOKBACK_DAYS}-day window)")
+    print(f"  Negative-priority: {neg_channels or ['none matched']}")
+    print(f"  Positive-priority: {pos_channels or ['none matched']}")
+
+    # ── Scan each channel ─────────────────────────────────────────────────────
     scanned = 0
-    for ch_name in SLACK_CHANNELS_TO_SCAN:
-        ch_id = channels.get(ch_name)
-        if not ch_id: continue
+    for ch in all_channels:
+        ch_name = ch["name"]
+        ch_id   = ch["id"]
         try:
             r = requests.get("https://slack.com/api/conversations.history",
                 params={"channel":ch_id,"oldest":cutoff,"limit":200},
                 headers=hdrs, timeout=15)
-            if not r.json().get("ok"): continue
-            for msg in r.json().get("messages",[]):
+            data = r.json()
+            if not data.get("ok"):
+                # "not_in_channel" is expected for some channels — skip silently
+                err = data.get("error","")
+                if err not in ("not_in_channel","channel_not_found"):
+                    print(f"  Slack #{ch_name}: {err}")
+                continue
+            for msg in data.get("messages",[]):
                 text = msg.get("text","")
                 if not text or len(text) < 15: continue
                 tl      = text.lower()
                 is_pos  = any(k in tl for k in POSITIVE_KW)
                 is_neg  = any(k in tl for k in NEGATIVE_KW)
                 scanned += 1
-                # Construct direct Slack message permalink from channel ID + timestamp
                 ts       = msg.get("ts","")
-                ts_nodot = ts.replace(".", "")
+                ts_nodot = ts.replace(".","")
                 permalink = f"{workspace_url}/archives/{ch_id}/p{ts_nodot}" if ts_nodot else None
                 # Require 2+ capitalised words to avoid single-word false matches
                 for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
@@ -831,9 +878,12 @@ def fetch_slack_signals() -> tuple:
                             })
                         elif is_neg and not is_pos:
                             negative.add(word.lower())
+            time.sleep(0.3)  # respect Slack Tier 3 rate limit (50 req/min)
         except Exception as e:
             print(f"  Slack #{ch_name} failed: {e}")
-    print(f"  Slack: {scanned} messages → {len(positive)} positive, {len(negative)} negative")
+
+    print(f"  Slack: {scanned} messages scanned → "
+          f"{len(positive)} positive mentions, {len(negative)} negative terms")
     return positive, negative
 
 # ── Fathom call intelligence ──────────────────────────────────────────────────
@@ -1331,14 +1381,23 @@ def main():
         new_advocates.append(rec)
 
     # ── Preserve non-HubSpot records (manual and public review sources only) ──
-    # Strip hs_referral_network from any preserved record — it cannot be
-    # revalidated here (no HubSpot lookup), so stale signals must be removed.
-    # If that was the only strong signal the record is correctly excluded.
+    # Every preserved record is evaluated against all current negative signals —
+    # the same check the main HubSpot loop applies. An existing advocate with a
+    # negative Slack mention, Intercom bad rating, or Fathom negative call is
+    # removed here regardless of its original qualifying signal.
     hs_ids_in = {str(a.get("hsId","")) for a in new_advocates}
     names_in  = {a["name"].lower() for a in new_advocates}
+    excl_neg_preserved = 0
     for old in existing:
         already = (str(old.get("hsId","")) in hs_ids_in or old["name"].lower() in names_in)
         if not already:
+            old_name = (old.get("name") or "")
+            # Full negative check — same logic as the HubSpot main loop
+            if (old_name.lower() in all_negative or
+                    any(names_match(old_name, b) for b in all_negative)):
+                excl_neg_preserved += 1
+                print(f"  ✗ Negative (preserved): {old_name}")
+                continue
             # Remove referral signal — can only be verified via live HubSpot lookup
             cleaned_signals = [s for s in old.get("signals",[]) if s != "hs_referral_network"]
             old = dict(old)
@@ -1349,7 +1408,8 @@ def main():
 
     new_advocates.sort(key=lambda a: a.get("name",""))
 
-    print(f"\nExcluded: {excl_signal} (no strong signal), {excl_bad} (negative signal)")
+    print(f"\nExcluded: {excl_signal} (no strong signal), "
+          f"{excl_bad} (negative), {excl_neg_preserved} (negative — preserved records)")
 
     new_json = json.dumps(new_advocates, sort_keys=True)
     if new_json != original:
@@ -1367,7 +1427,7 @@ def main():
         if added:   lines.append(f"✅ *{len(added)} new:* " + ", ".join(added[:6]))
         if updated: lines.append(f"📝 Updated: " + ", ".join(updated[:6]) +
                                   (f" +{len(updated)-6} more" if len(updated)>6 else ""))
-        lines.append(f"🚫 Excluded: {excl_signal} no signal · {excl_bad} negative")
+        lines.append(f"🚫 Excluded: {excl_signal} no signal · {excl_bad} negative · {excl_neg_preserved} negative (preserved)")
         if not added and not updated: lines.append("No changes this week ✓")
         lines.append(f"_Run: {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC_")
         requests.post(SLACK_URL, json={"text":"\n".join(lines)}, timeout=10)
