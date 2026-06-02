@@ -81,19 +81,23 @@ ONBOARDING_CS_STAGE_KEYWORD  = "cs"       # case-insensitive substring match on 
 SALES_PIPELINE_KEYWORD = "sales"
 
 # ── Slack channel scanning config ─────────────────────────────────────────────
-# The script scans ALL public channels the Slack bot is a member of.
-# Channels are sorted so high-priority ones are scanned first.
+# The script scans only the channels below — no others.
 #
-# NEGATIVE priority — scanned first; finding a match here removes an advocate:
+# POSITIVE qualifying channels (produce slack_mention strong signals):
+#   • #general (exact name match — avoids matching #sales-general)
+#   • Any channel containing "shout" (e.g. #company-shout-outs-and-celebrations)
+SLACK_POSITIVE_KEYWORDS = ["shout"]        # substring match
+SLACK_POSITIVE_EXACT    = {"general"}      # exact channel name (not substring)
+
+# NEGATIVE detection channels (clinics mentioned here get excluded from the map):
+#   • Any channel containing "churn"    → #customer-churn-requests
+#   • Any channel containing "escalat"  → #customer-support-escalations
+#   • Any channel containing "customer-success" → #customer-success
 SLACK_NEGATIVE_PRIORITY = [
-    "churn", "escalat", "support", "cancel", "at-risk", "risk",
+    "churn", "escalat", "customer-success",
 ]
-# POSITIVE priority — scanned next; winning mentions land here:
-SLACK_POSITIVE_PRIORITY = [
-    "general", "shout", "win", "celebrat", "kudos", "success", "announcement",
-]
-# All other channels the bot is a member of are scanned last.
-# Lookback window in days — applies to all channels:
+
+# Lookback window in days — applies to all scanned channels:
 SLACK_LOOKBACK_DAYS = 90
 
 # ── Signal definitions ────────────────────────────────────────────────────────
@@ -1012,37 +1016,48 @@ def fetch_slack_signals() -> tuple:
         except Exception as e:
             print(f"  Slack channel list failed: {e}"); break
 
-    # Sort: negative-priority first → positive-priority → everything else
-    # This ensures churn/escalation channels are evaluated before we decide
-    # whether a positive mention from another channel counts
+    # Sort: negative channels first → positive channels
     def _ch_sort(ch):
         n = ch["name"].lower()
         if any(k in n for k in SLACK_NEGATIVE_PRIORITY): return 0
-        if any(k in n for k in SLACK_POSITIVE_PRIORITY): return 1
+        if any(k in n for k in SLACK_POSITIVE_KEYWORDS) or n in SLACK_POSITIVE_EXACT: return 1
         return 2
     all_channels.sort(key=_ch_sort)
 
     neg_channels = [c["name"] for c in all_channels if _ch_sort(c) == 0]
     pos_channels = [c["name"] for c in all_channels if _ch_sort(c) == 1]
-    print(f"  Slack: {len(all_channels)} accessible channels "
+    print(f"  Slack: scanning {len(neg_channels)+len(pos_channels)} priority channels "
           f"({SLACK_LOOKBACK_DAYS}-day window)")
-    print(f"  Negative-priority: {neg_channels or ['none matched']}")
-    print(f"  Positive-priority: {pos_channels or ['none matched']}")
+    print(f"  Negative channels: {neg_channels or ['none matched']}")
+    print(f"  Positive channels: {pos_channels or ['none matched']}")
 
     # ── Scan each channel ─────────────────────────────────────────────────────
+    # KEY RULES:
+    # - POSITIVE signals → ONLY from #general and #shout-out channels
+    # - NEGATIVE signals → ONLY from churn, escalation, customer-success channels
+    # - All other channels are skipped entirely
     scanned    = 0
-    is_neg_ch  = lambda name: any(k in name for k in SLACK_NEGATIVE_PRIORITY)
+    is_neg_ch  = lambda name: any(k in name.lower() for k in SLACK_NEGATIVE_PRIORITY)
+    is_pos_ch  = lambda name: (any(k in name.lower() for k in SLACK_POSITIVE_KEYWORDS)
+                               or name.lower() in SLACK_POSITIVE_EXACT)
+
     for ch in all_channels:
-        ch_name    = ch["name"]
-        ch_id      = ch["id"]
-        neg_channel = is_neg_ch(ch_name)  # only churn/escalation channels add to negatives
+        ch_name     = ch["name"]
+        ch_id       = ch["id"]
+        neg_channel = is_neg_ch(ch_name)
+        pos_channel = is_pos_ch(ch_name)
+
+        # Skip channels that can contribute neither positives nor negatives —
+        # saves API calls and avoids picking up irrelevant mentions
+        if not neg_channel and not pos_channel:
+            continue
+
         try:
             r = requests.get("https://slack.com/api/conversations.history",
                 params={"channel":ch_id,"oldest":cutoff,"limit":200},
                 headers=hdrs, timeout=15)
             data = r.json()
             if not data.get("ok"):
-                # "not_in_channel" is expected for some channels — skip silently
                 err = data.get("error","")
                 if err not in ("not_in_channel","channel_not_found"):
                     print(f"  Slack #{ch_name}: {err}")
@@ -1051,15 +1066,19 @@ def fetch_slack_signals() -> tuple:
                 text = msg.get("text","")
                 if not text or len(text) < 15: continue
                 tl      = text.lower()
-                is_pos  = any(k in tl for k in POSITIVE_KW)
-                is_neg  = any(k in tl for k in NEGATIVE_KW)
                 scanned += 1
                 ts       = msg.get("ts","")
                 ts_nodot = ts.replace(".","")
                 permalink = f"{workspace_url}/archives/{ch_id}/p{ts_nodot}" if ts_nodot else None
-                # Require 2+ capitalised words to avoid single-word false matches.
-                # Also require at least one DISTINCTIVE word (not a generic vet term)
-                # so "Animal Hospital" doesn't fire on every animal hospital.
+
+                # Use word-boundary matching so "great" inside "Great Plains Veterinary"
+                # does NOT trigger is_pos (the clinic name itself is not sentiment)
+                is_pos = any(re.search(r'\b' + re.escape(k) + r'\b', tl)
+                             for k in POSITIVE_KW)
+                is_neg = any(k in tl for k in NEGATIVE_KW)  # phrases — substring ok
+
+                # Extract multi-word capitalised clinic name candidates.
+                # Require at least one DISTINCTIVE word (non-generic vet term).
                 for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
                     wl = word.lower()
                     distinctive = {w for w in re.split(r'\W+', wl)
@@ -1068,7 +1087,9 @@ def fetch_slack_signals() -> tuple:
                         "slack","digitail","tails","monday","friday",
                         "north america","good morning","great work","well done",
                     }:
-                        if is_pos and not is_neg:
+                        if is_pos and not is_neg and pos_channel:
+                            # Qualifying positive: shout-out/celebration channels ONLY.
+                            # setdefault ensures the FIRST (likely most specific) message wins.
                             positive.setdefault(wl, {
                                 "signal":    "slack_mention",
                                 "quote":     text[:280],
@@ -1076,14 +1097,14 @@ def fetch_slack_signals() -> tuple:
                                 "permalink": permalink,
                             })
                         elif is_neg and not is_pos and neg_channel:
-                            # Only flag as negative if message is in a churn/escalation channel
                             negative.add(wl)
-            time.sleep(0.3)  # respect Slack Tier 3 rate limit (50 req/min)
+            time.sleep(0.3)
         except Exception as e:
             print(f"  Slack #{ch_name} failed: {e}")
 
-    print(f"  Slack: {scanned} messages scanned → "
-          f"{len(positive)} positive mentions, {len(negative)} negative terms")
+    print(f"  Slack: {scanned} messages scanned in "
+          f"{sum(1 for c in all_channels if is_pos_ch(c['name']) or is_neg_ch(c['name']))} "
+          f"priority channels → {len(positive)} positive, {len(negative)} negative")
     return positive, negative
 
 # ── Fathom call intelligence ──────────────────────────────────────────────────
@@ -1562,17 +1583,28 @@ def main():
                     signal_urls["intercom_csat"] = ic_sigs[ic_key]["url"]
                 break
 
-        # Slack: require 2+ words of 5+ chars to overlap, excluding generic vet terms.
-        # Without GENERIC_VET_WORDS exclusion, "Animal Hospital" would match every
-        # animal hospital in the database.
-        for s_key in slack_pos:
+        # Slack: require the HubSpot company name to appear verbatim (or nearly so)
+        # in the Slack message text. Word-overlap matching produces wrong links
+        # because a message about Clinic A can match Clinic B via shared words.
+        # We check both directions: does the slack key match the name AND does
+        # the name appear in the original message quote?
+        for s_key, s_val in slack_pos.items():
             s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
             n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
-            if s_words and n_words and len(s_words & n_words) >= 1:
-                strong_signals.append("slack_mention")
-                if slack_pos[s_key].get("permalink"):
-                    signal_urls["slack_mention"] = slack_pos[s_key]["permalink"]
-                break
+            if not s_words or not n_words: continue
+            # Primary check: distinctive word overlap (name-level match)
+            if len(s_words & n_words) < 1: continue
+            # Secondary check: verify the clinic name actually appears in the quote.
+            # This catches "Great Plains Animal Hospital" being extracted from a message
+            # about "Simmons Veterinary" that happened to mention "Great" positively.
+            quote_lc = (s_val.get("quote") or "").lower()
+            name_words_long = [w for w in re.split(r'\W+', name_lc) if len(w) >= 6 and w not in GENERIC_VET_WORDS]
+            if name_words_long and not any(w in quote_lc for w in name_words_long):
+                continue  # name's distinctive words don't appear in the message at all
+            strong_signals.append("slack_mention")
+            if s_val.get("permalink"):
+                signal_urls["slack_mention"] = s_val["permalink"]
+            break
 
         for f_key in fathom_pos:
             if names_match(name, f_key):
