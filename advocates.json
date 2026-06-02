@@ -63,7 +63,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 390,
@@ -97,7 +98,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -159,6 +161,7 @@
     "address": "7124 West Hefner Road, Oklahoma City, OK, 73162",
     "hsId": "21507806557",
     "signals": [
+      "case_study",
       "hs_long_tenure",
       "hs_referral_network"
     ],
@@ -166,86 +169,51 @@
     "format": "bnm",
     "customerSince": "2024-07-21",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557"
-    }
-  },
-  {
-    "id": 44,
-    "name": "Highland Road pet Hospital",
-    "city": "kitchener",
-    "st": "ON",
-    "lat": 35.57977,
-    "lng": -97.63978,
-    "ct": "general",
-    "contact": "Shashi Tagra",
-    "email": "info@highlandroadpethospital.com",
-    "phone": "519-513-1064/519-749-9414",
-    "features": "Tails",
-    "dgtId": null,
-    "pims": "None",
-    "notes": null,
-    "verify": false,
-    "approx": false,
-    "quote": "Featured in Digitail customer story: Dr. Martin DVM, Co-Owner How Hefner Road Saves 90+ Minutes Per Doctor Daily",
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "src": "Usage Report",
-    "address": "200 HIGHLAND RD W, Kitchener, ON, N2M 3C2",
-    "hsId": "5518146326",
-    "signals": [
-      "case_study",
-      "hs_long_tenure"
-    ],
-    "verified": true,
-    "format": "bnm",
-    "customerSince": "2020-09-14",
-    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     }
   },
   {
-    "id": 392,
-    "name": "Parker Veterinary Services",
+    "id": 44,
+    "name": "Shoreview Veterinary Hospital - ON Canada",
+    "city": "Toronto",
+    "st": "ON",
+    "lat": 43.68495,
+    "lng": -79.27527,
     "ct": "general",
-    "src": "HubSpot",
+    "contact": "Dr. Nigel Skinner",
+    "email": "nskinnerdvm@gmail.com",
+    "phone": "4164857387",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None - New Practice Start Up",
+    "notes": null,
     "verify": false,
     "approx": false,
-    "quote": "Featured on Digitail customer stories page: https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/",
+    "quote": "Featured in Digitail customer story: Dr. Rachel Hensch DVM, Owner, Beeville Veterinary Hospital Beeville Veterinary Hospital cuts cost of goods 5% in seven months by switching from Avimark to Digitail",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 31.43843,
-    "lng": -110.09786,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2022-10-11",
-    "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/"
-    },
-    "pimsConsidered": null,
-    "hsId": "9507654278",
-    "format": "bnm",
-    "email": "lancedvmparker@gmail.com",
-    "phone": "2082209193",
-    "contact": "Lance Parker",
-    "city": "hereford",
-    "st": "AZ",
-    "pims": "None - New Practice Start Up",
-    "address": "Hereford, AZ",
+    "src": "Usage Report",
+    "address": "1316 Kingston Road, Toronto, ON, M1N 1P6",
+    "hsId": "18836197240",
     "signals": [
-      "case_study",
-      "hs_long_tenure"
+      "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "format": "bnm",
+    "customerSince": "2021-10-25",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/60-five-star-reviews-in-6-months-how-shoreview-built-a-brand-new-practice/"
+    }
   },
   {
     "id": 44,
     "name": "Simmons Veterinary Clinic",
     "city": "decatur",
     "st": "GA",
-    "lat": 26.71536,
-    "lng": -80.05329,
+    "lat": 33.77092,
+    "lng": -84.29484,
     "ct": "general",
     "contact": "Dr. Sharif Jones",
     "email": "drchris@simmons.vet",
@@ -305,7 +273,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 292,
@@ -373,7 +342,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 393,
@@ -408,15 +378,16 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
     "name": "[VPP] Paumanok Veterinary Hospital, P.C.",
     "city": "medford",
     "st": "NY",
-    "lat": 42.35883,
-    "lng": -71.05783,
+    "lat": 40.85142,
+    "lng": -72.95562,
     "ct": "general",
     "contact": "David Hensen",
     "email": "drdave@paumanokvethospital.com",
