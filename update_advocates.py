@@ -56,6 +56,15 @@ SIGNAL_STATIC_URLS = {
     "getapp":            "https://www.getapp.com/veterinary-practice-management-software/a/digitail/reviews/",
 }
 
+# ── Manual referral overrides ─────────────────────────────────────────────────
+# HubSpot company IDs that are KNOWN to be in the reference program regardless
+# of what the API search returns. Add any company here if the property-based
+# search keeps missing them. Find a company's ID in its HubSpot URL:
+# app.hubspot.com/contacts/4912130/company/{ID}
+KNOWN_REFERRAL_COMPANY_IDS = {
+    "21507806557",   # Hefner Road Animal Hospital (Chris Martin)
+}
+
 # Onboarding pipeline exclusion — clinics with an ACTIVE onboarding deal that
 # has NOT yet reached the CS stage are excluded from the map (still being set up).
 # The script auto-detects these by name; update if your HubSpot pipeline is named
@@ -297,100 +306,148 @@ def geocode(props: dict, contact: dict = None):
         print(f"  Geocode rejected: {query} → {lat},{lng}")
     return None, None
 
-# ── HubSpot referral network — search contacts by property ───────────────────
+# ── HubSpot referral network — contacts only ─────────────────────────────────
 def hs_fetch_referral_network() -> tuple:
     """
-    Fetches contacts where the Reference Program Opt-In property is set.
-    Tries multiple property name and value combinations because HubSpot stores
-    boolean/checkbox properties differently depending on how they were created.
+    Logic:
+      1. Find all HubSpot contacts where the Reference Program Opt-In property
+         is set to a truthy value (yes/true/1).
+      2. Resolve each contact to its associated HubSpot company via the
+         associations API.
+      3. Return (name_map, company_ids_set) — the COMPANY data is what gets
+         pinned on the map; the contact is just how we identify who opted in.
 
-    Returns (name_map, company_ids_set).
+    The function tries multiple property names and uses HAS_PROPERTY + client-side
+    filtering so it works regardless of whether the property is a checkbox,
+    radio button, or dropdown in HubSpot.
     """
     if not HS_TOKEN: return {}, set()
 
-    # Try these property names in order — the first one that returns results wins.
-    # If none work, check HubSpot → Settings → Properties → Contacts and search
-    # for "reference" to find the exact internal name.
+    # Try these internal property names in order.
+    # To find the exact name: HubSpot → Settings → Properties → Contacts,
+    # search "reference", hover the property → Internal name shown below label.
     PROPERTY_CANDIDATES = [
         "reference_program_optin",
         "reference_program_opt_in",
         "reference_opt_in",
         "referenceprogramoptin",
         "reference_program",
+        "reference_program_optin__c",
+        "hs_lead_status",       # some teams repurpose this — caught by truthy filter below
     ]
-    # All truthy values HubSpot might store for a checkbox/radio/dropdown property
-    VALUE_CANDIDATES = ["true", "True", "TRUE", "yes", "Yes", "YES", "1"]
+    TRUTHY = {"true","yes","1","on","opted in","opt in","opted-in","opt-in","agreed"}
 
+    # ── Step 1: find the right property name via diagnostic lookup ────────────
+    # For each candidate, use HAS_PROPERTY (property exists and is non-empty)
+    # then filter client-side for truthy values. This works for every HubSpot
+    # property type — checkbox, dropdown, radio, text.
+    found_prop   = None
     all_contacts = []
 
     for prop_name in PROPERTY_CANDIDATES:
-        for val in VALUE_CANDIDATES:
-            payload = {
+        payload = {
+            "filterGroups": [{"filters": [{
+                "propertyName": prop_name,
+                "operator":     "HAS_PROPERTY",
+            }]}],
+            "properties": ["firstname","lastname","email","phone","company",
+                           "jobtitle","city","state","zip","country", prop_name],
+            "limit": 1,
+        }
+        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                          json=payload, headers=hs_h(), timeout=15)
+        if r.status_code == 400:
+            continue   # property doesn't exist — try next name
+        if r.status_code != 200:
+            print(f"  Referral search ({prop_name}): HTTP {r.status_code} — {r.text[:120]}")
+            continue
+        total = r.json().get("total", 0)
+        if total == 0:
+            continue   # property exists but no contacts have it set
+
+        # Sample value check — make sure it looks like our opt-in property
+        sample_val = (r.json().get("results",[{}])[0]
+                       .get("properties",{}).get(prop_name,"") or "")
+        print(f"  Referral property found: '{prop_name}' — "
+              f"{total} contacts, sample value: '{sample_val}'")
+
+        # Now fetch ALL contacts with this property set, filter client-side
+        found_prop = prop_name
+        after = None
+        while True:
+            full_payload = {
                 "filterGroups": [{"filters": [{
                     "propertyName": prop_name,
-                    "operator":     "EQ",
-                    "value":        val,
+                    "operator":     "HAS_PROPERTY",
                 }]}],
-                "properties": ["firstname","lastname","email","phone",
-                               "company","jobtitle","city","state","zip","country",
-                               prop_name],
-                "limit": 1,  # test call — just checking if the property+value returns anything
+                "properties": ["firstname","lastname","email","phone","company",
+                               "jobtitle","city","state","zip","country", prop_name],
+                "limit": 100,
             }
-            r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                              json=payload, headers=hs_h(), timeout=15)
-            if r.status_code == 200 and r.json().get("total", 0) > 0:
-                print(f"  Referral property match: '{prop_name}' = '{val}' "
-                      f"({r.json()['total']} contacts) — fetching all…")
-                # Now page through to get all contacts with this property+value
-                after = None
-                while True:
-                    full_payload = {
-                        "filterGroups": [{"filters": [{
-                            "propertyName": prop_name,
-                            "operator":     "EQ",
-                            "value":        val,
-                        }]}],
-                        "properties": ["firstname","lastname","email","phone",
-                                       "company","jobtitle","city","state","zip","country"],
-                        "limit": 100,
-                    }
-                    if after: full_payload["after"] = after
-                    pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                                       json=full_payload, headers=hs_h(), timeout=15)
-                    if pr.status_code != 200: break
-                    data = pr.json()
-                    all_contacts.extend(data.get("results", []))
-                    after = data.get("paging", {}).get("next", {}).get("after")
-                    if not after: break
-                break  # found the right property+value — stop trying others
-            elif r.status_code != 200:
-                # 400 means property doesn't exist — try next
-                if r.status_code != 400:
-                    print(f"  Referral search ({prop_name}={val}): HTTP {r.status_code}")
-        if all_contacts:
-            break  # found contacts — stop trying property name variations
+            if after: full_payload["after"] = after
+            pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                               json=full_payload, headers=hs_h(), timeout=15)
+            if pr.status_code != 200: break
+            data = pr.json()
+            for contact in data.get("results", []):
+                raw_val = (contact.get("properties",{}).get(prop_name,"") or "").strip().lower()
+                if raw_val in TRUTHY:
+                    all_contacts.append(contact)
+            after = data.get("paging",{}).get("next",{}).get("after")
+            if not after: break
+        break  # found the right property — stop trying
 
+    # ── Diagnostic: if still 0, look up known companies and log their contacts ─
     if not all_contacts:
-        print(f"  ⚠ Referral network: 0 contacts found across all property name/value "
-              f"combinations. Check HubSpot → Settings → Properties → Contacts and verify "
-              f"the exact internal name and value of your reference opt-in property, then "
-              f"add it to PROPERTY_CANDIDATES above.")
+        print(f"  ⚠ Referral network: 0 opted-in contacts found.")
+        if KNOWN_REFERRAL_COMPANY_IDS:
+            print(f"  Checking known company IDs for contact properties…")
+            for co_id in list(KNOWN_REFERRAL_COMPANY_IDS)[:3]:
+                try:
+                    cr = requests.get(
+                        f"https://api.hubapi.com/crm/v3/objects/companies/{co_id}"
+                        f"/associations/contacts",
+                        headers=hs_h(), timeout=10)
+                    if cr.status_code != 200: continue
+                    con_ids = [c["id"] for c in cr.json().get("results",[])[:2]]
+                    if not con_ids: continue
+                    br = requests.post(
+                        "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
+                        json={"inputs":[{"id":i} for i in con_ids],
+                              "properties":["firstname","lastname"] + PROPERTY_CANDIDATES[:5]},
+                        headers=hs_h(), timeout=10)
+                    if br.status_code == 200:
+                        for c in br.json().get("results",[]):
+                            p = c.get("properties",{})
+                            name_str = f"{p.get('firstname','')} {p.get('lastname','')}".strip()
+                            ref_vals  = {k: p.get(k) for k in PROPERTY_CANDIDATES[:5]
+                                         if p.get(k) is not None}
+                            print(f"    Company {co_id} contact '{name_str}': {ref_vals or 'no reference props found'}")
+                except Exception as e:
+                    print(f"    Diagnostic lookup failed for {co_id}: {e}")
+        print(f"  Fix: go to HubSpot → Settings → Properties → Contacts, "
+              f"find your opt-in property, copy its internal name exactly, "
+              f"and add it as the first item in PROPERTY_CANDIDATES.")
+
+    print(f"  Referral network: {len(all_contacts)} opted-in contacts found "
+          f"(property: '{found_prop or 'none matched'}')")
+
+    if not all_contacts and not KNOWN_REFERRAL_COMPANY_IDS:
         return {}, set()
 
-    print(f"  Referral network: {len(all_contacts)} opted-in contacts found")
-
-    contact_ids = [c["id"] for c in all_contacts]
-    company_ids = set()
-    name_map    = {}
-
-    # Build name fallback map from contact "company" text field
+    # ── Step 2: build name fallback from contact "company" text field ─────────
+    name_map = {}
     for contact in all_contacts:
         p  = contact.get("properties", {})
         co = (p.get("company") or "").strip()
         if co:
             name_map[co.lower()] = {"contact_props": p, "contact_id": contact["id"]}
 
-    # Resolve contact → company object ID via associations (exact, no name guessing)
+    # ── Step 3: resolve contact → associated HubSpot company object IDs ───────
+    # This is the authoritative mapping — the company record's name, address,
+    # and PIMS fields are what populate the map pin, not the contact record.
+    company_ids = set()
+    contact_ids = [c["id"] for c in all_contacts]
     for i in range(0, len(contact_ids), 100):
         batch = contact_ids[i:i+100]
         ar = requests.post(
@@ -404,8 +461,16 @@ def hs_fetch_referral_network() -> tuple:
                     if cid: company_ids.add(cid)
         time.sleep(0.1)
 
-    print(f"  Referral network: {len(company_ids)} exact company ID matches "
-          f"+ {len(name_map)} name fallbacks")
+    # ── Step 4: merge manual overrides ───────────────────────────────────────
+    # For contacts confirmed opted-in but whose company association isn't
+    # resolving automatically. Remove an ID once the HubSpot link is fixed.
+    before = len(company_ids)
+    company_ids.update(KNOWN_REFERRAL_COMPANY_IDS)
+    if len(company_ids) > before:
+        print(f"  Referral network: +{len(company_ids)-before} from manual override "
+              f"(KNOWN_REFERRAL_COMPANY_IDS)")
+
+    print(f"  Referral network: {len(company_ids)} companies to include on map")
     return name_map, company_ids
 
 # ── HubSpot Onboarding pipeline exclusion ────────────────────────────────────
