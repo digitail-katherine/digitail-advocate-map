@@ -42,6 +42,16 @@ GOOGLE_CSE_ID   = os.environ.get("GOOGLE_CSE_ID", "")
 GOOGLE_PLACE    = os.environ.get("GOOGLE_PLACE_ID", "")
 FB_TOKEN        = os.environ.get("FACEBOOK_PAGE_TOKEN", "")
 DATA_FILE        = "advocates.json"
+
+DEBUG_TARGETS = {
+    "beeville", "hefner", "highland", "embrace", "shoreview",
+    "osburn", "central kentucky", "woodruff", "amy marcum", "beth ann", "lynn yake",
+}
+
+def debug_hit(text: str) -> bool:
+    t = (text or "").lower()
+    return any(x in t for x in DEBUG_TARGETS)
+
 HS_ACCOUNT_ID    = "4912130"   # HubSpot portal ID — used to build direct record links
 # Note: referral network is fetched by contact property search, not list ID.
 # The HubSpot list view at /contacts/4912130/objects/0-1/views/59320738/list
@@ -174,11 +184,35 @@ TELE_TERMS = ["tele", "virtual", "online", "remote"]
 # so that "Animal Hospital" doesn't match every animal hospital in the database.
 GENERIC_VET_WORDS = {
     "veterinary", "animal", "clinic", "hospital", "services", "service", "practice",
-    "center", "mobile", "care", "health", "petcare", "companion", "pets",
-    "vets", "vet", "medical", "wellness",
+    "center", "centre", "mobile", "care", "health", "petcare", "companion", "pets", "pet",
+    "vets", "vet", "medical", "wellness", "dvm", "doctor", "doctors",
     "road", "rd", "street", "st", "avenue", "ave", "boulevard", "blvd",
     "drive", "dr", "lane", "ln", "highway", "hwy", "parkway", "pkwy",
 }
+
+NAME_SYNONYMS = {
+    "vet": "veterinary", "vets": "veterinary", "veterinarian": "veterinary",
+    "veterinarians": "veterinary", "hospital": "clinic", "hospitals": "clinic",
+    "clinics": "clinic", "ah": "clinic",
+}
+
+def identity_words(name: str) -> set:
+    out = set()
+    for w in re.split(r'\W+', (name or '').lower()):
+        if not w or len(w) < 3:
+            continue
+        w = NAME_SYNONYMS.get(w, w)
+        if w in GENERIC_VET_WORDS:
+            continue
+        out.add(w)
+    return out
+
+def strict_clinic_match(a: str, b: str) -> bool:
+    aw, bw = identity_words(a), identity_words(b)
+    if not aw or not bw:
+        return False
+    small, big = (aw, bw) if len(aw) <= len(bw) else (bw, aw)
+    return small.issubset(big)
 
 def infer_format(name: str) -> str:
     n = name.lower()
@@ -236,6 +270,24 @@ US_STATES    = set("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD 
                    "SD TN TX UT VT VA WA WV WI WY DC".split())
 CA_PROVINCES = set("AB BC MB NB NL NS NT NU ON PE QC SK YT".split())
 
+STATE_PROVINCE_BOUNDS = {
+    "TX": (25.0, 36.8, -106.7, -93.3), "OK": (33.4, 37.2, -103.2, -94.2),
+    "CT": (40.8, 42.2, -73.9, -71.7), "MA": (41.1, 42.9, -73.6, -69.8),
+    "ON": (41.5, 57.5, -95.5, -74.0), "KY": (36.4, 39.3, -89.6, -81.9),
+    "VA": (36.4, 39.6, -83.8, -75.0), "NY": (40.4, 45.1, -79.8, -71.7),
+    "CA": (32.0, 42.1, -124.6, -114.0), "FL": (24.3, 31.1, -87.8, -80.0),
+}
+
+def coord_matches_state(lat, lng, st: str) -> bool:
+    st = (st or '').strip().upper()
+    if not st or st not in STATE_PROVINCE_BOUNDS:
+        return True
+    lo_lat, hi_lat, lo_lng, hi_lng = STATE_PROVINCE_BOUNDS[st]
+    try:
+        return lo_lat <= float(lat) <= hi_lat and lo_lng <= float(lng) <= hi_lng
+    except Exception:
+        return False
+
 def is_north_america(props: dict) -> bool:
     country = (props.get("country") or "").lower().strip()
     state   = (props.get("state")   or "").strip().upper()
@@ -272,10 +324,39 @@ HS_PROPS = [
 # If your "number of DVMs" property has a different internal name in HubSpot,
 # update "number_of_dvms" below to match. Find it at:
 # HubSpot → Settings → Properties → Deals → search "dvm"
-HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate", "competition", "pipeline"]
+HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate", "competition", "other_pims_considering", "pipeline"]
 
 def hs_h():
     return {"Authorization": f"Bearer {HS_TOKEN}", "Content-Type": "application/json"}
+
+def hs_request(method, url, **kwargs):
+    """HubSpot request with small retry/backoff for 429/5xx."""
+    kwargs.setdefault("headers", hs_h())
+    kwargs.setdefault("timeout", 15)
+    for attempt in range(5):
+        r = requests.request(method, url, **kwargs)
+        if r.status_code not in (429, 500, 502, 503, 504):
+            return r
+        wait = float(r.headers.get("Retry-After", 0) or 0) or min(12, 2 ** attempt)
+        print(f"  HubSpot retry {r.status_code}; sleeping {wait:.1f}s for {url.split('/crm/')[-1][:80]}")
+        time.sleep(wait)
+    return r
+
+def assoc_to_id(assoc: dict) -> str:
+    """Normalize HubSpot v3/v4 association shapes."""
+    if not isinstance(assoc, dict):
+        return ""
+    return str(assoc.get("toObjectId") or assoc.get("id") or assoc.get("idProperty") or "")
+
+def assoc_from_id(item: dict) -> str:
+    f = item.get("from") if isinstance(item, dict) else {}
+    if isinstance(f, dict):
+        return str(f.get("id") or "")
+    return str(f or "")
+
+def contact_display(c: dict) -> str:
+    p = c.get("properties", {}) if isinstance(c, dict) else {}
+    return (f"{p.get('firstname','')} {p.get('lastname','')}".strip() or p.get("email") or str(c.get("id", "")))
 
 def hs_context_signals(props: dict) -> list:
     """Context-only signals — displayed in popup but never qualify a clinic.
@@ -371,228 +452,141 @@ def geocode(props: dict, contact: dict = None):
     if not lat:
         lat, lng = geocode_nominatim(query, country)
     if lat:
-        if in_na_bounds(lat, lng) and coord_matches_country(lat, lng, country):
+        state = (props.get("state") or (contact or {}).get("state") or "").strip().upper()
+        if in_na_bounds(lat, lng) and coord_matches_country(lat, lng, country) and coord_matches_state(lat, lng, state):
             return lat, lng, confidence
-        print(f"  Geocode rejected: {query} → {lat},{lng}")
+        print(f"  Geocode rejected: {query} → {lat},{lng} (state={state or 'n/a'})")
     return None, None, confidence
 
 # ── HubSpot referral network — contacts only ─────────────────────────────────
 def hs_fetch_referral_network() -> tuple:
+    """Return company IDs whose associated contact has reference_program_optin = TRUE/Yes.
+    Resolves both contact→company and contact→deal→company.
     """
-    Logic:
-      1. Find all HubSpot contacts where the Reference Program Opt-In property
-         is set to a truthy value (yes/true/1).
-      2. Resolve each contact to its associated HubSpot company via the
-         associations API.
-      3. Return (name_map, company_ids_set) — the COMPANY data is what gets
-         pinned on the map; the contact is just how we identify who opted in.
+    if not HS_TOKEN:
+        return {}, set()
+    prop_name = "reference_program_optin"
+    truthy_values = ["TRUE", "true", "True", "Yes", "yes", "YES", "1", "Opted In", "opted in"]
+    contact_by_id = {}
 
-    The function tries multiple property names and uses exact EQ opt-in values
-    so opted-out values are never included of whether the property is a checkbox,
-    radio button, or dropdown in HubSpot.
-    """
-    if not HS_TOKEN: return {}, set()
-
-    # Try these internal property names in order.
-    # To find the exact name: HubSpot → Settings → Properties → Contacts,
-    # search "reference", hover the property → Internal name shown below label.
-    PROPERTY_CANDIDATES = [
-        "reference_program_optin",
-        "reference_program_opt_in",
-        "reference_opt_in",
-        "referenceprogramoptin",
-        "reference_program",
-        "reference_program_optin__c",
-    ]
-    TRUTHY = {
-        "true", "True", "TRUE",
-        "yes", "Yes", "YES",
-        "1", "on", "On", "ON",
-        "opted in", "Opted in", "Opted In",
-        "opt in", "Opt in", "Opt In",
-        "opted-in", "Opted-in", "Opted-In",
-        "opt-in", "Opt-in", "Opt-In",
-        "agreed", "Agreed", "AGREED",
-    }
-
-    def _is_ref_truthy(value) -> bool:
-        v = str(value or "").strip().lower()
-        return v in {"true", "yes", "1", "on", "opted in", "opt in", "opted-in", "opt-in", "agreed"}
-
-    # ── Step 1: find the right property name via exact opt-in values ──────────
-    # Do NOT use HAS_PROPERTY here. It also returns "No" / "Opted Out" values.
-    # HubSpot search filterGroups are ORed, so each accepted opt-in value gets
-    # its own EQ filter group.
-    found_prop   = None
-    all_contacts = []
-
-    def _read_contacts_eq(prop_name: str, value: str) -> tuple:
-        """HubSpot Search API can be picky with large OR groups.
-        Query one accepted value at a time so enum display values like Yes are not missed.
-        Returns (status_code, contacts).
-        """
+    def read_contacts(value):
         out, after = [], None
         while True:
             payload = {
-                "filterGroups": [{"filters": [{
-                    "propertyName": prop_name,
-                    "operator": "EQ",
-                    "value": value,
-                }]}],
-                "properties": ["firstname","lastname","email","phone","company",
-                               "jobtitle","city","state","zip","country", prop_name],
+                "filterGroups": [{"filters": [{"propertyName": prop_name, "operator": "EQ", "value": value}]}],
+                "properties": ["firstname", "lastname", "email", "phone", "company", "associatedcompanyid", "hs_associatedcompanyid", "jobtitle", "city", "state", "zip", "country", prop_name],
                 "limit": 100,
             }
             if after: payload["after"] = after
-            r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                              json=payload, headers=hs_h(), timeout=15)
+            r = hs_request("POST", "https://api.hubapi.com/crm/v3/objects/contacts/search", json=payload)
+            if r.status_code == 400:
+                print(f"  ⚠ Referral property '{prop_name}' not found")
+                return 400, out
             if r.status_code != 200:
+                print(f"  Referral search {prop_name}={value}: HTTP {r.status_code}")
                 return r.status_code, out
             data = r.json()
             out.extend(data.get("results", []))
-            after = data.get("paging",{}).get("next",{}).get("after")
+            after = data.get("paging", {}).get("next", {}).get("after")
             if not after: break
         return 200, out
 
-    for prop_name in PROPERTY_CANDIDATES:
-        prop_contacts = {}
-        saw_property = False
-        for val in sorted(TRUTHY):
-            code, rows = _read_contacts_eq(prop_name, val)
-            if code == 400:
-                break  # property doesn't exist — try next internal name
-            if code != 200:
-                print(f"  Referral search ({prop_name}={val}): HTTP {code}")
-                continue
-            saw_property = True
-            for c in rows:
-                if _is_ref_truthy(c.get("properties", {}).get(prop_name)):
-                    prop_contacts[str(c["id"])] = c
-        if prop_contacts:
-            found_prop = prop_name
-            all_contacts = list(prop_contacts.values())
-            sample_val = (all_contacts[0].get("properties",{}).get(prop_name,"") or "")
-            print(f"  Referral property found: '{prop_name}' — "
-                  f"{len(all_contacts)} opted-in contacts, sample value: '{sample_val}'")
+    for value in truthy_values:
+        code, rows = read_contacts(value)
+        if code == 400:
             break
-        if saw_property:
-            print(f"  Referral property '{prop_name}' exists, but no Yes/true values found via EQ")
+        for c in rows:
+            contact_by_id[str(c["id"])] = c
 
-    # ── Fallback: HubSpot enum values are sometimes stored/displayed differently ─
-    # If exact EQ values find nothing, fetch contacts with the property present and
-    # apply the same truthy test locally. This still blocks No/False/Opted Out.
-    if not all_contacts:
-        for prop_name in PROPERTY_CANDIDATES:
-            after = None
-            candidates = []
-            while True:
-                payload = {
-                    "filterGroups": [{"filters": [{
-                        "propertyName": prop_name,
-                        "operator": "HAS_PROPERTY",
-                    }]}],
-                    "properties": ["firstname","lastname","email","phone","company",
-                                   "jobtitle","city","state","zip","country", prop_name],
-                    "limit": 100,
-                }
-                if after: payload["after"] = after
-                pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                                   json=payload, headers=hs_h(), timeout=15)
-                if pr.status_code == 400:
-                    candidates = []
-                    break
-                if pr.status_code != 200:
-                    print(f"  Referral HAS_PROPERTY fallback ({prop_name}): HTTP {pr.status_code}")
-                    candidates = []
-                    break
-                data = pr.json()
-                for c in data.get("results", []):
-                    if _is_ref_truthy(c.get("properties", {}).get(prop_name)):
-                        candidates.append(c)
-                after = data.get("paging",{}).get("next",{}).get("after")
-                if not after: break
-            if candidates:
-                found_prop = prop_name
-                all_contacts = candidates
-                sample_val = (candidates[0].get("properties",{}).get(prop_name,"") or "")
-                print(f"  Referral property found via local truthy fallback: '{prop_name}' — "
-                      f"{len(all_contacts)} opted-in contacts, sample value: '{sample_val}'")
+    # Fallback for enum oddities: HAS_PROPERTY, then local truthy validation.
+    if not contact_by_id:
+        after = None
+        while True:
+            payload = {
+                "filterGroups": [{"filters": [{"propertyName": prop_name, "operator": "HAS_PROPERTY"}]}],
+                "properties": ["firstname", "lastname", "email", "phone", "company", "associatedcompanyid", "hs_associatedcompanyid", "jobtitle", "city", "state", "zip", "country", prop_name],
+                "limit": 100,
+            }
+            if after: payload["after"] = after
+            r = hs_request("POST", "https://api.hubapi.com/crm/v3/objects/contacts/search", json=payload)
+            if r.status_code != 200:
                 break
+            data = r.json()
+            for c in data.get("results", []):
+                raw = str(c.get("properties", {}).get(prop_name, "") or "").strip().lower()
+                if raw in {"true", "yes", "1", "on", "opted in", "opt-in", "agreed"}:
+                    contact_by_id[str(c["id"])] = c
+            after = data.get("paging", {}).get("next", {}).get("after")
+            if not after: break
 
-    # ── Diagnostic: if still 0, look up known companies and log their contacts ─
-    if not all_contacts:
-        print(f"  ⚠ Referral network: 0 opted-in contacts found.")
-        if KNOWN_REFERRAL_COMPANY_IDS:
-            print(f"  Checking known company IDs for contact properties…")
-            for co_id in list(KNOWN_REFERRAL_COMPANY_IDS)[:3]:
-                try:
-                    cr = requests.get(
-                        f"https://api.hubapi.com/crm/v3/objects/companies/{co_id}"
-                        f"/associations/contacts",
-                        headers=hs_h(), timeout=10)
-                    if cr.status_code != 200: continue
-                    con_ids = [c["id"] for c in cr.json().get("results",[])[:2]]
-                    if not con_ids: continue
-                    br = requests.post(
-                        "https://api.hubapi.com/crm/v3/objects/contacts/batch/read",
-                        json={"inputs":[{"id":i} for i in con_ids],
-                              "properties":["firstname","lastname"] + PROPERTY_CANDIDATES[:5]},
-                        headers=hs_h(), timeout=10)
-                    if br.status_code == 200:
-                        for c in br.json().get("results",[]):
-                            p = c.get("properties",{})
-                            name_str = f"{p.get('firstname','')} {p.get('lastname','')}".strip()
-                            ref_vals  = {k: p.get(k) for k in PROPERTY_CANDIDATES[:5]
-                                         if p.get(k) is not None}
-                            print(f"    Company {co_id} contact '{name_str}': {ref_vals or 'no reference props found'}")
-                except Exception as e:
-                    print(f"    Diagnostic lookup failed for {co_id}: {e}")
-        print(f"  Fix: go to HubSpot → Settings → Properties → Contacts, "
-              f"find your opt-in property, copy its internal name exactly, "
-              f"and add it as the first item in PROPERTY_CANDIDATES.")
-
-    print(f"  Referral network: {len(all_contacts)} opted-in contacts found "
-          f"(property: '{found_prop or 'none matched'}')")
-
-    if not all_contacts and not KNOWN_REFERRAL_COMPANY_IDS:
-        return {}, set()
-
-    # ── Step 2: resolve contact → associated HubSpot company object IDs ───────
-    # This is the authoritative mapping — the company record's name, address,
-    # and PIMS fields are what populate the map pin, not the contact record.
+    print(f"  Referral network: {len(contact_by_id)} opted-in contacts found (property: '{prop_name}')")
+    contact_ids = list(contact_by_id.keys())
     company_ids = set()
-    contact_ids = [c["id"] for c in all_contacts]
+
+    # Contact property fallback: HubSpot often exposes the primary company here.
+    for cid, c in contact_by_id.items():
+        p = c.get("properties", {})
+        direct_company = str(p.get("associatedcompanyid") or p.get("hs_associatedcompanyid") or "").strip()
+        if direct_company and direct_company.lower() not in {"none", "null"}:
+            company_ids.add(direct_company)
+            if debug_hit(contact_display(c)):
+                print(f"    Referral contact property → company: {contact_display(c)} → {direct_company}")
+
+    # contact → company
     for i in range(0, len(contact_ids), 100):
         batch = contact_ids[i:i+100]
-        ar = requests.post(
-            "https://api.hubapi.com/crm/v4/associations/contacts/companies/batch/read",
-            json={"inputs": [{"id": cid} for cid in batch]},
-            headers=hs_h(), timeout=15)
+        ar = hs_request("POST", "https://api.hubapi.com/crm/v4/associations/contacts/companies/batch/read",
+                           json={"inputs": [{"id": cid} for cid in batch]})
+        if ar.status_code == 200:
+            for item in ar.json().get("results", []):
+                from_id = assoc_from_id(item)
+                p = contact_by_id.get(from_id, {}).get("properties", {})
+                cname = f"{p.get('firstname','')} {p.get('lastname','')}".strip() or p.get("email", from_id)
+                for assoc in item.get("to", []):
+                    cid = assoc_to_id(assoc)
+                    if cid:
+                        company_ids.add(cid)
+                        print(f"    Referral contact → company: {cname} → {cid}")
+        time.sleep(0.1)
+
+    # contact → deal → company fallback
+    deal_ids = set()
+    for i in range(0, len(contact_ids), 100):
+        batch = contact_ids[i:i+100]
+        ar = hs_request("POST", "https://api.hubapi.com/crm/v4/associations/contacts/deals/batch/read",
+                           json={"inputs": [{"id": cid} for cid in batch]})
         if ar.status_code == 200:
             for item in ar.json().get("results", []):
                 for assoc in item.get("to", []):
-                    cid = str(assoc.get("toObjectId", ""))
+                    did = assoc_to_id(assoc)
+                    if did: deal_ids.add(did)
+        time.sleep(0.1)
+    for i in range(0, len(deal_ids), 100):
+        batch = list(deal_ids)[i:i+100]
+        ar = hs_request("POST", "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
+                           json={"inputs": [{"id": did} for did in batch]})
+        if ar.status_code == 200:
+            for item in ar.json().get("results", []):
+                for assoc in item.get("to", []):
+                    cid = assoc_to_id(assoc)
                     if cid: company_ids.add(cid)
         time.sleep(0.1)
 
-    # ── Step 4: merge manual overrides ───────────────────────────────────────
-    # For contacts confirmed opted-in but whose company association isn't
-    # resolving automatically. Remove an ID once the HubSpot link is fixed.
+    # Diagnostic: show target referral contacts even if HubSpot associations are missing.
+    for cid, c in contact_by_id.items():
+        if debug_hit(contact_display(c)):
+            print(f"    Referral diagnostic contact: {cid} {contact_display(c)} props={c.get('properties', {})}")
+
     before = len(company_ids)
     company_ids.update(KNOWN_REFERRAL_COMPANY_IDS)
     if len(company_ids) > before:
-        print(f"  Referral network: +{len(company_ids)-before} from manual override "
-              f"(KNOWN_REFERRAL_COMPANY_IDS)")
-
-    print(f"  Referral network: {len(company_ids)} companies (exact ID match only)")
-    # Diagnostic: print the IDs so mismatches can be spotted in the Actions log
+        print(f"  Referral network: +{len(company_ids)-before} from manual override")
+    print(f"  Referral network: {len(company_ids)} companies resolved")
     for cid in sorted(company_ids):
         print(f"    Referral company ID: {cid}")
-    # Return empty name_map — name-based fallback has been permanently disabled.
-    # It produced false positives (e.g. a contact with company="Brown" matching
-    # "Brown Veterinary Hospital - 7th Street" via substring). If contacts aren't
-    # linked to their company record in HubSpot, fix the association in HubSpot.
     return {}, company_ids
+
+ONBOARDING_CS_COMPANY_IDS = set()
 
 # ── HubSpot Onboarding pipeline exclusion ────────────────────────────────────
 def hs_fetch_onboarding_pipeline_config() -> tuple:
@@ -642,6 +636,8 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
     Companies with NO onboarding deal at all are NOT excluded here —
     they may be older customers onboarded before the pipeline existed.
     """
+    global ONBOARDING_CS_COMPANY_IDS
+    ONBOARDING_CS_COMPANY_IDS = set()
     if not pipeline_id: return set()
 
     # Fetch ALL onboarding deals (active + closed), resolve to companies,
@@ -682,7 +678,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
                     deal_id = str(item.get("from", {}).get("id", ""))
                     info    = deal_info.get(deal_id, ("", ""))
                     for assoc in item.get("to", []):
-                        cid = str(assoc.get("toObjectId", ""))
+                        cid = assoc_to_id(assoc)
                         if not cid: continue
                         # Keep the most recently closed/created onboarding deal's stage
                         if cid not in company_latest or info[0] > company_latest[cid][0]:
@@ -698,6 +694,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
     for cid, (date, stage) in company_latest.items():
         if stage == cs_stage_id:
             cs_count += 1
+            ONBOARDING_CS_COMPANY_IDS.add(cid)
         else:
             exclude_ids.add(cid)
 
@@ -780,7 +777,7 @@ def hs_build_sales_closedate_map(sales_pipeline_id: str) -> dict:
                     closedate = deal_closedate.get(deal_id)
                     if not closedate: continue
                     for assoc in item.get("to", []):
-                        cid = str(assoc.get("toObjectId", ""))
+                        cid = assoc_to_id(assoc)
                         if cid:
                             # Keep the EARLIEST date — first time they ever became a customer
                             if cid not in company_closedate or closedate < company_closedate[cid]:
@@ -880,8 +877,8 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
                     except ValueError:
                         deal_props["dvms"] = dvms
 
-                # Competition / PIMS considered — from the "competition" deal property
-                comp = (p.get("competition") or "").strip()
+                # Other PIMS considered — primary source is Sales deal property "other_pims_considering"; fallback to competition.
+                comp = (p.get("other_pims_considering") or p.get("competition") or "").strip()
                 if comp and not deal_props.get("pimsConsidered"):
                     deal_props["pimsConsidered"] = comp
 
@@ -1408,17 +1405,37 @@ def _extract_story_candidates(text: str, slug: str) -> list:
 
 
 def scrape_customer_stories() -> list:
-    """
-    Scrapes https://digitail.com/customer-stories/ and returns case-study signals.
-    Each story carries one primary reviewer plus clinic_candidates for safer matching.
+    """Scrape customer story URLs and extract exactly one clinic candidate per URL.
+    Uses URL slug/headline only; never broad card text, to prevent story bleed.
     """
     if not BS4:
         print("  Customer stories: beautifulsoup4 not installed, skipping")
         return []
+
+    def clean_story_name(raw: str) -> str:
+        raw = re.sub(r'https?://\S+', ' ', raw or '')
+        raw = raw.replace('-', ' ')
+        raw = re.sub(r'\s+', ' ', raw).strip()
+        raw = re.sub(r'^\d+\s+', '', raw)
+        raw = re.sub(r'^how\s+', '', raw, flags=re.I)
+        raw = re.sub(r'^(dr\.?|doctor)\s+[a-z]+\s+[a-z]+\s+', '', raw, flags=re.I)
+        stop = re.search(
+            r'\b(saved|saves|save|cut|cuts|reduced|reduces|reclaim|reclaims|reclaimed|'
+            r'switched|switches|switching|chose|chooses|built|builds|launched|launches|'
+            r'scaled|scales|transformed|transforms|boosted|boosts|grew|grows|drove|drives|'
+            r'used|uses|using|with digitail|from avimark|from cornerstone|per doctor|daily)\b',
+            raw, flags=re.I)
+        if stop:
+            raw = raw[:stop.start()].strip()
+        raw = re.sub(r'\b(and|with|from|to|by)$', '', raw, flags=re.I).strip()
+        words = raw.split()
+        if len(words) > 7:
+            raw = ' '.join(words[:7])
+        return raw.title().replace(' Ah', ' AH')
+
     try:
         r = requests.get(DIGITAIL_STORIES_URL, headers={
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                          "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124 Safari/537.36",
             "Accept-Language": "en-US,en;q=0.9",
         }, timeout=15)
         if r.status_code != 200:
@@ -1426,42 +1443,38 @@ def scrape_customer_stories() -> list:
             return []
         soup = BeautifulSoup(r.text, "html.parser")
         stories, seen_urls = [], set()
-
         for a in soup.find_all("a", href=True):
             href = a["href"]
             if "/customer-stories/" not in href:
                 continue
-            story_url = href if href.startswith("http") else f"https://digitail.com{href}"
-            if story_url.rstrip("/") == DIGITAIL_STORIES_URL.rstrip("/"):
+            url = href if href.startswith("http") else f"https://digitail.com{href}"
+            url = url.split("#")[0].rstrip("/") + "/"
+            if url.rstrip("/") == DIGITAIL_STORIES_URL.rstrip("/") or url in seen_urls:
                 continue
-            if story_url in seen_urls:
+            seen_urls.add(url)
+            slug = url.rstrip("/").split("/customer-stories/")[-1]
+            # Use the slug as the source of truth. Anchor/card text can include adjacent
+            # cards or clinician names, which previously attached Hefner stories to Embrace, etc.
+            clinic_name = clean_story_name(slug)
+            if not clinic_name or len(clinic_name) < 4:
                 continue
-            seen_urls.add(story_url)
-
-            slug = story_url.rstrip("/").split("/customer-stories/")[-1]
-            # Card text is often richer than the anchor text alone.
-            card = a.find_parent(["article", "li", "div"])
-            card_text = card.get_text(" ", strip=True) if card else ""
-            link_text = a.get_text(" ", strip=True)
-            text_blob = f"{link_text} {card_text}".strip()
-            candidates = _extract_story_candidates(text_blob, slug)
-            if not candidates:
+            if clinic_name.lower() in {"customer stories", "stories"}:
                 continue
-
             stories.append({
-                "source": "customer_stories",
-                "signal": "case_study",
-                "reviewer": candidates[0],
-                "clinic_candidates": candidates,
-                "text": f"Featured on Digitail customer stories page: {story_url}",
-                "url": story_url,
+                "source": "customer_stories", "signal": "case_study",
+                "reviewer": clinic_name, "clinic_candidates": [clinic_name],
+                "text": f"Featured in Digitail customer story: {clinic_name}",
+                "url": url,
             })
-
-        print(f"  Customer stories: {len(stories)} stories found on digitail.com")
-        if stories:
-            preview = ', '.join(s['reviewer'] for s in stories[:8])
-            print(f"  Customer stories matched candidates: {preview}{'…' if len(stories) > 8 else ''}")
-        return stories
+        dedup, seen = [], set()
+        for st in stories:
+            k = (st["url"], st["reviewer"].lower())
+            if k not in seen:
+                seen.add(k); dedup.append(st)
+        print(f"  Customer stories: {len(dedup)} stories found on digitail.com")
+        for st in dedup:
+            print(f"    Story candidate: {st['reviewer']} → {st['url']}")
+        return dedup
     except Exception as e:
         print(f"  Customer stories scrape failed: {e}")
         return []
@@ -1606,14 +1619,12 @@ MANUAL_REVIEW_MATCHES = {
 }
 
 def names_match(a: str, b: str) -> bool:
-    a, b = a.lower().strip(), b.lower().strip()
-    if not a or not b: return False
-    if a in b or b in a: return True
-    wa = {w for w in re.split(r'\W+', a) if len(w) >= 4}
-    wb = {w for w in re.split(r'\W+', b) if len(w) >= 4}
-    return len(wa & wb) >= 2
-
-
+    a, b = (a or "").lower().strip(), (b or "").lower().strip()
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    return strict_clinic_match(a, b)
 
 def distinctive_words(text: str, min_len: int = 4) -> set:
     return {w for w in re.split(r'\W+', (text or '').lower())
@@ -1626,39 +1637,14 @@ def matches_negative_name(name: str, negative_terms) -> bool:
     for term, term_words in negative_terms:
         if not term:
             continue
-        # Exact/containment match is strong enough.
         if name_lc == term or term in name_lc or name_lc in term:
             return True
-        # Fuzzy negative matching must be conservative. One shared distinctive word
-        # caused over-exclusion, especially across clinics with similar names.
         if name_words and term_words and len(name_words & term_words) >= 2:
             return True
     return False
 
 def case_study_names_match(hs_name: str, story_name: str) -> bool:
-    """Match customer story clinic names to HubSpot companies conservatively.
-    Generic clinic/address words are ignored. This prevents Hefner Road from
-    matching Highland Road and Beeville Veterinary Hospital from matching every
-    veterinary hospital.
-    """
-    a = (hs_name or "").lower().strip()
-    b = (story_name or "").lower().strip()
-    if not a or not b: return False
-
-    wa = distinctive_words(a, min_len=4)
-    wb = distinctive_words(b, min_len=4)
-    if not wa or not wb: return False
-
-    # Direct containment is only safe after generic words are removed.
-    a_key = " ".join(sorted(wa))
-    b_key = " ".join(sorted(wb))
-    if b_key and (b_key in a_key or a_key in b_key):
-        return True
-
-    overlap = wa & wb
-    # One highly distinctive shared word is enough for names like Beeville or Hefner.
-    # Road/street/clinic/hospital terms are already stripped.
-    return any(len(w) >= 5 for w in overlap)
+    return strict_clinic_match(hs_name, story_name)
 
 def build_review_matches(all_external: list, hs_customers: list) -> dict:
     matches, unmatched = {}, 0
@@ -1667,7 +1653,7 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
         reviewer = (ext.get("reviewer") or ext.get("author") or "").lower()
         pims_txt = ext.get("pims","")
         is_case_study = ext.get("signal") == "case_study"
-        best_id, best_score = None, 0
+        best_id, best_score, best_name = None, 0, ""
         for customer in hs_customers:
             p     = customer.get("properties",{})
             hs_id = str(customer["id"])
@@ -1684,7 +1670,7 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
                 candidates = ext.get("clinic_candidates") or ([reviewer] if reviewer else [])
                 for cand in candidates:
                     if cand and case_study_names_match(name, cand.lower()):
-                        score += 15
+                        score += 50
                         break
             else:
                 if reviewer and names_match(name, reviewer): score += 10
@@ -1696,13 +1682,18 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
                 if city and len(city) > 3 and city in text: score += 4
                 if st   and len(st)   > 1 and st   in text: score += 2
 
-            if score > best_score: best_score = score; best_id = hs_id
+            if score > best_score:
+                best_score = score; best_id = hs_id; best_name = name
 
         min_score = 10 if is_case_study else 8
         if best_id and best_score >= min_score:
             matches.setdefault(best_id,[]).append(ext)
+            if is_case_study:
+                print(f"    Customer story matched HubSpot: {ext.get('reviewer')} → {best_name} ({best_id})")
         else:
             unmatched += 1
+            if is_case_study:
+                print(f"    Customer story unmatched: {ext.get('reviewer')}")
     matched_count = sum(len(v) for v in matches.values())
     print(f"  Reviews matched: {matched_count}, unmatched: {unmatched}")
     return matches
@@ -1765,6 +1756,8 @@ def main():
     review_matches = build_review_matches(all_external, hs_customers)
     for ext in all_external:
         rkey = (ext.get("reviewer") or ext.get("contact") or "").lower().strip()
+        if ext.get("signal") == "case_study":
+            continue
         for mkey, hs_id in MANUAL_REVIEW_MATCHES.items():
             if mkey in rkey or rkey in mkey or names_match(rkey, mkey):
                 if ext not in review_matches.get(hs_id,[]):
@@ -1809,7 +1802,11 @@ def main():
             print(f"  ✗ Negative{'(referral member) ' if in_referral else ''}: {name}")
             continue
 
-        # Exclude companies still in active onboarding (haven't reached CS stage yet)
+        # Require a CS-stage deal in the onboarding pipeline. This applies to referral opt-ins, customer stories, reviews, and Slack signals.
+        if hs_id not in ONBOARDING_CS_COMPANY_IDS:
+            excl_bad += 1
+            print(f"  ✗ Not in CS stage: {name}")
+            continue
         if hs_id in onboarding_exclude:
             excl_bad += 1
             print(f"  ✗ Still onboarding: {name}")
@@ -1927,6 +1924,13 @@ def main():
         else:
             rec = dict(rec)
             rec["notes"] = None  # clear legacy "Location unknown" notes
+            rec["quote"] = None  # clear stale/wrong story quote before re-attaching current signals
+
+        old_lat, old_lng = rec.get("lat"), rec.get("lng")
+        st_for_pin = (props.get("state") or "").strip().upper()
+        if old_lat and old_lng and not coord_matches_state(old_lat, old_lng, st_for_pin):
+            print(f"  Clearing stale coordinates: {name} ({old_lat},{old_lng}) not in {st_for_pin}")
+            rec["lat"], rec["lng"] = None, None
 
         # ── Refresh from HubSpot + deal properties ────────────────────────────
         rec["hsId"]    = hs_id
@@ -1992,10 +1996,15 @@ def main():
                     rec["lat"], rec["lng"] = lat, lng
                     rec["approx"] = False
                 else:
-                    print(f"  ⚠ Geocode changed >75 mi for {name}; keeping existing coordinates because new query was low-confidence")
+                    print(f"  ⚠ Geocode changed >75 mi for {name}; clearing stale coordinates because new query was low-confidence")
+                    rec["lat"], rec["lng"] = None, None
+                    rec["approx"] = True
             else:
                 rec["lat"], rec["lng"] = lat, lng
                 rec["approx"] = False
+        elif raw_ok:
+            rec["lat"], rec["lng"] = None, None
+            rec["approx"] = True
 
         if "manual" in rec.get("signals",[]): strong_signals.append("manual")
         all_sigs        = sorted(set(strong_signals + context_signals))
@@ -2007,7 +2016,17 @@ def main():
             if names_match(name, ic_key) and ic_val.get("quote"):
                 rec["quote"] = ic_val["quote"]; break
         if not rec.get("quote") and matched_quotes:
+            # Case-study quotes must only be from the case-study object matched to this exact HubSpot ID.
             rec["quote"] = matched_quotes[0]
+
+        # Final hard coordinate sanity check before writing JSON.
+        final_st = (rec.get("st") or props.get("state") or "").strip().upper()
+        if rec.get("lat") and rec.get("lng") and not coord_matches_state(rec.get("lat"), rec.get("lng"), final_st):
+            print(f"  FINAL clearing stale coordinates: {name} ({rec.get('lat')},{rec.get('lng')}) not in {final_st}")
+            rec["lat"], rec["lng"], rec["approx"] = None, None, True
+
+        if debug_hit(name):
+            print(f"  DEBUG advocate candidate: {name} hs={hs_id} signals={sorted(set(strong_signals))} city={rec.get('city')} st={rec.get('st')} lat={rec.get('lat')} lng={rec.get('lng')} quote={rec.get('quote')}")
 
         if is_new:
             added.append(name); print(f"  + New: {name}")
