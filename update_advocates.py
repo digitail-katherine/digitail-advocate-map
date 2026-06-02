@@ -159,6 +159,15 @@ POSITIVE_KW = [
     "great", "love", "loves", "happy", "excellent", "recommend", "advocate",
     "good experience", "amazing", "fantastic", "worth it", "switched", "best",
 ]
+# Used only inside known negative Slack channels, and only when the company name
+# itself is also present in the same message. This catches visible CS warnings
+# like "Covina is unhappy/escalated" without globally blacklisting normal notes.
+SLACK_CONTEXT_NEGATIVE_KW = NEGATIVE_KW + [
+    "unhappy", "not happy", "frustrated", "very frustrated", "angry",
+    "escalation", "escalated", "complaint", "complaining", "bad experience",
+    "poor experience", "serious issue", "major issue", "implementation issue",
+    "migration issue", "support issue", "at risk", "red flag",
+]
 
 # ── Practice format ───────────────────────────────────────────────────────────
 MOBILE_TERMS = [
@@ -586,6 +595,7 @@ def hs_fetch_referral_network() -> tuple:
 
 ONBOARDING_CS_COMPANY_IDS = set()
 REFERRAL_CONTACT_BY_COMPANY = {}  # company_id -> opted-in contact properties for fallback contact/geocode
+SLACK_NEGATIVE_TEXTS = []  # raw recent negative-channel Slack messages for company-name matching
 
 # ── HubSpot Onboarding pipeline exclusion ────────────────────────────────────
 def hs_fetch_onboarding_pipeline_config() -> tuple:
@@ -1081,8 +1091,61 @@ def fetch_intercom_negative() -> set:
     if bad: print(f"  Intercom negative: {len(bad)} companies flagged")
     return bad
 
+
+
+def slack_message_search_text(msg):
+    """Return all human-visible text from a Slack message, including forwarded/shared
+    message payloads that often live in attachments, blocks, files, and rich_text
+    objects instead of the top-level `text` field.
+    """
+    parts = []
+
+    def add(v):
+        if isinstance(v, str):
+            v = v.strip()
+            if v:
+                parts.append(v)
+
+    def walk(obj, depth=0):
+        if depth > 8:
+            return
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                # These keys commonly contain user-visible Slack text, including
+                # forwarded-message snippets and attachment fallbacks.
+                if k in {
+                    "text", "fallback", "pretext", "title", "plain_text",
+                    "mrkdwn", "message", "comment", "initial_comment",
+                    "original_text", "alt_text", "name", "value"
+                }:
+                    if isinstance(v, str):
+                        add(v)
+                    else:
+                        walk(v, depth + 1)
+                elif k in {"attachments", "blocks", "elements", "files", "shares", "fields", "rich_text_section", "rich_text"}:
+                    walk(v, depth + 1)
+        elif isinstance(obj, list):
+            for item in obj:
+                walk(item, depth + 1)
+        elif isinstance(obj, str):
+            add(obj)
+
+    walk(msg)
+    # Slack often duplicates text across fallback/text/block fields. Deduplicate
+    # while preserving order so quotes stay readable in the map/logs.
+    seen = set()
+    out = []
+    for part in parts:
+        key = re.sub(r"\s+", " ", part).strip()
+        if key and key not in seen:
+            seen.add(key)
+            out.append(key)
+    return "\n".join(out)
+
 # ── Slack channel scanning ────────────────────────────────────────────────────
 def fetch_slack_signals() -> tuple:
+    global SLACK_NEGATIVE_TEXTS
+    SLACK_NEGATIVE_TEXTS = []
     if not SLACK_BOT_TOKEN:
         print("  Slack: no token, skipping"); return {}, set()
     hdrs     = {"Authorization":f"Bearer {SLACK_BOT_TOKEN}"}
@@ -1176,7 +1239,10 @@ def fetch_slack_signals() -> tuple:
                     break
                 time.sleep(0.2)
             for msg in messages:
-                text = msg.get("text","")
+                # Use ALL visible Slack text, not only msg["text"]. Forwarded/shared
+                # messages often put the actual clinic name and concern text inside
+                # attachments/blocks/files, which made negative forwards invisible.
+                text = slack_message_search_text(msg)
                 if not text or len(text) < 15: continue
                 tl      = text.lower()
                 scanned += 1
@@ -1188,7 +1254,16 @@ def fetch_slack_signals() -> tuple:
                 # does NOT trigger is_pos (the clinic name itself is not sentiment)
                 is_pos = any(re.search(r'\b' + re.escape(k) + r'\b', tl)
                              for k in POSITIVE_KW)
-                is_neg = any(k in tl for k in NEGATIVE_KW)  # phrases — substring ok
+                is_neg = any(k in tl for k in SLACK_CONTEXT_NEGATIVE_KW)  # only in negative channels
+                if is_neg and not is_pos and neg_channel:
+                    try:
+                        msg_ts = int(float(ts or 0))
+                    except Exception:
+                        msg_ts = 0
+                    if msg_ts >= neg_cutoff:
+                        SLACK_NEGATIVE_TEXTS.append({"text": text, "channel": ch_name, "permalink": permalink})
+                        if "covina" in tl:
+                            print(f"  Slack negative raw candidate: Covina in #{ch_name} → {permalink or 'no permalink'}")
 
                 # Extract multi-word capitalised clinic name candidates.
                 # Require at least one DISTINCTIVE word (non-generic vet term).
@@ -1216,6 +1291,9 @@ def fetch_slack_signals() -> tuple:
                                 msg_ts = 0
                             if msg_ts >= neg_cutoff:
                                 negative.add(wl)
+                                SLACK_NEGATIVE_TEXTS.append({"text": text, "channel": ch_name, "permalink": permalink})
+                        if "covina" in tl:
+                            print(f"  Slack negative raw candidate: Covina in #{ch_name} → {permalink or 'no permalink'}")
             time.sleep(0.3)
         except Exception as e:
             print(f"  Slack #{ch_name} failed: {e}")
@@ -1760,6 +1838,28 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
     print(f"  Reviews matched: {matched_count}, unmatched: {unmatched}")
     return matches
 
+
+def company_name_in_negative_text(company_name: str, text: str) -> bool:
+    """Strictly detect a company mention inside a negative Slack message.
+    Allows one distinctive word only when it is exact as a word (e.g. Covina).
+    Generic vet words never count.
+    """
+    words = identity_words(company_name)
+    if not words:
+        return False
+    tl = (text or "").lower()
+    # Full normalized name containment catches exact visible mentions.
+    norm_name = re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", (company_name or "").lower())).strip()
+    norm_text = re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", tl)).strip()
+    if norm_name and norm_name in norm_text:
+        return True
+    # Otherwise require all distinctive words for multi-word identities.
+    if len(words) >= 2:
+        return all(re.search(r"\b" + re.escape(w) + r"\b", tl) for w in words)
+    # Single distinctive word like Covina/Beeville/Osburn.
+    w = next(iter(words))
+    return len(w) >= 5 and re.search(r"\b" + re.escape(w) + r"\b", tl) is not None
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     try:
@@ -2020,7 +2120,10 @@ def main():
 
         deal_contact, deal_props = best_contact_and_deal_props(hs_id)
         referral_contact = REFERRAL_CONTACT_BY_COMPANY.get(hs_id, {}) if in_referral else {}
-        display_contact = deal_contact or referral_contact
+        # For referral-program advocates, show the opted-in contact. Otherwise
+        # Beth/Amy/Lynn can be found by the script but hidden behind an unrelated
+        # deal contact on the card/search table.
+        display_contact = referral_contact or deal_contact if in_referral else (deal_contact or referral_contact)
 
         # Store DVM count from deal
         if deal_props.get("dvms"):
