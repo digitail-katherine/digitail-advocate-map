@@ -198,11 +198,27 @@ def identity_words(name: str) -> set:
     return out
 
 def strict_clinic_match(a: str, b: str) -> bool:
+    """Safe clinic-name match.
+
+    Allows vet/veterinary and hospital/clinic synonyms, but does not let a
+    single shared road/name fragment incorrectly match two different clinics.
+    For multi-word names, require the candidate's distinctive words to be
+    contained in the company name, not just either side being a subset.
+    """
     aw, bw = identity_words(a), identity_words(b)
     if not aw or not bw:
         return False
-    small, big = (aw, bw) if len(aw) <= len(bw) else (bw, aw)
-    return small.issubset(big)
+    # Exact distinctive identity match is always okay.
+    if aw == bw:
+        return True
+    # One-word identities like Beeville or Paumanok can match only when the
+    # other name contains that exact distinctive word.
+    if len(aw) == 1 or len(bw) == 1:
+        return bool(aw & bw) and (len(aw) == 1 and aw.issubset(bw) or len(bw) == 1 and bw.issubset(aw))
+    # Multi-word: require one side to be nearly contained in the other AND at
+    # least two distinctive words overlap. This blocks Southern Trail → Trail.
+    overlap = aw & bw
+    return len(overlap) >= 2 and (aw.issubset(bw) or bw.issubset(aw))
 
 def infer_format(name: str) -> str:
     n = name.lower()
@@ -307,7 +323,7 @@ def is_excluded_non_clinic(props: dict) -> bool:
 HS_PROPS = [
     "name", "address", "city", "state", "zip", "country",
     "contact_email", "phone", "current_pims", "domain",
-    "media_testimonials_dsp", "internal_comments",
+    "media_testimonials_dsp", "internal_comments", "lifecyclestage", "hs_current_customer",
 ]
 
 # Deal properties fetched for each closed-won deal.
@@ -452,7 +468,7 @@ def hs_fetch_referral_network() -> tuple:
         while True:
             payload = {
                 "filterGroups": [{"filters": [{"propertyName": prop_name, "operator": "EQ", "value": value}]}],
-                "properties": ["firstname", "lastname", "email", "phone", "company", "jobtitle", "city", "state", "zip", "country", prop_name],
+                "properties": ["firstname", "lastname", "email", "phone", "company", "jobtitle", "city", "state", "zip", "country", "associatedcompanyid", "hs_associatedcompanyid", prop_name],
                 "limit": 100,
             }
             if after: payload["after"] = after
@@ -482,7 +498,7 @@ def hs_fetch_referral_network() -> tuple:
         while True:
             payload = {
                 "filterGroups": [{"filters": [{"propertyName": prop_name, "operator": "HAS_PROPERTY"}]}],
-                "properties": ["firstname", "lastname", "email", "phone", "company", "jobtitle", "city", "state", "zip", "country", prop_name],
+                "properties": ["firstname", "lastname", "email", "phone", "company", "jobtitle", "city", "state", "zip", "country", "associatedcompanyid", "hs_associatedcompanyid", prop_name],
                 "limit": 100,
             }
             if after: payload["after"] = after
@@ -501,6 +517,17 @@ def hs_fetch_referral_network() -> tuple:
     contact_ids = list(contact_by_id.keys())
     company_ids = set()
     company_contact = {}
+
+    # Direct contact property fallback. HubSpot often exposes the primary company here
+    # even when the associations batch endpoint is missing/limited/rate-limited.
+    for cid, contact in contact_by_id.items():
+        p = contact.get("properties", {})
+        co_id = str(p.get("associatedcompanyid") or p.get("hs_associatedcompanyid") or "").strip()
+        if co_id and co_id.lower() not in {"none", "null"}:
+            company_ids.add(co_id)
+            company_contact.setdefault(co_id, p)
+            cname = f"{p.get('firstname','')} {p.get('lastname','')}".strip() or p.get("email", cid)
+            print(f"    Referral contact property → company: {cname} → {co_id}")
 
     # contact → company
     for i in range(0, len(contact_ids), 100):
@@ -1665,7 +1692,21 @@ def matches_negative_name(name: str, negative_terms) -> bool:
     return False
 
 def case_study_names_match(hs_name: str, story_name: str) -> bool:
-    return strict_clinic_match(hs_name, story_name)
+    """Match a customer-story clinic name to a HubSpot company name.
+
+    Direction matters: the story clinic's distinctive words should be present
+    in the HubSpot company name. We do not allow the shorter HubSpot name to
+    match a longer story name by only sharing one word.
+    """
+    hs_words = identity_words(hs_name)
+    story_words = identity_words(story_name)
+    if not hs_words or not story_words:
+        return False
+    if story_words == hs_words:
+        return True
+    if len(story_words) == 1:
+        return story_words.issubset(hs_words)
+    return len(story_words & hs_words) >= 2 and story_words.issubset(hs_words)
 
 def build_review_matches(all_external: list, hs_customers: list) -> dict:
     matches, unmatched = {}, 0
@@ -1823,12 +1864,29 @@ def main():
             print(f"  ✗ Negative{'(referral member) ' if in_referral else ''}: {name}")
             continue
 
-        # Require a CS-stage deal in the onboarding pipeline. This applies to referral opt-ins, customer stories, reviews, and Slack signals.
+        # CS gate. Primary rule: company has at least one onboarding deal in CS.
+        # Fallback rule for high-trust advocates: if HubSpot's deal association
+        # lookup fails but the company is clearly a customer/closed-won and has
+        # a trusted signal (referral opt-in or customer story), include it and
+        # log the fallback instead of silently dropping it. This prevents valid
+        # advocates like Woodruff/Central Kentucky from being lost when the API
+        # misses a CS-stage deal that is visible in HubSpot.
+        matched_reviews_for_company = review_matches.get(hs_id, [])
+        has_case_study_match = any(ext.get("signal") == "case_study" for ext in matched_reviews_for_company)
+        has_closed_won_sales = hs_id in sales_closedate_map
+        is_lifecycle_customer = str(props.get("lifecyclestage") or "").lower() == "customer"
+        is_current_customer = str(props.get("hs_current_customer") or "").lower() in {"true", "yes", "1"}
+        high_trust = in_referral or has_case_study_match
+        customer_backstop = has_closed_won_sales or is_lifecycle_customer or is_current_customer
+
         if hs_id not in ONBOARDING_CS_COMPANY_IDS:
-            excl_bad += 1
-            print(f"  ✗ Not in CS stage: {name}")
-            continue
-        if hs_id in onboarding_exclude:
+            if high_trust and customer_backstop:
+                print(f"  ⚠ CS deal not found by API, including high-trust customer anyway: {name}")
+            else:
+                excl_bad += 1
+                print(f"  ✗ Not in CS stage: {name}")
+                continue
+        if hs_id in onboarding_exclude and not (high_trust and customer_backstop):
             excl_bad += 1
             print(f"  ✗ Still onboarding: {name}")
             continue
@@ -1888,7 +1946,7 @@ def main():
                 break
 
         matched_quotes = []
-        for ext in review_matches.get(hs_id,[]):
+        for ext in matched_reviews_for_company:
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
             # Use per-story URL for case_study; static listing URL for review sites
