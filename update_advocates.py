@@ -163,6 +163,15 @@ MOBILE_TERMS = [
 ]
 TELE_TERMS = ["tele", "virtual", "online", "remote"]
 
+# Words too generic to distinguish one vet clinic from another.
+# Excluded when matching Slack mentions and customer story names to HubSpot companies
+# so that "Animal Hospital" doesn't match every animal hospital in the database.
+GENERIC_VET_WORDS = {
+    "veterinary", "animal", "clinic", "hospital", "services", "practice",
+    "center", "mobile", "care", "health", "petcare", "companion", "pets",
+    "vets", "vet", "medical", "wellness",
+}
+
 def infer_format(name: str) -> str:
     n = name.lower()
     if any(t in n for t in TELE_TERMS):   return "telemedicine"
@@ -224,7 +233,7 @@ HS_PROPS = [
 # If your "number of DVMs" property has a different internal name in HubSpot,
 # update "number_of_dvms" below to match. Find it at:
 # HubSpot → Settings → Properties → Deals → search "dvm"
-HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate"]
+HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate", "competition"]
 
 def hs_h():
     return {"Authorization": f"Bearer {HS_TOKEN}", "Content-Type": "application/json"}
@@ -521,28 +530,44 @@ def hs_fetch_onboarding_pipeline_config() -> tuple:
 
 def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> set:
     """
-    Returns HubSpot company IDs with an ACTIVE onboarding deal that has NOT
-    yet reached the CS stage. These companies are still being set up and should
-    not appear as references on the map.
+    Returns HubSpot company IDs to EXCLUDE from the map.
+    Excludes any company whose MOST RECENT onboarding deal is NOT in the CS stage.
+    This catches:
+      - Pre-CS active deals (still being onboarded)
+      - Churned deals (deal moved to churned stage and closed)
+    Companies with NO onboarding deal at all are NOT excluded here —
+    they may be older customers onboarded before the pipeline existed.
     """
     if not pipeline_id: return set()
-    exclude_ids = set()
-    filters = [{"propertyName": "pipeline", "operator": "EQ", "value": pipeline_id}]
-    # Exclude deals in the CS stage (those are ready)
-    if cs_stage_id:
-        filters.append({"propertyName": "dealstage", "operator": "NEQ", "value": cs_stage_id})
-    # Only active deals (not closed)
-    filters.append({"propertyName": "hs_is_closed", "operator": "EQ", "value": "false"})
+
+    # Fetch ALL onboarding deals (active + closed), resolve to companies,
+    # track latest deal stage per company
+    company_latest = {}   # company_id → (last_modified_date, stage_id)
+
     after = None
     while True:
-        payload = {"filterGroups": [{"filters": filters}],
-                   "properties": ["dealname","dealstage","pipeline"], "limit": 200}
+        payload = {
+            "filterGroups": [{"filters": [
+                {"propertyName": "pipeline", "operator": "EQ", "value": pipeline_id}
+            ]}],
+            "properties": ["dealname", "dealstage", "hs_lastmodifieddate", "closedate"],
+            "limit": 200,
+        }
         if after: payload["after"] = after
         r = requests.post("https://api.hubapi.com/crm/v3/objects/deals/search",
                           json=payload, headers=hs_h(), timeout=15)
         if r.status_code != 200: break
         data     = r.json()
-        deal_ids = [d["id"] for d in data.get("results", [])]
+        results  = data.get("results", [])
+        deal_ids = [d["id"] for d in results]
+
+        # Map deal_id → (date, stage)
+        deal_info = {}
+        for d in results:
+            p    = d.get("properties", {})
+            date = (p.get("closedate") or p.get("hs_lastmodifieddate") or "")
+            deal_info[d["id"]] = (date, p.get("dealstage", ""))
+
         for i in range(0, len(deal_ids), 100):
             ar = requests.post(
                 "https://api.hubapi.com/crm/v4/associations/deals/companies/batch/read",
@@ -550,13 +575,30 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
                 headers=hs_h(), timeout=15)
             if ar.status_code == 200:
                 for item in ar.json().get("results", []):
+                    deal_id = str(item.get("from", {}).get("id", ""))
+                    info    = deal_info.get(deal_id, ("", ""))
                     for assoc in item.get("to", []):
                         cid = str(assoc.get("toObjectId", ""))
-                        if cid: exclude_ids.add(cid)
+                        if not cid: continue
+                        # Keep the most recently modified deal's stage
+                        if cid not in company_latest or info[0] > company_latest[cid][0]:
+                            company_latest[cid] = info
             time.sleep(0.1)
+
         after = data.get("paging", {}).get("next", {}).get("after")
         if not after: break
-    print(f"  Active onboarding (pre-CS): {len(exclude_ids)} companies excluded")
+
+    # Exclude companies whose latest onboarding deal stage is NOT the CS stage
+    exclude_ids = set()
+    cs_count    = 0
+    for cid, (date, stage) in company_latest.items():
+        if stage == cs_stage_id:
+            cs_count += 1
+        else:
+            exclude_ids.add(cid)
+
+    print(f"  Onboarding status: {cs_count} in CS stage (allowed), "
+          f"{len(exclude_ids)} in other stages (excluded)")
     return exclude_ids
 
 # ── Sales pipeline — customer-since date source ───────────────────────────────
@@ -730,7 +772,14 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
                         deal_props["dvms"] = str(int(float(dvms)))
                     except ValueError:
                         deal_props["dvms"] = dvms
-                    break  # take from the most recent won deal and stop
+
+                # Competition / PIMS considered — from the "competition" deal property
+                comp = (p.get("competition") or "").strip()
+                if comp and not deal_props.get("pimsConsidered"):
+                    deal_props["pimsConsidered"] = comp
+
+                if deal_props.get("dvms") and deal_props.get("pimsConsidered"):
+                    break  # have everything we need — stop iterating
 
         # Fetch best contact from the same set of deals
         best_contact = {}
@@ -1008,14 +1057,19 @@ def fetch_slack_signals() -> tuple:
                 ts       = msg.get("ts","")
                 ts_nodot = ts.replace(".","")
                 permalink = f"{workspace_url}/archives/{ch_id}/p{ts_nodot}" if ts_nodot else None
-                # Require 2+ capitalised words to avoid single-word false matches
+                # Require 2+ capitalised words to avoid single-word false matches.
+                # Also require at least one DISTINCTIVE word (not a generic vet term)
+                # so "Animal Hospital" doesn't fire on every animal hospital.
                 for word in re.findall(r'\b[A-Z][a-zA-Z]{3,}(?:\s[A-Z][a-zA-Z]{3,})+\b', text):
-                    if len(word) > 10 and word.lower() not in {
+                    wl = word.lower()
+                    distinctive = {w for w in re.split(r'\W+', wl)
+                                   if len(w) >= 5 and w not in GENERIC_VET_WORDS}
+                    if len(word) > 10 and distinctive and wl not in {
                         "slack","digitail","tails","monday","friday",
                         "north america","good morning","great work","well done",
                     }:
                         if is_pos and not is_neg:
-                            positive.setdefault(word.lower(), {
+                            positive.setdefault(wl, {
                                 "signal":    "slack_mention",
                                 "quote":     text[:280],
                                 "channel":   ch_name,
@@ -1023,7 +1077,7 @@ def fetch_slack_signals() -> tuple:
                             })
                         elif is_neg and not is_pos and neg_channel:
                             # Only flag as negative if message is in a churn/escalation channel
-                            negative.add(word.lower())
+                            negative.add(wl)
             time.sleep(0.3)  # respect Slack Tier 3 rate limit (50 req/min)
         except Exception as e:
             print(f"  Slack #{ch_name} failed: {e}")
@@ -1322,12 +1376,31 @@ def names_match(a: str, b: str) -> bool:
     wb = {w for w in re.split(r'\W+', b) if len(w) >= 4}
     return len(wa & wb) >= 2
 
+def case_study_names_match(hs_name: str, story_name: str) -> bool:
+    """
+    Stricter matching for customer story clinic names.
+    Excludes generic vet words (veterinary, animal, clinic, etc.) before comparing —
+    so "Simmons Veterinary" does NOT match "Prairie Winds Veterinary Clinic" just
+    because they share "veterinary". Requires at least one DISTINCTIVE word to match.
+    """
+    a = hs_name.lower().strip()
+    b = story_name.lower().strip()
+    if not a or not b: return False
+    # Direct containment first
+    if b in a or a in b: return True
+    # Word overlap excluding generic vet terms
+    wa = {w for w in re.split(r'\W+', a) if len(w) >= 4 and w not in GENERIC_VET_WORDS}
+    wb = {w for w in re.split(r'\W+', b) if len(w) >= 4 and w not in GENERIC_VET_WORDS}
+    # Both names must have at least one distinctive word and they must share at least one
+    return bool(wa) and bool(wb) and len(wa & wb) >= 1
+
 def build_review_matches(all_external: list, hs_customers: list) -> dict:
     matches, unmatched = {}, 0
     for ext in all_external:
         text     = (ext.get("text") or "").lower()
         reviewer = (ext.get("reviewer") or ext.get("author") or "").lower()
         pims_txt = ext.get("pims","")
+        is_case_study = ext.get("signal") == "case_study"
         best_id, best_score = None, 0
         for customer in hs_customers:
             p     = customer.get("properties",{})
@@ -1337,20 +1410,33 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
             st    = (p.get("state") or "").lower()
             pims  = (p.get("current_pims") or "").lower()
             score = 0
-            if reviewer and names_match(name, reviewer): score += 10
-            if name and name in text:                    score += 8
-            if reviewer and len(reviewer) > 4 and reviewer in name: score += 8
-            for pk, aliases in PIMS_MATCH.items():
-                if pk in pims and any(a in text + " " + pims_txt.lower() for a in aliases):
-                    score += 6; break
-            if city and len(city) > 3 and city in text: score += 4
-            if st   and len(st)   > 1 and st   in text: score += 2
+
+            if is_case_study:
+                # Case studies: use stricter matching that ignores generic vet words.
+                # A Simmons story must not match Prairie Winds just via "veterinary".
+                if reviewer and case_study_names_match(name, reviewer):
+                    score += 15
+                elif name and name in text:
+                    score += 10
+            else:
+                if reviewer and names_match(name, reviewer): score += 10
+                if name and name in text:                    score += 8
+                if reviewer and len(reviewer) > 4 and reviewer in name: score += 8
+                for pk, aliases in PIMS_MATCH.items():
+                    if pk in pims and any(a in text + " " + pims_txt.lower() for a in aliases):
+                        score += 6; break
+                if city and len(city) > 3 and city in text: score += 4
+                if st   and len(st)   > 1 and st   in text: score += 2
+
             if score > best_score: best_score = score; best_id = hs_id
-        if best_id and best_score >= 8:
+
+        min_score = 10 if is_case_study else 8
+        if best_id and best_score >= min_score:
             matches.setdefault(best_id,[]).append(ext)
         else:
             unmatched += 1
-    print(f"  Reviews matched: {sum(len(v) for v in matches.values())}, unmatched: {unmatched}")
+    matched_count = sum(len(v) for v in matches.values())
+    print(f"  Reviews matched: {matched_count}, unmatched: {unmatched}")
     return matches
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -1476,11 +1562,13 @@ def main():
                     signal_urls["intercom_csat"] = ic_sigs[ic_key]["url"]
                 break
 
-        # Slack: require 2+ words of 5+ chars to overlap
+        # Slack: require 2+ words of 5+ chars to overlap, excluding generic vet terms.
+        # Without GENERIC_VET_WORDS exclusion, "Animal Hospital" would match every
+        # animal hospital in the database.
         for s_key in slack_pos:
-            s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5}
-            n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
-            if len(s_words) >= 2 and len(s_words & n_words) >= 2:
+            s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
+            n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
+            if s_words and n_words and len(s_words & n_words) >= 1:
                 strong_signals.append("slack_mention")
                 if slack_pos[s_key].get("permalink"):
                     signal_urls["slack_mention"] = slack_pos[s_key]["permalink"]
@@ -1534,7 +1622,8 @@ def main():
             rec = {"id":next_id,"name":name,"ct":"general","src":"HubSpot",
                    "verify":False,"approx":False,"quote":None,"metrics":None,
                    "pm":None,"aiAdopter":None,"lat":None,"lng":None,
-                   "dgtId":None,"dvms":None,"customerSince":None,"signalUrls":{}}
+                   "dgtId":None,"dvms":None,"customerSince":None,"signalUrls":{},
+                   "pimsConsidered":None}
             next_id += 1
         else:
             rec = dict(rec)
@@ -1551,6 +1640,10 @@ def main():
         # Store DVM count from deal
         if deal_props.get("dvms"):
             rec["dvms"] = deal_props["dvms"]
+
+        # Store PIMS considered (competition) from deal — used for "Other PIMS Considered" filter
+        if deal_props.get("pimsConsidered"):
+            rec["pimsConsidered"] = deal_props["pimsConsidered"]
 
         # Customer since — Sales pipeline closed-won deals ONLY.
         # CS expansion, upsell, and any other pipeline dates are explicitly excluded.
