@@ -300,56 +300,97 @@ def geocode(props: dict, contact: dict = None):
 # ── HubSpot referral network — search contacts by property ───────────────────
 def hs_fetch_referral_network() -> tuple:
     """
-    Fetches contacts where reference_program_optin = true using the standard
-    contacts search API (no crm.lists.read scope required).
+    Fetches contacts where the Reference Program Opt-In property is set.
+    Tries multiple property name and value combinations because HubSpot stores
+    boolean/checkbox properties differently depending on how they were created.
 
-    Returns (name_map, company_ids_set):
-      company_ids_set — exact HubSpot company object IDs resolved via associations;
-                        matched first, zero name guessing
-      name_map        — contact "company" text field fallback for contacts that
-                        have no linked company record in HubSpot
+    Returns (name_map, company_ids_set).
     """
     if not HS_TOKEN: return {}, set()
 
-    # Step 1: search contacts where Reference Program Opt-In = Yes
-    all_contacts, after = [], None
-    while True:
-        payload = {
-            "filterGroups": [{"filters": [{
-                "propertyName": "reference_program_optin",
-                "operator":     "EQ",
-                "value":        "true",
-            }]}],
-            "properties": ["firstname","lastname","email","phone",
-                           "company","jobtitle","city","state","zip","country"],
-            "limit": 100,
-        }
-        if after: payload["after"] = after
-        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                          json=payload, headers=hs_h(), timeout=15)
-        if r.status_code != 200:
-            print(f"  Referral network search error: {r.status_code} — {r.text[:200]}")
-            break
-        data = r.json()
-        all_contacts.extend(data.get("results", []))
-        after = data.get("paging", {}).get("next", {}).get("after")
-        if not after: break
+    # Try these property names in order — the first one that returns results wins.
+    # If none work, check HubSpot → Settings → Properties → Contacts and search
+    # for "reference" to find the exact internal name.
+    PROPERTY_CANDIDATES = [
+        "reference_program_optin",
+        "reference_program_opt_in",
+        "reference_opt_in",
+        "referenceprogramoptin",
+        "reference_program",
+    ]
+    # All truthy values HubSpot might store for a checkbox/radio/dropdown property
+    VALUE_CANDIDATES = ["true", "True", "TRUE", "yes", "Yes", "YES", "1"]
+
+    all_contacts = []
+
+    for prop_name in PROPERTY_CANDIDATES:
+        for val in VALUE_CANDIDATES:
+            payload = {
+                "filterGroups": [{"filters": [{
+                    "propertyName": prop_name,
+                    "operator":     "EQ",
+                    "value":        val,
+                }]}],
+                "properties": ["firstname","lastname","email","phone",
+                               "company","jobtitle","city","state","zip","country",
+                               prop_name],
+                "limit": 1,  # test call — just checking if the property+value returns anything
+            }
+            r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                              json=payload, headers=hs_h(), timeout=15)
+            if r.status_code == 200 and r.json().get("total", 0) > 0:
+                print(f"  Referral property match: '{prop_name}' = '{val}' "
+                      f"({r.json()['total']} contacts) — fetching all…")
+                # Now page through to get all contacts with this property+value
+                after = None
+                while True:
+                    full_payload = {
+                        "filterGroups": [{"filters": [{
+                            "propertyName": prop_name,
+                            "operator":     "EQ",
+                            "value":        val,
+                        }]}],
+                        "properties": ["firstname","lastname","email","phone",
+                                       "company","jobtitle","city","state","zip","country"],
+                        "limit": 100,
+                    }
+                    if after: full_payload["after"] = after
+                    pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                                       json=full_payload, headers=hs_h(), timeout=15)
+                    if pr.status_code != 200: break
+                    data = pr.json()
+                    all_contacts.extend(data.get("results", []))
+                    after = data.get("paging", {}).get("next", {}).get("after")
+                    if not after: break
+                break  # found the right property+value — stop trying others
+            elif r.status_code != 200:
+                # 400 means property doesn't exist — try next
+                if r.status_code != 400:
+                    print(f"  Referral search ({prop_name}={val}): HTTP {r.status_code}")
+        if all_contacts:
+            break  # found contacts — stop trying property name variations
+
+    if not all_contacts:
+        print(f"  ⚠ Referral network: 0 contacts found across all property name/value "
+              f"combinations. Check HubSpot → Settings → Properties → Contacts and verify "
+              f"the exact internal name and value of your reference opt-in property, then "
+              f"add it to PROPERTY_CANDIDATES above.")
+        return {}, set()
 
     print(f"  Referral network: {len(all_contacts)} opted-in contacts found")
-    if not all_contacts: return {}, set()
 
     contact_ids = [c["id"] for c in all_contacts]
     company_ids = set()
     name_map    = {}
 
-    # Build name_map directly from search results (no second API call needed)
+    # Build name fallback map from contact "company" text field
     for contact in all_contacts:
         p  = contact.get("properties", {})
         co = (p.get("company") or "").strip()
         if co:
             name_map[co.lower()] = {"contact_props": p, "contact_id": contact["id"]}
 
-    # Step 2: resolve each contact → associated company object ID (exact, no name guessing)
+    # Resolve contact → company object ID via associations (exact, no name guessing)
     for i in range(0, len(contact_ids), 100):
         batch = contact_ids[i:i+100]
         ar = requests.post(
@@ -662,7 +703,16 @@ def hs_get_closedwon_company_ids() -> set:
     print(f"  HubSpot closed-won: {len(ids)} companies")
     return ids
 
-def hs_get_customers() -> list:
+def hs_get_customers(referral_ids: set = None) -> list:
+    """
+    Fetches all HubSpot companies that should be evaluated as potential advocates.
+    Three sources are merged:
+      1. Companies with lifecyclestage = customer (primary filter)
+      2. Companies with a closed-won deal (catch-all for mis-staged records)
+      3. Companies associated with a referral-program opted-in contact
+         — guaranteed inclusion regardless of lifecycle stage, because a customer
+           who explicitly opted in to be a reference must always be evaluated.
+    """
     closed_won = hs_get_closedwon_company_ids()
     by_id      = {}
     for filt in [{"propertyName":"lifecyclestage","operator":"EQ","value":"customer"},
@@ -684,6 +734,8 @@ def hs_get_customers() -> list:
             print(f"  HubSpot filter '{filt['propertyName']}': {len(batch)} companies")
             break
         print(f"  HubSpot filter '{filt['propertyName']}': 0, trying next…")
+
+    # Add closed-won companies not already in the lifecycle filter result
     new_ids = closed_won - set(by_id.keys())
     print(f"  HubSpot: {len(by_id)} customers + {len(new_ids)} closed-won-only")
     for i in range(0, len(list(new_ids)), 100):
@@ -694,6 +746,24 @@ def hs_get_customers() -> list:
         if r.status_code == 200:
             for c in r.json().get("results",[]): by_id[c["id"]] = c
         time.sleep(0.15)
+
+    # Add referral-network companies not yet in the set.
+    # These opted-in contacts MUST be evaluated regardless of lifecycle stage —
+    # a wrong stage setting in HubSpot should never silently exclude a willing reference.
+    if referral_ids:
+        ref_missing = referral_ids - set(by_id.keys())
+        if ref_missing:
+            print(f"  HubSpot: adding {len(ref_missing)} referral-only companies "
+                  f"(opted-in but lifecycle stage not 'customer')")
+            for i in range(0, len(list(ref_missing)), 100):
+                r = requests.post("https://api.hubapi.com/crm/v3/objects/companies/batch/read",
+                    json={"inputs":[{"id":cid} for cid in list(ref_missing)[i:i+100]],
+                          "properties":HS_PROPS},
+                    headers=hs_h(), timeout=15)
+                if r.status_code == 200:
+                    for c in r.json().get("results",[]): by_id[c["id"]] = c
+                time.sleep(0.15)
+
     all_cos = list(by_id.values())
     print(f"  HubSpot total: {len(all_cos)} before filters")
     return all_cos
@@ -1186,7 +1256,7 @@ def main():
     sales_closedate_map = hs_build_sales_closedate_map(sales_pipeline_id)
 
     print("\n── HubSpot customers ──────────────────────────────────────")
-    hs_customers = hs_get_customers()
+    hs_customers = hs_get_customers(referral_ids=referral_ids)
 
     print("\n── Matching reviews to HubSpot companies ──────────────────")
     review_matches = build_review_matches(all_external, hs_customers)
@@ -1211,11 +1281,24 @@ def main():
 
         if is_excluded_non_clinic(props): continue
         if not is_north_america(props):   continue
-        if is_negative_props(props):      excl_bad += 1; continue
+
         name_lc = name.lower().strip()
-        if name_lc in all_negative or any(names_match(name,b) for b in all_negative):
+
+        # ── Is this company in the referral program? ──────────────────────────
+        # Checked BEFORE negative evaluation so the log shows context correctly.
+        in_referral = (hs_id in referral_ids or
+                       any(names_match(name, rn_key) for rn_key in referral_net))
+
+        # ── Negative checks — apply to everyone, including referral members ───
+        # Referral opt-in means they agreed to be a reference — but a subsequent
+        # negative signal (churn risk, bad CSAT, escalation) overrides that.
+        if is_negative_props(props):
             excl_bad += 1
-            print(f"  ✗ Negative: {name}")
+            if in_referral: print(f"  ✗ Negative (referral member): {name}")
+            continue
+        if name_lc in all_negative or any(names_match(name, b) for b in all_negative):
+            excl_bad += 1
+            print(f"  ✗ Negative{'(referral member) ' if in_referral else ''}: {name}")
             continue
 
         # Exclude companies still in active onboarding (haven't reached CS stage yet)
@@ -1224,22 +1307,19 @@ def main():
             print(f"  ✗ Still onboarding: {name}")
             continue
 
-        # ── Collect strong signals + their source URLs ────────────────────────
+        # ── Referral fast-path: opt-in + no negatives = include ───────────────
+        # Collect all other signals too — they enrich the popup card — but the
+        # gate is already satisfied by referral membership alone.
         strong_signals = []
-        signal_urls    = {}   # signal → direct link to the source that verified it
+        signal_urls    = {}
 
-        # Referral network: company ID match first (exact), name fallback second
-        if hs_id in referral_ids:
-            strong_signals.append("hs_referral_network")
-            signal_urls["hs_referral_network"] = (
-                f"https://app.hubspot.com/contacts/{HS_ACCOUNT_ID}/company/{hs_id}"
-            )
-        elif any(names_match(name, rn_key) for rn_key in referral_net):
+        if in_referral:
             strong_signals.append("hs_referral_network")
             signal_urls["hs_referral_network"] = (
                 f"https://app.hubspot.com/contacts/{HS_ACCOUNT_ID}/company/{hs_id}"
             )
 
+        # ── Additional signals (always collected; displayed on popup card) ─────
         for ic_key in ic_sigs:
             if names_match(name, ic_key):
                 strong_signals.append("intercom_csat")
@@ -1268,7 +1348,6 @@ def main():
         for ext in review_matches.get(hs_id,[]):
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
-            # Static review site URLs — link to Digitail's listing page on that platform
             if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
                 signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
 
@@ -1284,7 +1363,7 @@ def main():
                 if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
                     signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
 
-        # Gate: must have at least one verified strong signal
+        # Gate: referral alone is sufficient; non-referral needs at least one other signal
         if not strong_signals:
             excl_signal += 1
             continue
