@@ -97,8 +97,10 @@ SLACK_NEGATIVE_PRIORITY = [
     "churn", "escalat", "customer-success",
 ]
 
-# Lookback window in days — applies to all scanned channels:
+# Lookback window in days for positive team mentions.
 SLACK_LOOKBACK_DAYS = 90
+# Negative exclusion window. Referral opt-ins and customer stories are blocked only by recent negatives.
+SLACK_NEGATIVE_LOOKBACK_DAYS = 60
 
 # ── Signal definitions ────────────────────────────────────────────────────────
 STRONG_SIGNALS = {
@@ -174,6 +176,8 @@ GENERIC_VET_WORDS = {
     "veterinary", "animal", "clinic", "hospital", "services", "service", "practice",
     "center", "mobile", "care", "health", "petcare", "companion", "pets",
     "vets", "vet", "medical", "wellness",
+    "road", "rd", "street", "st", "avenue", "ave", "boulevard", "blvd",
+    "drive", "dr", "lane", "ln", "highway", "hwy", "parkway", "pkwy",
 }
 
 def infer_format(name: str) -> str:
@@ -289,31 +293,43 @@ def hs_context_signals(props: dict) -> list:
     return list(set(sigs))
 
 # ── Geocoding ─────────────────────────────────────────────────────────────────
-def build_geocode_query(props: dict, contact: dict = None) -> str:
-    def norm(c):
-        return {"us":"United States","usa":"United States","ca":"Canada",
-                "canada":"Canada","mx":"Mexico","mexico":"Mexico"}.get(
-                (c or "").lower().strip(), c or "United States")
+def _infer_country_from_state_country(state: str = "", country: str = "") -> str:
+    """Return normalized country. If HubSpot country is blank, infer from province/state."""
+    c = (country or "").strip().lower()
+    if c in {"canada", "ca", "can"}: return "Canada"
+    if c in {"mexico", "mx", "mex"}: return "Mexico"
+    if c in {"united states", "united states of america", "us", "usa", "u.s.", "u.s.a."}: return "United States"
+    st = (state or "").strip().upper()
+    ca_provinces = {"AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"}
+    mx_states = {"AGU","BCN","BCS","CAM","CHP","CHH","COA","COL","DUR","GUA","GRO","HID","JAL","MEX","MIC","MOR","NAY","NLE","OAX","PUE","QUE","ROO","SLP","SIN","SON","TAB","TAM","TLA","VER","YUC","ZAC"}
+    if st in ca_provinces: return "Canada"
+    if st in mx_states: return "Mexico"
+    return "United States"
+
+def build_geocode_query(props: dict, contact: dict = None) -> tuple:
+    """Build a geocode query and return (query, confidence).
+    confidence='street' means a full address can safely replace stale coordinates.
+    """
     raw     = (props.get("address") or "").strip()
     co_city = (props.get("city")    or "").strip().title()
     co_st   = (props.get("state")   or "").strip().upper()
-    co_ctry = norm(props.get("country",""))
     ct      = contact or {}
     ct_city = (ct.get("city")  or "").strip().title()
     ct_st   = (ct.get("state") or "").strip().upper()
-    ct_ctry = norm(ct.get("country","")) if ct else co_ctry
-    state   = ct_st or co_st
-    country = ct_ctry or co_ctry
+    state   = co_st or ct_st
     city    = co_city or ct_city
+    country = _infer_country_from_state_country(state, props.get("country") or (ct.get("country") if ct else ""))
 
-    raw_ok = raw and len(raw) < 80 and "po box" not in raw.lower()
+    raw_ok = raw and len(raw) < 90 and "po box" not in raw.lower()
     if raw_ok and city and state:
-        return f"{raw}, {city}, {state}, {country}"
+        return f"{raw}, {city}, {state}, {country}", "street"
     if raw_ok and state:
-        return f"{raw}, {state}, {country}"
-    if city and state: return f"{city}, {state}, {country}"
-    if state:          return f"{state}, {country}"
-    return ""
+        return f"{raw}, {state}, {country}", "street"
+    if city and state:
+        return f"{city}, {state}, {country}", "city"
+    if state:
+        return f"{state}, {country}", "state"
+    return "", "none"
 
 def geocode_google(query: str):
     if not GOOGLE_KEY or not query: return None, None
@@ -329,13 +345,15 @@ def geocode_google(query: str):
         print(f"  Google geocode failed '{query}': {e}")
     return None, None
 
-def geocode_nominatim(query: str):
+def geocode_nominatim(query: str, country: str = ""):
     if not query: return None, None
     time.sleep(1.2)
     try:
+        params={"format":"json","q":query,"limit":1}
+        cc={"Canada":"ca","United States":"us","Mexico":"mx"}.get(country)
+        if cc: params["countrycodes"] = cc
         r = requests.get("https://nominatim.openstreetmap.org/search",
-            params={"format":"json","q":query,"limit":1},
-            headers={"User-Agent":"DigitailAdvocateMap/4.0"}, timeout=10)
+            params=params, headers={"User-Agent":"DigitailAdvocateMap/4.1"}, timeout=10)
         if r.status_code == 200:
             d = r.json()
             if d: return round(float(d[0]["lat"]),5), round(float(d[0]["lon"]),5)
@@ -344,19 +362,19 @@ def geocode_nominatim(query: str):
     return None, None
 
 def geocode(props: dict, contact: dict = None):
-    query = build_geocode_query(props, contact)
-    if not query: return None, None
+    query, confidence = build_geocode_query(props, contact)
+    if not query: return None, None, confidence
+    country = _infer_country_from_state_country((props.get("state") or ""), props.get("country") or "")
     lat, lng = None, None
     if GOOGLE_KEY:
         lat, lng = geocode_google(query)
     if not lat:
-        lat, lng = geocode_nominatim(query)
+        lat, lng = geocode_nominatim(query, country)
     if lat:
-        country = (props.get("country") or "").strip()
         if in_na_bounds(lat, lng) and coord_matches_country(lat, lng, country):
-            return lat, lng
+            return lat, lng, confidence
         print(f"  Geocode rejected: {query} → {lat},{lng}")
-    return None, None
+    return None, None, confidence
 
 # ── HubSpot referral network — contacts only ─────────────────────────────────
 def hs_fetch_referral_network() -> tuple:
@@ -408,54 +426,57 @@ def hs_fetch_referral_network() -> tuple:
     found_prop   = None
     all_contacts = []
 
-    def _truthy_filter_groups(prop_name: str) -> list:
-        return [{"filters": [{
-            "propertyName": prop_name,
-            "operator": "EQ",
-            "value": v,
-        }]} for v in sorted(TRUTHY)]
-
-    for prop_name in PROPERTY_CANDIDATES:
-        payload = {
-            "filterGroups": _truthy_filter_groups(prop_name),
-            "properties": ["firstname","lastname","email","phone","company",
-                           "jobtitle","city","state","zip","country", prop_name],
-            "limit": 1,
-        }
-        r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                          json=payload, headers=hs_h(), timeout=15)
-        if r.status_code == 400:
-            continue   # property doesn't exist — try next name
-        if r.status_code != 200:
-            print(f"  Referral search ({prop_name}): HTTP {r.status_code} — {r.text[:120]}")
-            continue
-        total = r.json().get("total", 0)
-        if total == 0:
-            continue
-
-        sample_val = (r.json().get("results",[{}])[0]
-                       .get("properties",{}).get(prop_name,"") or "")
-        print(f"  Referral property found: '{prop_name}' — "
-              f"{total} opted-in contacts, sample value: '{sample_val}'")
-
-        found_prop = prop_name
-        after = None
+    def _read_contacts_eq(prop_name: str, value: str) -> tuple:
+        """HubSpot Search API can be picky with large OR groups.
+        Query one accepted value at a time so enum display values like Yes are not missed.
+        Returns (status_code, contacts).
+        """
+        out, after = [], None
         while True:
-            full_payload = {
-                "filterGroups": _truthy_filter_groups(prop_name),
+            payload = {
+                "filterGroups": [{"filters": [{
+                    "propertyName": prop_name,
+                    "operator": "EQ",
+                    "value": value,
+                }]}],
                 "properties": ["firstname","lastname","email","phone","company",
                                "jobtitle","city","state","zip","country", prop_name],
                 "limit": 100,
             }
-            if after: full_payload["after"] = after
-            pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
-                               json=full_payload, headers=hs_h(), timeout=15)
-            if pr.status_code != 200: break
-            data = pr.json()
-            all_contacts.extend(data.get("results", []))
+            if after: payload["after"] = after
+            r = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                              json=payload, headers=hs_h(), timeout=15)
+            if r.status_code != 200:
+                return r.status_code, out
+            data = r.json()
+            out.extend(data.get("results", []))
             after = data.get("paging",{}).get("next",{}).get("after")
             if not after: break
-        break  # found the right property — stop trying
+        return 200, out
+
+    for prop_name in PROPERTY_CANDIDATES:
+        prop_contacts = {}
+        saw_property = False
+        for val in sorted(TRUTHY):
+            code, rows = _read_contacts_eq(prop_name, val)
+            if code == 400:
+                break  # property doesn't exist — try next internal name
+            if code != 200:
+                print(f"  Referral search ({prop_name}={val}): HTTP {code}")
+                continue
+            saw_property = True
+            for c in rows:
+                if _is_ref_truthy(c.get("properties", {}).get(prop_name)):
+                    prop_contacts[str(c["id"])] = c
+        if prop_contacts:
+            found_prop = prop_name
+            all_contacts = list(prop_contacts.values())
+            sample_val = (all_contacts[0].get("properties",{}).get(prop_name,"") or "")
+            print(f"  Referral property found: '{prop_name}' — "
+                  f"{len(all_contacts)} opted-in contacts, sample value: '{sample_val}'")
+            break
+        if saw_property:
+            print(f"  Referral property '{prop_name}' exists, but no Yes/true values found via EQ")
 
     # ── Fallback: HubSpot enum values are sometimes stored/displayed differently ─
     # If exact EQ values find nothing, fetch contacts with the property present and
@@ -1068,6 +1089,7 @@ def fetch_slack_signals() -> tuple:
     hdrs     = {"Authorization":f"Bearer {SLACK_BOT_TOKEN}"}
     positive, negative = {}, set()
     cutoff   = int((datetime.now(timezone.utc) - timedelta(days=SLACK_LOOKBACK_DAYS)).timestamp())
+    neg_cutoff = int((datetime.now(timezone.utc) - timedelta(days=SLACK_NEGATIVE_LOOKBACK_DAYS)).timestamp())
 
     # Get workspace URL once for constructing message permalinks
     workspace_url = "https://digitail.slack.com"
@@ -1109,7 +1131,7 @@ def fetch_slack_signals() -> tuple:
     neg_channels = [c["name"] for c in all_channels if _ch_sort(c) == 0]
     pos_channels = [c["name"] for c in all_channels if _ch_sort(c) == 1]
     print(f"  Slack: scanning {len(neg_channels)+len(pos_channels)} priority channels "
-          f"({SLACK_LOOKBACK_DAYS}-day window)")
+          f"({SLACK_LOOKBACK_DAYS}-day positive / {SLACK_NEGATIVE_LOOKBACK_DAYS}-day negative window)")
     print(f"  Negative channels: {neg_channels or ['none matched']}")
     print(f"  Positive channels: {pos_channels or ['none matched']}")
 
@@ -1189,7 +1211,12 @@ def fetch_slack_signals() -> tuple:
                                 "permalink": permalink,
                             })
                         elif is_neg and not is_pos and neg_channel:
-                            negative.add(wl)
+                            try:
+                                msg_ts = int(float(ts or 0))
+                            except Exception:
+                                msg_ts = 0
+                            if msg_ts >= neg_cutoff:
+                                negative.add(wl)
             time.sleep(0.3)
         except Exception as e:
             print(f"  Slack #{ch_name} failed: {e}")
@@ -1609,22 +1636,29 @@ def matches_negative_name(name: str, negative_terms) -> bool:
     return False
 
 def case_study_names_match(hs_name: str, story_name: str) -> bool:
+    """Match customer story clinic names to HubSpot companies conservatively.
+    Generic clinic/address words are ignored. This prevents Hefner Road from
+    matching Highland Road and Beeville Veterinary Hospital from matching every
+    veterinary hospital.
     """
-    Stricter matching for customer story clinic names.
-    Excludes generic vet words (veterinary, animal, clinic, etc.) before comparing —
-    so "Simmons Veterinary" does NOT match "Prairie Winds Veterinary Clinic" just
-    because they share "veterinary". Requires at least one DISTINCTIVE word to match.
-    """
-    a = hs_name.lower().strip()
-    b = story_name.lower().strip()
+    a = (hs_name or "").lower().strip()
+    b = (story_name or "").lower().strip()
     if not a or not b: return False
-    # Direct containment first
-    if b in a or a in b: return True
-    # Word overlap excluding generic vet terms
-    wa = {w for w in re.split(r'\W+', a) if len(w) >= 4 and w not in GENERIC_VET_WORDS}
-    wb = {w for w in re.split(r'\W+', b) if len(w) >= 4 and w not in GENERIC_VET_WORDS}
-    # Both names must have at least one distinctive word and they must share at least one
-    return bool(wa) and bool(wb) and len(wa & wb) >= 1
+
+    wa = distinctive_words(a, min_len=4)
+    wb = distinctive_words(b, min_len=4)
+    if not wa or not wb: return False
+
+    # Direct containment is only safe after generic words are removed.
+    a_key = " ".join(sorted(wa))
+    b_key = " ".join(sorted(wb))
+    if b_key and (b_key in a_key or a_key in b_key):
+        return True
+
+    overlap = wa & wb
+    # One highly distinctive shared word is enough for names like Beeville or Hefner.
+    # Road/street/clinic/hospital terms are already stripped.
+    return any(len(w) >= 5 for w in overlap)
 
 def build_review_matches(all_external: list, hs_customers: list) -> dict:
     matches, unmatched = {}, 0
@@ -1949,11 +1983,16 @@ def main():
         parts  = [raw, city, st, zip_] if raw_ok else [city, st, zip_]
         rec["address"] = ", ".join(p for p in parts if p)
 
-        lat, lng = geocode(props, deal_contact or None)
+        lat, lng, geo_confidence = geocode(props, deal_contact or None)
         if lat:
             old_lat, old_lng = rec.get("lat"), rec.get("lng")
             if old_lat and old_lng and miles_between(old_lat, old_lng, lat, lng) > 75:
-                print(f"  ⚠ Geocode changed >75 mi for {name}; keeping existing coordinates")
+                if geo_confidence == "street":
+                    print(f"  ⚠ Geocode corrected >75 mi for {name}; replacing stale coordinates using full street address")
+                    rec["lat"], rec["lng"] = lat, lng
+                    rec["approx"] = False
+                else:
+                    print(f"  ⚠ Geocode changed >75 mi for {name}; keeping existing coordinates because new query was low-confidence")
             else:
                 rec["lat"], rec["lng"] = lat, lng
                 rec["approx"] = False
