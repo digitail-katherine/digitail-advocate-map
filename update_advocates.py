@@ -279,7 +279,9 @@ EXCLUDE_NAME_FRAGMENTS = [
 EXCLUDE_DOMAINS = {"stripe.com", "carecredit.com", "vetsource.com"}
 
 # ── Geography ─────────────────────────────────────────────────────────────────
-NA_COUNTRIES = {"united states","us","usa","canada","ca","mexico","mx",""}
+# Geography is now global. Older versions limited eligibility/geocoding to
+# North America. Keep the legacy function names so the rest of the script stays
+# unchanged, but allow clinics from any country.
 US_STATES    = set("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD "
                    "MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC "
                    "SD TN TX UT VT VA WA WV WI WY DC".split())
@@ -304,19 +306,21 @@ def coord_matches_state(lat, lng, st: str) -> bool:
         return False
 
 def is_north_america(props: dict) -> bool:
-    country = (props.get("country") or "").lower().strip()
-    state   = (props.get("state")   or "").strip().upper()
-    if country in NA_COUNTRIES: return True
-    if not country and (state in US_STATES or state in CA_PROVINCES): return True
-    return False
+    # Historical name retained for compatibility. This now means
+    # "eligible geography" — all countries are eligible.
+    return True
 
 def in_na_bounds(lat: float, lng: float) -> bool:
-    return 14.5 <= lat <= 72.0 and -170.0 <= lng <= -50.0
+    # Historical name retained for compatibility. Validate global coordinates.
+    try:
+        lat = float(lat); lng = float(lng)
+    except Exception:
+        return False
+    return -90.0 <= lat <= 90.0 and -180.0 <= lng <= 180.0
 
 def coord_matches_country(lat: float, lng: float, country: str) -> bool:
-    cl = (country or "").lower()
-    if cl in {"canada","ca"}:  return lat > 41.5 and lng < -52.0
-    if cl in {"mexico","mx"}:  return 14.5 <= lat <= 32.7 and -118.0 <= lng <= -86.0
+    # Do not reject valid global coordinates by country. State/province validation
+    # still applies for the known states/provinces in STATE_PROVINCE_BOUNDS.
     return True
 
 def is_negative_props(props: dict) -> bool:
@@ -361,17 +365,20 @@ def hs_context_signals(props: dict) -> list:
 
 # ── Geocoding ─────────────────────────────────────────────────────────────────
 def _infer_country_from_state_country(state: str = "", country: str = "") -> str:
-    """Return normalized country. If HubSpot country is blank, infer from province/state."""
-    c = (country or "").strip().lower()
+    """Return normalized country. If HubSpot country is blank, infer only when safe."""
+    raw = (country or "").strip()
+    c = raw.lower()
     if c in {"canada", "ca", "can"}: return "Canada"
     if c in {"mexico", "mx", "mex"}: return "Mexico"
     if c in {"united states", "united states of america", "us", "usa", "u.s.", "u.s.a."}: return "United States"
+    if raw: return raw
     st = (state or "").strip().upper()
     ca_provinces = {"AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"}
     mx_states = {"AGU","BCN","BCS","CAM","CHP","CHH","COA","COL","DUR","GUA","GRO","HID","JAL","MEX","MIC","MOR","NAY","NLE","OAX","PUE","QUE","ROO","SLP","SIN","SON","TAB","TAM","TLA","VER","YUC","ZAC"}
+    if st in US_STATES: return "United States"
     if st in ca_provinces: return "Canada"
     if st in mx_states: return "Mexico"
-    return "United States"
+    return ""
 
 def build_geocode_query(props: dict, contact: dict = None) -> tuple:
     """Build a geocode query and return (query, confidence).
