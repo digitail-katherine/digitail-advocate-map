@@ -30,7 +30,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -102,7 +103,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 408,
@@ -172,7 +174,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 410,
@@ -207,7 +210,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 416,
@@ -241,7 +245,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 425,
@@ -275,7 +280,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -346,7 +352,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 428,
@@ -380,7 +387,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 426,
@@ -414,7 +422,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 429,
@@ -448,7 +457,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 424,
@@ -483,7 +493,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 422,
@@ -518,7 +529,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 407,
@@ -587,7 +599,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 427,
@@ -621,7 +634,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -724,7 +738,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 412,
@@ -757,7 +772,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 413,
@@ -790,7 +806,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 292,
@@ -864,7 +881,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 409,
@@ -898,7 +916,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 419,
@@ -933,7 +952,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 417,
@@ -967,7 +987,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
