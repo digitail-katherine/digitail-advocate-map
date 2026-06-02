@@ -54,7 +54,10 @@ SIGNAL_STATIC_URLS = {
     "g2_positive":       "https://www.g2.com/products/digitail/reviews",
     "softwareadvice":    "https://www.softwareadvice.com/veterinary/digitail-profile/reviews/",
     "getapp":            "https://www.getapp.com/veterinary-practice-management-software/a/digitail/reviews/",
+    "case_study":        "https://digitail.com/customer-stories/",
 }
+
+DIGITAIL_STORIES_URL = "https://digitail.com/customer-stories/"
 
 # ── Manual referral overrides ─────────────────────────────────────────────────
 # HubSpot company IDs that are KNOWN to be in the reference program regardless
@@ -105,6 +108,7 @@ STRONG_SIGNALS = {
     "facebook_review",
     "fathom_call",
     "slack_mention",
+    "case_study",      # featured on digitail.com/customer-stories/
     "manual",
 }
 
@@ -133,13 +137,17 @@ SIGNAL_LABELS = {
     "facebook_review":     "Facebook Review",
     "slack_mention":       "Positive Slack Mention",
     "fathom_call":         "Positive Customer Call (Fathom)",
-    "manual":              "Manually Verified",
+    "case_study":          "Featured in Digitail Customer Stories",
 }
 
 NEGATIVE_KW = [
-    "not happy", "unhappy", "at risk", "churn", "cancel", "triple check",
-    "do not contact", "rocky", "leaving", "switching away", "terrible",
-    "awful", "disappointed", "frustrated", "refund", "dispute",
+    # Only words that unambiguously signal churn, departure, or do-not-contact.
+    # Do NOT include words like "cancel", "frustrated", "disappointed", "rocky"
+    # — these appear constantly in normal CS conversations and create false negatives.
+    "churned", "churn confirmed", "lost to competitor", "switching away",
+    "leaving digitail", "cancelled contract", "cancelling contract",
+    "do not contact", "dnc ", "at risk of churning", "request to cancel",
+    "wants to cancel", "going to cancel", "decided to leave",
 ]
 POSITIVE_KW = [
     "great", "love", "loves", "happy", "excellent", "recommend", "advocate",
@@ -973,10 +981,12 @@ def fetch_slack_signals() -> tuple:
     print(f"  Positive-priority: {pos_channels or ['none matched']}")
 
     # ── Scan each channel ─────────────────────────────────────────────────────
-    scanned = 0
+    scanned    = 0
+    is_neg_ch  = lambda name: any(k in name for k in SLACK_NEGATIVE_PRIORITY)
     for ch in all_channels:
-        ch_name = ch["name"]
-        ch_id   = ch["id"]
+        ch_name    = ch["name"]
+        ch_id      = ch["id"]
+        neg_channel = is_neg_ch(ch_name)  # only churn/escalation channels add to negatives
         try:
             r = requests.get("https://slack.com/api/conversations.history",
                 params={"channel":ch_id,"oldest":cutoff,"limit":200},
@@ -1011,7 +1021,8 @@ def fetch_slack_signals() -> tuple:
                                 "channel":   ch_name,
                                 "permalink": permalink,
                             })
-                        elif is_neg and not is_pos:
+                        elif is_neg and not is_pos and neg_channel:
+                            # Only flag as negative if message is in a churn/escalation channel
                             negative.add(word.lower())
             time.sleep(0.3)  # respect Slack Tier 3 rate limit (50 req/min)
         except Exception as e:
@@ -1091,6 +1102,78 @@ def fetch_fathom_signals() -> tuple:
     except Exception as e:
         print(f"  Fathom failed: {e}")
     return positive, negative
+
+# ── Digitail Customer Stories ─────────────────────────────────────────────────
+def scrape_customer_stories() -> list:
+    """
+    Scrapes https://digitail.com/customer-stories/ and returns a list of dicts:
+      {clinic_name, story_url, reviewer, signal: 'case_study'}
+    Each entry is then matched against HubSpot companies in build_review_matches().
+    """
+    if not BS4:
+        print("  Customer stories: beautifulsoup4 not installed, skipping")
+        return []
+    try:
+        r = requests.get(DIGITAIL_STORIES_URL, headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+        }, timeout=15)
+        if r.status_code != 200:
+            print(f"  Customer stories: HTTP {r.status_code}")
+            return []
+        soup   = BeautifulSoup(r.text, "html.parser")
+        stories = []
+        seen    = set()
+
+        # Each story is an <a> tag pointing to a /customer-stories/{slug}/ URL.
+        # The link text contains the clinic name or the story headline.
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            if "/customer-stories/" not in href or href.rstrip("/") == DIGITAIL_STORIES_URL.rstrip("/"):
+                continue
+            # Derive clinic name from the URL slug: strip leading numbers and "how-"
+            slug  = href.rstrip("/").split("/customer-stories/")[-1]
+            slug  = re.sub(r'^[\d-]+', '', slug)          # remove leading numbers
+            slug  = re.sub(r'^how-', '', slug)             # strip "how-"
+            # Convert slug to title case as a fallback name
+            slug_name = slug.replace("-", " ").title()
+
+            # Try to extract a real clinic name from the link text / nearby elements
+            link_text = a.get_text(" ", strip=True)
+            # Story headlines often follow "How [ClinicName] did X" or "[ClinicName] does Y"
+            # Extract the capitalised phrase before the first verb
+            name_from_headline = None
+            m = re.search(
+                r'How\s+([A-Z][a-zA-Z &\'\-]{4,50?})\s+(?:Saved|Cut|Chose|Drove|Scaled|Built|'
+                r'Harnessed|Added|Launched|Prepared|Sees|Reclaim|Consolidated|Unified|'
+                r'Switched|Transformed|Implemented)',
+                link_text)
+            if m:
+                name_from_headline = m.group(1).strip()
+
+            # Prefer the extracted headline name, fall back to slug-derived name
+            clinic_name = name_from_headline or slug_name
+            if not clinic_name or len(clinic_name) < 4:
+                continue
+            if clinic_name.lower() in seen:
+                continue
+            seen.add(clinic_name.lower())
+
+            # Use the specific story URL for the hyperlink in the popup
+            story_url = href if href.startswith("http") else f"https://digitail.com{href}"
+            stories.append({
+                "source":   "customer_stories",
+                "signal":   "case_study",
+                "reviewer": clinic_name,   # used by build_review_matches for name matching
+                "text":     f"Featured in Digitail customer story: {link_text[:200]}",
+                "url":      story_url,
+            })
+
+        print(f"  Customer stories: {len(stories)} stories found on digitail.com")
+        return stories
+    except Exception as e:
+        print(f"  Customer stories scrape failed: {e}")
+        return []
 
 # ── Review scrapers ───────────────────────────────────────────────────────────
 def _scrape(url, key, card_sels, rating_sels, body_sels, rev_sels, min_r=4.0):
@@ -1297,7 +1380,8 @@ def main():
     all_negative = ic_negative | slack_neg | fathom_neg
 
     print("\n── Review sites ───────────────────────────────────────────")
-    all_reviews = (scrape_capterra() + scrape_g2() + scrape_software_advice()
+    all_reviews = (scrape_customer_stories() +
+                   scrape_capterra() + scrape_g2() + scrape_software_advice()
                    + scrape_getapp() + scrape_trustpilot())
 
     print("\n── Google ─────────────────────────────────────────────────")
@@ -1413,8 +1497,10 @@ def main():
         for ext in review_matches.get(hs_id,[]):
             strong_signals.append(ext["signal"])
             if ext.get("text"): matched_quotes.append(ext["text"])
-            if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
-                signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
+            # Use per-story URL for case_study; static listing URL for review sites
+            sig_url = ext.get("url") or SIGNAL_STATIC_URLS.get(ext["signal"])
+            if sig_url and ext["signal"] not in signal_urls:
+                signal_urls[ext["signal"]] = sig_url
 
         # External review fallback: require substantial multi-word overlap
         for ext in all_external:
@@ -1425,8 +1511,9 @@ def main():
             if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
                 strong_signals.append(ext["signal"])
                 if ext.get("text"): matched_quotes.append(ext["text"])
-                if ext["signal"] in SIGNAL_STATIC_URLS and ext["signal"] not in signal_urls:
-                    signal_urls[ext["signal"]] = SIGNAL_STATIC_URLS[ext["signal"]]
+                sig_url = ext.get("url") or SIGNAL_STATIC_URLS.get(ext["signal"])
+                if sig_url and ext["signal"] not in signal_urls:
+                    signal_urls[ext["signal"]] = sig_url
 
         # Gate: referral alone is sufficient; non-referral needs at least one other signal
         if not strong_signals:
