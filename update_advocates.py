@@ -171,7 +171,7 @@ TELE_TERMS = ["tele", "virtual", "online", "remote"]
 # Excluded when matching Slack mentions and customer story names to HubSpot companies
 # so that "Animal Hospital" doesn't match every animal hospital in the database.
 GENERIC_VET_WORDS = {
-    "veterinary", "animal", "clinic", "hospital", "services", "practice",
+    "veterinary", "animal", "clinic", "hospital", "services", "service", "practice",
     "center", "mobile", "care", "health", "petcare", "companion", "pets",
     "vets", "vet", "medical", "wellness",
 }
@@ -386,7 +386,20 @@ def hs_fetch_referral_network() -> tuple:
         "reference_program",
         "reference_program_optin__c",
     ]
-    TRUTHY = {"true","yes","1","on","opted in","opt in","opted-in","opt-in","agreed"}
+    TRUTHY = {
+        "true", "True", "TRUE",
+        "yes", "Yes", "YES",
+        "1", "on", "On", "ON",
+        "opted in", "Opted in", "Opted In",
+        "opt in", "Opt in", "Opt In",
+        "opted-in", "Opted-in", "Opted-In",
+        "opt-in", "Opt-in", "Opt-In",
+        "agreed", "Agreed", "AGREED",
+    }
+
+    def _is_ref_truthy(value) -> bool:
+        v = str(value or "").strip().lower()
+        return v in {"true", "yes", "1", "on", "opted in", "opt in", "opted-in", "opt-in", "agreed"}
 
     # ── Step 1: find the right property name via exact opt-in values ──────────
     # Do NOT use HAS_PROPERTY here. It also returns "No" / "Opted Out" values.
@@ -443,6 +456,47 @@ def hs_fetch_referral_network() -> tuple:
             after = data.get("paging",{}).get("next",{}).get("after")
             if not after: break
         break  # found the right property — stop trying
+
+    # ── Fallback: HubSpot enum values are sometimes stored/displayed differently ─
+    # If exact EQ values find nothing, fetch contacts with the property present and
+    # apply the same truthy test locally. This still blocks No/False/Opted Out.
+    if not all_contacts:
+        for prop_name in PROPERTY_CANDIDATES:
+            after = None
+            candidates = []
+            while True:
+                payload = {
+                    "filterGroups": [{"filters": [{
+                        "propertyName": prop_name,
+                        "operator": "HAS_PROPERTY",
+                    }]}],
+                    "properties": ["firstname","lastname","email","phone","company",
+                                   "jobtitle","city","state","zip","country", prop_name],
+                    "limit": 100,
+                }
+                if after: payload["after"] = after
+                pr = requests.post("https://api.hubapi.com/crm/v3/objects/contacts/search",
+                                   json=payload, headers=hs_h(), timeout=15)
+                if pr.status_code == 400:
+                    candidates = []
+                    break
+                if pr.status_code != 200:
+                    print(f"  Referral HAS_PROPERTY fallback ({prop_name}): HTTP {pr.status_code}")
+                    candidates = []
+                    break
+                data = pr.json()
+                for c in data.get("results", []):
+                    if _is_ref_truthy(c.get("properties", {}).get(prop_name)):
+                        candidates.append(c)
+                after = data.get("paging",{}).get("next",{}).get("after")
+                if not after: break
+            if candidates:
+                found_prop = prop_name
+                all_contacts = candidates
+                sample_val = (candidates[0].get("properties",{}).get(prop_name,"") or "")
+                print(f"  Referral property found via local truthy fallback: '{prop_name}' — "
+                      f"{len(all_contacts)} opted-in contacts, sample value: '{sample_val}'")
+                break
 
     # ── Diagnostic: if still 0, look up known companies and log their contacts ─
     if not all_contacts:
@@ -1217,11 +1271,119 @@ def fetch_fathom_signals() -> tuple:
     return positive, negative
 
 # ── Digitail Customer Stories ─────────────────────────────────────────────────
+STORY_VERBS = {
+    "cut", "cuts", "saved", "saves", "save", "chose", "choose", "drove", "drive",
+    "scaled", "scale", "built", "builds", "harnessed", "harnesses", "added", "adds",
+    "launched", "launches", "prepared", "prepares", "sees", "reclaimed", "reclaims",
+    "consolidated", "unified", "switched", "switches", "transformed", "transforms",
+    "implemented", "implements", "boosted", "boosts", "grew", "grows", "reduced",
+    "reduces", "increased", "increases", "achieved", "achieves", "used", "uses",
+    "created", "creates", "streamlined", "streamlines", "went", "goes", "gained",
+    "gains", "doubled", "doubles", "onboarded", "runs", "grew", "prepared",
+}
+STORY_STOPWORDS = {
+    "how", "with", "from", "after", "using", "digitail", "pims", "software", "case",
+    "study", "strategy", "proven", "steps", "minutes", "mins", "daily", "patients",
+    "adoption", "parent", "app", "digital", "faster", "boost", "productivity", "week",
+    "year", "paperless", "modern", "workflows", "inventory", "management", "time",
+}
+PERSON_PREFIX_RE = re.compile(r'^(?:dr|doctor|mr|mrs|ms|miss)\.?\s+', re.I)
+
+
+def _clean_story_candidate(name: str) -> str:
+    name = re.sub(r'\s+', ' ', (name or '')).strip(" -–—:|,.")
+    name = re.sub(r"[’']s\b", "", name)
+    name = re.sub(r"\b(Veterinary|United|Doctor|Vet|Vets|Clinic|Hospital|Service|Services)s\b", r"\1", name, flags=re.I)
+    name = PERSON_PREFIX_RE.sub('', name).strip()
+
+    # If the candidate includes card-role cruft, keep the text after the last role.
+    # Example: "Liza Price Owner Riverside Veterinary" → "Riverside Veterinary".
+    role_re = r'\b(?:Owner|Founder|Co-founder|Co founder|Director|Manager|Technician|Administrator|Program Director|Medical Director|Hospital Manager)\b'
+    parts = re.split(role_re, name, flags=re.I)
+    if len(parts) > 1 and parts[-1].strip():
+        name = parts[-1].strip()
+    name = re.sub(r'^.*\bHow\s+', '', name, flags=re.I).strip()
+
+    # Remove credential crumbs.
+    name = re.sub(r'\b(?:DVM|MBA|CVPM|PHR|MS|FVTE|LVT)\b', '', name, flags=re.I)
+    name = re.sub(r'\s+', ' ', name).strip(" -–—:|,.")
+    words = [w for w in re.split(r'\W+', name) if w]
+    if len(words) < 1 or len(name) < 3:
+        return ''
+    if PERSON_PREFIX_RE.search(name):
+        return ''
+    clinicish = re.search(r'\b(?:vet|vets|veterinary|animal|clinic|hospital|road|community|college|school|united|home|mobile|care|park|parks|eco|embrace|elevate|ace|woofdoctor|unam|amici|cannis|shoreview|riverside|hefner|simmons|covina|beeville|paumanok|mill|brook)\b', name, re.I)
+    if len(words) <= 2 and not clinicish:
+        return ''
+    if not distinctive_words(name):
+        return ''
+    return name
+
+
+def _story_name_from_slug(slug: str) -> str:
+    slug = re.sub(r'^[\d-]+', '', slug or '')
+    slug = re.sub(r'^how-', '', slug)
+    parts = [x for x in slug.split('-') if x]
+    kept = []
+    for part in parts:
+        pl = part.lower()
+        if pl in STORY_VERBS or pl in STORY_STOPWORDS:
+            break
+        if re.match(r'^\d', pl):
+            break
+        kept.append(part)
+        if len(kept) >= 6:
+            break
+    return _clean_story_candidate(' '.join(kept).title())
+
+
+def _extract_story_candidates(text: str, slug: str) -> list:
+    """Return clean clinic-name candidates from a customer-story card/link."""
+    text = re.sub(r'\s+', ' ', text or '').strip()
+    candidates = []
+
+    # Most reliable: exact clinic-ish phrase anywhere in the card text.
+    clinic_patterns = [
+        r"([A-Z][A-Za-z&'’\-. ]{2,80}?\b(?:Veterinary Hospital|Animal Hospital|Veterinary Clinic|Vet Clinic|Veterinary Service|Veterinary Services|Animal Clinic|Community College|Vet School|Mobile Vet|Lane Vets|Road Animal Hospital|Veterinary|Vets)\b)",
+        r"\b(Amici Cannis|Hefner Road Animal Hospital|Simmons Veterinary Clinic|Simmons Veterinary|Covina Animal Hospital|Beeville Veterinary Hospital|Genesee Community College|Southern Trail|Shoreview Veterinary|Riverside Veterinary|Parker & Ace|Mill Brook|AcharaVet|Paumanok Veterinary Hospital|UNAM|Veterinary United|WoofDoctor on Wheels|WoofDoctor|Elevate|Embrace Animal Hospital|My Home Vet|Vet Concierge|The Parks Animal Clinic|Eco Vets|Goostrey Lane Vets|Home Visit Pet Care)\b",
+    ]
+    for pat in clinic_patterns:
+        for m in re.finditer(pat, text):
+            cand = _clean_story_candidate(m.group(1))
+            if cand:
+                candidates.append(cand)
+
+    # Headline style: "How [Clinic] Drove..." / "[Clinic] cuts..."
+    verb_alt = '|'.join(sorted(STORY_VERBS, key=len, reverse=True))
+    for pat in [
+        rf"\bHow\s+([A-Z][A-Za-z&'’\-. ]{{2,80}}?)\s+(?:{verb_alt})\b",
+        rf"^([A-Z][A-Za-z&'’\-. ]{{2,80}}?)\s+(?:{verb_alt})\b",
+    ]:
+        m = re.search(pat, text)
+        if m:
+            cand = _clean_story_candidate(m.group(1))
+            if cand:
+                candidates.append(cand)
+
+    slug_cand = _story_name_from_slug(slug)
+    if slug_cand:
+        candidates.append(slug_cand)
+
+    # Deduplicate while preserving order. Prefer longer, more specific names first.
+    dedup = []
+    seen = set()
+    for cand in sorted(candidates, key=lambda x: len(x), reverse=True):
+        key = cand.lower()
+        if key not in seen:
+            seen.add(key)
+            dedup.append(cand)
+    return dedup
+
+
 def scrape_customer_stories() -> list:
     """
-    Scrapes https://digitail.com/customer-stories/ and returns a list of dicts:
-      {clinic_name, story_url, reviewer, signal: 'case_study'}
-    Each entry is then matched against HubSpot companies in build_review_matches().
+    Scrapes https://digitail.com/customer-stories/ and returns case-study signals.
+    Each story carries one primary reviewer plus clinic_candidates for safer matching.
     """
     if not BS4:
         print("  Customer stories: beautifulsoup4 not installed, skipping")
@@ -1230,87 +1392,48 @@ def scrape_customer_stories() -> list:
         r = requests.get(DIGITAIL_STORIES_URL, headers={
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                           "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            "Accept-Language": "en-US,en;q=0.9",
         }, timeout=15)
         if r.status_code != 200:
             print(f"  Customer stories: HTTP {r.status_code}")
             return []
-        soup   = BeautifulSoup(r.text, "html.parser")
-        stories = []
-        seen    = set()
+        soup = BeautifulSoup(r.text, "html.parser")
+        stories, seen_urls = [], set()
 
-        # Each story is an <a> tag pointing to a /customer-stories/{slug}/ URL.
-        # The link text contains the clinic name or the story headline.
         for a in soup.find_all("a", href=True):
             href = a["href"]
-            if "/customer-stories/" not in href or href.rstrip("/") == DIGITAIL_STORIES_URL.rstrip("/"):
+            if "/customer-stories/" not in href:
                 continue
-            # Derive clinic name from the URL slug: strip leading numbers and "how-"
-            slug  = href.rstrip("/").split("/customer-stories/")[-1]
-            slug  = re.sub(r'^[\d-]+', '', slug)          # remove leading numbers
-            slug  = re.sub(r'^how-', '', slug)             # strip "how-"
-            # Convert slug to title case as a fallback name
-            slug_name = slug.replace("-", " ").title()
-
-            # Try to extract a real clinic name from the link text / nearby elements
-            link_text = a.get_text(" ", strip=True)
-            # Story headlines often follow "How [ClinicName] did X" or "[ClinicName] does Y"
-            # Extract the capitalised phrase before the first verb
-            name_from_headline = None
-            # Primary: "How [ClinicName] Verb..."
-            m = re.search(
-                r'How\s+([A-Z][a-zA-Z &\'\-\.]{3,50?})\s+'
-                r'(?:Saved|Saves|Cut|Cuts|Chose|Choose|Drove|Drive|Scaled|Scale|'
-                r'Built|Builds|Harnessed|Harnesses|Added|Adds|Launched|Launches|'
-                r'Prepared|Prepares|Sees|Reclaimed|Reclaims|Consolidated|'
-                r'Unified|Switched|Switches|Transformed|Transforms|'
-                r'Implemented|Implements|Boosted|Boosts|Grew|Grows|'
-                r'Reduced|Reduces|Increased|Increases|Achieved|Achieves|'
-                r'Used|Uses|Created|Creates|Streamlined|Streamlines|'
-                r'Went|Goes|Gained|Gains|Doubled|Doubles|Onboarded)',
-                link_text)
-            if m:
-                name_from_headline = m.group(1).strip()
-
-            # Fallback: "[ClinicName] Verb..." (no leading "How")
-            if not name_from_headline:
-                m2 = re.search(
-                    r'^([A-Z][a-zA-Z &\'\-\.]{3,50?})\s+'
-                    r'(?:cuts|saves|drives|scales|builds|launches|switched|'
-                    r'transformed|reduced|increased|achieved|streamlined)',
-                    link_text, re.IGNORECASE)
-                if m2:
-                    name_from_headline = m2.group(1).strip()
-
-            # ── Strict extraction: only use headline-extracted clinic names ──────────
-            # If the regex couldn't pull a real clinic name from the headline,
-            # skip this entry — the slug-derived fallback name is too long and
-            # generic and causes false matches against HubSpot company names.
-            clinic_name = name_from_headline
-            if clinic_name:
-                clinic_name = re.sub(r'^(?:Dr\.?|Doctor)\s+', '', clinic_name.strip(), flags=re.I).strip()
-            # Avoid treating clinician names as clinic names.
-            if (not clinic_name or len(clinic_name) < 4 or
-                    re.search(r'\b(?:Dr\.?|Doctor)\b', clinic_name, re.I) or
-                    len([w for w in re.split(r'\W+', clinic_name) if w]) < 2):
-                continue
-            if clinic_name.lower() in seen:
-                continue
-            seen.add(clinic_name.lower())
-
             story_url = href if href.startswith("http") else f"https://digitail.com{href}"
-            # Store just the clean story title as text, NOT the raw link_text blob.
-            # link_text spans multiple card elements on the page and causes cross-
-            # contamination where a story about Clinic A accidentally contains
-            # Clinic B's name, leading to wrong quote attribution.
+            if story_url.rstrip("/") == DIGITAIL_STORIES_URL.rstrip("/"):
+                continue
+            if story_url in seen_urls:
+                continue
+            seen_urls.add(story_url)
+
+            slug = story_url.rstrip("/").split("/customer-stories/")[-1]
+            # Card text is often richer than the anchor text alone.
+            card = a.find_parent(["article", "li", "div"])
+            card_text = card.get_text(" ", strip=True) if card else ""
+            link_text = a.get_text(" ", strip=True)
+            text_blob = f"{link_text} {card_text}".strip()
+            candidates = _extract_story_candidates(text_blob, slug)
+            if not candidates:
+                continue
+
             stories.append({
-                "source":   "customer_stories",
-                "signal":   "case_study",
-                "reviewer": clinic_name,
-                "text":     f"Featured on Digitail customer stories page: {story_url}",
-                "url":      story_url,
+                "source": "customer_stories",
+                "signal": "case_study",
+                "reviewer": candidates[0],
+                "clinic_candidates": candidates,
+                "text": f"Featured on Digitail customer stories page: {story_url}",
+                "url": story_url,
             })
 
         print(f"  Customer stories: {len(stories)} stories found on digitail.com")
+        if stories:
+            preview = ', '.join(s['reviewer'] for s in stories[:8])
+            print(f"  Customer stories matched candidates: {preview}{'…' if len(stories) > 8 else ''}")
         return stories
     except Exception as e:
         print(f"  Customer stories scrape failed: {e}")
@@ -1474,9 +1597,14 @@ def matches_negative_name(name: str, negative_terms) -> bool:
     if not name_lc: return False
     name_words = distinctive_words(name_lc)
     for term, term_words in negative_terms:
-        if term and (name_lc == term or term in name_lc or name_lc in term):
+        if not term:
+            continue
+        # Exact/containment match is strong enough.
+        if name_lc == term or term in name_lc or name_lc in term:
             return True
-        if name_words and term_words and len(name_words & term_words) >= 1:
+        # Fuzzy negative matching must be conservative. One shared distinctive word
+        # caused over-exclusion, especially across clinics with similar names.
+        if name_words and term_words and len(name_words & term_words) >= 2:
             return True
     return False
 
@@ -1516,13 +1644,14 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
             score = 0
 
             if is_case_study:
-                # Case studies: ONLY match via the headline-extracted clinic name.
-                # The text fallback (name in text) was removed because the story
-                # text blob can accidentally contain other clinic names from adjacent
-                # page cards, causing false matches (e.g. Beeville story matching
-                # Brown Veterinary because "brown" appears somewhere in the text).
-                if reviewer and case_study_names_match(name, reviewer):
-                    score += 15
+                # Case studies: match against all extracted clinic candidates, not
+                # clinician names. This supports cards like "Dr. Martin... Hefner
+                # Road Animal Hospital" and headlines like "How Simmons Veterinary...".
+                candidates = ext.get("clinic_candidates") or ([reviewer] if reviewer else [])
+                for cand in candidates:
+                    if cand and case_study_names_match(name, cand.lower()):
+                        score += 15
+                        break
             else:
                 if reviewer and names_match(name, reviewer): score += 10
                 if name and name in text:                    score += 8
@@ -1672,24 +1801,28 @@ def main():
                     signal_urls["intercom_csat"] = ic_sigs[ic_key]["url"]
                 break
 
-        # Slack: require the HubSpot company name to appear verbatim (or nearly so)
-        # in the Slack message text. Word-overlap matching produces wrong links
-        # because a message about Clinic A can match Clinic B via shared words.
-        # We check both directions: does the slack key match the name AND does
-        # the name appear in the original message quote?
+        # Slack: require strong name alignment AND the linked message text must
+        # contain the same distinctive clinic words. This prevents a message about
+        # "Southshore Veterinary Service" from linking to "Thousand Hills Veterinary
+        # Service" just because they share generic clinic terms.
         for s_key, s_val in slack_pos.items():
-            s_words = {w for w in re.split(r'\W+', s_key) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
-            n_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5 and w not in GENERIC_VET_WORDS}
-            if not s_words or not n_words: continue
-            # Primary check: distinctive word overlap (name-level match)
-            if len(s_words & n_words) < 1: continue
-            # Secondary check: verify the clinic name actually appears in the quote.
-            # This catches "Great Plains Animal Hospital" being extracted from a message
-            # about "Simmons Veterinary" that happened to mention "Great" positively.
+            s_words = distinctive_words(s_key, min_len=5)
+            n_words = distinctive_words(name_lc, min_len=5)
+            if not s_words or not n_words:
+                continue
+
             quote_lc = (s_val.get("quote") or "").lower()
-            name_words_long = [w for w in re.split(r'\W+', name_lc) if len(w) >= 6 and w not in GENERIC_VET_WORDS]
-            if name_words_long and not any(w in quote_lc for w in name_words_long):
-                continue  # name's distinctive words don't appear in the message at all
+            overlap = s_words & n_words
+            direct_match = name_lc in s_key or s_key in name_lc
+            if not direct_match and len(overlap) < 2:
+                continue
+
+            # Link only when the actual Slack text contains the same distinctive
+            # words used to match the HubSpot company.
+            needed = n_words if direct_match else overlap
+            if needed and not all(w in quote_lc for w in needed):
+                continue
+
             strong_signals.append("slack_mention")
             if s_val.get("permalink"):
                 signal_urls["slack_mention"] = s_val["permalink"]
