@@ -34,6 +34,40 @@
     "notes": null
   },
   {
+    "id": 435,
+    "name": "Amici Cannis",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Amici Cannis",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 0.51594,
+    "lng": -78.13294,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
+    },
+    "pimsConsidered": "None",
+    "hsId": "32628061291",
+    "format": "bnm",
+    "email": "alexandra@amicicannisusa.org",
+    "phone": "+1 (970) 305-4923",
+    "contact": "Alexandra Rothlisberger",
+    "city": "ibarra",
+    "st": "Imbabura",
+    "pims": "Via",
+    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -143,6 +177,40 @@
     "notes": null
   },
   {
+    "id": 433,
+    "name": "Eco Vets",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Eco Vets",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-03-28",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/100-paperless-from-launch-how-eco-vets-built-a-sustainable-practice-in-london/"
+    },
+    "pimsConsidered": null,
+    "hsId": "8074373187",
+    "format": "bnm",
+    "email": "info@ecovets.co.uk",
+    "contact": "Alex Perez",
+    "city": "wandsworth",
+    "st": "Uk",
+    "pims": "None - New Practice Start Up",
+    "address": "Wandsworth, UK",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
     "id": 411,
     "name": "Elevate Pet Wellness Center",
     "ct": "general",
@@ -249,6 +317,41 @@
     "notes": null
   },
   {
+    "id": 431,
+    "name": "Goostrey Lane Vets",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Goostrey Lane Vets",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.47949,
+    "lng": -2.24511,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2021-09-25",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/day-one-digital-how-goostrey-lane-vets-built-a-modern-practice-around-the-digitail-app/"
+    },
+    "pimsConsidered": null,
+    "hsId": "6175725378",
+    "format": "bnm",
+    "email": "hcurtis@mwiah.co.uk",
+    "phone": "01963 350187",
+    "contact": "Helena Curtis",
+    "city": "manchester",
+    "st": "Manchester",
+    "pims": "None - New Practice Start Up",
+    "address": "Manchester, MANCHESTER, CW4 8HE",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
     "id": 425,
     "name": "Gregory Vet Clinic",
     "ct": "general",
@@ -319,6 +422,40 @@
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     }
+  },
+  {
+    "id": 434,
+    "name": "Home Visit Pet Care",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Home Visit Pet Care",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.54621,
+    "lng": -2.63191,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "21658777779",
+    "format": "mobile",
+    "email": "ben@homevisitpetcare.co.uk",
+    "phone": "+44 7833 099537",
+    "contact": "Ben Jamieson",
+    "city": "wigan",
+    "st": "Wigan",
+    "pims": "None - paper files",
+    "address": "Wigan, WIGAN",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
   },
   {
     "id": 420,
@@ -638,6 +775,40 @@
     "notes": null
   },
   {
+    "id": 436,
+    "name": "SMUK VET",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 44.49096,
+    "lng": 26.08026,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-10-28",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40750841988"
+    },
+    "pimsConsidered": "Unknown",
+    "hsId": "40750841988",
+    "format": "bnm",
+    "email": "smukvet@yahoo.com",
+    "phone": "0721200718",
+    "contact": "Daniela Popa",
+    "city": "bucharest",
+    "st": "Bucuresti",
+    "pims": "None",
+    "address": "Strada Horia 3, Bucharest, BUCURESTI, 077190",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Shoreview Veterinary Hospital - ON Canada",
     "city": "Toronto",
@@ -742,6 +913,40 @@
     "notes": null
   },
   {
+    "id": 432,
+    "name": "The Parks Veterinary Care T/A The Parks Animal Care",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: The Parks Animal Clinic",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": -26.205,
+    "lng": 28.04972,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-02-25",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/100-digital-from-day-one-how-the-parks-animal-clinic-built-a-fear-free-practice-in-south-africa/"
+    },
+    "pimsConsidered": null,
+    "hsId": "7992317270",
+    "format": "bnm",
+    "email": "tjtreherne@gmail.com",
+    "contact": "Trevor Treherne",
+    "city": "Johannesburg",
+    "st": "Gauteng",
+    "pims": "None - New Practice Start Up",
+    "address": "Johannesburg, GAUTENG",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
     "id": 412,
     "name": "Veterinary United",
     "ct": "general",
@@ -774,6 +979,40 @@
     ],
     "verified": true,
     "notes": null
+  },
+  {
+    "id": 430,
+    "name": "Vets@Home",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: My Home Vet",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": -25.76131,
+    "lng": 28.23065,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2021-01-01",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/in-car-onboarding-how-my-home-vet-runs-a-mobile-practice-across-the-cayman-islands-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "2186352614",
+    "format": "bnm",
+    "email": "mariannabergh@gmail.com",
+    "phone": "0794931956",
+    "contact": "Dr. Marianna Bergh",
+    "city": "pretoria",
+    "st": "Gauteng",
+    "address": "7 Murray St, Brooklyn, Pretoria, 0011,, Pretoria, GAUTENG",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
   },
   {
     "id": 413,
