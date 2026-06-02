@@ -491,8 +491,15 @@ def hs_fetch_referral_network() -> tuple:
         print(f"  Referral network: +{len(company_ids)-before} from manual override "
               f"(KNOWN_REFERRAL_COMPANY_IDS)")
 
-    print(f"  Referral network: {len(company_ids)} companies to include on map")
-    return name_map, company_ids
+    print(f"  Referral network: {len(company_ids)} companies (exact ID match only)")
+    # Diagnostic: print the IDs so mismatches can be spotted in the Actions log
+    for cid in sorted(company_ids):
+        print(f"    Referral company ID: {cid}")
+    # Return empty name_map — name-based fallback has been permanently disabled.
+    # It produced false positives (e.g. a contact with company="Brown" matching
+    # "Brown Veterinary Hospital - 7th Street" via substring). If contacts aren't
+    # linked to their company record in HubSpot, fix the association in HubSpot.
+    return {}, company_ids
 
 # ── HubSpot Onboarding pipeline exclusion ────────────────────────────────────
 def hs_fetch_onboarding_pipeline_config() -> tuple:
@@ -1218,31 +1225,54 @@ def scrape_customer_stories() -> list:
             # Story headlines often follow "How [ClinicName] did X" or "[ClinicName] does Y"
             # Extract the capitalised phrase before the first verb
             name_from_headline = None
+            # Primary: "How [ClinicName] Verb..."
             m = re.search(
-                r'How\s+([A-Z][a-zA-Z &\'\-]{4,50?})\s+(?:Saved|Cut|Chose|Drove|Scaled|Built|'
-                r'Harnessed|Added|Launched|Prepared|Sees|Reclaim|Consolidated|Unified|'
-                r'Switched|Transformed|Implemented)',
+                r'How\s+([A-Z][a-zA-Z &\'\-\.]{3,50?})\s+'
+                r'(?:Saved|Saves|Cut|Cuts|Chose|Choose|Drove|Drive|Scaled|Scale|'
+                r'Built|Builds|Harnessed|Harnesses|Added|Adds|Launched|Launches|'
+                r'Prepared|Prepares|Sees|Reclaimed|Reclaims|Consolidated|'
+                r'Unified|Switched|Switches|Transformed|Transforms|'
+                r'Implemented|Implements|Boosted|Boosts|Grew|Grows|'
+                r'Reduced|Reduces|Increased|Increases|Achieved|Achieves|'
+                r'Used|Uses|Created|Creates|Streamlined|Streamlines|'
+                r'Went|Goes|Gained|Gains|Doubled|Doubles|Onboarded)',
                 link_text)
             if m:
                 name_from_headline = m.group(1).strip()
 
-            # Prefer the extracted headline name, fall back to slug-derived name
-            clinic_name = name_from_headline or slug_name
-            if not clinic_name or len(clinic_name) < 4:
-                continue
-            if clinic_name.lower() in seen:
-                continue
-            seen.add(clinic_name.lower())
+            # Fallback: "[ClinicName] Verb..." (no leading "How")
+            if not name_from_headline:
+                m2 = re.search(
+                    r'^([A-Z][a-zA-Z &\'\-\.]{3,50?})\s+'
+                    r'(?:cuts|saves|drives|scales|builds|launches|switched|'
+                    r'transformed|reduced|increased|achieved|streamlined)',
+                    link_text, re.IGNORECASE)
+                if m2:
+                    name_from_headline = m2.group(1).strip()
 
-            # Use the specific story URL for the hyperlink in the popup
-            story_url = href if href.startswith("http") else f"https://digitail.com{href}"
-            stories.append({
-                "source":   "customer_stories",
-                "signal":   "case_study",
-                "reviewer": clinic_name,   # used by build_review_matches for name matching
-                "text":     f"Featured in Digitail customer story: {link_text[:200]}",
-                "url":      story_url,
-            })
+        # ── Strict extraction: only use headline-extracted clinic names ──────────
+        # If the regex couldn't pull a real clinic name from the headline,
+        # skip this entry — the slug-derived fallback name is too long and
+        # generic and causes false matches against HubSpot company names.
+        clinic_name = name_from_headline
+        if not clinic_name or len(clinic_name) < 4:
+            continue
+        if clinic_name.lower() in seen:
+            continue
+        seen.add(clinic_name.lower())
+
+        story_url = href if href.startswith("http") else f"https://digitail.com{href}"
+        # Store just the clean story title as text, NOT the raw link_text blob.
+        # link_text spans multiple card elements on the page and causes cross-
+        # contamination where a story about Clinic A accidentally contains
+        # Clinic B's name, leading to wrong quote attribution.
+        stories.append({
+            "source":   "customer_stories",
+            "signal":   "case_study",
+            "reviewer": clinic_name,
+            "text":     f"Featured on Digitail customer stories page: {story_url}",
+            "url":      story_url,
+        })
 
         print(f"  Customer stories: {len(stories)} stories found on digitail.com")
         return stories
@@ -1433,12 +1463,13 @@ def build_review_matches(all_external: list, hs_customers: list) -> dict:
             score = 0
 
             if is_case_study:
-                # Case studies: use stricter matching that ignores generic vet words.
-                # A Simmons story must not match Prairie Winds just via "veterinary".
+                # Case studies: ONLY match via the headline-extracted clinic name.
+                # The text fallback (name in text) was removed because the story
+                # text blob can accidentally contain other clinic names from adjacent
+                # page cards, causing false matches (e.g. Beeville story matching
+                # Brown Veterinary because "brown" appears somewhere in the text).
                 if reviewer and case_study_names_match(name, reviewer):
                     score += 15
-                elif name and name in text:
-                    score += 10
             else:
                 if reviewer and names_match(name, reviewer): score += 10
                 if name and name in text:                    score += 8
@@ -1541,9 +1572,12 @@ def main():
         name_lc = name.lower().strip()
 
         # ── Is this company in the referral program? ──────────────────────────
-        # Checked BEFORE negative evaluation so the log shows context correctly.
-        in_referral = (hs_id in referral_ids or
-                       any(names_match(name, rn_key) for rn_key in referral_net))
+        # ONLY use exact HubSpot company ID match (referral_ids).
+        # The name_map fallback was disabled because it matches by company TEXT FIELD
+        # typed by the contact (e.g. a contact at a different clinic types "Brown
+        # Veterinary Hospital"), which incorrectly flags unrelated companies as
+        # referral members. Exact ID match has zero false positives.
+        in_referral = hs_id in referral_ids
 
         # ── Negative checks — apply to everyone, including referral members ───
         # Referral opt-in means they agreed to be a reference — but a subsequent
@@ -1622,12 +1656,23 @@ def main():
             if sig_url and ext["signal"] not in signal_urls:
                 signal_urls[ext["signal"]] = sig_url
 
-        # External review fallback: require substantial multi-word overlap
+        # External review fallback for non-case-study sources only.
+        # Case studies are EXCLUDED here — they must match through build_review_matches()
+        # using case_study_names_match() which filters generic vet words. Without this
+        # exclusion, slug names like "Beeville Veterinary Hospital Cuts Cost Of Goods..."
+        # match EVERY vet clinic via shared words "veterinary" and "hospital".
         for ext in all_external:
+            if ext.get("signal") == "case_study":
+                continue  # handled exclusively by build_review_matches + case_study_names_match
             rev = ext.get("reviewer","") or ext.get("author","") or ""
-            rev_words  = {w for w in re.split(r'\W+', rev.lower()) if len(w) >= 5}
-            name_words = {w for w in re.split(r'\W+', name_lc) if len(w) >= 5}
-            is_solid_match = len(rev_words & name_words) >= 2
+            # Apply GENERIC_VET_WORDS filter so "veterinary"/"animal"/"hospital" alone
+            # don't produce a match — only distinctive clinic-specific words count
+            rev_words  = {w for w in re.split(r'\W+', rev.lower())
+                          if len(w) >= 5 and w not in GENERIC_VET_WORDS}
+            name_words = {w for w in re.split(r'\W+', name_lc)
+                          if len(w) >= 5 and w not in GENERIC_VET_WORDS}
+            # Require at least 1 distinctive word in both AND they overlap
+            is_solid_match = bool(rev_words) and bool(name_words) and len(rev_words & name_words) >= 1
             if rev and len(rev) > 10 and is_solid_match and ext not in review_matches.get(hs_id,[]):
                 strong_signals.append(ext["signal"])
                 if ext.get("text"): matched_quotes.append(ext["text"])
