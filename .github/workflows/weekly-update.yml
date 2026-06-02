@@ -1,9 +1,9 @@
-name: Weekly Advocate Map Refresh
+name: Daily Advocate Map Refresh
 
 on:
   schedule:
-    - cron: "0 13 * * 1"   # Every Monday 9am ET (1pm UTC)
-  workflow_dispatch:         # Manual trigger from GitHub Actions tab
+    - cron: "0 13 * * *"   # Every day 9am ET-ish / 1pm UTC
+  workflow_dispatch:       # Manual trigger from GitHub Actions tab
 
 permissions:
   contents: write
@@ -45,6 +45,6 @@ jobs:
           git config user.email "bot@digitail.io"
           git diff --quiet advocates.json || (
             git add advocates.json &&
-            git commit -m "data: weekly advocate refresh $(date +%Y-%m-%d)" &&
+            git commit -m "data: daily advocate refresh $(date +%Y-%m-%d)" &&
             git push
           )
