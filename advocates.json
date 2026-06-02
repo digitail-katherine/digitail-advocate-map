@@ -31,7 +31,6 @@
     "address": "418 West Northwest Highway, Chicago, IL, 60056",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -62,14 +61,12 @@
     "hsId": "55356742306",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/55356742306",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -105,8 +102,40 @@
     "address": "Detroit, MI",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 371,
+    "name": "Acharavet - HQ",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Dr. Dermot Jevens Co-founder, Board-Certified Veterinary Surgeon 30% Productivity Boost: How AcharaVet Scaled 9 Clinics with AI",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 31.8296,
+    "lng": -86.61775,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/30-productivity-boost-how-acharavet-scaled-9-clinics-with-ai/"
+    },
+    "pimsConsidered": null,
+    "hsId": "7564431013",
+    "format": "bnm",
+    "email": "allison@acharavet.com",
+    "contact": "Allison Cawley",
+    "city": "Greenville",
+    "st": "SC",
+    "pims": "Cornerstone",
+    "address": "Greenville, SC",
+    "signals": [
+      "case_study"
     ],
     "verified": true
   },
@@ -139,7 +168,41 @@
     "pims": "VetSpire",
     "address": "375 W State St, Salem, Ohio, United States, 44460-2757, Conneaut, OH, 44460",
     "signals": [
-      "hs_referral_network",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 379,
+    "name": "Advanced Veterinary - FL",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-07-05",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C09KGLVHC1G/p1774960678575039"
+    },
+    "pimsConsidered": null,
+    "hsId": "28786505846",
+    "format": "bnm",
+    "email": "info@advancedveterinary.com",
+    "phone": "941-200-0921",
+    "contact": "Dr. Thomas Jackson",
+    "city": "cape coral",
+    "st": "FL",
+    "pims": "Other",
+    "address": "28380 Old 41 Road, Cape Coral, FL, 34135",
+    "signals": [
+      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true
@@ -177,7 +240,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 128,
@@ -209,7 +273,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Port St Lucie, FL",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -232,7 +295,6 @@
     "customerSince": "2025-08-18",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/38254106901",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "38254106901",
@@ -246,10 +308,10 @@
     "address": "Live Oak, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 280,
@@ -269,7 +331,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31378420133",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "31378420133",
@@ -283,10 +344,10 @@
     "address": "12613 CR 137, Wellborn, FL, 32094",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 253,
@@ -306,7 +367,6 @@
     "customerSince": "2024-11-23",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26268986949",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "26268986949",
@@ -321,10 +381,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 76,
@@ -344,7 +404,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5961168491",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "5961168491",
@@ -358,10 +417,10 @@
     "address": "Greensboro, NC",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 172,
@@ -396,7 +455,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 321,
@@ -430,7 +490,6 @@
     "address": "New Athens, IL",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -465,8 +524,39 @@
     "pims": "Cornerstone",
     "address": "Janesville, WI",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
+    "id": 373,
+    "name": "Animal Doctors International - Cambodia",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1772971789502579"
+    },
+    "pimsConsidered": null,
+    "hsId": "9913149290",
+    "format": "bnm",
+    "email": "will@theanimaldoctors.org",
+    "phone": "+84(0) 28 7304 1144",
+    "contact": "Dr. William Thomas",
+    "pims": "Neo",
+    "address": "",
+    "signals": [
+      "slack_mention"
     ],
     "verified": true
   },
@@ -502,7 +592,6 @@
     "address": "101 South Milwaukee Avenue, Grayslake, IL, 60046",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -525,7 +614,6 @@
     "customerSince": "2025-03-17",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30515436122",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "30515436122",
@@ -540,10 +628,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 279,
@@ -563,7 +651,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31417881226",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "31417881226",
@@ -580,7 +668,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 59,
@@ -668,8 +757,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18457985941",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18457985941"
     },
     "hsId": "18457985941",
     "format": "bnm",
@@ -681,7 +769,39 @@
     "pims": "None - paper files",
     "address": "Phoenix, AZ",
     "signals": [
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 378,
+    "name": "AprilVets - HQ",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.44744,
+    "lng": -79.66667,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    },
+    "pimsConsidered": null,
+    "hsId": "35642493732",
+    "format": "bnm",
+    "email": "colton@aprilvets.com",
+    "phone": "1.437.999.5515",
+    "contact": "Colton Dirksen",
+    "city": "Oakville",
+    "address": "Oakville",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -718,7 +838,6 @@
     "address": "240 Main Street, Fort Mill, SC, 29715",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -741,7 +860,6 @@
     "customerSince": "2025-01-23",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/28902053703",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "28902053703",
@@ -756,10 +874,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -786,7 +904,6 @@
     "address": "Denver",
     "hsId": "47352695073",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -808,14 +925,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 39.16785,
-    "lng": -91.86486,
+    "lat": 39.16772,
+    "lng": -91.86467,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17696420240",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "17696420240",
@@ -829,10 +945,10 @@
     "address": "1624 East Liberty Street, Mexico, MO, 65265",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 66,
@@ -867,7 +983,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 256,
@@ -886,8 +1003,7 @@
     "dvms": null,
     "customerSince": "2024-12-10",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47389370245",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47389370245"
     },
     "hsId": "47389370245",
     "format": "bnm",
@@ -900,10 +1016,10 @@
     "address": "Clifton, NJ",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 266,
@@ -922,8 +1038,7 @@
     "dvms": null,
     "customerSince": "2025-02-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/29670981382",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/29670981382"
     },
     "hsId": "29670981382",
     "format": "bnm",
@@ -936,10 +1051,10 @@
     "address": "Dallas, TX",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 182,
@@ -971,7 +1086,6 @@
     "pims": "Impromed Infinity",
     "address": "1269 Main St, Glastonbury, CT 06033, United States, Glastonbury, CT, 06033",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -994,7 +1108,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/23841559449",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "23841559449",
@@ -1008,10 +1121,10 @@
     "address": "1900 North Saint Marys Street, Beeville, TX, 78102",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 87,
@@ -1031,7 +1144,7 @@
     "customerSince": "2021-07-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6572012080",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1777481891572369",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "6572012080",
@@ -1048,7 +1161,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 300,
@@ -1068,7 +1182,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/33429211144",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "33429211144",
@@ -1082,10 +1195,10 @@
     "address": "Dunnellon, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 220,
@@ -1119,7 +1232,6 @@
     "address": "Aberdeen, WA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -1142,7 +1254,6 @@
     "customerSince": "2023-05-03",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15393725713",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "15393725713",
@@ -1157,10 +1268,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 105,
@@ -1180,7 +1291,6 @@
     "customerSince": "2022-06-02",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7743340151",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "7743340151",
@@ -1195,10 +1305,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 96,
@@ -1230,7 +1340,6 @@
     "address": "Norman, OK",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -1260,15 +1369,13 @@
     "address": "Kill Devil Hills, NC",
     "hsId": "18847238228",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18847238228",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18847238228"
     }
   },
   {
@@ -1289,7 +1396,6 @@
     "customerSince": "2024-12-07",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/25538304854",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "25538304854",
@@ -1303,10 +1409,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 316,
@@ -1338,8 +1444,7 @@
     "pims": "Cornerstone",
     "address": "Virginia Beach, VA",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -1361,7 +1466,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6120353182",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "6120353182",
@@ -1375,10 +1479,10 @@
     "address": "988b Morris Park Avenue, Syosset, NY, 10462",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 136,
@@ -1398,7 +1502,6 @@
     "customerSince": "2022-11-10",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9669604379",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "9669604379",
@@ -1413,10 +1516,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 237,
@@ -1436,7 +1539,6 @@
     "customerSince": "2024-08-30",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22529828900",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "22529828900",
@@ -1451,10 +1553,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 196,
@@ -1474,7 +1576,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17800322985",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "17800322985",
@@ -1488,10 +1589,10 @@
     "address": "909 South 25th Street, Sullivan, IN, 47803",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 226,
@@ -1511,7 +1612,6 @@
     "customerSince": "2024-04-29",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/20530891533",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "20530891533",
@@ -1526,10 +1626,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 57,
@@ -1593,7 +1693,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 203,
@@ -1606,14 +1707,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 32.83587,
+    "lat": 32.83599,
     "lng": -116.9839,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18246679058",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "18246679058",
@@ -1627,10 +1727,10 @@
     "address": "8802 Cuyamaca Street, Santee, CA, 92071",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 139,
@@ -1649,8 +1749,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9827402347",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9827402347"
     },
     "hsId": "9827402347",
     "format": "bnm",
@@ -1662,10 +1761,10 @@
     "pims": "None - New Practice Start Up",
     "address": "17212 SE 240th St.Kent, WA 98042, Kent, WA",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 294,
@@ -1685,7 +1784,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/32039294373",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "32039294373",
@@ -1699,10 +1797,10 @@
     "address": "2040 E Canal Drive, Ripon, CA, 95380",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 320,
@@ -1733,8 +1831,7 @@
     "pims": "AVImark",
     "address": "7703 T Street, Bauxite, AR, 72227",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -1924,8 +2021,7 @@
     "pims": "None - New Practice Start Up",
     "address": "1287 W Pueblo Blvd, Monument, CO",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -1947,7 +2043,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16779974991",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "16779974991",
@@ -1961,10 +2056,10 @@
     "address": "1780 Bold Springs Church Road, Carnesville, GA",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 341,
@@ -1984,7 +2079,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/45876360728",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "45876360728",
@@ -1995,10 +2089,10 @@
     "address": "28 Nekita Beasley Street, Carnesville, GA, 30521",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 317,
@@ -2017,8 +2111,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/37393102404",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/37393102404"
     },
     "hsId": "37393102404",
     "format": "bnm",
@@ -2030,14 +2123,14 @@
     "pims": "None - New Practice Start Up",
     "address": "Denver, CO",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
-    "id": 332,
-    "name": "Cedar Valley Veterinary Center",
+    "id": 389,
+    "name": "Cedar Creek Equine - Texas, United States",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
@@ -2046,25 +2139,26 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 42.53618,
-    "lng": -92.44776,
+    "lat": 29.75894,
+    "lng": -95.3677,
     "dgtId": null,
     "dvms": null,
-    "customerSince": "2025-12-12",
+    "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40788640011"
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139"
     },
-    "hsId": "40788640011",
+    "pimsConsidered": null,
+    "hsId": "35405732402",
     "format": "bnm",
-    "email": "clifpaulsen@gmail.com",
-    "phone": "3192774564",
-    "contact": "Clif Paulsen",
-    "city": "cedar falls",
-    "st": "IA",
-    "pims": "Impromed Infinity",
-    "address": "Cedar Falls, IA",
+    "email": "reillywren@gmail.com",
+    "phone": "2145029420",
+    "contact": "Reilly Wren",
+    "city": "houston",
+    "st": "TX",
+    "pims": "None - New Practice Start Up",
+    "address": "Houston, TX",
     "signals": [
-      "hs_referral_network"
+      "slack_mention"
     ],
     "verified": true
   },
@@ -2086,7 +2180,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17871283218",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "17871283218",
@@ -2098,10 +2191,10 @@
     "address": "4100 Strandherd Dr, Nepean, ON, K2J 0V2",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 255,
@@ -2135,7 +2228,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 313,
@@ -2167,7 +2261,6 @@
     "pims": "Impromed Infinity",
     "address": "Oak Bluff, MB",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2201,7 +2294,6 @@
     "st": "MB",
     "address": "Winnipeg, MB",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2224,6 +2316,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31274533132",
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019",
       "case_study": "https://digitail.com/customer-stories/100-digital-from-day-one-how-the-parks-animal-clinic-built-a-fear-free-practice-in-south-africa/"
     },
     "hsId": "31274533132",
@@ -2237,9 +2330,11 @@
     "address": "1286 W Chandler Blvd, Chandler, AZ, 85224",
     "signals": [
       "case_study",
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 361,
@@ -2273,7 +2368,6 @@
     "address": "8200 S King Dr., Chicago, IL, 60619",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2311,7 +2405,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 90,
@@ -2331,7 +2426,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6618125210",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "6618125210",
@@ -2345,10 +2439,10 @@
     "address": "1443 Farm to Market 1463, Katy, TX, 77494",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 75,
@@ -2383,7 +2477,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 221,
@@ -2415,8 +2510,7 @@
     "pims": "VetFM",
     "address": "106-3021 Shakespeare Street, Victoria, BC",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -2447,15 +2541,13 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2021-06-18",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6212657066",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -2491,7 +2583,6 @@
     "address": "32122 South Fraser Way, Abbotsford, BC, V2T 1W4",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2529,7 +2620,6 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2566,7 +2656,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 86,
@@ -2585,8 +2676,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6560638218",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6560638218"
     },
     "hsId": "6560638218",
     "format": "mobile",
@@ -2596,10 +2686,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Brunswick, GA",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 351,
@@ -2630,8 +2720,7 @@
     "pims": "None - paper files",
     "address": "271011 Range Rd 40, Vancouver, AB, T4C 3A2",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -2652,8 +2741,7 @@
     "dvms": null,
     "customerSince": "2021-08-20",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6642878532",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6642878532"
     },
     "hsId": "6642878532",
     "format": "bnm",
@@ -2666,10 +2754,10 @@
     "address": "Billing Address: 15518 SE 24th Street, Bellevue, WA 98007, Issaquah, WA, 98007",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 206,
@@ -2703,7 +2791,6 @@
     "address": "163 County Rd 537, Matawan, NJ, 07722",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2767,7 +2854,6 @@
     "address": "Madison, WI",
     "hsId": "19699077925",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -2834,7 +2920,6 @@
     "hsId": "20345650002",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -2877,7 +2962,6 @@
     "address": "16777 Bernardo Center Drive, Suite E10, San Diego 92128, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -2935,7 +3019,7 @@
     "customerSince": "2021-04-06",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5630622122",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139"
     },
     "hsId": "5630622122",
     "format": "bnm",
@@ -2949,7 +3033,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 239,
@@ -2968,8 +3053,7 @@
     "dvms": null,
     "customerSince": "2024-08-22",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22551388016",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22551388016"
     },
     "hsId": "22551388016",
     "format": "bnm",
@@ -2982,10 +3066,10 @@
     "address": "17449 330th Street, Ashburn, VA",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 365,
@@ -3018,7 +3102,6 @@
     "address": "2310 Brooklyn Rd, Jackson, MS, 49203",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3041,8 +3124,8 @@
     "customerSince": "2024-08-01",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18856205671",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
-      "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
+      "slack_mention": "https://thedigitail.slack.com/archives/C9G1XSRJB/p1775176740113079",
+      "case_study": "https://digitail.com/customer-stories/6-systems-evaluated-1-clear-winner-how-covina-switched-pims-without-losing-its-mind/"
     },
     "hsId": "18856205671",
     "format": "bnm",
@@ -3059,7 +3142,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -3127,7 +3211,6 @@
     "address": "1-17 Crescent Street, New York, NY, 11101",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3143,14 +3226,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 39.98153,
-    "lng": -75.82991,
+    "lat": 39.98198,
+    "lng": -75.8283,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2022-04-22",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7976284081",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "7976284081",
@@ -3165,10 +3247,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -3196,7 +3278,6 @@
     "hsId": "50095106694",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -3207,6 +3288,40 @@
       "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
+  },
+  {
+    "id": 375,
+    "name": "Cruisin' Vet, Happy Pet",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 31.43843,
+    "lng": -110.09786,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-02-16",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019"
+    },
+    "pimsConsidered": null,
+    "hsId": "13566081857",
+    "format": "bnm",
+    "email": "cruisindvm@gmail.com",
+    "phone": "5206786628",
+    "contact": "Anna George",
+    "city": "hereford",
+    "st": "AZ",
+    "address": "Hereford, AZ",
+    "signals": [
+      "hs_long_tenure",
+      "slack_mention"
+    ],
+    "verified": true
   },
   {
     "id": 72,
@@ -3226,7 +3341,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5721780295",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "5721780295",
@@ -3239,10 +3353,10 @@
     "address": "6511 Southwest 45th Street, Davie, FL, 33314",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 311,
@@ -3276,7 +3390,6 @@
     "address": "Pittsburgh, MN",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3299,7 +3412,6 @@
     "customerSince": "2021-05-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6104206592",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "6104206592",
@@ -3314,44 +3426,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
-    ],
-    "verified": true
-  },
-  {
-    "id": 56,
-    "name": "Desert Pet Lab and Wellness",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 33.743,
-    "lng": -112.20232,
-    "features": null,
-    "dgtId": null,
-    "hsId": "53948599582",
-    "format": "bnm",
-    "email": "purebalancevet@gmail.com",
-    "phone": "6025517505",
-    "contact": "Kerri Thiel",
-    "city": "phoenix",
-    "st": "AZ",
-    "pims": "None",
-    "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
-    "signals": [
       "hs_referral_network"
     ],
     "verified": true,
-    "notes": null,
-    "customerSince": "2026-04-15",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/53948599582"
-    }
+    "notes": null
   },
   {
     "id": 245,
@@ -3420,7 +3498,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -3479,16 +3558,46 @@
     "hsId": "7361844277",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2021-12-11",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7361844277",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7361844277"
     }
+  },
+  {
+    "id": 390,
+    "name": "Dr. Stephanie's Dental Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 38.81896,
+    "lng": -104.7425,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-07-31",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1772649008554619"
+    },
+    "pimsConsidered": null,
+    "hsId": "37052385309",
+    "format": "bnm",
+    "email": "stephalevizon@gmail.com",
+    "contact": "Stephanie Daigle",
+    "city": "colorado springs",
+    "st": "CO",
+    "address": "4420 Wintergreen Circle, Colorado Springs, CO, 80916",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
   },
   {
     "id": 93,
@@ -3501,13 +3610,14 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 38.77602,
-    "lng": -121.29181,
+    "lat": 38.77604,
+    "lng": -121.29173,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6747014515"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6747014515",
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139"
     },
     "hsId": "6747014515",
     "format": "bnm",
@@ -3519,9 +3629,11 @@
     "pims": "Neo",
     "address": "1090 Pleasant Grove Boulevard, Roseville, CA, 95678",
     "signals": [
-      "hs_referral_network"
+      "hs_referral_network",
+      "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 240,
@@ -3541,7 +3653,6 @@
     "customerSince": "2024-10-11",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22597818803",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "22597818803",
@@ -3556,10 +3667,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 153,
@@ -3572,14 +3683,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 40.59611,
-    "lng": -74.23747,
+    "lat": 40.81351,
+    "lng": -74.07434,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2023-01-12",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10688417042",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "10688417042",
@@ -3594,10 +3704,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 94,
@@ -3617,7 +3727,6 @@
     "customerSince": "2022-01-28",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6993393508",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "6993393508",
@@ -3631,10 +3740,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 302,
@@ -3669,7 +3778,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 106,
@@ -3682,8 +3792,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 35.90349,
-    "lng": -84.11754,
+    "lat": 35.91234,
+    "lng": -84.08382,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2023-02-15",
@@ -3703,7 +3813,8 @@
       "hs_long_tenure",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 83,
@@ -3716,13 +3827,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03705,
-    "lng": -121.2869,
+    "lat": 44.03704,
+    "lng": -121.28689,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
     "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/fully-booked-3-weeks-out-how-elevate-launched-a-wellness-first-clinic/"
+      "case_study": "https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/"
     },
     "hsId": "6260493348",
     "format": "bnm",
@@ -3736,7 +3847,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 359,
@@ -3770,7 +3882,6 @@
     "address": "Houston, TX",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3793,8 +3904,7 @@
     "customerSince": "2021-07-11",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6250277934",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
-      "case_study": "https://digitail.com/customer-stories/2400-patients-in-year-one-how-embrace-animal-hospital-runs-22-visits-a-day-in-20-minutes-each/"
+      "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "6250277934",
     "format": "bnm",
@@ -3808,7 +3918,40 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 370,
+    "name": "Encore Vet Group",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C9G1XSRJB/p1780076204902949"
+    },
+    "pimsConsidered": null,
+    "hsId": "44331451917",
+    "format": "bnm",
+    "email": "rob.paisley@encorevet.com",
+    "phone": "518-226-3917",
+    "contact": "Rob Paisley",
+    "city": "saratoga springs",
+    "st": "NY",
+    "address": "90 East Avenue, Saratoga Springs, NY, 12866",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -3845,7 +3988,6 @@
     "address": "24 Gables Drive SE, Rome, GA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3882,7 +4024,6 @@
     "address": "1710 78th Street, Portland, WA, 98665",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -3905,7 +4046,6 @@
     "customerSince": "2025-05-30",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/25294276532",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "25294276532",
@@ -3920,10 +4060,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 165,
@@ -3942,8 +4082,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15439885826",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15439885826"
     },
     "hsId": "15439885826",
     "format": "bnm",
@@ -3955,10 +4094,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Parksville, BC",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 159,
@@ -3977,8 +4116,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/14883398018",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/14883398018"
     },
     "hsId": "14883398018",
     "format": "bnm",
@@ -3990,10 +4128,10 @@
     "pims": "None - paper files",
     "address": "20535 W, Hwy 102,Decatur,AR,72722, Decatur, AR",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -4054,15 +4192,13 @@
     "hsId": "8310196141",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2022-03-26",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8310196141",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8310196141"
     }
   },
   {
@@ -4083,7 +4219,6 @@
     "customerSince": "2022-10-07",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9905312155",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "9905312155",
@@ -4098,10 +4233,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 109,
@@ -4135,7 +4270,6 @@
     "address": "165 Fisher Mills Road, Cambridge, ON, N3C 1E1",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4170,8 +4304,7 @@
     "pims": "EzyVet",
     "address": "4511 John Tyler Hwy Unit C, Williamsburg, VA, 23185",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -4201,7 +4334,6 @@
     "hsId": "53724340101",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -4243,7 +4375,6 @@
     "pims": "None - paper files",
     "address": "26 County Road 3501, Memphis, TN",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4255,7 +4386,7 @@
     "src": "HubSpot",
     "verify": false,
     "approx": false,
-    "quote": null,
+    "quote": "Featured in Digitail customer story: Stephanie Ortel MS, FVTE, LVT, Program Director How Genesee Community College Prepared the Next Generation of Vet Techs",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
@@ -4266,7 +4397,7 @@
     "customerSince": "2022-06-27",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8974574877",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "case_study": "https://digitail.com/customer-stories/4-labs-digitized-how-genesee-prepared-the-next-generation-of-vet-techs/"
     },
     "hsId": "8974574877",
     "format": "bnm",
@@ -4278,11 +4409,12 @@
     "pims": "None - paper files",
     "address": "Stonewall, LA",
     "signals": [
+      "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 275,
@@ -4316,7 +4448,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 259,
@@ -4336,7 +4469,6 @@
     "customerSince": "2025-01-28",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/27492848514",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "27492848514",
@@ -4351,10 +4483,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 314,
@@ -4406,7 +4538,6 @@
     "customerSince": "2025-03-19",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/29917835778",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "29917835778",
@@ -4420,10 +4551,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 336,
@@ -4442,8 +4573,7 @@
     "dvms": null,
     "customerSince": "2025-11-03",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/43460552288",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/43460552288"
     },
     "hsId": "43460552288",
     "format": "bnm",
@@ -4455,10 +4585,10 @@
     "pims": "None - paper files",
     "address": "Ajax, ON",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 95,
@@ -4492,7 +4622,6 @@
     "address": "2004 Church Street, Boerne, TX, 78629",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4528,7 +4657,6 @@
     "address": "Squamish",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4551,7 +4679,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/32110928808",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "32110928808",
@@ -4568,7 +4696,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 290,
@@ -4588,7 +4717,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31888799560",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "31888799560",
@@ -4602,10 +4730,10 @@
     "address": "32660 George Ferguson Way #104, Abbotsford, BC",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 350,
@@ -4639,7 +4767,6 @@
     "address": "9570 Vaughn Road, Toronto, AL, 36064",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4662,7 +4789,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31910299313",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "31910299313",
@@ -4676,10 +4802,10 @@
     "address": "Orlando, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -4706,7 +4832,6 @@
     "address": "Durham",
     "hsId": "53213541430",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -4735,7 +4860,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/33079053415",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "33079053415",
@@ -4748,10 +4872,10 @@
     "address": "Greenville, MI",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 54,
@@ -4805,7 +4929,6 @@
     "customerSince": "2025-02-28",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/27113026191",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "27113026191",
@@ -4819,10 +4942,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 338,
@@ -4856,7 +4979,6 @@
     "address": "W359N5744 Brown Street, Neosho, WI, 53066",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -4879,7 +5001,6 @@
     "customerSince": "2025-02-19",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/34115282324",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "34115282324",
@@ -4893,10 +5014,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 113,
@@ -4916,7 +5037,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8343721005",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "8343721005",
@@ -4930,10 +5050,44 @@
     "address": "1910 Loch Haven Drive, Ashburn, VA, 24019",
     "signals": [
       "case_study",
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 279,
+    "name": "Happy Paws - HQ",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Dr. Martin DVM, Co-Owner How Hefner Road Saves 90+ Minutes Per Doctor Daily",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019"
+    },
+    "hsId": "29363562329",
+    "format": "bnm",
+    "email": "jplagomez@happypawsvp.com",
+    "phone": "2016813299",
+    "contact": "Dr. Jose Pla",
+    "city": "phoenix",
+    "st": "AZ",
+    "pims": "AVImark;Cornerstone;None - paper files",
+    "address": "6315 Losee Road, Phoenix, AZ, 89081",
+    "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -4967,7 +5121,7 @@
     "format": "mobile",
     "customerSince": "2022-08-04",
     "signalUrls": {
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799"
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019"
     }
   },
   {
@@ -5038,9 +5192,43 @@
     "customerSince": "2025-12-05",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26460351661",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
+  },
+  {
+    "id": 382,
+    "name": "Happy's Vet",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019"
+    },
+    "pimsConsidered": null,
+    "hsId": "18817011578",
+    "format": "bnm",
+    "email": "mommydvm@gmail.com",
+    "phone": "(904)524-3782",
+    "contact": "Dr. Cameron Jones",
+    "city": "Jacksonville",
+    "st": "FL",
+    "pims": "None - New Practice Start Up",
+    "address": "375 Clifton Bay Loop, Jacksonville, FL",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
   },
   {
     "id": 304,
@@ -5074,7 +5262,6 @@
     "address": "6940 S Kings Hwy, Springfield, VA, 22310",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5111,7 +5298,6 @@
     "address": "751 Watson Dr, Kearney, MO, 64060",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5133,8 +5319,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18459755848",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18459755848"
     },
     "hsId": "18459755848",
     "format": "bnm",
@@ -5146,10 +5331,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Whistler, BC",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 254,
@@ -5168,8 +5353,7 @@
     "dvms": null,
     "customerSince": "2024-11-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26441460280",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26441460280"
     },
     "hsId": "26441460280",
     "format": "bnm",
@@ -5182,10 +5366,10 @@
     "address": "Vancouver, BC",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -5213,15 +5397,13 @@
     "hsId": "17519441515",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2026-02-27",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17519441515",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -5251,15 +5433,13 @@
     "hsId": "22295479863",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2024-08-15",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22295479863",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22295479863"
     }
   },
   {
@@ -5287,7 +5467,6 @@
     "address": "Orlando, FL",
     "hsId": "31198676617",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -5325,15 +5504,13 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2024-07-21",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     }
   },
@@ -5369,7 +5546,6 @@
     "address": "1314 West 4th Avenue, Vancouver, BC, V6H 4A3",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5391,7 +5567,7 @@
     "notes": null,
     "verify": false,
     "approx": false,
-    "quote": null,
+    "quote": "Featured in Digitail customer story: Dr. Martin DVM, Co-Owner How Hefner Road Saves 90+ Minutes Per Doctor Daily",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
@@ -5399,6 +5575,7 @@
     "address": "200 HIGHLAND RD W, Kitchener, ON, N2M 3C2",
     "hsId": "5518146326",
     "signals": [
+      "case_study",
       "hs_long_tenure",
       "hs_referral_network"
     ],
@@ -5406,7 +5583,8 @@
     "format": "bnm",
     "customerSince": "2020-09-14",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5518146326"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5518146326",
+      "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     }
   },
   {
@@ -5443,7 +5621,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 63,
@@ -5463,7 +5642,6 @@
     "customerSince": "2023-02-02",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/4462711240",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "4462711240",
@@ -5478,10 +5656,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -5508,15 +5686,13 @@
     "address": "Middletown, OH",
     "hsId": "40240771985",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-09-29",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40240771985",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40240771985"
     }
   },
   {
@@ -5579,15 +5755,13 @@
     "hsId": "18263307299",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18263307299",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -5623,7 +5797,6 @@
     "address": "Ashburn, LOUISIANA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5661,7 +5834,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -5689,15 +5863,13 @@
     "hsId": "25292436324",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2024-12-05",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/25292436324",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/25292436324"
     }
   },
   {
@@ -5730,7 +5902,37 @@
     "pims": "None - New Practice Start Up",
     "address": "Port Angeles, WA",
     "signals": [
-      "hs_referral_network",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 369,
+    "name": "IDEXX",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.6615,
+    "lng": -70.37552,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    },
+    "pimsConsidered": null,
+    "hsId": "2198352146",
+    "format": "bnm",
+    "phone": "+1 207-556-0300",
+    "city": "Westbrook",
+    "st": "ME",
+    "address": "1 Idexx Drive, Westbrook, ME, 04092",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -5768,7 +5970,7 @@
     "customerSince": "2025-12-08",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26934282094",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "slack_mention": "https://thedigitail.slack.com/archives/C9G1XSRJB/p1780076204902949"
     }
   },
   {
@@ -5788,8 +5990,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10574122928",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10574122928"
     },
     "hsId": "10574122928",
     "format": "bnm",
@@ -5801,7 +6002,41 @@
     "pims": "Covetrus Pulse",
     "address": "1303 Kingwood Drive, Crosby, TX, 77339",
     "signals": [
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 392,
+    "name": "Island Rescue (Potential Rebrand)",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-10-28",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780342413143239"
+    },
+    "pimsConsidered": null,
+    "hsId": "40833452668",
+    "format": "bnm",
+    "email": "sebbolanos@gmail.com",
+    "phone": "+1 631 926 7769",
+    "contact": "Sebastian Bolanos",
+    "city": "west babylon",
+    "st": "NY",
+    "pims": "Impromed Infinity",
+    "address": "1500 N Clinton Ave, West Babylon, NY, 11706",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -5871,7 +6106,6 @@
     "address": "Valemount, AB, T0E 1E0",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5908,7 +6142,6 @@
     "address": "Homer, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -5931,7 +6164,6 @@
     "customerSince": "2024-04-27",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/20267451455",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "20267451455",
@@ -5945,10 +6177,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 65,
@@ -5967,8 +6199,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/4676333282",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/4676333282"
     },
     "hsId": "4676333282",
     "format": "bnm",
@@ -5980,10 +6211,10 @@
     "pims": "VetFM",
     "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 348,
@@ -6002,8 +6233,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/48255946556",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/48255946556"
     },
     "hsId": "48255946556",
     "format": "bnm",
@@ -6014,10 +6244,10 @@
     "st": "OR",
     "address": "1016 South Main Street, Walla Walla, OR, 97862",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -6070,8 +6300,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31786930539",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31786930539"
     },
     "hsId": "31786930539",
     "format": "bnm",
@@ -6083,10 +6312,10 @@
     "pims": "HippoManager",
     "address": "Williamstown, NJ",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 186,
@@ -6106,7 +6335,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16806702623",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "16806702623",
@@ -6120,10 +6348,10 @@
     "address": "3139 KINGSWAY, Vancouver, BC, V5R 5J9",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 130,
@@ -6143,7 +6371,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9547055235",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "9547055235",
@@ -6157,10 +6384,10 @@
     "address": "1835 New Bridge Rd, Mineral, GA, 23117",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 368,
@@ -6194,7 +6421,6 @@
     "address": "347 Waterloo-Geneva Road, Waterloo, NY, 13165",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -6231,7 +6457,6 @@
     "address": "2214 Highland River Dr. Houston, TX 77089, Houston, TX",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -6262,7 +6487,6 @@
     "hsId": "51224417620",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -6291,8 +6515,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18409283227",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18409283227"
     },
     "hsId": "18409283227",
     "format": "bnm",
@@ -6304,10 +6527,10 @@
     "pims": "AVImark",
     "address": "472 -380 Theater Road ,, Seattle, CA, 96130",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 192,
@@ -6326,8 +6549,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17549208074",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17549208074"
     },
     "hsId": "17549208074",
     "format": "bnm",
@@ -6339,10 +6561,10 @@
     "pims": "None - New Practice Start Up",
     "address": "454 Hayes St, Austin, TX, 75166",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 247,
@@ -6362,7 +6584,6 @@
     "customerSince": "2024-12-31",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/25073861387",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "25073861387",
@@ -6377,10 +6598,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 73,
@@ -6413,7 +6634,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 195,
@@ -6448,7 +6670,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 180,
@@ -6467,8 +6690,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16251031084",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16251031084"
     },
     "hsId": "16251031084",
     "format": "bnm",
@@ -6480,10 +6702,10 @@
     "pims": "None - New Practice Start Up",
     "address": "5666 Eagle Ridge Rd.,  Helena, MT  59602, Helena, MT",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 170,
@@ -6503,7 +6725,7 @@
     "customerSince": "2023-05-02",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/39461207972",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "39461207972",
@@ -6521,7 +6743,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 112,
@@ -6540,8 +6763,7 @@
     "dvms": null,
     "customerSince": "2022-03-09",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8060960576",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8060960576"
     },
     "hsId": "8060960576",
     "format": "bnm",
@@ -6554,10 +6776,10 @@
     "address": "Elgin, AZ",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 296,
@@ -6592,7 +6814,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 67,
@@ -6605,14 +6828,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 41.28019,
-    "lng": -91.36071,
+    "lat": 41.28038,
+    "lng": -91.35744,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5615526763",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "5615526763",
@@ -6625,10 +6847,10 @@
     "address": "102 Walnut Street, Columbus Junction, IA, 52738",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 116,
@@ -6647,8 +6869,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8965380706",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8965380706"
     },
     "hsId": "8965380706",
     "format": "bnm",
@@ -6660,10 +6881,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Manchester, NH, 03801",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 337,
@@ -6682,8 +6903,7 @@
     "dvms": null,
     "customerSince": "2025-12-11",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/44452041035",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/44452041035"
     },
     "hsId": "44452041035",
     "format": "bnm",
@@ -6694,10 +6914,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Union City",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 133,
@@ -6716,8 +6936,7 @@
     "dvms": null,
     "customerSince": "2022-10-01",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9592014478",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9592014478"
     },
     "hsId": "9592014478",
     "format": "bnm",
@@ -6730,10 +6949,10 @@
     "address": "Bonnyville, AB",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -6761,15 +6980,13 @@
     "hsId": "43153746214",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2025-11-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/43153746214",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -6839,7 +7056,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 241,
@@ -6858,6 +7076,7 @@
     "dvms": null,
     "customerSince": "2024-10-18",
     "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780342413143239",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "23004175533",
@@ -6871,9 +7090,11 @@
     "address": "Toronto, ON",
     "signals": [
       "case_study",
-      "hs_long_tenure"
+      "hs_long_tenure",
+      "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 164,
@@ -6893,7 +7114,6 @@
     "customerSince": "2023-05-04",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15411791360",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "15411791360",
@@ -6908,10 +7128,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 92,
@@ -6930,8 +7150,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6680963954",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6680963954"
     },
     "hsId": "6680963954",
     "format": "bnm",
@@ -6943,10 +7162,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Weyers Cave, VA",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -6974,15 +7193,13 @@
     "hsId": "7377002502",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2022-01-21",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7377002502",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7377002502"
     }
   },
   {
@@ -7015,7 +7232,6 @@
     "address": "Martinez",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7052,7 +7268,6 @@
     "address": "Matawan, NJ",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7089,7 +7304,6 @@
     "address": "New Orleans, LA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7111,8 +7325,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16613169028",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16613169028"
     },
     "hsId": "16613169028",
     "format": "bnm",
@@ -7124,10 +7337,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Bridgeton, NJ",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 70,
@@ -7159,7 +7372,6 @@
     "pims": "None - New Practice Start Up",
     "address": "105 University Boulevard West, Washington, DC, 20901",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7220,7 +7432,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/14903939978",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "14903939978",
@@ -7234,10 +7445,10 @@
     "address": "3615 Grand Avenue, Middletown, OH, 45044",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 193,
@@ -7257,7 +7468,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17549208225",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "17549208225",
@@ -7271,10 +7481,10 @@
     "address": "1342 Ontario 9, Mildmay, ON, N0G 2J0",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 191,
@@ -7294,7 +7504,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17289447278",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "17289447278",
@@ -7308,10 +7517,10 @@
     "address": "143 Main Street, Odessa, ON K0H 2H0, Odessa, ON, K0H 2H0",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -7478,14 +7687,12 @@
     "address": "5790 County Road F, Ashburn, VA, 54495",
     "hsId": "5817833112",
     "signals": [
-      "case_study",
-      "slack_mention"
+      "case_study"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -7541,7 +7748,6 @@
     "customerSince": "2025-06-26",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7168725832",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "7168725832",
@@ -7555,10 +7761,10 @@
     "address": "22026 West 66th Street, Shawnee, TX, 66226",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -7586,15 +7792,13 @@
     "hsId": "8950810927",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2026-02-27",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8950810927",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     }
   },
@@ -7630,7 +7834,6 @@
     "address": "2735 N Main St, Sacramento, CA, 94597",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7660,49 +7863,13 @@
     "address": "Barrie, ON",
     "hsId": "35039922445",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/35039922445",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
-    }
-  },
-  {
-    "id": 55,
-    "name": "NOLA ER Vet",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 29.95614,
-    "lng": -90.07339,
-    "features": null,
-    "dgtId": null,
-    "hsId": "53021397290",
-    "format": "bnm",
-    "email": "bnoeldvm@gmail.com",
-    "phone": "6154973742",
-    "contact": "Dr. Becca Noel Noel",
-    "city": "new orleans",
-    "st": "LA",
-    "pims": "None - New Practice Start Up",
-    "address": "New Orleans, LA",
-    "signals": [
-      "hs_referral_network"
-    ],
-    "verified": true,
-    "notes": null,
-    "customerSince": "2026-03-31",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/53021397290"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/35039922445"
     }
   },
   {
@@ -7737,8 +7904,39 @@
     "address": "9600 Islington Ave #2,, Brampton, ON, ON L4H 1X7",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 380,
+    "name": "Nashoba Valley Technical High School",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Brenden Tjizu Hospital Administrator How UNAM’s Vet School Cut Inventory Management Time Spent by 40% with Digitail",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 42.57043,
+    "lng": -71.40946,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/8-units-unified-how-unams-vet-school-saved-40-on-inventory-management-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "17703795064",
+    "format": "bnm",
+    "email": "jbaldwin@nashobatech.net",
+    "city": "westford",
+    "st": "MA",
+    "pims": "None - New Practice Start Up",
+    "address": "100 Littleton Road, Westford, MA, 01886",
+    "signals": [
+      "case_study"
     ],
     "verified": true
   },
@@ -7759,8 +7957,7 @@
     "dvms": null,
     "customerSince": "2024-04-09",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/19562151579",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/19562151579"
     },
     "hsId": "19562151579",
     "format": "bnm",
@@ -7773,10 +7970,10 @@
     "address": "131 Stone Avenue, Susanville, WA",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 118,
@@ -7808,7 +8005,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Missouri City, TX",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7843,7 +8039,6 @@
     "pims": "None - New Practice Start Up",
     "address": "10753 Frankstown Road, Parksville, BC, 15235",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -7866,7 +8061,6 @@
     "customerSince": "2024-11-14",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9505919071",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "9505919071",
@@ -7881,10 +8075,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -7912,15 +8106,13 @@
     "hsId": "16965664848",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2025-12-05",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16965664848",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     }
   },
@@ -7949,15 +8141,13 @@
     "address": "VA",
     "hsId": "6708769652",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2025-12-05",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6708769652",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6708769652"
     }
   },
   {
@@ -7990,7 +8180,6 @@
     "pims": "None - paper files",
     "address": "15452 29th St. SE, Fargo, ND, 58012",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -8025,7 +8214,6 @@
     "pims": "Neo",
     "address": "Dresden, TN",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -8060,7 +8248,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Orlando, CA",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -8082,8 +8269,7 @@
     "dvms": null,
     "customerSince": "2025-12-31",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/45871201957",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/45871201957"
     },
     "hsId": "45871201957",
     "format": "bnm",
@@ -8095,10 +8281,10 @@
     "pims": "None - New Practice Start Up",
     "address": "Lexington, VA",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 62,
@@ -8132,7 +8318,6 @@
     "address": "1710  NW Ocean Boulevard, Coos Bay, OR, 97420",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -8155,7 +8340,6 @@
     "customerSince": "2025-04-29",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30735787553",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "30735787553",
@@ -8170,10 +8354,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 289,
@@ -8193,7 +8377,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31779728468",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "31779728468",
@@ -8207,10 +8390,10 @@
     "address": "47 Four Paws Ln, Bass Harbor, ME, 04605",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 71,
@@ -8230,7 +8413,6 @@
     "customerSince": "2022-03-14",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5721778603",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "5721778603",
@@ -8245,10 +8427,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 234,
@@ -8268,7 +8450,6 @@
     "customerSince": "2024-09-19",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21713626383",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "21713626383",
@@ -8283,10 +8464,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 215,
@@ -8320,7 +8501,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -8408,7 +8590,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18240723007",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "18240723007",
@@ -8422,7 +8603,38 @@
     "address": "Clovis, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 393,
+    "name": "Parasight System",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.15617,
+    "lng": -75.84499,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-12-18",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C04LD92QNJX/p1776841560258899"
+    },
+    "pimsConsidered": null,
+    "hsId": "41576241247",
+    "format": "bnm",
+    "email": "srazor@parasightsystem.com",
+    "phone": "8332337278",
+    "contact": "Sam Razor",
+    "address": "",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -8476,8 +8688,7 @@
     "dvms": null,
     "customerSince": "2022-10-11",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9507654278",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9507654278"
     },
     "hsId": "9507654278",
     "format": "bnm",
@@ -8490,10 +8701,10 @@
     "address": "Hereford, AZ",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -8521,17 +8732,50 @@
     "hsId": "5874602392",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2025-12-05",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5874602392",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
+  },
+  {
+    "id": 231,
+    "name": "Parkway Centre Pet Hospital",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Dr. Martin DVM, Co-Owner How Hefner Road Saves 90+ Minutes Per Doctor Daily",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-12-12",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C090H720BFX/p1777677357014679"
+    },
+    "hsId": "26949649174",
+    "format": "bnm",
+    "email": "arunavetlk@gmail.com",
+    "contact": "Aruna Amarasinghe",
+    "city": "Peterborough",
+    "st": "ON",
+    "address": "950 Landsdowne St W, Unit A-12, Peterborough, ON, K9J 1Z9",
+    "signals": [
+      "hs_long_tenure",
+      "slack_mention"
+    ],
+    "verified": true,
+    "notes": null,
+    "phone": "5879697510",
+    "pims": "None - New Practice Start Up"
   },
   {
     "id": 189,
@@ -8551,7 +8795,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17059026094",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "17059026094",
@@ -8565,10 +8808,10 @@
     "address": "3691 Lake Alfred Road, Winter Haven, FL, 33881",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 201,
@@ -8588,7 +8831,6 @@
     "customerSince": "2024-03-22",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18195412843",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "18195412843",
@@ -8603,10 +8845,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 310,
@@ -8626,7 +8868,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/35411948040",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "35411948040",
@@ -8640,10 +8881,10 @@
     "address": "Hillsborough, NJ",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 156,
@@ -8679,7 +8920,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -8706,15 +8948,13 @@
     "address": "2903 Audubon Circle, Sacramento, CA",
     "hsId": "15765400361",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15765400361",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15765400361"
     }
   },
   {
@@ -8743,49 +8983,13 @@
     "hsId": "21823628562",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2024-07-22",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21823628562",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
-    }
-  },
-  {
-    "id": 44,
-    "name": "Pine Mountain Veterinary",
-    "city": "marietta",
-    "st": "GA",
-    "lat": 34.00208,
-    "lng": -84.64402,
-    "ct": "general",
-    "contact": "Dr. Diane Dunn",
-    "email": "info@pinemountainvet.net",
-    "phone": "6785357762",
-    "features": "Tails",
-    "dgtId": null,
-    "pims": "Shepherd",
-    "notes": null,
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "src": "Usage Report",
-    "address": "1483 Kennesaw Due West NW Rd, Marietta, GA, 30152",
-    "hsId": "9053969566",
-    "signals": [
-      "hs_referral_network"
-    ],
-    "verified": true,
-    "format": "bnm",
-    "customerSince": "2026-02-27",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9053969566"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21823628562"
     }
   },
   {
@@ -8805,8 +9009,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18594875289",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18594875289"
     },
     "hsId": "18594875289",
     "format": "bnm",
@@ -8818,10 +9021,10 @@
     "pims": "Cornerstone",
     "address": "Innisfail, AB",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 207,
@@ -8841,7 +9044,6 @@
     "customerSince": "2024-10-16",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18381597752",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "18381597752",
@@ -8856,10 +9058,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 225,
@@ -8872,8 +9074,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 26.01046,
-    "lng": -80.18183,
+    "lat": 26.01076,
+    "lng": -80.18081,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
@@ -8892,7 +9094,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -8919,15 +9122,13 @@
     "address": "14816 Maywood Drive, Brits, MN",
     "hsId": "36559586359",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-07-22",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/36559586359",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/36559586359"
     }
   },
   {
@@ -8948,7 +9149,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31415339040",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "31415339040",
@@ -8962,10 +9162,10 @@
     "address": "7440 Annapolis Road, Cary, NC, 20784",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 222,
@@ -8984,8 +9184,7 @@
     "dvms": null,
     "customerSince": "2024-03-05",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/19367980335",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/19367980335"
     },
     "hsId": "19367980335",
     "format": "bnm",
@@ -8998,10 +9197,10 @@
     "address": "1515 Avellino Brooke Court, Nampa, ID, 83686",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 346,
@@ -9020,8 +9219,7 @@
     "dvms": null,
     "customerSince": "2025-12-24",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47812383091",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47812383091"
     },
     "hsId": "47812383091",
     "format": "bnm",
@@ -9033,10 +9231,10 @@
     "pims": "Daysmart;None - paper files",
     "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 211,
@@ -9070,7 +9268,6 @@
     "address": "920 Belmont Ave, Charlotte, NC, 28205",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9093,7 +9290,6 @@
     "customerSince": "2026-02-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/51722264460",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "51722264460",
@@ -9107,10 +9303,10 @@
     "address": "Mooresville, NC",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 244,
@@ -9130,7 +9326,6 @@
     "customerSince": "2024-10-08",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/23627526481",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "23627526481",
@@ -9145,10 +9340,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 327,
@@ -9168,7 +9363,6 @@
     "customerSince": "2025-10-01",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/39256495750",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "39256495750",
@@ -9181,10 +9375,10 @@
     "address": "Red Deer, AB",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 167,
@@ -9218,7 +9412,6 @@
     "address": "3853 Sherwood Drive, Regina, SK, S4R 4A8",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9257,7 +9450,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 155,
@@ -9276,8 +9470,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10864661318",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10864661318"
     },
     "hsId": "10864661318",
     "format": "bnm",
@@ -9289,10 +9482,10 @@
     "pims": "None - paper files;None - New Practice Start Up",
     "address": "Pulaski, TN",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -9361,7 +9554,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 107,
@@ -9381,7 +9575,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7918158169",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "7918158169",
@@ -9395,10 +9588,10 @@
     "address": "4016 River Oaks Drive, Myrtle Beach, SC, 29579",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -9458,15 +9651,13 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2021-05-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5723033205",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     }
   },
@@ -9502,7 +9693,6 @@
     "address": "1930 E Rosemeade Pkwy STE 100, Carrollton, TX, 75007",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9525,7 +9715,6 @@
     "customerSince": "2025-08-01",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21465723235",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "21465723235",
@@ -9539,10 +9728,10 @@
     "address": "1751 South Orange Avenue, Orlando, FL, 32806",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 276,
@@ -9561,8 +9750,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31185025619",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31185025619"
     },
     "hsId": "31185025619",
     "format": "bnm",
@@ -9573,10 +9761,10 @@
     "pims": "None - New Practice Start Up",
     "address": "170 East Yorba Linda Blvd, Seattle, WA, 92870",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 257,
@@ -9596,7 +9784,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26944088923",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778021483035139"
     },
     "hsId": "26944088923",
     "format": "bnm",
@@ -9611,7 +9799,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 306,
@@ -9631,7 +9820,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/34182980778",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "34182980778",
@@ -9645,10 +9833,10 @@
     "address": "2530 19th St SE, Salem, OR",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 366,
@@ -9681,7 +9869,6 @@
     "address": "Spartanburg",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9715,7 +9902,10 @@
     ],
     "verified": true,
     "format": "mobile",
-    "customerSince": "2025-12-05"
+    "customerSince": "2025-12-05",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C04LD92QNJX/p1774971596479139"
+    }
   },
   {
     "id": 324,
@@ -9734,8 +9924,7 @@
     "dvms": null,
     "customerSince": "2025-08-29",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/38547661680",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/38547661680"
     },
     "hsId": "38547661680",
     "format": "bnm",
@@ -9746,10 +9935,10 @@
     "st": "CA",
     "address": "Goleta, CA, 93105",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 61,
@@ -9783,7 +9972,6 @@
     "address": "2867 Ashmun Street, Sault Ste. Marie, MI, 49783",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9806,7 +9994,6 @@
     "customerSince": "2021-04-02",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/5777249198",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "5777249198",
@@ -9820,10 +10007,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -9850,7 +10037,6 @@
     "address": "Los Angeles, CA",
     "hsId": "33049310774",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -9878,8 +10064,7 @@
     "dvms": null,
     "customerSince": "2024-07-21",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21998242707",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21998242707"
     },
     "hsId": "21998242707",
     "format": "bnm",
@@ -9892,10 +10077,10 @@
     "address": "3642 East Indian Trail, Beaverton, OR",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 349,
@@ -9929,7 +10114,6 @@
     "address": "1919 US-22, Cranford, NJ, 07076",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9965,7 +10149,6 @@
     "address": "2323 Shallowford Rd, Atlanta, GA, 30066",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -9988,7 +10171,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/33445215346",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "33445215346",
@@ -10000,10 +10182,10 @@
     "address": "Medina, OH",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10031,15 +10213,13 @@
     "hsId": "18836197240",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2024-07-12",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18836197240",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     }
   },
@@ -10076,7 +10256,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10127,7 +10308,6 @@
     "customerSince": "2022-08-23",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15393348498",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "15393348498",
@@ -10142,10 +10322,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 77,
@@ -10179,7 +10359,6 @@
     "address": "3700 Van Buren Blvd, Phelan, CA, 92503",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -10202,7 +10381,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6054868537",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "6054868537",
@@ -10216,10 +10394,10 @@
     "address": "Fresno, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 271,
@@ -10239,7 +10417,6 @@
     "customerSince": "2025-03-31",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30444954763",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "30444954763",
@@ -10253,10 +10430,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 88,
@@ -10276,7 +10453,6 @@
     "customerSince": "2021-10-26",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/6587260188",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "6587260188",
@@ -10291,10 +10467,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 205,
@@ -10314,7 +10490,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18327802130",
-      "case_study": "https://digitail.com/customer-stories/100-digital-from-day-one-how-the-parks-animal-clinic-built-a-fear-free-practice-in-south-africa/"
+      "case_study": "https://digitail.com/customer-stories/40-app-adoption-in-year-one-southern-trails-de-novo-playbook/"
     },
     "hsId": "18327802130",
     "format": "bnm",
@@ -10328,7 +10504,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10395,7 +10572,41 @@
     "address": "Madison",
     "signals": [
       "case_study",
-      "hs_referral_network",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 372,
+    "name": "Spay Neuter Is Provided In Tennessee SNIP IT",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 35.96039,
+    "lng": -83.92103,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-10-14",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+    },
+    "pimsConsidered": null,
+    "hsId": "9785513473",
+    "format": "bnm",
+    "email": "cillavet@hotmail.com",
+    "phone": "6033030749",
+    "contact": "Dr. Priscilla Seaton",
+    "city": "knoxville",
+    "st": "TN",
+    "pims": "HippoManager",
+    "address": "Knoxville, TN",
+    "signals": [
+      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true
@@ -10451,8 +10662,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18586466361",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18586466361"
     },
     "hsId": "18586466361",
     "format": "bnm",
@@ -10464,10 +10674,10 @@
     "pims": "Rhapsody",
     "address": "1671 NE State Road 47, Trenton, GA",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10494,7 +10704,6 @@
     "address": "1940 Crossland Rd, Phelpston, Ontario, ON, L0L2K0",
     "hsId": "53528634422",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -10531,7 +10740,6 @@
     "hsId": "31275323315",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -10575,7 +10783,6 @@
     "address": "1142 N Federal Hwy, Miami, FL, 33062",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -10598,7 +10805,6 @@
     "customerSince": "2024-07-24",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22049095003",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "22049095003",
@@ -10613,10 +10819,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 231,
@@ -10636,7 +10842,7 @@
     "customerSince": "2024-04-18",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21264019558",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "21264019558",
@@ -10652,7 +10858,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 216,
@@ -10665,14 +10872,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 50.90379,
-    "lng": -114.03024,
+    "lat": 50.90135,
+    "lng": -114.04824,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2024-04-18",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18854281277",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "18854281277",
@@ -10686,10 +10892,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10753,7 +10959,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Cairo, BC",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -10791,11 +10996,12 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
-    "id": 282,
-    "name": "The Old Road Veterinary Center",
+    "id": 387,
+    "name": "The Happy Cat Vet",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
@@ -10804,25 +11010,26 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 47.0451,
+    "lng": -122.89501,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31442939054"
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780382128017019"
     },
-    "hsId": "31442939054",
+    "pimsConsidered": null,
+    "hsId": "35432518270",
     "format": "bnm",
-    "email": "theoldroadvet@gmail.com",
-    "phone": "6618601822",
-    "contact": "Dr. Sandeep Cheema",
-    "city": "palmdale",
-    "st": "CA",
-    "pims": "Via",
-    "address": "25269 The Old Rd #G, Palmdale, CA, 91381",
+    "email": "doc@happycat.vet",
+    "phone": "+15033607516",
+    "contact": "Dr. Vanessa Rabito",
+    "city": "olympia",
+    "st": "WA",
+    "pims": "None - New Practice Start Up",
+    "address": "Olympia, WA",
     "signals": [
-      "hs_referral_network"
+      "slack_mention"
     ],
     "verified": true
   },
@@ -10861,8 +11068,8 @@
     }
   },
   {
-    "id": 269,
-    "name": "Thurman Veterinary Center",
+    "id": 381,
+    "name": "Too Many Tails Farm",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
@@ -10871,24 +11078,26 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 39.96249,
+    "lng": -76.7277,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30204951565"
+      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1778084458692219"
     },
-    "hsId": "30204951565",
+    "pimsConsidered": null,
+    "hsId": "18335735661",
     "format": "bnm",
-    "email": "jshipley@thurmanvetcenter.com",
-    "contact": "Jillian Shipley",
-    "city": "provo",
-    "st": "UT",
-    "pims": "AVImark",
-    "address": "12816 Jomani Drive, Provo, UT, 93312",
+    "email": "petvetdvm@icloud.com",
+    "phone": "7178918500",
+    "contact": "Valerie MILLER",
+    "city": "york",
+    "st": "PA",
+    "pims": "None - New Practice Start Up",
+    "address": "York, PA",
     "signals": [
-      "hs_referral_network"
+      "slack_mention"
     ],
     "verified": true
   },
@@ -10924,7 +11133,6 @@
     "address": "Los Angeles, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -10947,7 +11155,6 @@
     "customerSince": "2023-06-01",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15597404222",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "15597404222",
@@ -10962,10 +11169,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -10998,7 +11205,7 @@
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780071053467999"
     }
   },
   {
@@ -11018,8 +11225,7 @@
     "dvms": null,
     "customerSince": "2022-08-20",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9905312268",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9905312268"
     },
     "hsId": "9905312268",
     "format": "bnm",
@@ -11032,10 +11238,10 @@
     "address": "Seattle, AK",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 143,
@@ -11055,7 +11261,7 @@
     "customerSince": "2022-07-13",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9905312333",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1778084458692219"
     },
     "hsId": "9905312333",
     "format": "bnm",
@@ -11069,7 +11275,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 99,
@@ -11101,7 +11308,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Aguilar, CO",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -11131,7 +11337,6 @@
     "address": "Franklin, TN",
     "hsId": "7987028892",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -11194,7 +11399,6 @@
     "customerSince": "2023-02-03",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/11587524422",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "11587524422",
@@ -11209,10 +11413,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 212,
@@ -11231,8 +11435,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18556740261",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/18556740261"
     },
     "hsId": "18556740261",
     "format": "bnm",
@@ -11244,10 +11447,10 @@
     "pims": "Intravet",
     "address": "220 South Woodland Boulevard, Deland, FL, 32724",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 103,
@@ -11267,7 +11470,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/7730844192",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "7730844192",
@@ -11278,10 +11480,10 @@
     "address": "Valemount, BC, V0E 2Z0",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 60,
@@ -11294,14 +11496,13 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 32.53142,
-    "lng": -117.11227,
+    "lat": 32.52992,
+    "lng": -117.11377,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40201543437",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "40201543437",
@@ -11314,10 +11515,10 @@
     "address": "911 Paseo Estrella del Mar, Tijuana, BAJA CALIFORNIA, 22200",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 230,
@@ -11337,7 +11538,6 @@
     "customerSince": "2024-06-06",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21239474830",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "21239474830",
@@ -11352,10 +11552,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 344,
@@ -11389,7 +11589,6 @@
     "address": "Melbourne, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -11458,7 +11657,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 84,
@@ -11490,7 +11690,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 243,
@@ -11524,7 +11725,6 @@
     "address": "7 Custom House St, Albany, GA, 04101",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -11547,7 +11747,6 @@
     "customerSince": "2025-07-11",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/36019813548",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "36019813548",
@@ -11561,10 +11760,10 @@
     "address": "Revere, CT",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -11591,15 +11790,13 @@
     "address": "51 Charles St W Kitchener ON N2G 1J6, Cambridge, ON",
     "hsId": "16072500133",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16072500133",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16072500133"
     }
   },
   {
@@ -11697,15 +11894,13 @@
     "hsId": "20364473962",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2024-04-19",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/20364473962",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/20364473962"
     }
   },
   {
@@ -11726,7 +11921,6 @@
     "customerSince": "2025-02-25",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30228738665",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "30228738665",
@@ -11741,10 +11935,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 360,
@@ -11776,8 +11970,7 @@
     "pims": "Impromed Infinity",
     "address": "20995 88 Ave, Surrey, BC, V1M 2C9",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -11813,7 +12006,6 @@
     "address": "1944 Walton Way, Augusta, GA, 30904",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -11843,15 +12035,13 @@
     "address": "4195 Fishermans Lane, maiden NC 28650, Maiden, NC",
     "hsId": "17085818954",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2025-12-08",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17085818954",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17085818954"
     }
   },
   {
@@ -11872,7 +12062,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/16850270627",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "16850270627",
@@ -11886,10 +12075,10 @@
     "address": "1 Tobey Road, Wareham, MA, 02571",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 268,
@@ -11909,7 +12098,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/29946506354",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "29946506354",
@@ -11923,7 +12111,42 @@
     "address": "224 Dawson Rd,, Ashburn, VA",
     "signals": [
       "case_study",
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 386,
+    "name": "Waterville Animal Group",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 41.4993,
+    "lng": -83.71874,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-03-25",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C9G1XSRJB/p1780076204902949"
+    },
+    "pimsConsidered": null,
+    "hsId": "28299773842",
+    "format": "bnm",
+    "email": "office@watervilleanimalgroup.com",
+    "phone": "4196158006",
+    "contact": "Theresa VonAlmen",
+    "city": "Waterville",
+    "st": "OH",
+    "pims": "Daysmart",
+    "address": "210 Farnsworth Road, Waterville, OH, 43566",
+    "signals": [
+      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true
@@ -11946,7 +12169,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17063951118",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "17063951118",
@@ -11960,10 +12182,10 @@
     "address": "2411 Hamburg Turnpike, Wayne, NJ, 07470",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 140,
@@ -11997,7 +12219,6 @@
     "address": "1716 US-160, West Plains, MO 65775, United States, West Plains, MO",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12034,7 +12255,6 @@
     "address": "Roseville, CA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12057,7 +12277,6 @@
     "customerSince": "2025-12-29",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/48085884597",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "48085884597",
@@ -12071,10 +12290,10 @@
     "address": "711 N Fairfield Drive, Jacksonville, FL, 35206",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 274,
@@ -12109,7 +12328,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 292,
@@ -12146,7 +12366,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 358,
@@ -12180,7 +12401,6 @@
     "address": "10177 Hwy 6, Collingwood, ON, N0H 2T0",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12211,15 +12431,13 @@
     "hsId": "22085315494",
     "signals": [
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2024-09-26",
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22085315494",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/22085315494"
     }
   },
   {
@@ -12249,15 +12467,13 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "mobile",
     "customerSince": "2023-04-03",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21126277208",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1779896268925189",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     }
   },
@@ -12293,7 +12509,6 @@
     "address": "Vancouver, WA",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12316,7 +12531,6 @@
     "customerSince": "2025-03-07",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/28948333668",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "28948333668",
@@ -12331,10 +12545,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 181,
@@ -12368,7 +12582,6 @@
     "address": "1465 Trussler Rd Kitchener, ON N2R 1S7, Kitchener, ON",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12403,7 +12616,6 @@
     "pims": "Other",
     "address": "Rozet, WY",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12474,7 +12686,6 @@
     "address": "11715 Alta Vista Rd, North Charleston, TX, 76244",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12546,7 +12757,7 @@
     "format": "mobile",
     "customerSince": "2020-10-01",
     "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/seamless-switch-how-woofdoctor-on-wheels-onboarded-to-digitail-without-missing-a-beat/"
+      "case_study": "https://digitail.com/customer-stories/6-7-extra-appointments-daily-how-woofdoctor-mobilized-vet-care-with-digitail/"
     }
   },
   {
@@ -12579,8 +12790,7 @@
     "pims": "Covetrus Pulse",
     "address": "10339 Mastin Street, Olathe, KS, 66212",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -12614,7 +12824,6 @@
     "pims": "Cornerstone",
     "address": "889 U.S. 321, Lancaster, SC, 29745",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12650,7 +12859,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -12666,7 +12876,7 @@
     "features": "Tails",
     "dgtId": null,
     "pims": "None - New Practice Start Up",
-    "notes": "Location unknown",
+    "notes": null,
     "verify": false,
     "approx": false,
     "quote": null,
@@ -12681,7 +12891,179 @@
       "slack_mention"
     ],
     "verified": true,
-    "format": "bnm"
+    "format": "bnm",
+    "customerSince": "2024-04-17",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    }
+  },
+  {
+    "id": 44,
+    "name": "[April Vets] Orangeville",
+    "city": "Orangeville",
+    "st": "ON",
+    "lat": 43.91932,
+    "lng": -80.09738,
+    "ct": "general",
+    "contact": "Chad Walker",
+    "email": "chad@aprilvets.com",
+    "phone": "416.617.2360",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None - New Practice Start Up",
+    "notes": null,
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Orangeville, ON",
+    "hsId": "31454630705",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "bnm",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    }
+  },
+  {
+    "id": 377,
+    "name": "[AprilVets] Bayers Lake",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-06-15",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1779900364281679"
+    },
+    "pimsConsidered": null,
+    "hsId": "16012956307",
+    "format": "bnm",
+    "email": "robyn@aprilvets.com",
+    "phone": "902-536-3436",
+    "contact": "Dr. Robyn Bowser",
+    "city": "Oakville",
+    "st": "ON",
+    "pims": "Other",
+    "address": "201 Chain Lake Dr., Oakville, ON, B3S1C8",
+    "signals": [
+      "hs_long_tenure",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 391,
+    "name": "[AprilVets] Cole Harbour",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 44.64862,
+    "lng": -63.58595,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-09-17",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    },
+    "pimsConsidered": null,
+    "hsId": "39482191221",
+    "format": "bnm",
+    "email": "mark@aprilvets.com",
+    "contact": "Mark Howatt",
+    "city": "halifax",
+    "st": "NS",
+    "address": "Halifax, NS",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 383,
+    "name": "[AprilVets] Dartmouth Crossing",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-08-20",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    },
+    "pimsConsidered": null,
+    "hsId": "22013370908",
+    "format": "bnm",
+    "email": "colton@aprilvets.com",
+    "phone": "1.437.999.5515",
+    "contact": "Colton Dirksen",
+    "city": "Halifax",
+    "st": "NS",
+    "pims": "None - New Practice Start Up",
+    "address": "205 Hector Gate, Halifax, NS",
+    "signals": [
+      "hs_long_tenure",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 385,
+    "name": "[AprilVets] Fredericton",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.8724,
+    "lng": -79.25183,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C05D6LG1D1U/p1778883216802939"
+    },
+    "pimsConsidered": null,
+    "hsId": "35642493703",
+    "format": "bnm",
+    "email": "colton@aprilvets.com",
+    "phone": "1.437.999.5515",
+    "contact": "Colton Dirksen",
+    "city": "Fredericton",
+    "st": "ON",
+    "address": "Fredericton, ON",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
   },
   {
     "id": 287,
@@ -12701,7 +13083,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31627616182",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "31627616182",
@@ -12715,10 +13096,10 @@
     "address": "Lakeland, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 285,
@@ -12753,7 +13134,8 @@
       "case_study",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -12807,7 +13189,7 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31627616110",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
+      "slack_mention": "https://thedigitail.slack.com/archives/C090H720BFX/p1777677357014679",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "31627616110",
@@ -12824,7 +13206,8 @@
       "hs_referral_network",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 286,
@@ -12844,7 +13227,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31605199262",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "31605199262",
@@ -12858,10 +13240,10 @@
     "address": "Lakeland, FL",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 328,
@@ -12893,7 +13275,6 @@
     "pims": "None - New Practice Start Up",
     "address": "Canton, KS",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12927,7 +13308,6 @@
     "st": "CO",
     "address": "Canton, CO",
     "signals": [
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -12950,7 +13330,6 @@
     "customerSince": "2022-09-08",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9542639379",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "9542639379",
@@ -12965,10 +13344,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 122,
@@ -13000,8 +13379,7 @@
     "pims": "Cornerstone Cloud",
     "address": "Largo, FL",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -13035,8 +13413,7 @@
     "pims": "Cornerstone Cloud",
     "address": "Tampa, FL",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -13072,7 +13449,73 @@
     "address": "21552 Brookhurst Street, Mountain View, CA, 92646",
     "signals": [
       "case_study",
-      "hs_referral_network",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 384,
+    "name": "[Curo Pet] Woodland Hills Pet Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C08MCH4B431/p1778704063037359"
+    },
+    "pimsConsidered": null,
+    "hsId": "26597137707",
+    "format": "bnm",
+    "email": "drlinson@woodlandhillsvet.com",
+    "phone": "818-222-7387",
+    "contact": "Dr. Dr. April Linson",
+    "city": "orange",
+    "st": "CA",
+    "pims": "VetFM",
+    "address": "6200 Variel Ave. Suite D, Orange, CA, 91367",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
+    "id": 388,
+    "name": "[Encore] Encore Vet Group",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C9G1XSRJB/p1780076204902949"
+    },
+    "pimsConsidered": null,
+    "hsId": "35210495061",
+    "format": "bnm",
+    "email": "rob.paisley@encorevet.com",
+    "phone": "518-226-3917",
+    "contact": "Rob Paisley",
+    "city": "Gansevoort",
+    "st": "NY",
+    "address": "5 Mountain Ledge Dr, Gansevoort, NY, 12831",
+    "signals": [
       "slack_mention"
     ],
     "verified": true
@@ -13088,8 +13531,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 35.58204,
-    "lng": -80.87984,
+    "lat": 35.58212,
+    "lng": -80.87985,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2024-05-22",
@@ -13129,7 +13572,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15843992494",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "15843992494",
@@ -13143,10 +13585,10 @@
     "address": "5201 Virginia Beach Boulevard, Virginia Beach, VA, 23462",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -13184,6 +13626,40 @@
     }
   },
   {
+    "id": 376,
+    "name": "[FenVet] Beltline",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 51.04561,
+    "lng": -114.05754,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-11-04",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1777481891572369"
+    },
+    "pimsConsidered": null,
+    "hsId": "15144973576",
+    "format": "bnm",
+    "email": "stacey@fenvet.com",
+    "phone": "5876024442",
+    "contact": "Stacey Maloney",
+    "st": "AB",
+    "pims": "None - New Practice Start Up",
+    "address": "AB",
+    "signals": [
+      "hs_long_tenure",
+      "slack_mention"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "[Gheorghe Rotaru] HEARTLAND VETERINARY CLINIC",
     "city": "Airdrie",
@@ -13209,7 +13685,6 @@
     "hsId": "19026526071",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -13277,7 +13752,6 @@
     "hsId": "18459480230",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -13315,7 +13789,6 @@
     "hsId": "19098008884",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
@@ -13345,7 +13818,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/28975844007",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "28975844007",
@@ -13358,10 +13830,10 @@
     "address": "553 Lake Drive Road, Tyler, MN, 53534",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 249,
@@ -13397,7 +13869,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 248,
@@ -13417,7 +13890,6 @@
     "customerSince": "2025-02-06",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/29511579824",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "29511579824",
@@ -13431,10 +13903,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -13472,6 +13944,40 @@
     }
   },
   {
+    "id": 44,
+    "name": "[Ivan Zak's Urgent Care] Quispamsis Veterinary Urgent Care / Greater Saint John - Canada",
+    "city": "Halifax",
+    "st": "NS",
+    "lat": 46.09543,
+    "lng": -64.80591,
+    "ct": "general",
+    "contact": "Dr. Ivan Zak",
+    "email": "ivanzak@galaxyvets.com",
+    "phone": "+1 519 400 4258",
+    "features": "Tails",
+    "dgtId": null,
+    "pims": "None - New Practice Start Up",
+    "notes": null,
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "src": "Usage Report",
+    "address": "Halifax, NS",
+    "hsId": "18079034692",
+    "signals": [
+      "slack_mention"
+    ],
+    "verified": true,
+    "format": "bnm",
+    "customerSince": "2024-09-13",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C09KGLVHC1G/p1773855825860239"
+    }
+  },
+  {
     "id": 260,
     "name": "[Paw Haven] Animal Hospital Lakeland",
     "ct": "general",
@@ -13489,7 +13995,6 @@
     "customerSince": "2025-01-08",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/28226693778",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "28226693778",
@@ -13504,10 +14009,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 104,
@@ -13540,7 +14045,6 @@
     "address": "725 Greenbrier Dear Rd, Malvern, PA, 19053",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -13575,8 +14079,7 @@
     "pims": "DVMax",
     "address": "1183 Massachusetts Avenue, Belmont, MA, 02476",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -13598,7 +14101,6 @@
     "customerSince": "2023-08-25",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8407612433",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "8407612433",
@@ -13613,7 +14115,39 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 374,
+    "name": "[VOTS] Oyster Point",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 36.84937,
+    "lng": -76.28995,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-01-10",
+    "signalUrls": {
+      "slack_mention": "https://thedigitail.slack.com/archives/C04LD92QNJX/p1774971596479139"
+    },
+    "pimsConsidered": null,
+    "hsId": "11500243630",
+    "format": "bnm",
+    "email": "daniel@vots.vet",
+    "phone": "757.272.6363",
+    "contact": "Daniel Morris",
+    "address": "",
+    "signals": [
+      "hs_long_tenure",
       "slack_mention"
     ],
     "verified": true
@@ -13636,7 +14170,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15547087720",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "15547087720",
@@ -13650,10 +14183,10 @@
     "address": "233 Berry St, Brooklyn, NY, 11249",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 158,
@@ -13687,7 +14220,6 @@
     "address": "38 Piermont Road, Bogota, NJ, 07670",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -13710,8 +14242,7 @@
     "customerSince": "2023-04-13",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/14993105064",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
-      "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
+      "case_study": "https://digitail.com/customer-stories/how-paumanok-veterinary-hospital-harnessed-ai-to-reclaim-50-hours-per-week/"
     },
     "hsId": "14993105064",
     "format": "bnm",
@@ -13725,10 +14256,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 98,
@@ -13760,7 +14291,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 198,
@@ -13780,7 +14312,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17914637829",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "17914637829",
@@ -13794,10 +14325,10 @@
     "address": "22720 Portola Drive, Carmel Valley, CA, 93908",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 305,
@@ -13817,7 +14348,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/34196723847",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "34196723847",
@@ -13825,10 +14355,10 @@
     "address": "",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 303,
@@ -13855,7 +14385,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 85,
@@ -13885,7 +14416,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 175,
@@ -13916,8 +14448,7 @@
     "pims": "Daysmart",
     "address": "Clinton Township",
     "signals": [
-      "case_study",
-      "hs_referral_network"
+      "case_study"
     ],
     "verified": true
   },
@@ -13939,7 +14470,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15921838363",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "15921838363",
@@ -13952,10 +14482,10 @@
     "address": "Clinton Township",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 178,
@@ -13975,7 +14505,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15921907892",
-      "slack_mention": "https://thedigitail.slack.com/archives/CFEPB037E/p1776799339851409",
       "case_study": "https://digitail.com/customer-stories/from-zero-to-2900-patients-how-simmons-veterinary-clinic-built-a-thriving-de-novo-practice/"
     },
     "hsId": "15921907892",
@@ -13988,10 +14517,10 @@
     "address": "Clinton Township",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 174,
@@ -14011,7 +14540,6 @@
     "customerSince": null,
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/15920143685",
-      "slack_mention": "https://thedigitail.slack.com/archives/C7YSUMSBD/p1775581232345939",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     },
     "hsId": "15920143685",
@@ -14024,10 +14552,10 @@
     "address": "Clinton Township",
     "signals": [
       "case_study",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 111,
@@ -14047,7 +14575,6 @@
     "customerSince": "2022-07-01",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/8017705551",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "8017705551",
@@ -14062,10 +14589,10 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 176,
@@ -14098,7 +14625,6 @@
     "address": "Clinton Township",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -14134,7 +14660,6 @@
     "address": "Clinton Township",
     "signals": [
       "case_study",
-      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true
@@ -14169,8 +14694,7 @@
     "address": "23500 Harper Avenue, Saint Claire Shores, MI, 48080",
     "signals": [
       "case_study",
-      "hs_long_tenure",
-      "hs_referral_network"
+      "hs_long_tenure"
     ],
     "verified": true
   },
@@ -14191,8 +14715,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10825407819",
-      "slack_mention": "https://thedigitail.slack.com/archives/C07GZ3XC6DP/p1776366090132189"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10825407819"
     },
     "hsId": "10825407819",
     "format": "bnm",
@@ -14203,10 +14726,10 @@
     "pims": "Neo",
     "address": "3536 South Higuera Street, San Luis Obispo, CA, 93401",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 144,
@@ -14324,7 +14847,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 147,
@@ -14352,7 +14876,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 149,
@@ -14383,7 +14908,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 148,
@@ -14411,7 +14937,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 134,
@@ -14534,7 +15061,8 @@
     "signals": [
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 127,
@@ -14614,7 +15142,6 @@
     "customerSince": "2025-04-29",
     "signalUrls": {
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/4462722682",
-      "slack_mention": "https://thedigitail.slack.com/archives/C02FBUC19LH/p1773330434162799",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "hsId": "4462722682",
@@ -14629,9 +15156,9 @@
     "signals": [
       "case_study",
       "hs_long_tenure",
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   }
 ]
