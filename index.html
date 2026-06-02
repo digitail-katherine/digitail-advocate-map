@@ -116,6 +116,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div><div class="fh"><h3>Practice Format</h3><button onclick="fmtAll(true)">All</button></div><div id="fmtf"></div></div>
     <div><div class="fh"><h3>PIMS Migrated From</h3><button onclick="pAll(true)">All</button></div><div id="pf"></div></div>
     <div><div class="fh"><h3>Source</h3><button onclick="sAll(true)">All</button></div><div id="srcf"></div></div>
+    <div><div class="fh"><h3>Other PIMS Considered</h3><button onclick="pcAll(true)">All</button></div><div id="pcf"></div></div>
     <div class="nb">⚠️ <b style="color:#92400E">Verify</b> = confirm with team before outreach.</div>
   </div>
   <div id="main">
@@ -133,6 +134,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           <th onclick="srt('dvms')">DVMs ↕</th>
           <th onclick="srt('since')">Customer Since ↕</th>
           <th onclick="srt('pims')">PIMS From ↕</th>
+          <th>Also Evaluated</th>
           <th onclick="srt('src')">Source ↕</th>
           <th>Flags</th>
         </tr></thead>
@@ -211,7 +213,7 @@ const SIGNAL_LABELS={
 };
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let D=[],selT,selFmt,pimsV,selP,srcV,selS,q='',sc='name',sa=true,ml=[];
+let D=[],selT,selFmt,pimsV,selP,srcV,selS,pcV,selPC,q='',sc='name',sa=true,ml=[];
 
 // ── Map ───────────────────────────────────────────────────────────────────────
 const map=L.map('map',{zoomControl:true}).setView([44,-95],4);
@@ -229,6 +231,8 @@ function boot(data){
   selP   =new Set(pimsV);
   srcV   =[...new Set(D.map(sg))].sort();
   selS   =new Set(srcV);
+  pcV    =[...new Set(D.flatMap(a=>a.pimsConsidered?a.pimsConsidered.split(';').map(p=>p.trim()).filter(Boolean):[]))].sort();
+  selPC  =new Set(pcV);
   buildF();render();
 }
 fetch('advocates.json')
@@ -242,9 +246,19 @@ fetch('advocates.json')
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function sg(a){
-  if((a.src||'').includes('Capterra')) return 'Capterra';
-  if((a.src||'').includes('Intercom')) return 'Intercom CSAT';
-  return 'Happy Customers';
+  const s=a.signals||[];
+  if(s.includes('case_study'))          return 'Customer Story';
+  if(s.includes('hs_referral_network')) return 'Reference Program';
+  if(s.includes('capterra_positive'))   return 'Capterra';
+  if(s.includes('g2_positive'))         return 'G2';
+  if(s.includes('softwareadvice'))      return 'Software Advice';
+  if(s.includes('getapp'))              return 'GetApp';
+  if(s.includes('google_review'))       return 'Google Review';
+  if(s.includes('intercom_csat'))       return 'Intercom CSAT';
+  if(s.includes('slack_mention'))       return 'Team Mention';
+  if(s.includes('fathom_call'))         return 'CS Call';
+  if(s.includes('manual'))             return 'Manually Verified';
+  return 'Verified Customer';
 }
 function haversine(la1,lo1,la2,lo2){
   const R=3958.8,r=Math.PI/180,dLa=(la2-la1)*r,dLo=(lo2-lo1)*r;
@@ -309,6 +323,10 @@ function buildF(){
     const n=D.filter(a=>sg(a)===s).length;
     return `<label class="cr"><input type="checkbox" data-s="${s}" checked onchange="sChg(this)">${s}<span class="cc">${n}</span></label>`;
   }).join('');
+  document.getElementById('pcf').innerHTML=pcV.length?pcV.map(p=>{
+    const n=D.filter(a=>a.pimsConsidered&&a.pimsConsidered.split(';').map(x=>x.trim()).includes(p)).length;
+    return `<label class="cr"><input type="checkbox" data-pc="${p}" checked onchange="pcChg(this)">${p}<span class="cc">${n}</span></label>`;
+  }).join(''):'<div style="font-size:11px;color:#94A3B8">No data yet</div>';
 }
 function tChg(el){el.checked?selT.add(el.dataset.t):selT.delete(el.dataset.t);render();}
 function fmtChg(el){el.checked?selFmt.add(el.dataset.f):selFmt.delete(el.dataset.f);render();}
@@ -318,6 +336,8 @@ function tAll(v){selT=v?new Set(Object.keys(CT)):new Set();document.querySelecto
 function fmtAll(v){selFmt=v?new Set(Object.keys(FMT)):new Set();document.querySelectorAll('[data-f]').forEach(c=>c.checked=v);render();}
 function pAll(v){selP=v?new Set(pimsV):new Set();document.querySelectorAll('[data-p]').forEach(c=>c.checked=v);render();}
 function sAll(v){selS=v?new Set(srcV):new Set();document.querySelectorAll('[data-s]').forEach(c=>c.checked=v);render();}
+function pcChg(el){el.checked?selPC.add(el.dataset.pc):selPC.delete(el.dataset.pc);render();}
+function pcAll(v){selPC=v?new Set(pcV):new Set();document.querySelectorAll('[data-pc]').forEach(c=>c.checked=v);render();}
 
 function filt(){
   return D.filter(a=>{
@@ -325,7 +345,8 @@ function filt(){
     const fmt=a.format||'bnm';if(!selFmt.has(fmt))return false;
     if(a.pims){const ps=a.pims.split(',').map(p=>p.trim());if(!ps.some(p=>selP.has(p)))return false;}
     if(!selS.has(sg(a)))return false;
-    if(q){const s=q.toLowerCase();if(!([a.name,a.city,a.st,a.contact,a.pm,a.address].some(f=>(f||'').toLowerCase().includes(s))))return false;}
+    if(pcV.length&&a.pimsConsidered){const ps=a.pimsConsidered.split(';').map(p=>p.trim());if(!ps.some(p=>selPC.has(p)))return false;}
+    if(q){const s=q.toLowerCase();if(!([a.name,a.city,a.st,a.contact,a.pm,a.address,a.pimsConsidered].some(f=>(f||'').toLowerCase().includes(s))))return false;}
     return true;
   });
 }
@@ -415,6 +436,7 @@ function mkPop(a){
   const tenureStr=tenureLabel(a.customerSince);
   b+=sinceStr?`<div class="pr"><span class="plb">Customer</span><span class="pv">${sinceStr}<span style="color:#64748B;font-size:10px;margin-left:6px">${tenureStr}</span></span></div>`:'';
   b+=a.pims?`<div class="pr"><span class="plb">PIMS From</span><span class="pv" style="color:#EF4444;font-weight:600">${a.pims}</span></div>`:'';
+  b+=a.pimsConsidered?`<div class="pr"><span class="plb">Also Eval.</span><span class="pv" style="color:#64748B;font-size:10.5px">${a.pimsConsidered}</span></div>`:'';
   b+=a.dgtId?`<div class="pr"><span class="plb">DGT ID</span><span class="pv" style="font-family:monospace;font-size:10.5px">${a.dgtId}</span></div>`:'';
 
   return `<div class="ph"><div class="pn">${a.name}${ai}</div><div class="pl">${loc}${a.approx?' <em style="opacity:.6;font-size:9px">(approx)</em>':''}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px"><div class="pty">${tl}</div><div class="pty">${fmtLabel}</div></div></div>
@@ -483,6 +505,7 @@ function rList(f){
       <td style="text-align:center">${dvmsCell}</td>
       <td class="tl">${(()=>{const s=sinceMonthLabel(a.customerSince),t=tenureLabel(a.customerSince);return s?s+'<span style="color:#94A3B8;font-size:9.5px;margin-left:4px">'+t+'</span>':'<span class="tnl">—</span>'})()}</td>
       <td class="tl">${a.pims?`<span style="color:#EF4444;font-weight:600">${a.pims}</span>`:'—'}</td>
+      <td class="tl" title="${a.pimsConsidered||''}">${a.pimsConsidered||'—'}</td>
       <td class="tl">${sg(a)}</td>
       <td>${flags||'—'}</td>
     </tr>`;
