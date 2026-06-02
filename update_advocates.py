@@ -14,7 +14,7 @@ Passive signals (tenure, DSP usage, generic notes) are shown
 in popups as context but never qualify a clinic alone.
 """
 
-import json, os, re, time
+import json, os, re, time, math
 from datetime import datetime, timedelta, timezone
 import requests
 
@@ -182,6 +182,37 @@ def infer_format(name: str) -> str:
     if any(t in n for t in MOBILE_TERMS): return "mobile"
     return "bnm"
 
+
+def infer_clinic_type(name: str, props: dict = None) -> str:
+    """Infer frontend colour/category from clinic name and available HubSpot text."""
+    props = props or {}
+    text = " ".join(str(x or "") for x in [
+        name, props.get("description"), props.get("about_us"), props.get("industry"),
+        props.get("type"), props.get("practice_type"), props.get("specialty"),
+    ]).lower()
+    if any(t in text for t in ["emergency", "urgent care", "specialty", "specialist", "24/7", "24 hour"]):
+        return "emergency"
+    if any(t in text for t in ["equine", "horse", "large animal", "bovine", "farm animal", "livestock"]):
+        return "equine"
+    if any(t in text for t in ["group", "corporate", "locations", "multi-location", "network"]):
+        return "corporate"
+    if any(t in text for t in ["small animal", "companion animal", "cat", "feline", "canine", "dog"]):
+        return "smallAnimal"
+    return "general"
+
+
+
+def miles_between(lat1, lng1, lat2, lng2) -> float:
+    try:
+        r = 3958.8
+        p1, p2 = math.radians(float(lat1)), math.radians(float(lat2))
+        dp = math.radians(float(lat2) - float(lat1))
+        dl = math.radians(float(lng2) - float(lng1))
+        a = math.sin(dp/2)**2 + math.cos(p1)*math.cos(p2)*math.sin(dl/2)**2
+        return r * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    except Exception:
+        return 0.0
+
 # ── Non-clinic exclusions ─────────────────────────────────────────────────────
 EXCLUDE_NAME_FRAGMENTS = [
     "stripe", "care credit", "carecredit", "vetsource", "ellie diagnostics",
@@ -237,7 +268,7 @@ HS_PROPS = [
 # If your "number of DVMs" property has a different internal name in HubSpot,
 # update "number_of_dvms" below to match. Find it at:
 # HubSpot → Settings → Properties → Deals → search "dvm"
-HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate", "competition"]
+HS_DEAL_PROPS = ["number_of_dvms", "dealstage", "hs_is_closed_won", "closedate", "competition", "pipeline"]
 
 def hs_h():
     return {"Authorization": f"Bearer {HS_TOKEN}", "Content-Type": "application/json"}
@@ -338,8 +369,8 @@ def hs_fetch_referral_network() -> tuple:
       3. Return (name_map, company_ids_set) — the COMPANY data is what gets
          pinned on the map; the contact is just how we identify who opted in.
 
-    The function tries multiple property names and uses HAS_PROPERTY + client-side
-    filtering so it works regardless of whether the property is a checkbox,
+    The function tries multiple property names and uses exact EQ opt-in values
+    so opted-out values are never included of whether the property is a checkbox,
     radio button, or dropdown in HubSpot.
     """
     if not HS_TOKEN: return {}, set()
@@ -354,23 +385,26 @@ def hs_fetch_referral_network() -> tuple:
         "referenceprogramoptin",
         "reference_program",
         "reference_program_optin__c",
-        "hs_lead_status",       # some teams repurpose this — caught by truthy filter below
     ]
     TRUTHY = {"true","yes","1","on","opted in","opt in","opted-in","opt-in","agreed"}
 
-    # ── Step 1: find the right property name via diagnostic lookup ────────────
-    # For each candidate, use HAS_PROPERTY (property exists and is non-empty)
-    # then filter client-side for truthy values. This works for every HubSpot
-    # property type — checkbox, dropdown, radio, text.
+    # ── Step 1: find the right property name via exact opt-in values ──────────
+    # Do NOT use HAS_PROPERTY here. It also returns "No" / "Opted Out" values.
+    # HubSpot search filterGroups are ORed, so each accepted opt-in value gets
+    # its own EQ filter group.
     found_prop   = None
     all_contacts = []
 
+    def _truthy_filter_groups(prop_name: str) -> list:
+        return [{"filters": [{
+            "propertyName": prop_name,
+            "operator": "EQ",
+            "value": v,
+        }]} for v in sorted(TRUTHY)]
+
     for prop_name in PROPERTY_CANDIDATES:
         payload = {
-            "filterGroups": [{"filters": [{
-                "propertyName": prop_name,
-                "operator":     "HAS_PROPERTY",
-            }]}],
+            "filterGroups": _truthy_filter_groups(prop_name),
             "properties": ["firstname","lastname","email","phone","company",
                            "jobtitle","city","state","zip","country", prop_name],
             "limit": 1,
@@ -384,23 +418,18 @@ def hs_fetch_referral_network() -> tuple:
             continue
         total = r.json().get("total", 0)
         if total == 0:
-            continue   # property exists but no contacts have it set
+            continue
 
-        # Sample value check — make sure it looks like our opt-in property
         sample_val = (r.json().get("results",[{}])[0]
                        .get("properties",{}).get(prop_name,"") or "")
         print(f"  Referral property found: '{prop_name}' — "
-              f"{total} contacts, sample value: '{sample_val}'")
+              f"{total} opted-in contacts, sample value: '{sample_val}'")
 
-        # Now fetch ALL contacts with this property set, filter client-side
         found_prop = prop_name
         after = None
         while True:
             full_payload = {
-                "filterGroups": [{"filters": [{
-                    "propertyName": prop_name,
-                    "operator":     "HAS_PROPERTY",
-                }]}],
+                "filterGroups": _truthy_filter_groups(prop_name),
                 "properties": ["firstname","lastname","email","phone","company",
                                "jobtitle","city","state","zip","country", prop_name],
                 "limit": 100,
@@ -410,10 +439,7 @@ def hs_fetch_referral_network() -> tuple:
                                json=full_payload, headers=hs_h(), timeout=15)
             if pr.status_code != 200: break
             data = pr.json()
-            for contact in data.get("results", []):
-                raw_val = (contact.get("properties",{}).get(prop_name,"") or "").strip().lower()
-                if raw_val in TRUTHY:
-                    all_contacts.append(contact)
+            all_contacts.extend(data.get("results", []))
             after = data.get("paging",{}).get("next",{}).get("after")
             if not after: break
         break  # found the right property — stop trying
@@ -456,15 +482,7 @@ def hs_fetch_referral_network() -> tuple:
     if not all_contacts and not KNOWN_REFERRAL_COMPANY_IDS:
         return {}, set()
 
-    # ── Step 2: build name fallback from contact "company" text field ─────────
-    name_map = {}
-    for contact in all_contacts:
-        p  = contact.get("properties", {})
-        co = (p.get("company") or "").strip()
-        if co:
-            name_map[co.lower()] = {"contact_props": p, "contact_id": contact["id"]}
-
-    # ── Step 3: resolve contact → associated HubSpot company object IDs ───────
+    # ── Step 2: resolve contact → associated HubSpot company object IDs ───────
     # This is the authoritative mapping — the company record's name, address,
     # and PIMS fields are what populate the map pin, not the contact record.
     company_ids = set()
@@ -553,7 +571,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
 
     # Fetch ALL onboarding deals (active + closed), resolve to companies,
     # track latest deal stage per company
-    company_latest = {}   # company_id → (last_modified_date, stage_id)
+    company_latest = {}   # company_id → (closed_or_created_date, stage_id)
 
     after = None
     while True:
@@ -561,7 +579,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
             "filterGroups": [{"filters": [
                 {"propertyName": "pipeline", "operator": "EQ", "value": pipeline_id}
             ]}],
-            "properties": ["dealname", "dealstage", "hs_lastmodifieddate", "closedate"],
+            "properties": ["dealname", "dealstage", "createdate", "closedate"],
             "limit": 200,
         }
         if after: payload["after"] = after
@@ -576,7 +594,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
         deal_info = {}
         for d in results:
             p    = d.get("properties", {})
-            date = (p.get("closedate") or p.get("hs_lastmodifieddate") or "")
+            date = (p.get("closedate") or p.get("createdate") or "")
             deal_info[d["id"]] = (date, p.get("dealstage", ""))
 
         for i in range(0, len(deal_ids), 100):
@@ -591,7 +609,7 @@ def hs_get_active_onboarding_company_ids(pipeline_id: str, cs_stage_id: str) -> 
                     for assoc in item.get("to", []):
                         cid = str(assoc.get("toObjectId", ""))
                         if not cid: continue
-                        # Keep the most recently modified deal's stage
+                        # Keep the most recently closed/created onboarding deal's stage
                         if cid not in company_latest or info[0] > company_latest[cid][0]:
                             company_latest[cid] = info
             time.sleep(0.1)
@@ -743,10 +761,11 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
             headers=hs_h(), timeout=10)
         if r.status_code != 200: return {}, {}
 
-        deals = r.json().get("results", [])[:5]
+        deals = r.json().get("results", [])
         if not deals: return {}, {}
 
         deal_ids = [d["id"] for d in deals]
+        sales_pipeline_id = hs_fetch_sales_pipeline_id()
 
         # Fetch deal properties — DVM count + close date
         # If "number_of_dvms" doesn't match your HubSpot property name, check:
@@ -759,7 +778,9 @@ def best_contact_and_deal_props(hs_id: str) -> tuple:
             headers=hs_h(), timeout=10)
         if dr.status_code == 200:
             all_results = dr.json().get("results", [])
-            # Prefer deals explicitly marked closed-won
+            if sales_pipeline_id:
+                all_results = [d for d in all_results if d.get("properties", {}).get("pipeline") == sales_pipeline_id]
+            # Prefer Sales pipeline deals explicitly marked closed-won
             won_deals = []
             for deal in all_results:
                 p = deal.get("properties", {})
@@ -865,8 +886,8 @@ def hs_get_customers(referral_ids: set = None) -> list:
         if batch:
             by_id.update(batch)
             print(f"  HubSpot filter '{filt['propertyName']}': {len(batch)} companies")
-            break
-        print(f"  HubSpot filter '{filt['propertyName']}': 0, trying next…")
+        else:
+            print(f"  HubSpot filter '{filt['propertyName']}': 0")
 
     # Add closed-won companies not already in the lifecycle filter result
     new_ids = closed_won - set(by_id.keys())
@@ -1060,16 +1081,26 @@ def fetch_slack_signals() -> tuple:
             continue
 
         try:
-            r = requests.get("https://slack.com/api/conversations.history",
-                params={"channel":ch_id,"oldest":cutoff,"limit":200},
-                headers=hdrs, timeout=15)
-            data = r.json()
-            if not data.get("ok"):
-                err = data.get("error","")
-                if err not in ("not_in_channel","channel_not_found"):
-                    print(f"  Slack #{ch_name}: {err}")
-                continue
-            for msg in data.get("messages",[]):
+            messages = []
+            cursor = None
+            while True:
+                params = {"channel":ch_id,"oldest":cutoff,"limit":200}
+                if cursor:
+                    params["cursor"] = cursor
+                r = requests.get("https://slack.com/api/conversations.history",
+                    params=params, headers=hdrs, timeout=15)
+                data = r.json()
+                if not data.get("ok"):
+                    err = data.get("error","")
+                    if err not in ("not_in_channel","channel_not_found"):
+                        print(f"  Slack #{ch_name}: {err}")
+                    break
+                messages.extend(data.get("messages",[]))
+                cursor = data.get("response_metadata",{}).get("next_cursor")
+                if not cursor:
+                    break
+                time.sleep(0.2)
+            for msg in messages:
                 text = msg.get("text","")
                 if not text or len(text) < 15: continue
                 tl      = text.lower()
@@ -1250,29 +1281,34 @@ def scrape_customer_stories() -> list:
                 if m2:
                     name_from_headline = m2.group(1).strip()
 
-        # ── Strict extraction: only use headline-extracted clinic names ──────────
-        # If the regex couldn't pull a real clinic name from the headline,
-        # skip this entry — the slug-derived fallback name is too long and
-        # generic and causes false matches against HubSpot company names.
-        clinic_name = name_from_headline
-        if not clinic_name or len(clinic_name) < 4:
-            continue
-        if clinic_name.lower() in seen:
-            continue
-        seen.add(clinic_name.lower())
+            # ── Strict extraction: only use headline-extracted clinic names ──────────
+            # If the regex couldn't pull a real clinic name from the headline,
+            # skip this entry — the slug-derived fallback name is too long and
+            # generic and causes false matches against HubSpot company names.
+            clinic_name = name_from_headline
+            if clinic_name:
+                clinic_name = re.sub(r'^(?:Dr\.?|Doctor)\s+', '', clinic_name.strip(), flags=re.I).strip()
+            # Avoid treating clinician names as clinic names.
+            if (not clinic_name or len(clinic_name) < 4 or
+                    re.search(r'\b(?:Dr\.?|Doctor)\b', clinic_name, re.I) or
+                    len([w for w in re.split(r'\W+', clinic_name) if w]) < 2):
+                continue
+            if clinic_name.lower() in seen:
+                continue
+            seen.add(clinic_name.lower())
 
-        story_url = href if href.startswith("http") else f"https://digitail.com{href}"
-        # Store just the clean story title as text, NOT the raw link_text blob.
-        # link_text spans multiple card elements on the page and causes cross-
-        # contamination where a story about Clinic A accidentally contains
-        # Clinic B's name, leading to wrong quote attribution.
-        stories.append({
-            "source":   "customer_stories",
-            "signal":   "case_study",
-            "reviewer": clinic_name,
-            "text":     f"Featured on Digitail customer stories page: {story_url}",
-            "url":      story_url,
-        })
+            story_url = href if href.startswith("http") else f"https://digitail.com{href}"
+            # Store just the clean story title as text, NOT the raw link_text blob.
+            # link_text spans multiple card elements on the page and causes cross-
+            # contamination where a story about Clinic A accidentally contains
+            # Clinic B's name, leading to wrong quote attribution.
+            stories.append({
+                "source":   "customer_stories",
+                "signal":   "case_study",
+                "reviewer": clinic_name,
+                "text":     f"Featured on Digitail customer stories page: {story_url}",
+                "url":      story_url,
+            })
 
         print(f"  Customer stories: {len(stories)} stories found on digitail.com")
         return stories
@@ -1427,6 +1463,23 @@ def names_match(a: str, b: str) -> bool:
     wb = {w for w in re.split(r'\W+', b) if len(w) >= 4}
     return len(wa & wb) >= 2
 
+
+
+def distinctive_words(text: str, min_len: int = 4) -> set:
+    return {w for w in re.split(r'\W+', (text or '').lower())
+            if len(w) >= min_len and w not in GENERIC_VET_WORDS}
+
+def matches_negative_name(name: str, negative_terms) -> bool:
+    name_lc = (name or '').lower().strip()
+    if not name_lc: return False
+    name_words = distinctive_words(name_lc)
+    for term, term_words in negative_terms:
+        if term and (name_lc == term or term in name_lc or name_lc in term):
+            return True
+        if name_words and term_words and len(name_words & term_words) >= 1:
+            return True
+    return False
+
 def case_study_names_match(hs_name: str, story_name: str) -> bool:
     """
     Stricter matching for customer story clinic names.
@@ -1560,6 +1613,8 @@ def main():
     excl_signal, excl_bad = 0, 0
     next_id = max((a.get("id",0) for a in existing), default=100) + 1
 
+    negative_terms = [(b.lower().strip(), distinctive_words(b)) for b in all_negative]
+
     for customer in hs_customers:
         hs_id = str(customer["id"])
         props = customer.get("properties",{})
@@ -1586,7 +1641,7 @@ def main():
             excl_bad += 1
             if in_referral: print(f"  ✗ Negative (referral member): {name}")
             continue
-        if name_lc in all_negative or any(names_match(name, b) for b in all_negative):
+        if matches_negative_name(name, negative_terms):
             excl_bad += 1
             print(f"  ✗ Negative{'(referral member) ' if in_referral else ''}: {name}")
             continue
@@ -1710,6 +1765,7 @@ def main():
         rec["hsId"]    = hs_id
         rec["name"]    = name
         rec["format"]  = infer_format(name)
+        rec["ct"]      = infer_clinic_type(name, props)
         rec["metrics"] = None
 
         deal_contact, deal_props = best_contact_and_deal_props(hs_id)
@@ -1761,7 +1817,13 @@ def main():
         rec["address"] = ", ".join(p for p in parts if p)
 
         lat, lng = geocode(props, deal_contact or None)
-        if lat: rec["lat"], rec["lng"] = lat, lng; rec["approx"] = False
+        if lat:
+            old_lat, old_lng = rec.get("lat"), rec.get("lng")
+            if old_lat and old_lng and miles_between(old_lat, old_lng, lat, lng) > 75:
+                print(f"  ⚠ Geocode changed >75 mi for {name}; keeping existing coordinates")
+            else:
+                rec["lat"], rec["lng"] = lat, lng
+                rec["approx"] = False
 
         if "manual" in rec.get("signals",[]): strong_signals.append("manual")
         all_sigs        = sorted(set(strong_signals + context_signals))
@@ -1794,17 +1856,16 @@ def main():
         if not already:
             old_name = (old.get("name") or "")
             # Full negative check — same logic as the HubSpot main loop
-            if (old_name.lower() in all_negative or
-                    any(names_match(old_name, b) for b in all_negative)):
+            if matches_negative_name(old_name, negative_terms):
                 excl_neg_preserved += 1
                 print(f"  ✗ Negative (preserved): {old_name}")
                 continue
-            # Remove referral signal — can only be verified via live HubSpot lookup
-            cleaned_signals = [s for s in old.get("signals",[]) if s != "hs_referral_network"]
+            # Do not preserve stale automated signals from records no longer returned
+            # by current HubSpot/source lookups. Only manual records survive.
+            cleaned_signals = [s for s in old.get("signals",[]) if s == "manual"]
             old = dict(old)
             old["signals"] = cleaned_signals
-            old_strong = [s for s in cleaned_signals if s in STRONG_SIGNALS]
-            if old_strong or old.get("src","") in ("manual","Capterra","Intercom CSAT"):
+            if cleaned_signals or old.get("src","") == "manual":
                 new_advocates.append(old)
 
     new_advocates.sort(key=lambda a: a.get("name",""))
