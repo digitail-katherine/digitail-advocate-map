@@ -5,13 +5,13 @@
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
-    "approx": true,
+    "approx": false,
     "quote": "Featured in Digitail customer story: AcharaVet",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 34.85135,
+    "lng": -82.39849,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2023-04-04",
@@ -66,7 +66,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -138,7 +139,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 450,
@@ -173,7 +175,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 442,
@@ -207,7 +210,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 411,
@@ -220,8 +224,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03705,
-    "lng": -121.2869,
+    "lat": 44.03704,
+    "lng": -121.28689,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -312,7 +316,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 439,
@@ -347,7 +352,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 456,
@@ -381,7 +387,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -452,7 +459,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 448,
@@ -486,7 +494,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 460,
@@ -520,7 +529,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 458,
@@ -554,7 +564,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 461,
@@ -588,7 +599,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 454,
@@ -623,7 +635,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 452,
@@ -658,7 +671,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 447,
@@ -691,7 +705,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 443,
@@ -725,7 +740,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 459,
@@ -759,7 +775,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 457,
@@ -793,7 +810,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -896,7 +914,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 441,
@@ -930,7 +949,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 412,
@@ -998,7 +1018,8 @@
       "case_study",
       "hs_long_tenure"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 440,
@@ -1031,7 +1052,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 292,
@@ -1105,7 +1127,8 @@
       "hs_long_tenure",
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 409,
@@ -1210,7 +1233,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
