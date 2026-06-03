@@ -1,5 +1,74 @@
 [
   {
+    "id": 419,
+    "name": "Acharavet - HQ",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": true,
+    "quote": "Featured in Digitail customer story: AcharaVet",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-04-04",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/30-productivity-boost-how-acharavet-scaled-9-clinics-with-ai/"
+    },
+    "pimsConsidered": null,
+    "hsId": "7564431013",
+    "format": "bnm",
+    "email": "allison@acharavet.com",
+    "phone": "(864) 469-4524",
+    "contact": "Allison Cawley",
+    "city": "Greenville",
+    "st": "SC",
+    "pims": "Cornerstone",
+    "address": "Greenville, SC",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 455,
+    "name": "Amici Cannis",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Amici Cannis",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 0.51594,
+    "lng": -78.13294,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
+    },
+    "pimsConsidered": "None",
+    "hsId": "32628061291",
+    "format": "bnm",
+    "email": "alexandra@amicicannisusa.org",
+    "phone": "+1 (970) 305-4923",
+    "contact": "Alexandra Rothlisberger",
+    "city": "ibarra",
+    "st": "Imbabura",
+    "pims": "Via",
+    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -24,48 +93,121 @@
     "address": "1900 North Saint Marys Street, Beeville, TX, 78102",
     "hsId": "23841559449",
     "signals": [
-      "case_study"
+      "case_study",
+      "hs_referral_network"
     ],
     "verified": true,
     "format": "bnm",
     "customerSince": "2021-10-25",
     "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/23841559449",
       "case_study": "https://digitail.com/customer-stories/beeville-veterinary-hospital-cuts-cost-of-goods-5-in-seven-months-by-switching-from-avimark-to-digitail/"
     },
     "pimsConsidered": "Vetspire;Shepherd;Pulse/eVetPractice"
   },
   {
-    "id": 437,
-    "name": "Carroll College",
+    "id": 453,
+    "name": "Central Kentucky Veterinary Center",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
     "approx": false,
-    "quote": "Featured on Digitail customer stories page: https://digitail.com/customer-stories/4-labs-digitized-how-genesee-prepared-the-next-generation-of-vet-techs/",
+    "quote": null,
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 46.60144,
-    "lng": -112.0412,
+    "lat": 38.18293,
+    "lng": -84.55964,
     "dgtId": null,
     "dvms": null,
-    "customerSince": null,
+    "customerSince": "2025-01-31",
     "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/4-labs-digitized-how-genesee-prepared-the-next-generation-of-vet-techs/"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/26534596890"
+    },
+    "pimsConsidered": "Pulse/eVetPractice",
+    "hsId": "26534596890",
+    "format": "bnm",
+    "email": "ckvcmanager@gmail.com",
+    "phone": "5028630868",
+    "contact": "Amy Marcum",
+    "city": "Georgetown",
+    "st": "KY",
+    "pims": "Covetrus Pulse",
+    "address": "111 Southgate Drive, Georgetown, KY, 40324",
+    "signals": [
+      "hs_long_tenure",
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 450,
+    "name": "Covina Animal Hospital",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Covina Animal Hospital",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 34.08779,
+    "lng": -117.88912,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-08-01",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/6-systems-evaluated-1-clear-winner-how-covina-switched-pims-without-losing-its-mind/"
+    },
+    "pimsConsidered": "EzyVet",
+    "hsId": "18856205671",
+    "format": "bnm",
+    "email": "jake@covinaanimalhospital.com",
+    "phone": "(626)331-5374",
+    "contact": "Jake Waas",
+    "city": "Covina",
+    "st": "CA",
+    "pims": "Impromed Infinity",
+    "address": "302 East San Bernardino Road, Covina, CA, 91723",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
+    "id": 442,
+    "name": "Eco Vets",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Eco Vets",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-03-28",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/100-paperless-from-launch-how-eco-vets-built-a-sustainable-practice-in-london/"
     },
     "pimsConsidered": null,
-    "hsId": "2949446517",
+    "hsId": "8074373187",
     "format": "bnm",
-    "email": "dvillalta@carroll.edu",
-    "contact": "Deyanira Villalta",
-    "city": "Helena",
-    "st": "MT",
-    "address": "1601 North Benton Avenue, Helena, MT, 59625",
+    "email": "info@ecovets.co.uk",
+    "contact": "Alex Perez",
+    "city": "wandsworth",
+    "st": "Uk",
+    "pims": "None - New Practice Start Up",
+    "address": "Wandsworth, UK",
     "signals": [
-      "case_study"
+      "case_study",
+      "hs_long_tenure"
     ],
-    "verified": true,
-    "notes": null
+    "verified": true
   },
   {
     "id": 411,
@@ -139,6 +281,109 @@
     "notes": null
   },
   {
+    "id": 444,
+    "name": "Fen Vet - HQ",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 51.28597,
+    "lng": -114.01062,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9483565399"
+    },
+    "pimsConsidered": null,
+    "hsId": "9483565399",
+    "format": "bnm",
+    "email": "cody@fenvet.com",
+    "phone": "5878896351",
+    "contact": "Dr. Dr. Cody Creelman",
+    "city": "airdrie",
+    "st": "AB",
+    "pims": "Rhapsody",
+    "address": "2880 Main Street Southeast, Airdrie, AB, T4B 3G4",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 439,
+    "name": "Goostrey Lane Vets",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Goostrey Lane Vets",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.47949,
+    "lng": -2.24511,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2021-09-25",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/day-one-digital-how-goostrey-lane-vets-built-a-modern-practice-around-the-digitail-app/"
+    },
+    "pimsConsidered": null,
+    "hsId": "6175725378",
+    "format": "bnm",
+    "email": "hcurtis@mwiah.co.uk",
+    "phone": "01963 350187",
+    "contact": "Helena Curtis",
+    "city": "manchester",
+    "st": "Manchester",
+    "pims": "None - New Practice Start Up",
+    "address": "Manchester, MANCHESTER, CW4 8HE",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
+    "id": 456,
+    "name": "Gregory Vet Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 27.94499,
+    "lng": -82.45831,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-09-30",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/38890732189"
+    },
+    "pimsConsidered": "Shepherd",
+    "hsId": "38890732189",
+    "format": "bnm",
+    "email": "drgregory@gregoryvetclinic.com",
+    "phone": "6156332544",
+    "contact": "Dr. Ryan Gregory",
+    "city": "Tampa",
+    "st": "FL",
+    "pims": "AVImark",
+    "address": "1316 West Bearss Ave, Tampa, FL, 33613",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Hefner Road Animal Hospital",
     "city": "Oklahoma City",
@@ -174,6 +419,381 @@
       "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557",
       "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
     }
+  },
+  {
+    "id": 451,
+    "name": "Home Visit Pet Care",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Home Visit Pet Care",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.54621,
+    "lng": -2.63191,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "21658777779",
+    "format": "mobile",
+    "email": "ben@homevisitpetcare.co.uk",
+    "phone": "+44 7833 099537",
+    "contact": "Ben Jamieson",
+    "city": "wigan",
+    "st": "Wigan",
+    "pims": "None - paper files",
+    "address": "Wigan, WIGAN",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
+    "id": 448,
+    "name": "Lewiston Animal Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 37.33617,
+    "lng": -121.89059,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/17768628298"
+    },
+    "pimsConsidered": null,
+    "hsId": "17768628298",
+    "format": "bnm",
+    "email": "nkwjaibaba@netscape.net",
+    "phone": "5307783109",
+    "contact": "Dr. Neal Weiner",
+    "city": "san jose",
+    "st": "CA",
+    "pims": "Advantage",
+    "address": "316 Texas Street, San Jose, CA, 96052",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 460,
+    "name": "MONVETNATURE",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2026-01-15",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47951292689"
+    },
+    "pimsConsidered": "Unknown",
+    "hsId": "47951292689",
+    "format": "bnm",
+    "email": "info@monvetnature.com",
+    "phone": "5819965567",
+    "contact": "Dr. Eliane Marquis",
+    "city": "ashburn",
+    "st": "VA",
+    "pims": "Other",
+    "address": "Ashburn, VA",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 458,
+    "name": "Madara's Veterinary Services",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 40.77955,
+    "lng": -74.02375,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-12-11",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/44452041035"
+    },
+    "pimsConsidered": "None",
+    "hsId": "44452041035",
+    "format": "bnm",
+    "email": "info@madarasveterinaryservices.com",
+    "phone": "3023317418",
+    "contact": "Devon Madara",
+    "city": "union city",
+    "st": "NJ",
+    "pims": "None - New Practice Start Up",
+    "address": "Union City, NJ",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 461,
+    "name": "NOLA ER Vet",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 29.95614,
+    "lng": -90.07339,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2026-03-31",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/53021397290"
+    },
+    "pimsConsidered": "Shepherd",
+    "hsId": "53021397290",
+    "format": "bnm",
+    "email": "bnoeldvm@gmail.com",
+    "phone": "6154973742",
+    "contact": "Dr. Becca Noel Noel",
+    "city": "new orleans",
+    "st": "LA",
+    "pims": "None - New Practice Start Up",
+    "address": "New Orleans, LA",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 454,
+    "name": "Oceana Veterinary Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.54044,
+    "lng": -86.34747,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-04-29",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/30735787553"
+    },
+    "pimsConsidered": "Shepherd;EzyVet",
+    "hsId": "30735787553",
+    "format": "bnm",
+    "email": "horton@oceanavetclinic.com",
+    "phone": "2318934094",
+    "contact": "Dr. Annalisa Horton",
+    "city": "New Era",
+    "st": "MI",
+    "pims": "Cornerstone",
+    "address": "5778 South Oceana Drive, New Era, MI, 49446",
+    "signals": [
+      "hs_long_tenure",
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 452,
+    "name": "Osburn Veterinary Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.98119,
+    "lng": -124.10848,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-09-19",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21713626383"
+    },
+    "pimsConsidered": null,
+    "hsId": "21713626383",
+    "format": "bnm",
+    "email": "bethjames@florenceveterinary.com",
+    "phone": "5412720898",
+    "contact": "Beth James",
+    "city": "florence",
+    "st": "OR",
+    "pims": "Covetrus Pulse",
+    "address": "1730 Kingwood Street, Florence, OR, 97439",
+    "signals": [
+      "hs_long_tenure",
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 447,
+    "name": "Parker & Ace",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Parker & Ace",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 29.43362,
+    "lng": -98.48473,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/"
+    },
+    "pimsConsidered": null,
+    "hsId": "15466430990",
+    "format": "bnm",
+    "email": "shon.bayer@parkerandace.com",
+    "contact": "Shon Bayer",
+    "city": "brooklyn",
+    "st": "TX",
+    "pims": "ProVet Cloud",
+    "address": "501 H St NE, Brooklyn, TX",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
+    "id": 443,
+    "name": "Pine Mountain Veterinary",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 33.95285,
+    "lng": -84.54961,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2026-02-27",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/9053969566"
+    },
+    "pimsConsidered": "Unknown",
+    "hsId": "9053969566",
+    "format": "bnm",
+    "email": "info@pinemountainvet.net",
+    "phone": "6785357762",
+    "contact": "Dr. Diane Dunn",
+    "city": "marietta",
+    "st": "GA",
+    "pims": "Shepherd",
+    "address": "1483 Kennesaw Due West NW Rd, Marietta, GA, 30152",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 459,
+    "name": "Pure Balance Holistic Veterinary Services",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 33.743,
+    "lng": -112.20232,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-12-24",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47812383091"
+    },
+    "pimsConsidered": null,
+    "hsId": "47812383091",
+    "format": "bnm",
+    "email": "purebalancevet@gmail.com",
+    "phone": "6025517505",
+    "contact": "Kerri Thiel",
+    "city": "Phoenix",
+    "st": "AZ",
+    "pims": "Daysmart;None - paper files",
+    "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
+    "id": 457,
+    "name": "SMUK VET",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 44.49096,
+    "lng": 26.08026,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2025-10-28",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/40750841988"
+    },
+    "pimsConsidered": "Unknown",
+    "hsId": "40750841988",
+    "format": "bnm",
+    "email": "smukvet@yahoo.com",
+    "phone": "0721200718",
+    "contact": "Daniela Popa",
+    "city": "bucharest",
+    "st": "Bucuresti",
+    "pims": "None",
+    "address": "Strada Horia 3, Bucharest, BUCURESTI, 077190",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true
   },
   {
     "id": 44,
@@ -246,6 +866,73 @@
     }
   },
   {
+    "id": 449,
+    "name": "Southern Trail Animal Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Southern Trail Animal Clinic",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 34.52583,
+    "lng": -82.65296,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/40-app-adoption-in-year-one-southern-trails-de-novo-playbook/"
+    },
+    "pimsConsidered": null,
+    "hsId": "18327802130",
+    "format": "bnm",
+    "email": "meaves89@gmail.com",
+    "contact": "Dr. Mike Eaves",
+    "city": "anderson",
+    "st": "SC",
+    "pims": "AVImark",
+    "address": "Anderson, SC",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
+    "id": 441,
+    "name": "The Parks Veterinary Care T/A The Parks Animal Care",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: The Parks Animal Clinic",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": -26.205,
+    "lng": 28.04972,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2022-02-25",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/100-digital-from-day-one-how-the-parks-animal-clinic-built-a-fear-free-practice-in-south-africa/"
+    },
+    "pimsConsidered": null,
+    "hsId": "7992317270",
+    "format": "bnm",
+    "email": "tjtreherne@gmail.com",
+    "contact": "Trevor Treherne",
+    "city": "Johannesburg",
+    "st": "Gauteng",
+    "pims": "None - New Practice Start Up",
+    "address": "Johannesburg, GAUTENG",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
     "id": 412,
     "name": "Veterinary United",
     "ct": "general",
@@ -280,6 +967,73 @@
     "notes": null
   },
   {
+    "id": 438,
+    "name": "Vets@Home",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: My Home Vet",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": -25.76131,
+    "lng": 28.23065,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2021-01-01",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/in-car-onboarding-how-my-home-vet-runs-a-mobile-practice-across-the-cayman-islands-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "2186352614",
+    "format": "bnm",
+    "email": "mariannabergh@gmail.com",
+    "phone": "0794931956",
+    "contact": "Dr. Marianna Bergh",
+    "city": "pretoria",
+    "st": "Gauteng",
+    "address": "7 Murray St, Brooklyn, Pretoria, 0011,, Pretoria, GAUTENG",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true
+  },
+  {
+    "id": 440,
+    "name": "WE Pet Concierge",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Vet Concierge",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 38.76048,
+    "lng": -92.56179,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/2x-patient-capacity-how-vet-concierge-scaled-a-mobile-practice-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "6949137005",
+    "format": "bnm",
+    "email": "wepetcarejc@gmail.com",
+    "phone": "5732308682",
+    "contact": "Amanda Ford",
+    "st": "MO",
+    "pims": "None - New Practice Start Up",
+    "address": "MO",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 292,
     "name": "Whitney Veterinary Hospital",
     "ct": "general",
@@ -296,6 +1050,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31936586001",
       "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780170593468819"
     },
     "hsId": "31936586001",
@@ -308,11 +1063,49 @@
     "pims": "Advantage",
     "address": "2627 N Knoxville Ave, Chicago, IL, 61604",
     "signals": [
+      "hs_referral_network",
       "slack_mention"
     ],
     "verified": true,
     "notes": null,
     "pimsConsidered": "Shepherd;EzyVet;ProVet"
+  },
+  {
+    "id": 446,
+    "name": "Woodruff Vet Services",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Woodruff Vet Services",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.60217,
+    "lng": -115.01393,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-03-15",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/10763642727",
+      "case_study": "https://digitail.com/customer-stories/5-10-min-saved-per-visit-how-dr-woodruff-delivers-modern-care-with-tails-ai-and-the-digitail-app/"
+    },
+    "pimsConsidered": null,
+    "hsId": "10763642727",
+    "format": "bnm",
+    "email": "lynnyake@telus.net",
+    "phone": "12503189887",
+    "contact": "Lynn Yake",
+    "city": "evansburg",
+    "st": "AB",
+    "pims": "Neo",
+    "address": "Evansburg, AB",
+    "signals": [
+      "case_study",
+      "hs_long_tenure",
+      "hs_referral_network"
+    ],
+    "verified": true
   },
   {
     "id": 409,
@@ -331,7 +1124,7 @@
     "dvms": null,
     "customerSince": "2020-10-01",
     "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/6-7-extra-appointments-daily-how-woofdoctor-mobilized-vet-care-with-digitail/"
+      "case_study": "https://digitail.com/customer-stories/seamless-switch-how-woofdoctor-on-wheels-onboarded-to-digitail-without-missing-a-beat/"
     },
     "pimsConsidered": null,
     "hsId": "5399294054",
@@ -384,6 +1177,40 @@
     ],
     "verified": true,
     "notes": null
+  },
+  {
+    "id": 445,
+    "name": "[Rarebreed] Mill Brook Animal Clinic - MA",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Mill Brook Animal Clinic",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 42.39593,
+    "lng": -71.17867,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/4x-faster-soap-notes-10x-faster-discharges-dr-sorbos-ai-transformation-at-mill-brook/"
+    },
+    "pimsConsidered": null,
+    "hsId": "9785296757",
+    "format": "bnm",
+    "email": "drksorbo@gmail.com",
+    "phone": "+1-971-901-1327",
+    "contact": "Dr. Kristian Sørbo",
+    "city": "belmont",
+    "st": "MA",
+    "pims": "DVMax",
+    "address": "1183 Massachusetts Avenue, Belmont, MA, 02476",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
   },
   {
     "id": 44,
