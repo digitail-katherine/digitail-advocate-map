@@ -2263,7 +2263,7 @@ def main():
 
     if SLACK_URL:
         pinned = sum(1 for a in new_advocates if a.get("lat"))
-        lines  = ["*🐾 Digitail Advocate Map — Weekly Refresh*",
+        lines  = ["*🐾 Digitail Advocate Map — Auto-Refresh*",
                   f"Verified: *{len(new_advocates)}* | Pinned on map: *{pinned}*"]
         if added:   lines.append(f"✅ *{len(added)} new:* " + ", ".join(added[:6]))
         if updated: lines.append(f"📝 Updated: " + ", ".join(updated[:6]) +
