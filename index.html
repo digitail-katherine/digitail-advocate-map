@@ -13,8 +13,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .auth-logo{font-size:36px;margin-bottom:12px}
 .auth-title{font-size:20px;font-weight:800;color:#0A5F7A;margin-bottom:4px}
 .auth-sub{font-size:13px;color:#64748B;margin-bottom:24px}
-#authEmail{width:100%;padding:11px 14px;border:1.5px solid #E2E8F0;border-radius:8px;font-size:14px;outline:none;margin-bottom:10px;color:#1E293B}
-#authEmail:focus{border-color:#0A5F7A}
+#authEmail,#authPassword{width:100%;padding:11px 14px;border:1.5px solid #E2E8F0;border-radius:8px;font-size:14px;outline:none;margin-bottom:10px;color:#1E293B}
+#authEmail:focus,#authPassword:focus{border-color:#0A5F7A}
 #authBtn{width:100%;padding:12px;background:linear-gradient(135deg,#0A5F7A,#0B7D9E);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.2px}
 #authBtn:hover{opacity:.92}
 #authErr{color:#EF4444;font-size:12px;margin-top:8px;min-height:18px}
@@ -88,9 +88,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="auth-title">Digitail Advocate Map</div>
     <div class="auth-sub">Internal use only — Digitail team access</div>
     <input type="email" id="authEmail" placeholder="your@digitail.io email" autocomplete="email">
+    <input type="password" id="authPassword" placeholder="Shared password" autocomplete="current-password">
     <button id="authBtn" onclick="checkAuth()">Access Map</button>
     <div id="authErr"></div>
-    <div class="auth-footer">Restricted to @digitail.io addresses</div>
+    <div class="auth-footer">Restricted to Digitail team access</div>
   </div>
 </div>
 
@@ -146,30 +147,121 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <script>
 // ── Auth ──────────────────────────────────────────────────────────────────────
+
+const SHARED_MAP_PASSWORD = 'BeTheB3st!';
+
 function checkAuth(){
-  const email=document.getElementById('authEmail').value.trim().toLowerCase();
+
+  const emailEl=document.getElementById('authEmail');
+
+  const passEl=document.getElementById('authPassword');
+
+  const email=emailEl.value.trim().toLowerCase();
+
+  const password=passEl.value;
+
   const err=document.getElementById('authErr');
-  if(!email){err.textContent='Please enter your email.';return;}
-  if(!email.endsWith('@digitail.io')){
-    err.textContent='Access restricted to @digitail.io email addresses.';
-    document.getElementById('authEmail').style.borderColor='#EF4444';
+
+  err.textContent='';
+
+  emailEl.style.borderColor='#E2E8F0';
+
+  passEl.style.borderColor='#E2E8F0';
+
+  if(!email){
+
+    err.textContent='Please enter your Digitail email.';
+
+    emailEl.style.borderColor='#EF4444';
+
+    emailEl.focus();
+
     return;
+
   }
+
+  if(!email.endsWith('@digitail.io')){
+
+    err.textContent='Access restricted to @digitail.io email addresses.';
+
+    emailEl.style.borderColor='#EF4444';
+
+    emailEl.focus();
+
+    return;
+
+  }
+
+  if(!password){
+
+    err.textContent='Please enter the shared password.';
+
+    passEl.style.borderColor='#EF4444';
+
+    passEl.focus();
+
+    return;
+
+  }
+
+  if(password !== SHARED_MAP_PASSWORD){
+
+    err.textContent='Incorrect password.';
+
+    passEl.style.borderColor='#EF4444';
+
+    passEl.value='';
+
+    passEl.focus();
+
+    return;
+
+  }
+
   sessionStorage.setItem('dgt_auth',email);
+
+  sessionStorage.setItem('dgt_auth_ok','true');
+
   showMap();
+
 }
+
 function showMap(){
+
   document.getElementById('authWall').style.display='none';
+
   document.getElementById('hdr').style.display='flex';
+
   document.getElementById('layout').style.display='flex';
-  map.invalidateSize();
+
+  if(typeof map !== 'undefined') map.invalidateSize();
+
 }
-if(sessionStorage.getItem('dgt_auth')){
+
+if(sessionStorage.getItem('dgt_auth_ok') === 'true'){
+
   document.addEventListener('DOMContentLoaded',showMap);
+
 }
+
 document.addEventListener('DOMContentLoaded',()=>{
-  const inp=document.getElementById('authEmail');
-  if(inp) inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkAuth();});
+
+  const emailInp=document.getElementById('authEmail');
+
+  const passInp=document.getElementById('authPassword');
+
+  if(emailInp) emailInp.addEventListener('keydown',e=>{
+
+    if(e.key==='Enter') checkAuth();
+
+  });
+
+  if(passInp) passInp.addEventListener('keydown',e=>{
+
+    if(e.key==='Enter') checkAuth();
+
+  });
+
 });
 
 // ── Constants ─────────────────────────────────────────────────────────────────
