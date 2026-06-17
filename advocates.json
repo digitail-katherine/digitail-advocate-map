@@ -224,8 +224,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -498,41 +498,6 @@
     "notes": null
   },
   {
-    "id": 460,
-    "name": "MONVETNATURE",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": null,
-    "lng": null,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2026-01-15",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47951292689"
-    },
-    "pimsConsidered": "Unknown",
-    "hsId": "47951292689",
-    "format": "bnm",
-    "email": "info@monvetnature.com",
-    "phone": "5819965567",
-    "contact": "Dr. Eliane Marquis",
-    "city": "ashburn",
-    "st": "VA",
-    "pims": "Other",
-    "address": "Ashburn, VA",
-    "signals": [
-      "hs_referral_network"
-    ],
-    "verified": true,
-    "notes": null
-  },
-  {
     "id": 458,
     "name": "Madara's Veterinary Services",
     "ct": "general",
@@ -561,6 +526,41 @@
     "st": "NJ",
     "pims": "None - New Practice Start Up",
     "address": "Union City, NJ",
+    "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 460,
+    "name": "Monvetnature",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2026-01-15",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/47951292689"
+    },
+    "pimsConsidered": "Unknown",
+    "hsId": "47951292689",
+    "format": "bnm",
+    "email": "info@monvetnature.com",
+    "phone": "5819965567",
+    "contact": "Dr. Eliane Marquis",
+    "city": "ashburn",
+    "st": "VA",
+    "pims": "Other",
+    "address": "Ashburn, VA",
     "signals": [
       "hs_referral_network"
     ],
