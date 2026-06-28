@@ -35,6 +35,40 @@
     "notes": null
   },
   {
+    "id": 463,
+    "name": "Amici Cannis",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Amici Cannis",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 0.51594,
+    "lng": -78.13294,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
+    },
+    "pimsConsidered": "None",
+    "hsId": "32628061291",
+    "format": "bnm",
+    "email": "alexandra@amicicannisusa.org",
+    "phone": "+1 (970) 305-4923",
+    "contact": "Alexandra Rothlisberger",
+    "city": "ibarra",
+    "st": "Imbabura",
+    "pims": "Via",
+    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -601,6 +635,39 @@
     ],
     "verified": true,
     "notes": null
+  },
+  {
+    "id": 462,
+    "name": "Parker & Ace",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Parker & Ace",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 29.43362,
+    "lng": -98.48473,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/"
+    },
+    "pimsConsidered": null,
+    "hsId": "15466430990",
+    "format": "bnm",
+    "email": "alexis.mclaughlin@parkerandace.com",
+    "contact": "Alexis Mclaughlin",
+    "city": "brooklyn",
+    "st": "TX",
+    "pims": "ProVet Cloud",
+    "address": "501 H St NE, Brooklyn, TX",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
   },
   {
     "id": 443,
