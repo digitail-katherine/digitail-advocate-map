@@ -66,7 +66,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -223,8 +224,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -667,7 +668,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 443,
