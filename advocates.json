@@ -66,7 +66,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -223,8 +224,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -365,8 +366,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 27.94951,
-    "lng": -82.45771,
+    "lat": 27.94499,
+    "lng": -82.45831,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2025-09-30",
@@ -1114,8 +1115,8 @@
     "pimsConsidered": null,
     "hsId": "5399294054",
     "format": "mobile",
-    "email": "dcifranick@gmail.com",
-    "contact": "Douglas Cifranick",
+    "email": "dcifranick@woofdoctor.vet",
+    "contact": "Dr. Douglas Cifranick",
     "city": "Beaufort",
     "st": "FL",
     "pims": "None",
@@ -1125,7 +1126,8 @@
       "hs_long_tenure"
     ],
     "verified": true,
-    "notes": null
+    "notes": null,
+    "phone": "(716) 861-0694"
   },
   {
     "id": 419,
