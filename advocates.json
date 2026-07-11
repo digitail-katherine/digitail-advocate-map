@@ -35,40 +35,6 @@
     "notes": null
   },
   {
-    "id": 463,
-    "name": "Amici Cannis",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": "Featured in Digitail customer story: Amici Cannis",
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 0.51594,
-    "lng": -78.13294,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": null,
-    "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
-    },
-    "pimsConsidered": "None",
-    "hsId": "32628061291",
-    "format": "bnm",
-    "email": "alexandra@amicicannisusa.org",
-    "phone": "+1 (970) 305-4923",
-    "contact": "Alexandra Rothlisberger",
-    "city": "ibarra",
-    "st": "Imbabura",
-    "pims": "Via",
-    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
-    "signals": [
-      "case_study"
-    ],
-    "verified": true
-  },
-  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -223,8 +189,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -391,7 +357,7 @@
   },
   {
     "id": 451,
-    "name": "Home Visit Pet Care",
+    "name": "Home Visit Pet Care Alness & Highlands",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
@@ -404,19 +370,19 @@
     "lng": -2.63191,
     "dgtId": null,
     "dvms": null,
-    "customerSince": null,
+    "customerSince": "2026-04-29",
     "signalUrls": {
       "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
     },
     "pimsConsidered": null,
-    "hsId": "21658777779",
+    "hsId": "54511425030",
     "format": "mobile",
     "email": "ben@homevisitpetcare.co.uk",
     "phone": "+44 7833 099537",
     "contact": "Ben Jamieson",
     "city": "wigan",
-    "st": "Wigan",
-    "pims": "None - paper files",
+    "st": "wigan",
+    "pims": "None - New Practice Start Up",
     "address": "Wigan, WIGAN",
     "signals": [
       "case_study"
