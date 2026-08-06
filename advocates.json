@@ -143,42 +143,6 @@
     "notes": null
   },
   {
-    "id": 450,
-    "name": "Covina Animal Hospital",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": "Featured in Digitail customer story: Covina Animal Hospital",
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 34.08779,
-    "lng": -117.88912,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2024-08-01",
-    "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/6-systems-evaluated-1-clear-winner-how-covina-switched-pims-without-losing-its-mind/"
-    },
-    "pimsConsidered": "EzyVet",
-    "hsId": "18856205671",
-    "format": "bnm",
-    "email": "jake@covinaanimalhospital.com",
-    "phone": "(626)331-5374",
-    "contact": "Jake Waas",
-    "city": "Covina",
-    "st": "CA",
-    "pims": "Impromed Infinity",
-    "address": "302 East San Bernardino Road, Covina, CA, 91723",
-    "signals": [
-      "case_study",
-      "hs_long_tenure"
-    ],
-    "verified": true,
-    "notes": null
-  },
-  {
     "id": 442,
     "name": "Eco Vets",
     "ct": "general",
