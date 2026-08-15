@@ -35,39 +35,38 @@
     "notes": null
   },
   {
-    "id": 463,
-    "name": "Amici Cannis",
+    "id": 465,
+    "name": "Atlantic Veterinary Hospital",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
     "approx": false,
-    "quote": "Featured in Digitail customer story: Amici Cannis",
+    "quote": null,
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 0.51594,
-    "lng": -78.13294,
+    "lat": 47.61442,
+    "lng": -122.19234,
     "dgtId": null,
     "dvms": null,
-    "customerSince": null,
+    "customerSince": "2026-06-18",
     "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/1773354792"
     },
-    "pimsConsidered": "None",
-    "hsId": "32628061291",
+    "pimsConsidered": "Vetspire",
+    "hsId": "1773354792",
     "format": "bnm",
-    "email": "alexandra@amicicannisusa.org",
-    "phone": "+1 (970) 305-4923",
-    "contact": "Alexandra Rothlisberger",
-    "city": "ibarra",
-    "st": "Imbabura",
-    "pims": "Via",
-    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
+    "email": "laura.monahan1@gmail.com",
+    "phone": "2067187619",
+    "contact": "Dr. Dr. Laura Monahan",
+    "city": "bellevue",
+    "st": "WA",
+    "pims": "Cornerstone",
+    "address": "2115 23rd Avenue South, Bellevue, WA, 68005",
     "signals": [
-      "case_study"
+      "hs_referral_network"
     ],
-    "verified": true,
-    "notes": null
+    "verified": true
   },
   {
     "id": 44,
@@ -330,8 +329,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 27.94951,
-    "lng": -82.45771,
+    "lat": 27.94499,
+    "lng": -82.45831,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2025-09-30",
