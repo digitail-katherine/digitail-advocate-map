@@ -66,7 +66,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 465,
@@ -222,8 +223,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -312,6 +313,42 @@
     "pims": "Rhapsody",
     "address": "2880 Main Street Southeast, Airdrie, AB, T4B 3G4",
     "signals": [
+      "hs_referral_network"
+    ],
+    "verified": true,
+    "notes": null
+  },
+  {
+    "id": 452,
+    "name": "Florence Veterinary Clinic",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": null,
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 43.98119,
+    "lng": -124.10848,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-09-19",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21713626383"
+    },
+    "pimsConsidered": null,
+    "hsId": "21713626383",
+    "format": "bnm",
+    "email": "bethjames@florenceveterinary.com",
+    "phone": "5412720898",
+    "contact": "Beth James",
+    "city": "florence",
+    "st": "OR",
+    "pims": "Covetrus Pulse",
+    "address": "1730 Kingwood Street, Florence, OR, 97439",
+    "signals": [
+      "hs_long_tenure",
       "hs_referral_network"
     ],
     "verified": true,
@@ -574,8 +611,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 43.54044,
-    "lng": -86.34747,
+    "lat": 43.55918,
+    "lng": -86.34563,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2025-04-29",
@@ -592,42 +629,6 @@
     "st": "MI",
     "pims": "Cornerstone",
     "address": "5778 South Oceana Drive, New Era, MI, 49446",
-    "signals": [
-      "hs_long_tenure",
-      "hs_referral_network"
-    ],
-    "verified": true,
-    "notes": null
-  },
-  {
-    "id": 452,
-    "name": "Osburn Veterinary Clinic",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 43.98119,
-    "lng": -124.10848,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2024-09-19",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21713626383"
-    },
-    "pimsConsidered": null,
-    "hsId": "21713626383",
-    "format": "bnm",
-    "email": "bethjames@florenceveterinary.com",
-    "phone": "5412720898",
-    "contact": "Beth James",
-    "city": "florence",
-    "st": "OR",
-    "pims": "Covetrus Pulse",
-    "address": "1730 Kingwood Street, Florence, OR, 97439",
     "signals": [
       "hs_long_tenure",
       "hs_referral_network"
@@ -666,7 +667,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 443,
@@ -970,9 +972,9 @@
     "pimsConsidered": null,
     "hsId": "6352433311",
     "format": "bnm",
-    "email": "andrzejkupraszewicz@veterinaryunited.com",
-    "phone": "586-623-5242",
-    "contact": "Andrzej Kupraszewicz",
+    "email": "rhoney@veterinaryunited.com",
+    "phone": "586-623-5236",
+    "contact": "Ryan Honey",
     "city": "Clinton Township",
     "st": "MI",
     "address": "32159 23 Mile Rd, Clinton Township, MI, 48047-1986",
@@ -1168,13 +1170,13 @@
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
-    "approx": true,
+    "approx": false,
     "quote": "Featured in Digitail customer story: Riverside Veterinary",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 35.61322,
+    "lng": -77.37246,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2023-04-04",
@@ -1230,6 +1232,7 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   }
 ]
