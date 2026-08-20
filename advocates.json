@@ -70,41 +70,6 @@
     "notes": null
   },
   {
-    "id": 465,
-    "name": "Atlantic Veterinary Hospital",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": null,
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 47.61442,
-    "lng": -122.19234,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2026-06-18",
-    "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/1773354792"
-    },
-    "pimsConsidered": "Vetspire",
-    "hsId": "1773354792",
-    "format": "bnm",
-    "email": "laura.monahan1@gmail.com",
-    "phone": "2067187619",
-    "contact": "Dr. Dr. Laura Monahan",
-    "city": "bellevue",
-    "st": "WA",
-    "pims": "Cornerstone",
-    "address": "2115 23rd Avenue South, Bellevue, WA, 68005",
-    "signals": [
-      "hs_referral_network"
-    ],
-    "verified": true,
-    "notes": null
-  },
-  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -223,8 +188,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03705,
-    "lng": -121.2869,
+    "lat": 44.03704,
+    "lng": -121.28689,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
