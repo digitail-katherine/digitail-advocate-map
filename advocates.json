@@ -35,6 +35,40 @@
     "notes": null
   },
   {
+    "id": 468,
+    "name": "Amici Cannis",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Amici Cannis",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 0.51594,
+    "lng": -78.13294,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/10x-facility-expansion-how-amici-cannis-scales-a-nonprofit-hospital-with-digitail-2/"
+    },
+    "pimsConsidered": "None",
+    "hsId": "32628061291",
+    "format": "bnm",
+    "email": "alexandra@amicicannisusa.org",
+    "phone": "+1 (970) 305-4923",
+    "contact": "Alexandra Rothlisberger",
+    "city": "ibarra",
+    "st": "Imbabura",
+    "pims": "Via",
+    "address": "1008 Centre Avenue, Ibarra, IMBABURA, 80526",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 44,
     "name": "Beeville Veterinary Hospital",
     "city": "beeville",
@@ -357,17 +391,17 @@
   },
   {
     "id": 451,
-    "name": "Home Visit Pet Care – Medway & Gravesend Ltd",
+    "name": "Home Visit Pet Care",
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
-    "approx": true,
+    "approx": false,
     "quote": "Featured in Digitail customer story: Home Visit Pet Care",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 53.54621,
+    "lng": -2.63191,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2026-07-14",
@@ -375,15 +409,15 @@
       "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
     },
     "pimsConsidered": null,
-    "hsId": "56468698895",
+    "hsId": "21658777779",
     "format": "mobile",
     "email": "ben@homevisitpetcare.co.uk",
     "phone": "+44 7833 099537",
     "contact": "Ben Jamieson",
-    "city": "gravesend",
-    "st": "wigan",
-    "pims": "None - New Practice Start Up",
-    "address": "51 Holly Road, Gravesend, WIGAN, ME2 2JT",
+    "city": "wigan",
+    "st": "Wigan",
+    "pims": "None - paper files",
+    "address": "Wigan, WIGAN",
     "signals": [
       "case_study"
     ],
@@ -567,6 +601,39 @@
     "notes": null
   },
   {
+    "id": 467,
+    "name": "Parker & Ace",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Parker & Ace",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 29.43362,
+    "lng": -98.48473,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": null,
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/5-10-minutes-saved-per-visit-how-parker-ace-uses-ai-intake-to-elevate-client-experience/"
+    },
+    "pimsConsidered": null,
+    "hsId": "15466430990",
+    "format": "bnm",
+    "email": "alexis.mclaughlin@parkerandace.com",
+    "contact": "Alexis Mclaughlin",
+    "city": "brooklyn",
+    "st": "TX",
+    "pims": "ProVet Cloud",
+    "address": "501 H St NE, Brooklyn, TX",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true
+  },
+  {
     "id": 443,
     "name": "Pine Mountain Veterinary",
     "ct": "general",
@@ -632,42 +699,6 @@
     "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
     "signals": [
       "hs_referral_network"
-    ],
-    "verified": true,
-    "notes": null
-  },
-  {
-    "id": 419,
-    "name": "Riverside Vet Care",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": true,
-    "quote": "Featured in Digitail customer story: Riverside Veterinary",
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": null,
-    "lng": null,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2024-09-27",
-    "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/8-proven-steps-to-implement-ai-in-your-vet-clinic-dr-prices-playbook-from-riverside/"
-    },
-    "pimsConsidered": null,
-    "hsId": "21554598508",
-    "format": "bnm",
-    "email": "kelly@lowstressvetcare.com",
-    "phone": "619-358-3543",
-    "contact": "Dr. Kelly Tucker",
-    "city": "janesville",
-    "st": "WI",
-    "pims": "HippoManager",
-    "address": "3326 West Vel Marge Parkway, Janesville, WI, 53511",
-    "signals": [
-      "case_study",
-      "hs_long_tenure"
     ],
     "verified": true,
     "notes": null
@@ -1095,6 +1126,42 @@
     "verified": true,
     "notes": null,
     "phone": "(716) 861-0694"
+  },
+  {
+    "id": 419,
+    "name": "[Acharavet] Riverside Vet",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": true,
+    "quote": "Featured in Digitail customer story: Riverside Veterinary",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": null,
+    "lng": null,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2023-04-04",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/8-proven-steps-to-implement-ai-in-your-vet-clinic-dr-prices-playbook-from-riverside/"
+    },
+    "pimsConsidered": null,
+    "hsId": "15380000104",
+    "format": "bnm",
+    "email": "lprice@riversidevetsc.com",
+    "phone": "(864) 469-4524",
+    "contact": "Dr. Liza Price",
+    "city": "greenville",
+    "st": "NC",
+    "pims": "None - New Practice Start Up",
+    "address": "1285 South Suber Road, Greenville, NC, 29650",
+    "signals": [
+      "case_study",
+      "hs_long_tenure"
+    ],
+    "verified": true,
+    "notes": null
   },
   {
     "id": 466,
