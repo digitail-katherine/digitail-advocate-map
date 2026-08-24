@@ -391,6 +391,43 @@
     "notes": null
   },
   {
+    "id": 469,
+    "name": "Hefner Road Animal Hospital",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Hefner Road Animal Hospital",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 35.57977,
+    "lng": -97.63978,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2024-07-21",
+    "signalUrls": {
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/21507806557",
+      "case_study": "https://digitail.com/customer-stories/how-hefner-road-animal-hospital-saved-90-minutes-per-doctor-daily-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "21507806557",
+    "format": "bnm",
+    "email": "drmartin@hefnerroadanimalhospital.com",
+    "phone": "4055687260",
+    "contact": "Rebecca Martin",
+    "city": "Oklahoma City",
+    "st": "OK",
+    "pims": "AVImark",
+    "address": "7124 West Hefner Road, Oklahoma City, OK, 73162",
+    "signals": [
+      "case_study",
+      "hs_long_tenure",
+      "hs_referral_network"
+    ],
+    "verified": true
+  },
+  {
     "id": 451,
     "name": "Home Visit Pet Care",
     "ct": "general",
