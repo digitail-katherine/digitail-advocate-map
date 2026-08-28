@@ -413,9 +413,9 @@
     "pimsConsidered": null,
     "hsId": "21507806557",
     "format": "bnm",
-    "email": "drmartin@hefnerroadanimalhospital.com",
-    "phone": "4055687260",
-    "contact": "Rebecca Martin",
+    "email": "cmartin@hefnerroadanimalhospital.com",
+    "phone": "4054430106",
+    "contact": "Christopher Martin",
     "city": "Oklahoma City",
     "st": "OK",
     "pims": "AVImark",
@@ -975,9 +975,9 @@
     "pimsConsidered": null,
     "hsId": "6352433311",
     "format": "bnm",
-    "email": "dmeske@veterinaryunited.com",
-    "phone": "586-248-4442 ext. 403",
-    "contact": "Dana Meske",
+    "email": "andrzejkupraszewicz@veterinaryunited.com",
+    "phone": "586-623-5242",
+    "contact": "Andrzej Kupraszewicz",
     "city": "Clinton Township",
     "st": "MI",
     "address": "32159 23 Mile Rd, Clinton Township, MI, 48047-1986",
@@ -1073,8 +1073,7 @@
     "dvms": null,
     "customerSince": null,
     "signalUrls": {
-      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31936586001",
-      "slack_mention": "https://thedigitail.slack.com/archives/C6DRZJKU1/p1780170593468819"
+      "hs_referral_network": "https://app.hubspot.com/contacts/4912130/company/31936586001"
     },
     "hsId": "31936586001",
     "format": "bnm",
@@ -1086,8 +1085,7 @@
     "pims": "Advantage",
     "address": "2627 N Knoxville Ave, Chicago, IL, 61604",
     "signals": [
-      "hs_referral_network",
-      "slack_mention"
+      "hs_referral_network"
     ],
     "verified": true,
     "notes": null,
