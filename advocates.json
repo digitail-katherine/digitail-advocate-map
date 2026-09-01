@@ -66,7 +66,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -239,7 +240,7 @@
     "city": "monroe",
     "st": "CT",
     "pims": "None - New Practice Start Up",
-    "address": "Monroe, CT",
+    "address": "1556 Straits Turnpike, Monroe, CT, 06762",
     "signals": [
       "case_study",
       "hs_long_tenure"
@@ -1150,8 +1151,8 @@
     "pimsConsidered": null,
     "hsId": "5399294054",
     "format": "mobile",
-    "email": "dcifranick@gmail.com",
-    "contact": "Douglas Cifranick",
+    "email": "dcifranick@woofdoctor.vet",
+    "contact": "Dr. Douglas Cifranick",
     "city": "Beaufort",
     "st": "FL",
     "pims": "None",
