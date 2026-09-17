@@ -21,7 +21,7 @@
     "pimsConsidered": null,
     "hsId": "7564431013",
     "format": "bnm",
-    "email": "stan@acharavet.com",
+    "email": "jamie@acharavet.com",
     "phone": "+801-884-9044",
     "contact": "Stanford Bell",
     "city": "Greenville",
@@ -168,7 +168,7 @@
     "contact": "Elba Losada",
     "city": "wandsworth",
     "st": "Uk",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "Wandsworth, UK",
     "signals": [
       "case_study",
@@ -188,8 +188,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03704,
-    "lng": -121.28689,
+    "lat": 44.03705,
+    "lng": -121.2869,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -203,7 +203,7 @@
     "contact": "Harriet Burquist",
     "city": "Bend",
     "st": "OR",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "1350 Southeast Reed Market Road, Bend, OR, 97702",
     "signals": [
       "case_study",
@@ -239,7 +239,7 @@
     "contact": "Catherine Atwood",
     "city": "monroe",
     "st": "CT",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "1556 Straits Turnpike, Monroe, CT, 06762",
     "signals": [
       "case_study",
@@ -346,7 +346,7 @@
     "contact": "Helena Curtis",
     "city": "manchester",
     "st": "Manchester",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "Manchester, MANCHESTER, CW4 8HE",
     "signals": [
       "case_study",
@@ -455,7 +455,7 @@
     "contact": "Ben Jamieson",
     "city": "wigan",
     "st": "Wigan",
-    "pims": "None - paper files",
+    "pims": "None",
     "address": "Wigan, WIGAN",
     "signals": [
       "case_study"
@@ -525,7 +525,7 @@
     "contact": "Devon Madara",
     "city": "union city",
     "st": "NJ",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "Union City, NJ",
     "signals": [
       "hs_referral_network"
@@ -560,7 +560,7 @@
     "contact": "Dr. Eliane Marquis",
     "city": "ashburn",
     "st": "VA",
-    "pims": "Other",
+    "pims": "Waiting for response",
     "address": "Ashburn, VA",
     "signals": [
       "hs_referral_network"
@@ -595,7 +595,7 @@
     "contact": "Dr. Becca Noel Noel",
     "city": "new orleans",
     "st": "LA",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "New Orleans, LA",
     "signals": [
       "hs_referral_network"
@@ -735,7 +735,7 @@
     "contact": "Dr. Kerri Thiel",
     "city": "Phoenix",
     "st": "AZ",
-    "pims": "Daysmart;None - paper files",
+    "pims": "Daysmart;None",
     "address": "6616 West Brookhart Way, Phoenix, AZ, 85083",
     "signals": [
       "hs_referral_network"
@@ -791,7 +791,7 @@
     "phone": "4164857387",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "notes": null,
     "verify": false,
     "approx": false,
@@ -826,7 +826,7 @@
     "phone": "(561)329-5886",
     "features": "Tails",
     "dgtId": null,
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "notes": null,
     "verify": false,
     "approx": false,
@@ -870,8 +870,8 @@
     "pimsConsidered": null,
     "hsId": "18327802130",
     "format": "bnm",
-    "email": "meaves89@gmail.com",
-    "contact": "Dr. Mike Eaves",
+    "email": "jjfernandez.stac@gmail.com",
+    "contact": "Dr. Jose Fernandez",
     "city": "anderson",
     "st": "SC",
     "pims": "AVImark",
@@ -910,7 +910,7 @@
     "contact": "Dr. Lisa Fitch",
     "city": "Phelpston, Ontario",
     "st": "ON",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "1940 Crossland Rd, Phelpston, Ontario, ON, L0L2K0",
     "signals": [
       "hs_referral_network"
@@ -944,7 +944,7 @@
     "contact": "Trevor Treherne",
     "city": "Johannesburg",
     "st": "Gauteng",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "Johannesburg, GAUTENG",
     "signals": [
       "case_study",
@@ -975,9 +975,9 @@
     "pimsConsidered": null,
     "hsId": "6352433311",
     "format": "bnm",
-    "email": "rhoney@veterinaryunited.com",
-    "phone": "586-623-5236",
-    "contact": "Ryan Honey",
+    "email": "dmeske@veterinaryunited.com",
+    "phone": "586-248-4442 ext. 403",
+    "contact": "Dana Meske",
     "city": "Clinton Township",
     "st": "MI",
     "address": "32159 23 Mile Rd, Clinton Township, MI, 48047-1986",
@@ -1048,7 +1048,7 @@
     "phone": "5732308682",
     "contact": "Amanda Ford",
     "st": "MO",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "MO",
     "signals": [
       "case_study"
@@ -1192,7 +1192,7 @@
     "contact": "Dr. Liza Price",
     "city": "greenville",
     "st": "NC",
-    "pims": "None - New Practice Start Up",
+    "pims": "None",
     "address": "1285 South Suber Road, Greenville, NC, 29650",
     "signals": [
       "case_study",
