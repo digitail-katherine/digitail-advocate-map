@@ -154,8 +154,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 44.03705,
-    "lng": -121.2869,
+    "lat": 44.03704,
+    "lng": -121.28689,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-08-27",
@@ -401,13 +401,13 @@
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
-    "approx": true,
+    "approx": false,
     "quote": "Featured in Digitail customer story: Home Visit Pet Care",
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 53.54621,
+    "lng": -2.63191,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2021-01-01",
@@ -546,8 +546,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 29.95614,
-    "lng": -90.07339,
+    "lat": 29.95747,
+    "lng": -90.06295,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2026-03-31",
@@ -637,7 +637,8 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 443,
@@ -1200,6 +1201,7 @@
     "signals": [
       "case_study"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   }
 ]
