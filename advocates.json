@@ -432,41 +432,6 @@
     "notes": null
   },
   {
-    "id": 438,
-    "name": "Home Visit Pet Care",
-    "ct": "general",
-    "src": "HubSpot",
-    "verify": false,
-    "approx": false,
-    "quote": "Featured in Digitail customer story: Home Visit Pet Care",
-    "metrics": null,
-    "pm": null,
-    "aiAdopter": null,
-    "lat": 53.54621,
-    "lng": -2.63191,
-    "dgtId": null,
-    "dvms": null,
-    "customerSince": "2021-01-01",
-    "signalUrls": {
-      "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
-    },
-    "pimsConsidered": null,
-    "hsId": "21658777779",
-    "format": "mobile",
-    "email": "ben@homevisitpetcare.co.uk",
-    "phone": "+44 7833 099537",
-    "contact": "Ben Jamieson",
-    "city": "wigan",
-    "st": "Wigan",
-    "address": "Wigan, WIGAN",
-    "signals": [
-      "case_study"
-    ],
-    "verified": true,
-    "notes": null,
-    "pims": "None"
-  },
-  {
     "id": 448,
     "name": "Lewiston Animal Clinic",
     "ct": "general",
@@ -1204,6 +1169,41 @@
     ],
     "verified": true,
     "notes": null
+  },
+  {
+    "id": 438,
+    "name": "[Home Visit Pet] - Care Alness & Highlands",
+    "ct": "general",
+    "src": "HubSpot",
+    "verify": false,
+    "approx": false,
+    "quote": "Featured in Digitail customer story: Home Visit Pet Care",
+    "metrics": null,
+    "pm": null,
+    "aiAdopter": null,
+    "lat": 53.54621,
+    "lng": -2.63191,
+    "dgtId": null,
+    "dvms": null,
+    "customerSince": "2026-04-29",
+    "signalUrls": {
+      "case_study": "https://digitail.com/customer-stories/38-yoy-growth-how-home-visit-pet-care-built-a-vet-franchise-with-digitail/"
+    },
+    "pimsConsidered": null,
+    "hsId": "54511425030",
+    "format": "mobile",
+    "email": "ben@homevisitpetcare.co.uk",
+    "phone": "+44 7833 099537",
+    "contact": "Ben Jamieson",
+    "city": "wigan",
+    "st": "wigan",
+    "address": "Wigan, WIGAN",
+    "signals": [
+      "case_study"
+    ],
+    "verified": true,
+    "notes": null,
+    "pims": "None"
   },
   {
     "id": 470,
