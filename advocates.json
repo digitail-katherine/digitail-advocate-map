@@ -21,7 +21,7 @@
     "pimsConsidered": null,
     "hsId": "7564431013",
     "format": "bnm",
-    "email": "jamie@acharavet.com",
+    "email": "stan@acharavet.com",
     "phone": "+801-884-9044",
     "contact": "Stanford Bell",
     "city": "Greenville",
@@ -66,7 +66,8 @@
     "signals": [
       "hs_referral_network"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 44,
@@ -402,8 +403,8 @@
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": 27.94499,
-    "lng": -82.45831,
+    "lat": 27.94951,
+    "lng": -82.45771,
     "dgtId": null,
     "dvms": null,
     "customerSince": "2025-09-30",
@@ -824,7 +825,7 @@
     "lng": -79.27527,
     "ct": "general",
     "contact": "Dr. Nigel Skinner",
-    "email": "nskinnerdvm@gmail.com",
+    "email": "drskinner@shoreviewvets.ca",
     "phone": "4164857387",
     "features": "Tails",
     "dgtId": null,
@@ -1189,8 +1190,8 @@
     "pimsConsidered": null,
     "hsId": "5399294054",
     "format": "mobile",
-    "email": "dcifranick@gmail.com",
-    "contact": "Douglas Cifranick",
+    "email": "dcifranick@woofdoctor.vet",
+    "contact": "Dr. Douglas Cifranick",
     "city": "Beaufort",
     "st": "FL",
     "pims": "None",
