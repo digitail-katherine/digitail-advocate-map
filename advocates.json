@@ -507,13 +507,13 @@
     "ct": "general",
     "src": "HubSpot",
     "verify": false,
-    "approx": true,
+    "approx": false,
     "quote": null,
     "metrics": null,
     "pm": null,
     "aiAdopter": null,
-    "lat": null,
-    "lng": null,
+    "lat": 40.69989,
+    "lng": -122.82461,
     "dgtId": null,
     "dvms": null,
     "customerSince": null,
@@ -1054,7 +1054,8 @@
       "hs_long_tenure",
       "slack_mention"
     ],
-    "verified": true
+    "verified": true,
+    "notes": null
   },
   {
     "id": 438,
